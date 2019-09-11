@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。3.1 $ git config –global user.name “github UserName”3.2 $ git">
+<meta name="description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。$ git config –global user.name “github UserName”$ git config –">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Hexo建立Blog">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/my-first-post/index.html">
 <meta property="og:site_name" content="Dc&#39;s blog">
-<meta property="og:description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。3.1 $ git config –global user.name “github UserName”3.2 $ git">
+<meta property="og:description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。$ git config –global user.name “github UserName”$ git config –">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-09-11T08:40:40.969Z">
+<meta property="og:updated_time" content="2019-09-11T09:07:18.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Hexo建立Blog">
-<meta name="twitter:description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。3.1 $ git config –global user.name “github UserName”3.2 $ git">
+<meta name="twitter:description" content="Hexo事前安裝準備:node.js + Git。 登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。$ git config –global user.name “github UserName”$ git config –">
 
 
 
@@ -303,12 +303,12 @@
         <ol>
 <li>Hexo事前安裝準備:node.js + Git。</li>
 <li>登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。</li>
-<li>使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。<br>3.1 $ git config –global user.name “github UserName”<br>3.2 $ git config –global user.email “github email”<br>3.3 $ ssh-keygen -t rsa -C “github email”<br>3.4 接下來詢問都按Enter略過</li>
+<li>使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。<br>$ git config –global user.name “github UserName”<br>$ git config –global user.email “github email”<br>$ ssh-keygen -t rsa -C “github email”<br>3.1 接下來詢問都按Enter略過</li>
 <li>從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。</li>
 <li>在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys<br>5.1 Title任意取即可。<br>5.2 key填入id_rsa.pub文件內所有內容。</li>
 <li>確認node.js 是否安裝成功 cmd -&gt; node –version</li>
-<li>新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo<br>7.1 npm install -g hexo-cli</li>
-<li>初始化blog<br>8.1 hexo init blog</li>
+<li>新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo<br>npm install -g hexo-cli</li>
+<li>初始化blog<br>hexo init blog</li>
 <li>cd 至資料夾\blog</li>
 <li>新增新文章<br>10.1 hexo new my_first_post</li>
 <li>cmd -&gt; hexo g 產生靜態檔案</li>
