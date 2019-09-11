@@ -439,22 +439,40 @@
         
           
             <ol>
-<li>Hexo事前安裝準備:node.js + Git。</li>
-<li>登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。</li>
-<li>使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。<br>3.1 $ git config –global user.name “github UserName”<br>3.2 $ git config –global user.email “github email”<br>3.3 $ ssh-keygen -t rsa -C “github email”<br>3.4 接下來詢問都按Enter略過</li>
-<li>從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。</li>
-<li>在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys<br>5.1 Title任意取即可。<br>5.2 key填入id_rsa.pub文件內所有內容。</li>
-<li>確認node.js 是否安裝成功 cmd -&gt; node –version</li>
-<li>新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo<br>7.1 npm install -g hexo-cli</li>
-<li>初始化blog<br>8.1 hexo init blog</li>
-<li>cd 至資料夾\blog</li>
-<li>新增新文章<br>10.1 hexo new my_first_post</li>
-<li>cmd -&gt; hexo g 產生靜態檔案</li>
-<li>cmd -&gt; hexo s 啟動local server , default port : 4000<br>12.1 可用cmd -&gt; hexo server -p 5000 來更換port</li>
-<li>在\blog下找到配置文件_config.yml<br>13.1 修改deploy配置<br>deploy:<br>type: git<br>repository: <a href="http://github.com/用戶名/用戶名.github.io.git" target="_blank" rel="noopener">http://github.com/用戶名/用戶名.github.io.git</a><br>branch: master</li>
-<li>cmd -&gt; hexo clean<br>cmd -&gt; hexo g<br>cmd -&gt; hexo d (這步如有出現ERROR Deployer not found: git錯誤)<br>14.1 在\blog下安裝 npm install hexo-deployer-git –save</li>
-<li>在browser輸入 “UserName”.github.io 即可看到Blog</li>
+<li><p>Hexo事前安裝準備:node.js + Git。</p>
+</li>
+<li><p>登陸GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。</p>
+</li>
+<li><p>使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"github UserName"</span></span><br><span class="line">$ git config --global user.email <span class="string">"github email"</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">"github email"</span></span><br></pre></td></tr></table></figure>
+
+<p>3.1接下來詢問都按Enter略過</p>
+</li>
+<li><p>從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。</p>
+</li>
+<li><p>在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys<br>5.1 Title任意取即可。<br>5.2 key填入id_rsa.pub文件內所有內容。</p>
+</li>
+<li><p>確認node.js 是否安裝成功</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7.1 npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化blog</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8.1 hexo init blog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cd 至資料夾\blog</p>
+</li>
+<li><p>新增新文章<br>10.1 hexo new my_first_post</p>
+</li>
+<li><p>產生靜態檔案</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
+<p>12.啟動local server , default port : 4000<br>   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<p>   12.1 可用cmd -&gt; hexo server -p 5000 來更換port<br>13.在\blog下找到配置文件_config.yml<br>   13.1 修改deploy配置<br>   deploy:<br>   type: git<br>   repository: <a href="http://github.com/用戶名/用戶名.github.io.git" target="_blank" rel="noopener">http://github.com/用戶名/用戶名.github.io.git</a><br>   branch: master<br>14.部署至GitHub<br>   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>   14.1 hexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝 npm install hexo-deployer-git –save<br>15.在browser輸入 “UserName”.github.io 即可看到Blog</p>
 
           
         
