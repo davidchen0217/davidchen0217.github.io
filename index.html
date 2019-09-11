@@ -232,6 +232,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/VSCodeForJava/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="David Chen">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dc's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/11/VSCodeForJava/" itemprop="url">Visual Studio Code for Java & JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-11T17:58:33+08:00">
+                2019-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.下載Visual Studio Code 安裝檔 : <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">https://code.visualstudio.com/download</a></p>
+<p>   逐步安裝完，會有Visual Studio Code IDE 和  Java Extension Pack. 包含</p>
+<pre><code>Language Support for Java(TM) by Red Hat
+Debugger for Java
+Java Test Runner
+Maven for Java
+Java Dependency Viewer</code></pre><p>2.需另安裝Maven，並設定環境變數 : 參考 <a href="https://www.dev2qa.com/create-java-project-with-maven/" target="_blank" rel="noopener">https://www.dev2qa.com/create-java-project-with-maven/</a></p>
+<p>3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔</p>
+<p>   war檔有兩個地方要注意</p>
+<p>   3.1. src\main\webapp\META-INF\ 下需包含context.xml</p>
+<p>   3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置</p>
+<p>4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.</p>
+<p>5.SVN control</p>
+<p>5.1 安裝小烏龜作爲基底，以及第一次取得專案 <a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">https://tortoisesvn.net/downloads.html</a></p>
+<p>5.2 Interface</p>
+<p>5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.</p>
+<p>5.2.2 Integrated mode: SVN <a href="https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm</a></p>
+<p>6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可<br><img src="./resources/image/java_formatter.png" width="100%"></p>
+<p>7.靜態程式碼檢查，安裝Checkstyle for Java，<a href="https://github.com/checkstyle/checkstyle/tree/master/src/main/resources" target="_blank" rel="noopener">https://github.com/checkstyle/checkstyle/tree/master/src/main/resources</a> 該連結提供兩種xml格式</p>
+<p>   將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成</p>
+<p>8.JavaScript Editor</p>
+<p>8.1 安裝 Eslint <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint</a></p>
+<p>9.SQL Query</p>
+<p>9.1 安裝 Oracle Developer Tools for VS Code <a href="https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools</a></p>
+<p>9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢</p>
+<p>10.PMD</p>
+<p>10.1 安裝 Apex PMD <a href="https://marketplace.visualstudio.com/items?itemName=chuckjonas.apex-pmd" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=chuckjonas.apex-pmd</a></p>
+<p>10.2 匯入我們之前研究設定的規則 pmd-custom_ruleset_20180509.xml</p>
+<p>11.HotKey</p>
+<p>11.1 keyboard-shortcuts-linux.pdf</p>
+<p>11.2 keyboard-shortcuts-macos.pdf</p>
+<p>11.3 keyboard-shortcuts-windows.pdf</p>
+<p>12.JSP Editor</p>
+<p>12.1 Java Server Pages (JSP)  <a href="https://marketplace.visualstudio.com/items?itemName=pthorsson.vscode-jsp" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=pthorsson.vscode-jsp</a></p>
+<p>已知缺點</p>
+<p>JSP 支援薄弱<br>Java Resource Bundle 不支援</p>
+<p>Reference:</p>
+<p>官方文件:</p>
+<p><a href="https://code.visualstudio.com/docs/java/java-tutorial" target="_blank" rel="noopener">Writing Java with Visual Studio Code</a></p>
+<p><a href="https://code.visualstudio.com/docs/java/java-project" target="_blank" rel="noopener">Java Project Management in VS Code</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/Hexo套用NextT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,7 +713,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -567,7 +726,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
