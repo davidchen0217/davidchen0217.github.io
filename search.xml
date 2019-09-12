@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>CentOS安裝Jdk和Tomcat</title>
+      <link href="/2019/09/12/CentOS%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat/"/>
+      <url>/2019/09/12/CentOS%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat/</url>
+      
+        <content type="html"><![CDATA[<p>Step1: 將jdk版本解壓縮至 /usr/local/java 下<br>Step2:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure><p>Step3: 將apache-tomcat版本解壓縮至 /usr/local 下<br>Step4:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure><p>Step5: 改正確時區 timedatectl set-timezone Asia/Taipei</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+            <tag> JDK </tag>
+            
+            <tag> Tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS設定解析度</title>
+      <link href="/2019/09/12/CentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6/"/>
+      <url>/2019/09/12/CentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6/</url>
+      
+        <content type="html"><![CDATA[<p>Step1:先開啟Terminal</p><p>Step2:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr</span></span><br><span class="line"></span><br><span class="line">Screen 0: minimum 320 x 200, current 1920 x 1600, maximum 16384 x 16384</span><br><span class="line">DVI-I-1 connected primary 1920x1600+0+0 (normal left inverted right x axis y axis) 477mm x 268mm</span><br><span class="line">1920x1080 60.00 +</span><br><span class="line">1600x1200 60.00</span><br><span class="line">1680x1050 59.88</span><br><span class="line">1280x1024 75.02 60.02</span><br><span class="line">1440x900 59.90</span><br><span class="line">1280x960 60.00</span><br><span class="line">1280x800 74.93 59.91</span><br><span class="line">1152x864 75.00</span><br><span class="line">1024x768 75.03 70.07 60.00</span><br><span class="line">832x624 74.55</span><br><span class="line">800x600 72.19 75.00 60.32 56.25</span><br><span class="line">640x480 75.00 72.81 66.67 59.94</span><br><span class="line">720x400 70.08</span><br><span class="line">1900x1200 60.00</span><br><span class="line">1920x1600 60.00*</span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">VGA-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line"></span><br><span class="line">PS:看是DVI-I-1 或 HDMI-1 或 VGA-1 哪一種介面 connected</span><br></pre></td></tr></table></figure><p>Step3:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># gtf 1920 1600 60 -x</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1920x1600 @ 60.00 Hz (GTF) hsync: 99.36 kHz; pclk: 260.72 MHz</span></span><br><span class="line">Modeline <span class="string">"1920x1600_60.00"</span> 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +Vsync</span><br></pre></td></tr></table></figure><p>Step4:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --newmode "1920x1600" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +Vsync</span></span><br><span class="line"></span><br><span class="line">PS:newmode 後面必須要接 Modeline 後面的參數</span><br></pre></td></tr></table></figure><p>Step5:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --addmode DVI-I-1 1920x1600</span></span><br></pre></td></tr></table></figure><p>Step6:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --output DVI-I-1 --mode 1920x1600</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+            <tag> Resolution </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS設定NTP對時</title>
+      <link href="/2019/09/12/CentOS%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82/"/>
+      <url>/2019/09/12/CentOS%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82/</url>
+      
+        <content type="html"><![CDATA[<p>有兩種設定方式<br>第一種:<br>可以加入ntpdate到root crontab即可</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w</span><br></pre></td></tr></table></figure><hr><p>第二種<br>Step1:在Terminal 用date指令確認時間是否正確</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># date</span></span><br><span class="line">Fri Aug 10 14:14:31 CST 2018</span><br></pre></td></tr></table></figure><p>Step2:安裝NTP套件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install ntp</span><br></pre></td></tr></table></figure><p>Step3:啟動 ntpd daemon</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># systemctl start ntpd</span></span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl status ntpd</span></span><br><span class="line">● ntpd.service - Network Time Service</span><br><span class="line">Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)</span><br><span class="line">Active: active (running) since Fri 2018-08-10 14:11:12 CST; 8s ago</span><br><span class="line">Process: 1266 ExecStart=/usr/sbin/ntpd -u ntp:ntp <span class="variable">$OPTIONS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">Main PID: 1267 (ntpd)</span><br><span class="line">CGroup: /system.slice/ntpd.service</span><br><span class="line">└─1267 /usr/sbin/ntpd -u ntp:ntp -g</span><br><span class="line"></span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 2 lo 127.0.0.1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 3 enp2s0 10.10.10.103 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 4 virbr0 172.16.122.1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 5 lo ::1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 6 enp2s0 fe80::4a5b:39ff:fe05:231c UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listening on routing socket on fd <span class="comment">#23 for interface updates</span></span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c016 06 restart</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c011 01 freq_not_set</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c614 04 freq_mode</span><br></pre></td></tr></table></figure><p>Step4:讓系統在開機時自動啟用 ntpd daemon</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># systemctl is-enabled ntpd</span></span><br><span class="line">disabled</span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl enable ntpd</span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/ntpd.service to /usr/lib/systemd/system/ntpd.service.</span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl is-enabled ntpd</span></span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+            <tag> NTP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS關閉SELINUX</title>
+      <link href="/2019/09/12/CentOS%E9%97%9C%E9%96%89SELINUX/"/>
+      <url>/2019/09/12/CentOS%E9%97%9C%E9%96%89SELINUX/</url>
+      
+        <content type="html"><![CDATA[<p>Step1: 對 /etc/resolv.conf 新增以下指令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generated by NetworkManager</span></span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line">nameserver 168.95.1.1</span><br></pre></td></tr></table></figure><p>Step2: 針對SELINUX執行指令如下:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ setenforce 0</span><br><span class="line">$ sed -i <span class="string">'s/SELINUX=enforcing/SELINUX=disabled/g'</span> /etc/selinux/config</span><br><span class="line">$ systemctl <span class="built_in">disable</span> firewalld </span><br><span class="line">$ systemctl <span class="built_in">disable</span> NetworkManager</span><br><span class="line">$ yum -y install iptables-utils iptables-services</span><br><span class="line">$ iptables -F</span><br><span class="line">$ iptables -X</span><br><span class="line">$ service iptables save</span><br></pre></td></tr></table></figure><p>reference:</p><p>★★ 暫時性的關掉或開啟 selinux ★★</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ getenforce</span><br><span class="line">Enforcing</span><br><span class="line">$ sudo setenforce 0</span><br><span class="line">$ getenforce</span><br><span class="line">Permissive</span><br><span class="line">$ sudo setenforce 1</span><br><span class="line">$ getenforce</span><br><span class="line">Enforcing</span><br></pre></td></tr></table></figure><p>★★ 永久性的關掉 selinux ★★</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/sysconfig/selinux</span><br></pre></td></tr></table></figure><p>找到<br>SELINUX=enforcing<br>然後修改為<br>SELINUX=disabled<br>要重新開機 reboot / restart 後才會套用</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+            <tag> SELINUX </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS7安裝docker RabbitMQ</title>
+      <link href="/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ/"/>
+      <url>/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ/</url>
+      
+        <content type="html"><![CDATA[<p>Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install docker</span><br></pre></td></tr></table></figure><p>Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure><p>Step3:將解壓縮後的docker資料夾放 /opt 下<br>Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案</p><p>Step5:執行 /opt/docker/command</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh create-rabbitmq.sh</span><br></pre></td></tr></table></figure><p>Step6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .</span><br><span class="line">$ docker tag [IMAGE ID] rabbitmq:00</span><br><span class="line"></span><br><span class="line">$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00</span><br></pre></td></tr></table></figure><p>Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+            <tag> Docker </tag>
+            
+            <tag> RabbitMQ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo啟用Tags功能</title>
+      <link href="/2019/09/12/Hexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD/"/>
+      <url>/2019/09/12/Hexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<p>Step1:建立新page，命名為tags</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"tags"</span></span><br></pre></td></tr></table></figure><p>Step2:指令將會建立\blog\source\index.md</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br></pre></td></tr></table></figure><p>Step3:若有啟用評論功能，欲關閉時</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>Step4:修改\blog\themes\next_config.yml 配置文件，啟用tags</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Visual Studio Code for Java &amp; JavaScript</title>
+      <link href="/2019/09/11/VSCodeForJava/"/>
+      <url>/2019/09/11/VSCodeForJava/</url>
+      
+        <content type="html"><![CDATA[<p>1.下載Visual Studio Code 安裝檔 :<a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">https://code.visualstudio.com/download</a></p><p>逐步安裝完，會有Visual Studio Code IDE 和 Java Extension Pack. 包含</p><pre><code>Language Support for Java(TM) by Red HatDebugger for JavaJava Test RunnerMaven for JavaJava Dependency Viewer</code></pre><p>2.需另安裝Maven，並設定環境變數 : 參考 <a href="https://www.dev2qa.com/create-java-project-with-maven/" target="_blank" rel="noopener">https://www.dev2qa.com/create-java-project-with-maven/</a></p><p>3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔</p><p>war檔有兩個地方要注意</p><p>3.1. src\main\webapp\META-INF\ 下需包含context.xml</p><p>3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置</p><p>4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.</p><p>5.SVN control</p><p>5.1 <a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">安裝小烏龜作爲基底，以及第一次取得專案</a></p><p>5.2 Interface</p><p>5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.</p><p>5.2.2 <a href="https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm" target="_blank" rel="noopener">Integrated mode: SVN</a></p><p>6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/JavaFormatter.png" width="100%"></p><p>7.<a href="https://github.com/checkstyle/checkstyle/tree/master/src/main/resources" target="_blank" rel="noopener">靜態程式碼檢查，安裝Checkstyle for Java</a>該連結提供兩種xml格式</p><p>將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成</p><p>8.JavaScript Editor</p><p>8.1 <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">安裝 Eslint</a></p><p>9.SQL Query</p><p>9.1 <a href="https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools" target="_blank" rel="noopener">安裝 Oracle Developer Tools for VS Code</a></p><p>9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢</p><p>10.<a href="https://marketplace.visualstudio.com/items?itemName=chuckjonas.apex-pmd" target="_blank" rel="noopener">安裝 Apex PMD</a></p><p>11.HotKey</p><p>11.1 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-linux.pdf" target="_blank" rel="noopener">keyboard-shortcuts-linux.pdf</a></p><p>11.2 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-macos.pdf" target="_blank" rel="noopener">keyboard-shortcuts-macos.pdf</a></p><p>11.3 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-windows.pdf" target="_blank" rel="noopener">keyboard-shortcuts-windows.pdf</a></p><p>12.JSP Editor</p><p>12.1 <a href="https://marketplace.visualstudio.com/items?itemName=pthorsson.vscode-jsp" target="_blank" rel="noopener">Java Server Pages (JSP)</a></p><p>已知缺點</p><p>JSP 支援薄弱<br>Java Resource Bundle 不支援</p><p>Reference:</p><p>官方文件:</p><p><a href="https://code.visualstudio.com/docs/java/java-tutorial" target="_blank" rel="noopener">Writing Java with Visual Studio Code</a></p><p><a href="https://code.visualstudio.com/docs/java/java-project" target="_blank" rel="noopener">Java Project Management in VS Code</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> VSCode </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo套用NextT</title>
+      <link href="/2019/09/11/Hexo%E5%A5%97%E7%94%A8NextT/"/>
+      <url>/2019/09/11/Hexo%E5%A5%97%E7%94%A8NextT/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>安裝NextT後, \Blog\themes下出現next資料夾</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> \blog</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></li><li><p>hexo預設使用的themes是landscape,修改blog配置文件_config.yml<br>2.1 搜尋並修改 theme: next 即可啟用</p></li><li><p>主題設定有三種模式, Muse、Mist、Pisces、Gemini, 本Blog是採用Gemini<br>3.1 修改themes的配置文件_config.yml<br>scheme: Gemini</p></li><li><p>語言設置:修改blog配置文件_config.yml<br>4.1 language: zh-tw</p></li></ol><p>References <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT 使用文档</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> NextT </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用Hexo建立Blog</title>
+      <link href="/2019/09/11/%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog/"/>
+      <url>/2019/09/11/%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>Hexo事前安裝準備:node.js + Git。</p></li><li><p>登入GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。</p></li><li><p>使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"github UserName"</span></span><br><span class="line">$ git config --global user.email <span class="string">"github email"</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">"github email"</span></span><br></pre></td></tr></table></figure><p>3.1接下來詢問都按Enter略過</p></li><li><p>從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。</p></li><li><p>在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys<br>5.1 Title任意取即可。<br>5.2 key填入id_rsa.pub文件內所有內容。</p></li><li><p>確認node.js 是否安裝成功</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure></li><li><p>新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></li><li><p>初始化blog</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8.1 hexo init blog</span><br></pre></td></tr></table></figure></li><li><p>cd 至資料夾\blog</p></li><li><p>新增新文章<br>10.1 hexo new my_first_post</p></li><li><p>產生靜態檔案<br>啟動local server , default port 4000</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>更換port</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 5000 來更換port</span><br></pre></td></tr></table></figure></li></ol><p>12.在\blog下找到配置文件_config.yml<br>13.1 修改deploy配置<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repository: http://github.com/用戶名/用戶名.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure><p></p><p>13.部署至GitHub<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p></p><p>13.1 hexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p></p><p>14.在browser輸入 “UserName”.github.io 即可看到Blog</p><p>References <a href="https://junyou.tw/hexo/" target="_blank" rel="noopener">使用 Hexo 在 Github 建立部落格</a><br>References <a href="https://blog.csdn.net/qq_21808961/article/details/84476504" target="_blank" rel="noopener">hexo d命令报错 ERROR Deployer not found: git</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
