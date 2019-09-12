@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="CentOS,Docker,RabbitMQ,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="紀錄過程點滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dc&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+<meta name="description" content="Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝： 1$ sudo yum install docker  Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。 12$ sudo service docker start$ sudo chkconfig docker on  Step3:將解壓縮後的docker資料夾放 /op">
+<meta name="keywords" content="CentOS,Docker,RabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安裝docker RabbitMQ">
+<meta property="og:url" content="http://yoursite.com/2019/09/12/CentOS7安裝dockerForRabbitMQ/index.html">
 <meta property="og:site_name" content="Dc&#39;s blog">
-<meta property="og:description" content="紀錄過程點滴">
+<meta property="og:description" content="Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝： 1$ sudo yum install docker  Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。 12$ sudo service docker start$ sudo chkconfig docker on  Step3:將解壓縮後的docker資料夾放 /op">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-12T01:53:13.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dc&#39;s blog">
-<meta name="twitter:description" content="紀錄過程點滴">
+<meta name="twitter:title" content="CentOS7安裝docker RabbitMQ">
+<meta name="twitter:description" content="Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝： 1$ sudo yum install docker  Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。 12$ sudo service docker start$ sudo chkconfig docker on  Step3:將解壓縮後的docker資料夾放 /op">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/12/CentOS7安裝dockerForRabbitMQ/">
 
 
 
 
 
-  <title>標籤: Hexo | Dc's blog</title>
+  <title>CentOS7安裝docker RabbitMQ | Dc's blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,104 +229,164 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>標籤</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/CentOS7安裝dockerForRabbitMQ/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="David Chen">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dc's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/12/Hexo啟用Tags功能/" itemprop="url">
-              
-                <span itemprop="name">Hexo啟用Tags功能</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">CentOS7安裝docker RabbitMQ</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-12T09:30:23+08:00" content="2019-09-12">
-          09-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-12T09:48:37+08:00">
+                2019-09-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/11/Hexo套用NextT/" itemprop="url">
-              
-                <span itemprop="name">Hexo套用NextT</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-11T16:45:16+08:00" content="2019-09-11">
-          09-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install docker</span><br></pre></td></tr></table></figure>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/11/用Hexo建立Blog/" itemprop="url">
-              
-                <span itemprop="name">用Hexo建立Blog</span>
-              
-            </a>
-        
-      </h2>
+<p>Step3:將解壓縮後的docker資料夾放 /opt 下<br>Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案</p>
+<p>Step5:執行 /opt/docker/command</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh create-rabbitmq.sh</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-11T14:33:59+08:00" content="2019-09-11">
-          09-11
-        </time>
-      </div>
+<p>Step6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .</span><br><span class="line">$ docker tag [IMAGE ID] rabbitmq:00</span><br><span class="line"></span><br><span class="line">$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
-
+<p>Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CentOS/" rel="tag"># CentOS</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/RabbitMQ/" rel="tag"># RabbitMQ</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/12/Hexo啟用Tags功能/" rel="next" title="Hexo啟用Tags功能">
+                <i class="fa fa-chevron-left"></i> Hexo啟用Tags功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +394,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -544,6 +610,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
