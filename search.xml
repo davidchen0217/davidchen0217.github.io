@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Windows10使用工作排程器當登入時執行NTP對時]]></title>
     <url>%2F2019%2F09%2F12%2FWindows10%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8%E7%95%B6%E7%99%BB%E5%85%A5%E6%99%82%E5%9F%B7%E8%A1%8CNTP%E5%B0%8D%E6%99%82%2F</url>
-    <content type="text"><![CDATA[Step1:國家時間與頻率標準實驗室網站 下載NTPClockStep2:寫一支.bat檔，用工作排程器設定登入時執行.bat123@echo offstart C:\NTPClockeng.exeexitStep3:工作排程器設定(一般)Step4:工作排程器設定(觸發程序)Step5:工作排程器設定(動作)]]></content>
+    <content type="text"><![CDATA[本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式Step1:國家時間與頻率標準實驗室網站 下載NTPClockStep2:寫一支.bat檔，用工作排程器設定登入時執行.bat.bat檔內容如下:123@echo offstart C:\NTPClockeng.exeexitStep3:工作排程器設定(一般)Step4:工作排程器設定(觸發程序)Step5:工作排程器設定(動作)]]></content>
       <tags>
         <tag>Windows10</tag>
         <tag>NTPClock</tag>
@@ -12,54 +12,54 @@
   <entry>
     <title><![CDATA[Hexo啟用站內Search]]></title>
     <url>%2F2019%2F09%2F12%2FHexo%E5%95%9F%E7%94%A8%E7%AB%99%E5%85%A7Search%2F</url>
-    <content type="text"><![CDATA[為Hexo和NextT啟用站內搜尋功能Step1:安裝相關Plugins12npm install hexo-generator-searchnpm install hexo-generator-searchdbStep2:對\blog_config.yml 配置文件增加以下12345search: path: search.xml field: post format: html limit: 10000Step3:修改 \blog\themes\next\ _config.yml 啟用local search123456789# Local search# Dependencies: https://github.com/flashlab/hexo-generator-searchlocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
+    <content type="text"><![CDATA[為Hexo + NextT啟用站內搜尋功能Step1:安裝相關Plugins12npm install hexo-generator-searchnpm install hexo-generator-searchdbStep2:對\blog_config.yml 配置文件增加以下12345search: path: search.xml field: post format: html limit: 10000Step3:修改 \blog\themes\next\ _config.yml 啟用local search123456789# Local search# Dependencies: https://github.com/flashlab/hexo-generator-searchlocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
       <tags>
         <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS安裝Jdk和Tomcat]]></title>
-    <url>%2F2019%2F09%2F12%2FCentOS%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat%2F</url>
-    <content type="text"><![CDATA[Step1: 將jdk版本解壓縮至 /usr/local/java 下Step2:1$ ln -s jdk1.8.0_181 latestStep3: 將apache-tomcat版本解壓縮至 /usr/local 下Step4:1$ ln -s apache-tomcat uat_tomcatStep5: 改正確時區 timedatectl set-timezone Asia/Taipei]]></content>
+    <title><![CDATA[CentOS7安裝Jdk和Tomcat]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS7%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat%2F</url>
+    <content type="text"><![CDATA[CentOS7安裝Jdk和TomcatStep1: 將jdk版本解壓縮至 /usr/local/java 下Step2:1$ ln -s jdk1.8.0_181 latestStep3: 將apache-tomcat版本解壓縮至 /usr/local 下Step4:1$ ln -s apache-tomcat uat_tomcatStep5: 改正確時區 timedatectl set-timezone Asia/Taipei]]></content>
       <tags>
-        <tag>CentOS</tag>
+        <tag>CentOS7</tag>
         <tag>JDK</tag>
         <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS設定解析度]]></title>
+    <title><![CDATA[CentOS7設定解析度]]></title>
     <url>%2F2019%2F09%2F12%2FCentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[Step1:先開啟TerminalStep2:1234567891011121314151617181920212223[root@localhost ~]# xrandrScreen 0: minimum 320 x 200, current 1920 x 1600, maximum 16384 x 16384DVI-I-1 connected primary 1920x1600+0+0 (normal left inverted right x axis y axis) 477mm x 268mm1920x1080 60.00 +1600x1200 60.001680x1050 59.881280x1024 75.02 60.021440x900 59.901280x960 60.001280x800 74.93 59.911152x864 75.001024x768 75.03 70.07 60.00832x624 74.55800x600 72.19 75.00 60.32 56.25640x480 75.00 72.81 66.67 59.94720x400 70.081900x1200 60.001920x1600 60.00*HDMI-1 disconnected (normal left inverted right x axis y axis)VGA-1 disconnected (normal left inverted right x axis y axis)PS:看是DVI-I-1 或 HDMI-1 或 VGA-1 哪一種介面 connectedStep3:1234[root@localhost ~]# gtf 1920 1600 60 -x# 1920x1600 @ 60.00 Hz (GTF) hsync: 99.36 kHz; pclk: 260.72 MHzModeline "1920x1600_60.00" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncStep4:123[root@localhost ~]# xrandr --newmode "1920x1600" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncPS:newmode 後面必須要接 Modeline 後面的參數Step5:1[root@localhost ~]# xrandr --addmode DVI-I-1 1920x1600Step6:1[root@localhost ~]# xrandr --output DVI-I-1 --mode 1920x1600]]></content>
+    <content type="text"><![CDATA[CentOS7設定解析度Step1:先開啟TerminalStep2:1234567891011121314151617181920212223[root@localhost ~]# xrandrScreen 0: minimum 320 x 200, current 1920 x 1600, maximum 16384 x 16384DVI-I-1 connected primary 1920x1600+0+0 (normal left inverted right x axis y axis) 477mm x 268mm1920x1080 60.00 +1600x1200 60.001680x1050 59.881280x1024 75.02 60.021440x900 59.901280x960 60.001280x800 74.93 59.911152x864 75.001024x768 75.03 70.07 60.00832x624 74.55800x600 72.19 75.00 60.32 56.25640x480 75.00 72.81 66.67 59.94720x400 70.081900x1200 60.001920x1600 60.00*HDMI-1 disconnected (normal left inverted right x axis y axis)VGA-1 disconnected (normal left inverted right x axis y axis)PS:看是DVI-I-1 或 HDMI-1 或 VGA-1 哪一種介面 connectedStep3:1234[root@localhost ~]# gtf 1920 1600 60 -x# 1920x1600 @ 60.00 Hz (GTF) hsync: 99.36 kHz; pclk: 260.72 MHzModeline "1920x1600_60.00" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncStep4:123[root@localhost ~]# xrandr --newmode "1920x1600" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncPS:newmode 後面必須要接 Modeline 後面的參數Step5:1[root@localhost ~]# xrandr --addmode DVI-I-1 1920x1600Step6:1[root@localhost ~]# xrandr --output DVI-I-1 --mode 1920x1600]]></content>
       <tags>
-        <tag>CentOS</tag>
+        <tag>CentOS7</tag>
         <tag>Resolution</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS設定NTP對時]]></title>
-    <url>%2F2019%2F09%2F12%2FCentOS%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82%2F</url>
-    <content type="text"><![CDATA[有兩種設定方式第一種:可以加入ntpdate到root crontab即可10 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w第二種Step1:在Terminal 用date指令確認時間是否正確12[root@bacintra ~]# dateFri Aug 10 14:14:31 CST 2018Step2:安裝NTP套件1sudo yum -y install ntpStep3:啟動 ntpd daemon1234567891011121314151617181920[root@bacintra ~]# systemctl start ntpd[root@bacintra ~]# systemctl status ntpd● ntpd.service - Network Time ServiceLoaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)Active: active (running) since Fri 2018-08-10 14:11:12 CST; 8s agoProcess: 1266 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)Main PID: 1267 (ntpd)CGroup: /system.slice/ntpd.service└─1267 /usr/sbin/ntpd -u ntp:ntp -gAug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 2 lo 127.0.0.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 3 enp2s0 10.10.10.103 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 4 virbr0 172.16.122.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 5 lo ::1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 6 enp2s0 fe80::4a5b:39ff:fe05:231c UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listening on routing socket on fd #23 for interface updatesAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c016 06 restartAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPMAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c011 01 freq_not_setAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c614 04 freq_modeStep4:讓系統在開機時自動啟用 ntpd daemon123456[root@bacintra ~]# systemctl is-enabled ntpddisabled[root@bacintra ~]# systemctl enable ntpdCreated symlink from /etc/systemd/system/multi-user.target.wants/ntpd.service to /usr/lib/systemd/system/ntpd.service.[root@bacintra ~]# systemctl is-enabled ntpdenabled]]></content>
+    <title><![CDATA[CentOS7設定NTP對時]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS7%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82%2F</url>
+    <content type="text"><![CDATA[CentOS7設定NTP對時有兩種設定方式第一種:可以加入ntpdate到root crontab即可10 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w第二種Step1:在Terminal 用date指令確認時間是否正確12[root@bacintra ~]# dateFri Aug 10 14:14:31 CST 2018Step2:安裝NTP套件1sudo yum -y install ntpStep3:啟動 ntpd daemon1234567891011121314151617181920[root@bacintra ~]# systemctl start ntpd[root@bacintra ~]# systemctl status ntpd● ntpd.service - Network Time ServiceLoaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)Active: active (running) since Fri 2018-08-10 14:11:12 CST; 8s agoProcess: 1266 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)Main PID: 1267 (ntpd)CGroup: /system.slice/ntpd.service└─1267 /usr/sbin/ntpd -u ntp:ntp -gAug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 2 lo 127.0.0.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 3 enp2s0 10.10.10.103 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 4 virbr0 172.16.122.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 5 lo ::1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 6 enp2s0 fe80::4a5b:39ff:fe05:231c UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listening on routing socket on fd #23 for interface updatesAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c016 06 restartAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPMAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c011 01 freq_not_setAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c614 04 freq_modeStep4:讓系統在開機時自動啟用 ntpd daemon123456[root@bacintra ~]# systemctl is-enabled ntpddisabled[root@bacintra ~]# systemctl enable ntpdCreated symlink from /etc/systemd/system/multi-user.target.wants/ntpd.service to /usr/lib/systemd/system/ntpd.service.[root@bacintra ~]# systemctl is-enabled ntpdenabled]]></content>
       <tags>
-        <tag>CentOS</tag>
+        <tag>CentOS7</tag>
         <tag>NTP</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS關閉SELINUX]]></title>
+    <title><![CDATA[CentOS7關閉SELINUX]]></title>
     <url>%2F2019%2F09%2F12%2FCentOS%E9%97%9C%E9%96%89SELINUX%2F</url>
-    <content type="text"><![CDATA[Step1: 對 /etc/resolv.conf 新增以下指令123# Generated by NetworkManagernameserver 8.8.8.8nameserver 168.95.1.1Step2: 針對SELINUX執行指令如下:12345678$ setenforce 0$ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config$ systemctl disable firewalld $ systemctl disable NetworkManager$ yum -y install iptables-utils iptables-services$ iptables -F$ iptables -X$ service iptables savereference:★★ 暫時性的關掉或開啟 selinux ★★12345678$ getenforceEnforcing$ sudo setenforce 0$ getenforcePermissive$ sudo setenforce 1$ getenforceEnforcing★★ 永久性的關掉 selinux ★★1$ sudo vi /etc/sysconfig/selinux找到SELINUX=enforcing然後修改為SELINUX=disabled要重新開機 reboot / restart 後才會套用]]></content>
+    <content type="text"><![CDATA[CentOS7關閉SELINUXStep1: 對 /etc/resolv.conf 新增以下指令123# Generated by NetworkManagernameserver 8.8.8.8nameserver 168.95.1.1Step2: 針對SELINUX執行指令如下:12345678$ setenforce 0$ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config$ systemctl disable firewalld $ systemctl disable NetworkManager$ yum -y install iptables-utils iptables-services$ iptables -F$ iptables -X$ service iptables savereference:★★ 暫時性的關掉或開啟 selinux ★★12345678$ getenforceEnforcing$ sudo setenforce 0$ getenforcePermissive$ sudo setenforce 1$ getenforceEnforcing★★ 永久性的關掉 selinux ★★1$ sudo vi /etc/sysconfig/selinux找到SELINUX=enforcing然後修改為SELINUX=disabled要重新開機 reboot / restart 後才會套用]]></content>
       <tags>
-        <tag>CentOS</tag>
+        <tag>CentOS7</tag>
         <tag>SELINUX</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[CentOS7安裝docker RabbitMQ]]></title>
     <url>%2F2019%2F09%2F12%2FCentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ%2F</url>
-    <content type="text"><![CDATA[Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：1$ sudo yum install dockerStep2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。12$ sudo service docker start$ sudo chkconfig docker onStep3:將解壓縮後的docker資料夾放 /opt 下Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案Step5:執行 /opt/docker/command1$ sh create-rabbitmq.shStep6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功1234$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .$ docker tag [IMAGE ID] rabbitmq:00$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功]]></content>
+    <content type="text"><![CDATA[CentOS7安裝docker RabbitMQStep1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：1$ sudo yum install dockerStep2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。12$ sudo service docker start$ sudo chkconfig docker onStep3:將解壓縮後的docker資料夾放 /opt 下Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案Step5:執行 /opt/docker/command1$ sh create-rabbitmq.shStep6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功1234$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .$ docker tag [IMAGE ID] rabbitmq:00$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功]]></content>
       <tags>
-        <tag>CentOS</tag>
+        <tag>CentOS7</tag>
         <tag>Docker</tag>
         <tag>RabbitMQ</tag>
       </tags>
@@ -67,7 +67,7 @@
   <entry>
     <title><![CDATA[Hexo啟用Tags功能]]></title>
     <url>%2F2019%2F09%2F12%2FHexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[Step1:建立新page，命名為tags1$ hexo new page "tags"Step2:指令將會建立\blog\source\index.md123title: tagsdate: 2019-09-12 09:22:12type: "tags"Step3:若有啟用評論功能，欲關閉時1234title: tagsdate: 2019-09-12 09:22:12type: "tags"comments: falseStep4:修改\blog\themes\next_config.yml 配置文件，啟用tags123456789menu: home: / || home #about: /about/ || user tags: /tags/ || tags #categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat]]></content>
+    <content type="text"><![CDATA[Hexo啟用Tags功能Step1:建立新page，命名為tags1$ hexo new page "tags"Step2:指令將會建立\blog\source\index.md123title: tagsdate: 2019-09-12 09:22:12type: "tags"Step3:若有啟用評論功能，欲關閉時1234title: tagsdate: 2019-09-12 09:22:12type: "tags"comments: falseStep4:修改\blog\themes\next_config.yml 配置文件，啟用tags123456789menu: home: / || home #about: /about/ || user tags: /tags/ || tags #categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat]]></content>
       <tags>
         <tag>Hexo</tag>
       </tags>
@@ -75,7 +75,7 @@
   <entry>
     <title><![CDATA[Visual Studio Code for Java & JavaScript]]></title>
     <url>%2F2019%2F09%2F11%2FVSCodeForJava%2F</url>
-    <content type="text"><![CDATA[1.下載Visual Studio Code 安裝檔 :https://code.visualstudio.com/download逐步安裝完，會有Visual Studio Code IDE 和 Java Extension Pack. 包含Language Support for Java(TM) by Red Hat Debugger for Java Java Test Runner Maven for Java Java Dependency Viewer2.需另安裝Maven，並設定環境變數 : 參考 https://www.dev2qa.com/create-java-project-with-maven/3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔war檔有兩個地方要注意3.1. src\main\webapp\META-INF\ 下需包含context.xml3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.5.SVN control5.1 安裝小烏龜作爲基底，以及第一次取得專案5.2 Interface5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.5.2.2 Integrated mode: SVN6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可7.靜態程式碼檢查，安裝Checkstyle for Java該連結提供兩種xml格式將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成8.JavaScript Editor8.1 安裝 Eslint9.SQL Query9.1 安裝 Oracle Developer Tools for VS Code9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢10.安裝 Apex PMD11.HotKey11.1 keyboard-shortcuts-linux.pdf11.2 keyboard-shortcuts-macos.pdf11.3 keyboard-shortcuts-windows.pdf12.JSP Editor12.1 Java Server Pages (JSP)已知缺點JSP 支援薄弱Java Resource Bundle 不支援Reference:官方文件:Writing Java with Visual Studio CodeJava Project Management in VS Code]]></content>
+    <content type="text"><![CDATA[使用Visual Studio Code 來寫 Java 程式1.下載Visual Studio Code 安裝檔 :https://code.visualstudio.com/download逐步安裝完，會有Visual Studio Code IDE 和 Java Extension Pack. 包含Language Support for Java(TM) by Red Hat Debugger for Java Java Test Runner Maven for Java Java Dependency Viewer2.需另安裝Maven，並設定環境變數 : 參考 https://www.dev2qa.com/create-java-project-with-maven/3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔war檔有兩個地方要注意3.1. src\main\webapp\META-INF\ 下需包含context.xml3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.5.SVN control5.1 安裝小烏龜作爲基底，以及第一次取得專案5.2 Interface5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.5.2.2 Integrated mode: SVN6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可7.靜態程式碼檢查，安裝Checkstyle for Java該連結提供兩種xml格式將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成8.JavaScript Editor8.1 安裝 Eslint9.SQL Query9.1 安裝 Oracle Developer Tools for VS Code9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢10.安裝 Apex PMD11.HotKey11.1 keyboard-shortcuts-linux.pdf11.2 keyboard-shortcuts-macos.pdf11.3 keyboard-shortcuts-windows.pdf12.JSP Editor12.1 Java Server Pages (JSP)已知缺點JSP 支援薄弱Java Resource Bundle 不支援Reference:官方文件:Writing Java with Visual Studio CodeJava Project Management in VS Code]]></content>
       <tags>
         <tag>VSCode</tag>
         <tag>Java</tag>
@@ -83,9 +83,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo套用NextT]]></title>
+    <title><![CDATA[Hexo套用next theme]]></title>
     <url>%2F2019%2F09%2F11%2FHexo%E5%A5%97%E7%94%A8NextT%2F</url>
-    <content type="text"><![CDATA[安裝NextT後, \Blog\themes下出現next資料夾12$ cd \blog$ git clone https://github.com/iissnan/hexo-theme-next themes/nexthexo預設使用的themes是landscape,修改blog配置文件_config.yml2.1 搜尋並修改 theme: next 即可啟用主題設定有三種模式, Muse、Mist、Pisces、Gemini, 本Blog是採用Gemini3.1 修改themes的配置文件_config.ymlscheme: Gemini語言設置:修改blog配置文件_config.yml4.1 language: zh-twReferences NexT 使用文档]]></content>
+    <content type="text"><![CDATA[Hexo套用next theme安裝NextT後, \Blog\themes下出現next資料夾12$ cd \blog$ git clone https://github.com/iissnan/hexo-theme-next themes/nexthexo預設使用的themes是landscape,修改blog配置文件_config.yml2.1 搜尋並修改 theme: next 即可啟用主題設定有三種模式, Muse、Mist、Pisces、Gemini, 本Blog是採用Gemini3.1 修改themes的配置文件_config.ymlscheme: Gemini語言設置:修改blog配置文件_config.yml4.1 language: zh-twReferences NexT 使用文档]]></content>
       <tags>
         <tag>Hexo</tag>
         <tag>NextT</tag>
@@ -94,7 +94,7 @@
   <entry>
     <title><![CDATA[用Hexo建立Blog]]></title>
     <url>%2F2019%2F09%2F11%2F%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog%2F</url>
-    <content type="text"><![CDATA[Hexo事前安裝準備:node.js + Git。登入GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。123$ git config --global user.name "github UserName"$ git config --global user.email "github email"$ ssh-keygen -t rsa -C "github email"3.1接下來詢問都按Enter略過從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys5.1 Title任意取即可。5.2 key填入id_rsa.pub文件內所有內容。確認node.js 是否安裝成功1node --version新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo1npm install -g hexo-cli初始化blog18.1 hexo init blogcd 至資料夾\blog新增新文章10.1 hexo new my_first_post產生靜態檔案啟動local server , default port 400012hexo ghexo s更換port1hexo server -p 5000 來更換port12.在\blog下找到配置文件_config.yml13.1 修改deploy配置1234deploy:type: gitrepository: http://github.com/用戶名/用戶名.github.io.gitbranch: master13.部署至GitHub123hexo cleanhexo ghexo d13.1 hexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝1npm install hexo-deployer-git --save14.在browser輸入 “UserName”.github.io 即可看到BlogReferences 使用 Hexo 在 Github 建立部落格References hexo d命令报错 ERROR Deployer not found: git]]></content>
+    <content type="text"><![CDATA[手把手用Hexo建立個人Blog教學Hexo事前安裝準備:node.js + Git。登入GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。123$ git config --global user.name "github UserName"$ git config --global user.email "github email"$ ssh-keygen -t rsa -C "github email"3.1接下來詢問都按Enter略過從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys5.1 Title任意取即可。5.2 key填入id_rsa.pub文件內所有內容。確認node.js 是否安裝成功1node --version新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo1npm install -g hexo-cli初始化blog18.1 hexo init blogcd 至資料夾\blog新增新文章10.1 hexo new my_first_post產生靜態檔案啟動local server , default port 400012hexo ghexo s更換port1hexo server -p 5000 來更換port12.在\blog下找到配置文件_config.yml13.1 修改deploy配置1234deploy:type: gitrepository: http://github.com/用戶名/用戶名.github.io.gitbranch: master13.部署至GitHub123hexo cleanhexo ghexo d13.1 hexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝1npm install hexo-deployer-git --save14.在browser輸入 “UserName”.github.io 即可看到BlogReferences 使用 Hexo 在 Github 建立部落格References hexo d命令报错 ERROR Deployer not found: git]]></content>
       <tags>
         <tag>Hexo</tag>
       </tags>
