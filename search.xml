@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux安裝Java JDK注意事項]]></title>
+    <url>%2F2019%2F09%2F23%2FLinux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%2F</url>
+    <content type="text"><![CDATA[Linux安裝Java JDK注意事項Step1: 先至 https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts 下載所需要的JDK FileStep2: 若是下載Linux版本，請不要再windows系統解壓縮後再FTP放至Linux上，會造成該資料夾屬性跑掉建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝1tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gzStep3: 確認JDK版本是否正確1java -version]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Java JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows10使用工作排程器當登入時執行NTP對時]]></title>
     <url>%2F2019%2F09%2F12%2FWindows10%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8%E7%95%B6%E7%99%BB%E5%85%A5%E6%99%82%E5%9F%B7%E8%A1%8CNTP%E5%B0%8D%E6%99%82%2F</url>
     <content type="text"><![CDATA[本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式Step1:國家時間與頻率標準實驗室網站 下載NTPClockStep2:寫一支.bat檔，用工作排程器設定登入時執行.bat.bat檔內容如下:123@echo offstart C:\NTPClockeng.exeexitStep3:工作排程器設定(一般)Step4:工作排程器設定(觸發程序)Step5:工作排程器設定(動作)]]></content>
