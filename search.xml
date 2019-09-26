@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux常用指令]]></title>
     <url>%2F2019%2F09%2F26%2FLinux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[Linux常用指令切換root權限1$ su -新增檔案1$ touch test.sh查My IP Address1$ curl ipconfig.co查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df]]></content>
+    <content type="text"><![CDATA[Linux常用指令切換root權限1$ su -新增檔案1$ touch test.sh查本機對外IP1$ curl ipconfig.me查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df]]></content>
       <tags>
         <tag>Linux</tag>
       </tags>
