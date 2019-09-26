@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux常用指令]]></title>
+    <url>%2F2019%2F09%2F26%2FLinux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Linux常用指令切換root權限1$ su -新增檔案1$ touch test.sh查My IP Address1$ curl ipconfig.co查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux安裝Java JDK注意事項]]></title>
     <url>%2F2019%2F09%2F23%2FLinux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%2F</url>
     <content type="text"><![CDATA[Linux安裝Java JDK注意事項Step1: 先至 https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts 下載所需要的JDK FileStep2: 若是下載Linux版本，請不要在windows系統解壓縮後放至Linux上，會造成bin資料夾可執行屬性不見建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝1tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gzStep3: 確認JDK版本是否正確1java -versionStep4: 若java -version不是新版本，需用以下指令修正bin資料夾的屬性1chmod 754]]></content>
