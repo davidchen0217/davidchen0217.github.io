@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux使用ShellScripts刪除檔案]]></title>
     <url>%2F2019%2F09%2F26%2FLinux%E4%BD%BF%E7%94%A8ShellScripts%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%2F</url>
-    <content type="text"><![CDATA[Linux使用ShellScripts刪除檔案先建立Shell Scripts檔案1$ touch clearLog.sh對.sh檔案編輯1$ vim clearLog.sh按INSERT來新增內容123456789# remove 10 to 100 days ago logsfor i in &#123;10..100&#125;; do#It's for log name with the format like "2019-01-01" &amp; "20190101". check_date=`date -d "-$i day" "+%Y-%m-%d"` check_date1=`date -d "-$i day" "+%Y%m%d"` find /usr/local/uat_tomcat/logs/ -name "*$check_date*" -exec rm -f &#123;&#125; \; find /usr/local/uat_tomcat/logs/ -name "*$check_date1*" -exec rm -f &#123;&#125; \;done存檔指令1:wq用crontab設定排程12345編輯$ crontab -e新增內容#每天05:00A.M.執行0 5 * * * /root/clearLog.sh]]></content>
+    <content type="text"><![CDATA[Linux使用ShellScripts刪除檔案先建立Shell Scripts檔案1$ touch clearLog.sh對.sh檔案編輯1$ vim clearLog.sh按INSERT來新增內容123456789# remove 10 to 100 days ago logsfor i in &#123;10..100&#125;; do#It's for log name with the format like "2019-01-01" &amp; "20190101". check_date=`date -d "-$i day" "+%Y-%m-%d"` check_date1=`date -d "-$i day" "+%Y%m%d"` find /usr/local/uat_tomcat/logs/ -name "*$check_date*" -exec rm -f &#123;&#125; \; find /usr/local/uat_tomcat/logs/ -name "*$check_date1*" -exec rm -f &#123;&#125; \;done存檔指令1:wq用crontab設定排程12345編輯$ crontab -e新增內容#每天05:00A.M.執行0 5 * * * sh /root/clearLog.sh]]></content>
       <categories>
         <category>Linux</category>
       </categories>
