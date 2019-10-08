@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GoogleDrive轉移資料至另一個GoogleDrive using MultCloud]]></title>
+    <url>%2F2019%2F10%2F08%2FGoogleDrive%E8%BD%89%E7%A7%BB%E8%B3%87%E6%96%99%E8%87%B3%E5%8F%A6%E4%B8%80%E5%80%8BGoogleDrive%2F</url>
+    <content type="text"><![CDATA[GoogleDrive轉移資料至另一個GoogleDrive這邊介紹一個網頁服務叫MultCloud，可以註冊免費用戶(每個月有50GB的免費使用量)MultCloud支援17種雲端硬碟的資料轉移，訂閱用戶每個月能有150GB的資料使用量透過MultCloud能將Google Drive 的資料轉移至另一個Google Drive，非常方便。]]></content>
+      <tags>
+        <tag>Google Drive</tag>
+        <tag>MultCloud</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VisualStudio2019Community升級VisualStudio2019Professional方法]]></title>
     <url>%2F2019%2F10%2F08%2FVisualStudio2019Community%E5%8D%87%E7%B4%9AVisualStudio2019Professional%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[VisualStudio2019Community升級VisualStudio2019Professional方法建議的作法是先安裝VisualStudio2019Professional版本並啟用金鑰後，確定Professional版本是可以使用的，再將Community版本刪除。]]></content>
