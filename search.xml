@@ -49,7 +49,7 @@
   <entry>
     <title><![CDATA[Linux常用指令]]></title>
     <url>%2F2019%2F09%2F26%2FLinux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[Linux一般常用指令切換root權限1$ su -新增檔案1$ touch test.sh查本機對外IP1$ curl ipconfig.me查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df複製檔案1$ cp -r /root/test.sh /root/test/test.shscp檔案從目前Server複製檔案至另一台Server(保留檔案時間與權限)1$ scp -p /root/test.sh root@10.10.10.10:/root/test.sh取得Linux安裝的系統版本1$ uname -aLinux網路常用指令查詢網路卡狀態1$ ifconfig查看網路傳送的路由情況1$ route查看對方網路是否有通1$ ping www.google.com.tw查詢或反查詢DNS12$ nslookup www.google.com.tw$ nslookup 8.8.8.8追蹤通訊包傳送的狀態12$ traceroute www.google.com.tw$ traceroute 8.8.8.8]]></content>
+    <content type="text"><![CDATA[Linux一般常用指令切換root權限1$ su -新增檔案1$ touch test.sh查本機對外IP1$ curl ipconfig.me查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df複製檔案1$ cp -r /root/test.sh /root/test/test.shscp檔案從目前Server複製檔案至另一台Server(保留檔案時間與權限)1$ scp -p /root/test.sh root@10.10.10.10:/root/test.sh取得Linux安裝的系統版本1$ uname -a解壓縮.tar.gz1$ tar zxvf "FileName".tar.gzLinux網路常用指令查詢網路卡狀態1$ ifconfig查看網路傳送的路由情況1$ route查看對方網路是否有通1$ ping www.google.com.tw查詢或反查詢DNS12$ nslookup www.google.com.tw$ nslookup 8.8.8.8追蹤通訊包傳送的狀態12$ traceroute www.google.com.tw$ traceroute 8.8.8.8]]></content>
       <categories>
         <category>Linux</category>
       </categories>
