@@ -60,7 +60,7 @@
   <entry>
     <title><![CDATA[Linux安裝Java JDK注意事項]]></title>
     <url>%2F2019%2F09%2F23%2FLinux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%2F</url>
-    <content type="text"><![CDATA[Linux安裝Java JDK注意事項Step1: 先至 https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts 下載所需要的JDK FileStep2: 若是下載Linux版本，請不要在windows系統解壓縮後放至Linux上，會造成bin資料夾可執行屬性不見建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝1tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gzStep3: 確認JDK版本是否正確1java -versionStep4: 若java -version不是新版本，需用以下指令修正bin資料夾的屬性1chmod 754]]></content>
+    <content type="text"><![CDATA[Linux安裝Java JDK注意事項Step1: 先至 https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts 下載所需要的JDK FileStep2: 若是下載Linux版本，請不要在windows系統解壓縮後放至Linux上，會造成bin資料夾可執行屬性不見建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝1tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gzStep3: 確認JDK版本是否正確1java -versionStep4: 若java -version不是新版本，需用以下指令修正bin資料夾的屬性1chmod 754————-Memo—————執行以下指令如沒有出現版本時，請檢查 ~/.bashrc有沒有設定JAVA_HOME路徑1java -version檢查JAVA_HOME路徑指令1echo $JAVA_HOME~/.bashrc設定檔1234567891011121314151617181920# .bashr# User specific aliases and functionsalias rm='rm -i'alias cp='cp -i'alias mv='mv -i'JAVA_HOME=/usr/local/java/latestPATH=$JAVA_HOME/bin:$PATH:$HOME/binJAVA_OPTS="-XX:-TieredCompilation"export JAVA_HOMEexport PATHexport JAVA_OPTS# Source global definitionsif [ -f /etc/bashrc ]; then . /etc/bashrcfi]]></content>
       <categories>
         <category>Linux</category>
       </categories>
