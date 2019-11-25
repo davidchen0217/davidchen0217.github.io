@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CentOS設定hostname]]></title>
+    <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9Ahostname%2F</url>
+    <content type="text"><![CDATA[CentOS設定hostname先查看CentOS上目前hostname12345678910$ hostnamectl Static hostname: localhost.localdomain Icon name: computer-desktop Chassis: desktop Machine ID: f08e0bfd24b54a2aa240419122e4f8be Boot ID: 8fe1951afafb40779243d362a020caab Operating System: CentOS Linux 7 (Core) CPE OS Name: cpe:/o:centos:centos:7 Kernel: Linux 3.10.0-957.el7.x86_64 Architecture: x86-64設定hostname1hostnamectl set-hostname [NAME]]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>hostname</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS設定TimeZone]]></title>
     <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9ATimeZone%2F</url>
     <content type="text"><![CDATA[CentOS設定TimeZone先查看CentOS上目前TimeZone123456789$ timedatectl status Local time: Mon 2019-11-25 16:20:29 CST Universal time: Mon 2019-11-25 08:20:29 UTC RTC time: Mon 2019-11-25 08:20:29 Time zone: Asia/Taipei (CST, +0800) NTP enabled: yesNTP synchronized: yes RTC in local TZ: no DST active: n/a先找出TimeZone/Asia設定123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081$ timedatectl list-timezones | grep AsiaAsia/AdenAsia/AlmatyAsia/AmmanAsia/AnadyrAsia/AqtauAsia/AqtobeAsia/AshgabatAsia/BaghdadAsia/BahrainAsia/BakuAsia/BangkokAsia/BarnaulAsia/BeirutAsia/BishkekAsia/BruneiAsia/ChitaAsia/ChoibalsanAsia/ColomboAsia/DamascusAsia/DhakaAsia/DiliAsia/DubaiAsia/DushanbeAsia/GazaAsia/HebronAsia/Ho_Chi_MinhAsia/Hong_KongAsia/HovdAsia/IrkutskAsia/JakartaAsia/JayapuraAsia/JerusalemAsia/KabulAsia/KamchatkaAsia/KarachiAsia/KathmanduAsia/KhandygaAsia/KolkataAsia/KrasnoyarskAsia/Kuala_LumpurAsia/KuchingAsia/KuwaitAsia/MacauAsia/MagadanAsia/MakassarAsia/ManilaAsia/MuscatAsia/NicosiaAsia/NovokuznetskAsia/NovosibirskAsia/OmskAsia/OralAsia/Phnom_PenhAsia/PontianakAsia/PyongyangAsia/QatarAsia/QyzylordaAsia/RiyadhAsia/SakhalinAsia/SamarkandAsia/SeoulAsia/ShanghaiAsia/SingaporeAsia/SrednekolymskAsia/TaipeiAsia/TashkentAsia/TbilisiAsia/TehranAsia/ThimphuAsia/TokyoAsia/TomskAsia/UlaanbaatarAsia/UrumqiAsia/Ust-NeraAsia/VientianeAsia/VladivostokAsia/YakutskAsia/YangonAsia/YekaterinburgAsia/Yerevan下指令改變TimeZone Asia/Taipei1$ timedatectl set-timezone Asia/Taipei查詢目前時區可用date12$ dateMon Nov 25 16:23:26 CST 2019]]></content>
