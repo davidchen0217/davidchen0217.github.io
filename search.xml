@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CentOS設定TimeZone]]></title>
+    <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9ATimeZone%2F</url>
+    <content type="text"><![CDATA[CentOS設定TimeZone先查看CentOS上目前TimeZone123456789$ timedatectl status Local time: Mon 2019-11-25 16:20:29 CST Universal time: Mon 2019-11-25 08:20:29 UTC RTC time: Mon 2019-11-25 08:20:29 Time zone: Asia/Taipei (CST, +0800) NTP enabled: yesNTP synchronized: yes RTC in local TZ: no DST active: n/a先找出TimeZone/Asia設定123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081$ timedatectl list-timezones | grep AsiaAsia/AdenAsia/AlmatyAsia/AmmanAsia/AnadyrAsia/AqtauAsia/AqtobeAsia/AshgabatAsia/BaghdadAsia/BahrainAsia/BakuAsia/BangkokAsia/BarnaulAsia/BeirutAsia/BishkekAsia/BruneiAsia/ChitaAsia/ChoibalsanAsia/ColomboAsia/DamascusAsia/DhakaAsia/DiliAsia/DubaiAsia/DushanbeAsia/GazaAsia/HebronAsia/Ho_Chi_MinhAsia/Hong_KongAsia/HovdAsia/IrkutskAsia/JakartaAsia/JayapuraAsia/JerusalemAsia/KabulAsia/KamchatkaAsia/KarachiAsia/KathmanduAsia/KhandygaAsia/KolkataAsia/KrasnoyarskAsia/Kuala_LumpurAsia/KuchingAsia/KuwaitAsia/MacauAsia/MagadanAsia/MakassarAsia/ManilaAsia/MuscatAsia/NicosiaAsia/NovokuznetskAsia/NovosibirskAsia/OmskAsia/OralAsia/Phnom_PenhAsia/PontianakAsia/PyongyangAsia/QatarAsia/QyzylordaAsia/RiyadhAsia/SakhalinAsia/SamarkandAsia/SeoulAsia/ShanghaiAsia/SingaporeAsia/SrednekolymskAsia/TaipeiAsia/TashkentAsia/TbilisiAsia/TehranAsia/ThimphuAsia/TokyoAsia/TomskAsia/UlaanbaatarAsia/UrumqiAsia/Ust-NeraAsia/VientianeAsia/VladivostokAsia/YakutskAsia/YangonAsia/YekaterinburgAsia/Yerevan下指令改變TimeZone Asia/Taipei1$ timedatectl set-timezone Asia/Taipei查詢目前時區可用date12$ dateMon Nov 25 16:23:26 CST 2019]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>TimeZone</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關閉SSHRoot遠端登入]]></title>
     <url>%2F2019%2F11%2F25%2F%E9%97%9C%E9%96%89SSHRoot%E9%81%A0%E7%AB%AF%E7%99%BB%E5%85%A5%2F</url>
     <content type="text"><![CDATA[關閉 SSH root 遠端登入以root權限編輯SSH設定檔1$ vim /etc/ssh/sshd_config將該設定改成no12# 是否允許 root 管理者以 SSH 登入PermitRootLogin no重新啟動SSH服務12345# 重新啟動 SSH 服務（CentOS Linux）systemctl restart sshd# 重新啟動 SSH 服務（Ubuntu Linux）service sshd restart]]></content>
