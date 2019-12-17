@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[申請TelegramBot教學]]></title>
+    <url>%2F2019%2F12%2F17%2F%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8%2F</url>
+    <content type="text"><![CDATA[申請TelegramBot教學Step1:前置作業:需安裝及申請Telegram帳號。(網路上有許多教學)Step2:用搜尋方式找到申請Bot的帳號:【BotFather】123456789101112131415161718申請對話流程如下:申請人: /newBotBotFather: Alright, a new bot. How are we going to call it? Please choose a name for your bot.申請人: 輸入欲設定的bot nameBotFather: Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.申請人: 輸入欲設定的bot的username (結尾一定要有bot，這也是未來被搜尋的name)BotFather: Response1 - Sorry, this username is already taken. Please try something different. (username與他人重覆)Response2 - Done! Congratulations on your new bot. You will find it at telegram.me/xxxbot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands.By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it..Just make sure the bot is fully operational before you do this.Use this token to access the HTTP API:【這邊會顯示Token】For a description of the Bot API, see this page: https://core.telegram.org/bots/apiStep3:建立一個Telegram群組，將設定好的bot加入群組(並設置為admin)。Step4:打開瀏覽器使用 https://api.telegram.org/bot{token}/getUpdates ，在回傳的訊息中，就可以看到chatid。Step5:透過Telegram api : sendmessage，測試傳遞訊息，https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>TelegramBot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS設定hostname]]></title>
     <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9Ahostname%2F</url>
     <content type="text"><![CDATA[CentOS設定hostname先查看CentOS上目前hostname12345678910$ hostnamectl Static hostname: localhost.localdomain Icon name: computer-desktop Chassis: desktop Machine ID: f08e0bfd24b54a2aa240419122e4f8be Boot ID: 8fe1951afafb40779243d362a020caab Operating System: CentOS Linux 7 (Core) CPE OS Name: cpe:/o:centos:centos:7 Kernel: Linux 3.10.0-957.el7.x86_64 Architecture: x86-64設定hostname1hostnamectl set-hostname [NAME]]]></content>
