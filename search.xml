@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[申請TelegramBot教學]]></title>
-    <url>%2F2019%2F12%2F17%2F%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8%2F</url>
-    <content type="text"><![CDATA[申請TelegramBot教學Step1:前置作業:需安裝及申請Telegram帳號。(網路上有許多教學)Step2:用搜尋方式找到申請Bot的帳號:【BotFather】123456789101112131415161718申請對話流程如下:申請人: /newBotBotFather: Alright, a new bot. How are we going to call it? Please choose a name for your bot.申請人: 輸入欲設定的bot nameBotFather: Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.申請人: 輸入欲設定的bot的username (結尾一定要有bot，這也是未來被搜尋的name)BotFather: Response1 - Sorry, this username is already taken. Please try something different. (username與他人重覆)Response2 - Done! Congratulations on your new bot. You will find it at telegram.me/xxxbot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands.By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it..Just make sure the bot is fully operational before you do this.Use this token to access the HTTP API:【這邊會顯示Token】For a description of the Bot API, see this page: https://core.telegram.org/bots/apiStep3:建立一個Telegram群組，將設定好的bot加入群組(並設置為admin)。Step4:打開瀏覽器使用 https://api.telegram.org/bot{token}/getUpdates ，在回傳的訊息中，就可以看到chatid。Step5:透過Telegram api : sendmessage，測試傳遞訊息，https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。]]></content>
+    <title><![CDATA[C#如何使用Java Enum]]></title>
+    <url>%2F2019%2F12%2F17%2FC-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum%2F</url>
+    <content type="text"><![CDATA[C#如何使用Java Enum因C#與Java語言特性不同的關係，在enum的使用上有很大的不同。這邊提供方法相同，但寫法不同的範例提供參考。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Java Enum example:package com.commons.type;import java.io.DataOutputStream;import java.net.HttpURLConnection;import java.net.URL;import java.net.URLConnection;import java.util.HashMap;import java.util.Map;import com.manager.ApacheHttpClientManager;import com.util.LogUtils;public enum TelegramBotType &#123; Example("token_example", "chatid_example"); private String token; private String chatId; private String messageUrl; TelegramBotType(String token, String chatId) &#123; this.token = token; this.chatId = chatId; this.messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(String msg, boolean isHTML) &#123; // 如果沒有設定，改由log4j紀錄 if (this.chatId == null || this.token == null || this.messageUrl == null) &#123; LogUtils.telegramBot.info("Telegram " + this.name() + " : " + msg); return; &#125; try &#123; ApacheHttpClientManager.HttpPostRequest httpPostRequest = ApacheHttpClientManager.getInstance() .getHttpPostRequest(this.messageUrl); Map&lt;String, String&gt; postParam = new HashMap&lt;&gt;(); postParam.put("chat_id", chatId); postParam.put("text", msg); if (isHTML) &#123; postParam.put("parse_mode", "HTML"); &#125; httpPostRequest.setParameters(postParam); ApacheHttpClientManager.getInstance().execute(httpPostRequest); &#125; catch (Exception e) &#123; LogUtils.telegramBot.error("failure message transmission msg:" + msg + ", isHTML:" + isHTML, e); &#125; &#125;&#125;123456789101112131415161718192021222324252627282930313233343536373839404142434445464748C# Enum example:using Example.Source.Net.com.util;using System;using System.Collections.Specialized;namespace Example.Source.Net.com.commons.type&#123; public sealed class TelegramBotType &#123; private readonly string token; private readonly string chatId; private readonly string messageUrl; public static readonly TelegramBotType Example = new TelegramBotType("token_example", "chatid_example"); private TelegramBotType(string token, string chatId) &#123; this.token = token; this.chatId = chatId; messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(string msg, int timeout) &#123; // 如果沒有設定，改由log4j紀錄 if (chatId == null || token == null || messageUrl == null) &#123; LogUtil.logger.Warn("No Telegram Setting : " + msg); return; &#125; try &#123; var values = new NameValueCollection &#123; &#123;"chat_id", chatId&#125;, &#123;"text", msg&#125; &#125;; ApiServiceUtil.POST(messageUrl, values, timeout); &#125; catch (Exception e) &#123; LogUtil.logger.Error("failure message transmission msg:" + msg + ";" + Convert.ToString(e)); &#125; &#125; &#125;&#125;]]></content>
       <categories>
         <category>C#</category>
       </categories>
       <tags>
         <tag>C#</tag>
+        <tag>Java</tag>
+        <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C#如何使用Java Enum]]></title>
+    <url>%2F2019%2F12%2F17%2FC_Sharp%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum%2F</url>
+    <content type="text"><![CDATA[C#如何使用Java Enum因C#與Java語言特性不同的關係，在enum的使用上有很大的不同。這邊提供方法相同，但寫法不同的範例提供參考。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Java Enum example:package com.commons.type;import java.io.DataOutputStream;import java.net.HttpURLConnection;import java.net.URL;import java.net.URLConnection;import java.util.HashMap;import java.util.Map;import com.manager.ApacheHttpClientManager;import com.util.LogUtils;public enum TelegramBotType &#123; Example("token_example", "chatid_example"); private String token; private String chatId; private String messageUrl; TelegramBotType(String token, String chatId) &#123; this.token = token; this.chatId = chatId; this.messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(String msg, boolean isHTML) &#123; // 如果沒有設定，改由log4j紀錄 if (this.chatId == null || this.token == null || this.messageUrl == null) &#123; LogUtils.telegramBot.info("Telegram " + this.name() + " : " + msg); return; &#125; try &#123; ApacheHttpClientManager.HttpPostRequest httpPostRequest = ApacheHttpClientManager.getInstance() .getHttpPostRequest(this.messageUrl); Map&lt;String, String&gt; postParam = new HashMap&lt;&gt;(); postParam.put("chat_id", chatId); postParam.put("text", msg); if (isHTML) &#123; postParam.put("parse_mode", "HTML"); &#125; httpPostRequest.setParameters(postParam); ApacheHttpClientManager.getInstance().execute(httpPostRequest); &#125; catch (Exception e) &#123; LogUtils.telegramBot.error("failure message transmission msg:" + msg + ", isHTML:" + isHTML, e); &#125; &#125;&#125;123456789101112131415161718192021222324252627282930313233343536373839404142434445464748C# Enum example:using Example.Source.Net.com.util;using System;using System.Collections.Specialized;namespace Example.Source.Net.com.commons.type&#123; public sealed class TelegramBotType &#123; private readonly string token; private readonly string chatId; private readonly string messageUrl; public static readonly TelegramBotType Example = new TelegramBotType("token_example", "chatid_example"); private TelegramBotType(string token, string chatId) &#123; this.token = token; this.chatId = chatId; messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(string msg, int timeout) &#123; // 如果沒有設定，改由log4j紀錄 if (chatId == null || token == null || messageUrl == null) &#123; LogUtil.logger.Warn("No Telegram Setting : " + msg); return; &#125; try &#123; var values = new NameValueCollection &#123; &#123;"chat_id", chatId&#125;, &#123;"text", msg&#125; &#125;; ApiServiceUtil.POST(messageUrl, values, timeout); &#125; catch (Exception e) &#123; LogUtil.logger.Error("failure message transmission msg:" + msg + ";" + Convert.ToString(e)); &#125; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>Java</tag>
+        <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[申請TelegramBot教學]]></title>
+    <url>%2F2019%2F12%2F17%2F%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8%2F</url>
+    <content type="text"><![CDATA[申請TelegramBot教學Step1:前置作業:需安裝及申請Telegram帳號。(網路上有許多教學)Step2:用搜尋方式找到申請Bot的帳號:【BotFather】1234567891011121314151617181920212223申請對話流程如下:申請人: /newBotBotFather: Alright, a new bot. How are we going to call it? Please choose a name for your bot.申請人: 輸入欲設定的bot nameBotFather: Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.申請人: 輸入欲設定的bot的username (結尾一定要有bot，這也是未來被搜尋的name)BotFather: Response1 - Sorry, this username is already taken. Please try something different. (username與他人重覆)Response2 - Done! Congratulations on your new bot. You will find it at telegram.me/xxxbot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands.By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it..Just make sure the bot is fully operational before you do this.Use this token to access the HTTP API:【這邊會顯示Token】For a description of the Bot API, see this page: https://core.telegram.org/bots/apiStep3:建立一個Telegram群組，將設定好的bot加入群組(並設置為admin)。Step4:打開瀏覽器使用 https://api.telegram.org/bot{token}/getUpdates ，在回傳的訊息中，就可以看到chatid。Step5:透過Telegram api : sendmessage，測試傳遞訊息，https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。]]></content>
+      <categories>
+        <category>TelegramBot</category>
+      </categories>
+      <tags>
         <tag>TelegramBot</tag>
       </tags>
   </entry>
@@ -220,8 +245,8 @@
         <category>Visual Studio Code</category>
       </categories>
       <tags>
-        <tag>Visual Studio Code</tag>
         <tag>Java</tag>
+        <tag>Visual Studio Code</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
