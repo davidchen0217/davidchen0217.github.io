@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Singleton Class與Static Class比較]]></title>
+    <url>%2F2019%2F12%2F18%2FSingleton%E8%88%87StaticClass%E6%AF%94%E8%BC%83%2F</url>
+    <content type="text"><![CDATA[Singleton與StaticClass比較因Heap少於Stack，優先選擇Singleton Class使用。1234567 Singleton Class: Static Class:1. 使用自己的Instance 不需要產生Instance，可直接操作2. 具備物件導向特性 不具備物件導向特性3. Stack Heap4. 物件實體，可當作參數傳遞及複製 不可當作參數傳遞及複製5. 可記憶體回收 不可記憶體回收6. 有擴充或需實作介面 無法繼承與實作介面]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Singleton</tag>
+        <tag>Static Class</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C#如何使用Java Enum]]></title>
     <url>%2F2019%2F12%2F17%2FC_Sharp%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum%2F</url>
     <content type="text"><![CDATA[C#如何使用Java Enum因C#與Java語言特性不同的關係，在enum的使用上有很大的不同。這邊提供方法相同，但寫法不同的範例提供參考。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Java Enum example:package com.commons.type;import java.io.DataOutputStream;import java.net.HttpURLConnection;import java.net.URL;import java.net.URLConnection;import java.util.HashMap;import java.util.Map;import com.manager.ApacheHttpClientManager;import com.util.LogUtils;public enum TelegramBotType &#123; Example("token_example", "chatid_example"); private String token; private String chatId; private String messageUrl; TelegramBotType(String token, String chatId) &#123; this.token = token; this.chatId = chatId; this.messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(String msg, boolean isHTML) &#123; // 如果沒有設定，改由log4j紀錄 if (this.chatId == null || this.token == null || this.messageUrl == null) &#123; LogUtils.telegramBot.info("Telegram " + this.name() + " : " + msg); return; &#125; try &#123; ApacheHttpClientManager.HttpPostRequest httpPostRequest = ApacheHttpClientManager.getInstance() .getHttpPostRequest(this.messageUrl); Map&lt;String, String&gt; postParam = new HashMap&lt;&gt;(); postParam.put("chat_id", chatId); postParam.put("text", msg); if (isHTML) &#123; postParam.put("parse_mode", "HTML"); &#125; httpPostRequest.setParameters(postParam); ApacheHttpClientManager.getInstance().execute(httpPostRequest); &#125; catch (Exception e) &#123; LogUtils.telegramBot.error("failure message transmission msg:" + msg + ", isHTML:" + isHTML, e); &#125; &#125;&#125;123456789101112131415161718192021222324252627282930313233343536373839404142434445464748C# Enum example:using Example.Source.Net.com.util;using System;using System.Collections.Specialized;namespace Example.Source.Net.com.commons.type&#123; public sealed class TelegramBotType &#123; private readonly string token; private readonly string chatId; private readonly string messageUrl; public static readonly TelegramBotType Example = new TelegramBotType("token_example", "chatid_example"); private TelegramBotType(string token, string chatId) &#123; this.token = token; this.chatId = chatId; messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(string msg, int timeout) &#123; // 如果沒有設定，改由log4j紀錄 if (chatId == null || token == null || messageUrl == null) &#123; LogUtil.logger.Warn("No Telegram Setting : " + msg); return; &#125; try &#123; var values = new NameValueCollection &#123; &#123;"chat_id", chatId&#125;, &#123;"text", msg&#125; &#125;; ApiServiceUtil.POST(messageUrl, values, timeout); &#125; catch (Exception e) &#123; LogUtil.logger.Error("failure message transmission msg:" + msg + ";" + Convert.ToString(e)); &#125; &#125; &#125;&#125;]]></content>
