@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C#使用VLC64位元播放器By Vlc.DotNet]]></title>
+    <url>%2F2019%2F12%2F23%2FC-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[C#使用Vlc32位元播放器Vlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it’s a .net wrapper around libvlc.Step1.先安裝vlc-3.0.8-win64.exeStep2.Nuget安裝Vlc.DotNetStep3.工具箱-&gt;COM元件-&gt;VlcControlStep4.加入控制項，及加入以下範例程式:123456private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)&#123; e.VlcLibDirectory = new DirectoryInfo(@"C:\Program Files\VideoLAN\VLC\");&#125;vlcControl1.Play(new Uri("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));References:https://github.com/ZeBobo5/Vlc.DotNet]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>Vlc64bit</tag>
+        <tag>Vlc.DotNet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C#使用Vlc32位元播放器]]></title>
     <url>%2F2019%2F12%2F19%2FC-Sharp%E4%BD%BF%E7%94%A8VLC32%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
     <content type="text"><![CDATA[C#使用Vlc32位元播放器VLC media player主要用來播放串流的播放器，可用於rtsp、rtmp串流協定。Step1.先安裝vlc-3.0.6-win32.exeStep2.加入參考，選擇VideoLAN VLC ActiveX PluginStep3.工具箱-&gt;COM元件-&gt;VLC ActiveX Plugin and IE Web PluginStep4.加入控制項，在程式建構子加入以下範例程式:12345axVLCPlugin21.playlist.add("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov");axVLCPlugin21.AutoLoop = true;axVLCPlugin21.AutoPlay = true;axVLCPlugin21.audio.mute = true;axVLCPlugin21.playlist.play();]]></content>
