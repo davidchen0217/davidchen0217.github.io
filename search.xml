@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[C#使用Vlc64位元播放器By Vlc.DotNet]]></title>
     <url>%2F2019%2F12%2F23%2FC-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[C#使用VLC64位元播放器By Vlc.DotNetVlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it’s a .net wrapper around libvlc.Step1.先安裝vlc-3.0.8-win64.exeStep2.Nuget安裝Vlc.DotNetStep3.工具箱-&gt;COM元件-&gt;VlcControlStep4.加入控制項，及加入以下範例程式:123456private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)&#123; e.VlcLibDirectory = new DirectoryInfo(@"C:\Program Files\VideoLAN\VLC\");&#125;vlcControl1.Play(new Uri("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));References:https://github.com/ZeBobo5/Vlc.DotNet]]></content>
+    <content type="text"><![CDATA[C#使用Vlc64位元播放器By Vlc.DotNetVlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it’s a .net wrapper around libvlc.Step1.先安裝vlc-3.0.8-win64.exeStep2.Nuget安裝Vlc.DotNetStep3.工具箱-&gt;COM元件-&gt;VlcControlStep4.加入控制項，及加入以下範例程式:123456private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)&#123; e.VlcLibDirectory = new DirectoryInfo(@"C:\Program Files\VideoLAN\VLC\");&#125;vlcControl1.Play(new Uri("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));References:https://github.com/ZeBobo5/Vlc.DotNet]]></content>
       <categories>
         <category>C#</category>
       </categories>
