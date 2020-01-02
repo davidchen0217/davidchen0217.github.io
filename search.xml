@@ -1,703 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>關於Thread.Sleep(0);</title>
-      <link href="/2019/12/30/%E9%97%9C%E6%96%BCThread-Sleep-0/"/>
-      <url>/2019/12/30/%E9%97%9C%E6%96%BCThread-Sleep-0/</url>
-      
-        <content type="html"><![CDATA[<h3 id="關於Thread-Sleep-0"><a href="#關於Thread-Sleep-0" class="headerlink" title="關於Thread.Sleep(0);"></a>關於Thread.Sleep(0);</h3><a id="more"></a><p>Thread.Sleep(0)的作用，就是”觸發操作系統立刻重新進行一次CPU競爭”。</p><p>競爭的結果也許是當前Thread仍然獲得CPU控制權，也許會換成別的Thread獲得CPU控制權。</p><p>所以在Loading大的系統中，可能丟失執行權到CPU下次有空，造成非預期的系統錯誤。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private long delayMilliSeconds = 0;</span><br><span class="line">//直接執行Thread.Sleep(0);有可能會發生非預期的錯誤，這邊要多加一層判斷，當delayMilliSeconds &gt; 0</span><br><span class="line">//才能執行Thread.Sleep(delayMilliSeconds);方法。</span><br><span class="line"><span class="keyword">if</span> (delayMilliSeconds &gt; 0) &#123;</span><br><span class="line">try &#123;</span><br><span class="line">TimeUnit.MILLISECONDS.sleep(delayMilliSeconds);</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">LogUtils.error.error(e.getMessage(), e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[關於Thread.Sleep(0);]]></title>
+    <url>%2F2019%2F12%2F30%2F%E9%97%9C%E6%96%BCThread-Sleep-0%2F</url>
+    <content type="text"><![CDATA[關於Thread.Sleep(0);Thread.Sleep(0)的作用，就是”觸發操作系統立刻重新進行一次CPU競爭”。競爭的結果也許是當前Thread仍然獲得CPU控制權，也許會換成別的Thread獲得CPU控制權。所以在Loading大的系統中，可能丟失執行權到CPU下次有空，造成非預期的系統錯誤。12345678910private long delayMilliSeconds = 0;//直接執行Thread.Sleep(0);有可能會發生非預期的錯誤，這邊要多加一層判斷，當delayMilliSeconds &gt; 0//才能執行Thread.Sleep(delayMilliSeconds);方法。if (delayMilliSeconds &gt; 0) &#123; try &#123; TimeUnit.MILLISECONDS.sleep(delayMilliSeconds); &#125; catch (InterruptedException e) &#123; LogUtils.error.error(e.getMessage(), e); &#125;&#125;]]></content>
       <categories>
-          
-          <category> Thread.sleep(0); </category>
-          
+        <category>Thread.sleep(0);</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> C# </tag>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C#使用Vlc64位元播放器By Vlc.DotNet</title>
-      <link href="/2019/12/23/C-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8/"/>
-      <url>/2019/12/23/C-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8/</url>
-      
-        <content type="html"><![CDATA[<h3 id="C-使用Vlc64位元播放器By-Vlc-DotNet"><a href="#C-使用Vlc64位元播放器By-Vlc-DotNet" class="headerlink" title="C#使用Vlc64位元播放器By Vlc.DotNet"></a>C#使用Vlc64位元播放器By Vlc.DotNet</h3><a id="more"></a><p>Vlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it’s a .net wrapper around libvlc.</p><p>Step1.先安裝vlc-3.0.8-win64.exe<br>Step2.Nuget安裝Vlc.DotNet<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/NugetVlcDotNet.png" width="100%"><br>Step3.工具箱-&gt;COM元件-&gt;VlcControl<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/addVlcDotNetForms.png" width="100%"><br>Step4.加入控制項，及加入以下範例程式:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">e.VlcLibDirectory = new DirectoryInfo(@<span class="string">"C:\Program Files\VideoLAN\VLC\");</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">vlcControl1.Play(new Uri("</span>rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov<span class="string">"));</span></span><br></pre></td></tr></table></figure><p>References:<a href="https://github.com/ZeBobo5/Vlc.DotNet" target="_blank" rel="noopener">https://github.com/ZeBobo5/Vlc.DotNet</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>C#</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C#使用Vlc64位元播放器By Vlc.DotNet]]></title>
+    <url>%2F2019%2F12%2F23%2FC-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[C#使用Vlc64位元播放器By Vlc.DotNetVlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it’s a .net wrapper around libvlc.Step1.先安裝vlc-3.0.8-win64.exeStep2.Nuget安裝Vlc.DotNetStep3.工具箱-&gt;COM元件-&gt;VlcControlStep4.加入控制項，及加入以下範例程式:123456private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)&#123; e.VlcLibDirectory = new DirectoryInfo(@"C:\Program Files\VideoLAN\VLC\");&#125;vlcControl1.Play(new Uri("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));References:https://github.com/ZeBobo5/Vlc.DotNet]]></content>
       <categories>
-          
-          <category> C# </category>
-          
+        <category>C#</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> C# </tag>
-            
-            <tag> Vlc64bit </tag>
-            
-            <tag> Vlc.DotNet </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C#使用Vlc32位元播放器</title>
-      <link href="/2019/12/19/C-Sharp%E4%BD%BF%E7%94%A8VLC32%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8/"/>
-      <url>/2019/12/19/C-Sharp%E4%BD%BF%E7%94%A8VLC32%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8/</url>
-      
-        <content type="html"><![CDATA[<h3 id="C-使用Vlc32位元播放器"><a href="#C-使用Vlc32位元播放器" class="headerlink" title="C#使用Vlc32位元播放器"></a>C#使用Vlc32位元播放器</h3><a id="more"></a><p>VLC media player主要用來播放串流的播放器，可用於rtsp、rtmp串流協定。</p><p>Step1.先安裝vlc-3.0.6-win32.exe<br>Step2.加入參考，選擇VideoLAN VLC ActiveX Plugin<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/COM類型程式庫.png" width="100%"><br>Step3.工具箱-&gt;COM元件-&gt;VLC ActiveX Plugin and IE Web Plugin<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/工具箱COM元件.png" width="100%"><br>Step4.加入控制項，在程式建構子加入以下範例程式:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axVLCPlugin21.playlist.add(<span class="string">"rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"</span>);</span><br><span class="line">axVLCPlugin21.AutoLoop = <span class="literal">true</span>;</span><br><span class="line">axVLCPlugin21.AutoPlay = <span class="literal">true</span>;</span><br><span class="line">axVLCPlugin21.audio.mute = <span class="literal">true</span>;</span><br><span class="line">axVLCPlugin21.playlist.play();</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>C#</tag>
+        <tag>Vlc64bit</tag>
+        <tag>Vlc.DotNet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C#使用Vlc32位元播放器]]></title>
+    <url>%2F2019%2F12%2F19%2FC-Sharp%E4%BD%BF%E7%94%A8VLC32%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[C#使用Vlc32位元播放器VLC media player主要用來播放串流的播放器，可用於rtsp、rtmp串流協定。Step1.先安裝vlc-3.0.6-win32.exeStep2.加入參考，選擇VideoLAN VLC ActiveX PluginStep3.工具箱-&gt;COM元件-&gt;VLC ActiveX Plugin and IE Web PluginStep4.加入控制項，在程式建構子加入以下範例程式:12345axVLCPlugin21.playlist.add("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov");axVLCPlugin21.AutoLoop = true;axVLCPlugin21.AutoPlay = true;axVLCPlugin21.audio.mute = true;axVLCPlugin21.playlist.play();]]></content>
       <categories>
-          
-          <category> C# </category>
-          
+        <category>C#</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> C# </tag>
-            
-            <tag> Vlc32bit </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Singleton Class與Static Class比較</title>
-      <link href="/2019/12/18/Singleton%E8%88%87StaticClass%E6%AF%94%E8%BC%83/"/>
-      <url>/2019/12/18/Singleton%E8%88%87StaticClass%E6%AF%94%E8%BC%83/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Singleton-Class-與-Static-Class比較"><a href="#Singleton-Class-與-Static-Class比較" class="headerlink" title="Singleton Class 與 Static Class比較"></a>Singleton Class 與 Static Class比較</h3><a id="more"></a><p>因Heap少於Stack，優先選擇Singleton Class使用。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Singleton Class:</span><br><span class="line">1.使用自己的Instance</span><br><span class="line">2.具備物件導向特性</span><br><span class="line">3.Stack</span><br><span class="line">4.物件實體，可當作參數傳遞及複製</span><br><span class="line">5.可記憶體回收</span><br><span class="line">6.有擴充或需實作介面</span><br><span class="line">Static Class:</span><br><span class="line">1.不需要產生Instance，可直接操作</span><br><span class="line">2.不具備物件導向特性</span><br><span class="line">3.Heap</span><br><span class="line">4.不可當作參數傳遞及複製</span><br><span class="line">5.不可記憶體回收</span><br><span class="line">6.無法繼承與實作介面</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>C#</tag>
+        <tag>Vlc32bit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Singleton Class與Static Class比較]]></title>
+    <url>%2F2019%2F12%2F18%2FSingleton%E8%88%87StaticClass%E6%AF%94%E8%BC%83%2F</url>
+    <content type="text"><![CDATA[Singleton Class 與 Static Class比較因Heap少於Stack，優先選擇Singleton Class使用。1234567891011121314 Singleton Class:1. 使用自己的Instance2. 具備物件導向特性 3. Stack 4. 物件實體，可當作參數傳遞及複製5. 可記憶體回收 6. 有擴充或需實作介面 Static Class:1. 不需要產生Instance，可直接操作2. 不具備物件導向特性3. Heap4. 不可當作參數傳遞及複製5. 不可記憶體回收6. 無法繼承與實作介面]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Singleton </tag>
-            
-            <tag> Static Class </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C#如何使用Java Enum</title>
-      <link href="/2019/12/17/C_Sharp%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum/"/>
-      <url>/2019/12/17/C_Sharp%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum/</url>
-      
-        <content type="html"><![CDATA[<h3 id="C-如何使用Java-Enum"><a href="#C-如何使用Java-Enum" class="headerlink" title="C#如何使用Java Enum"></a>C#如何使用Java Enum</h3><a id="more"></a><p>因C#與Java語言特性不同的關係，在enum的使用上有很大的不同。<br>這邊提供方法相同，但寫法不同的範例提供參考。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">Java Enum example:</span><br><span class="line"></span><br><span class="line">package com.commons.type;</span><br><span class="line"></span><br><span class="line">import java.io.DataOutputStream;</span><br><span class="line">import java.net.HttpURLConnection;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.net.URLConnection;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import com.manager.ApacheHttpClientManager;</span><br><span class="line">import com.util.LogUtils;</span><br><span class="line"></span><br><span class="line">public enum TelegramBotType &#123;</span><br><span class="line"></span><br><span class="line">Example(<span class="string">"token_example"</span>, <span class="string">"chatid_example"</span>);</span><br><span class="line"></span><br><span class="line">private String token;</span><br><span class="line"></span><br><span class="line">private String chatId;</span><br><span class="line"></span><br><span class="line">private String messageUrl;</span><br><span class="line"></span><br><span class="line">TelegramBotType(String token, String chatId) &#123;</span><br><span class="line">this.token = token;</span><br><span class="line">this.chatId = chatId;</span><br><span class="line">this.messageUrl = <span class="string">"https://api.telegram.org/bot"</span> + token + <span class="string">"/sendMessage"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void sendMessage(String msg, boolean isHTML) &#123;</span><br><span class="line">// 如果沒有設定，改由log4j紀錄</span><br><span class="line"><span class="keyword">if</span> (this.chatId == null || this.token == null || this.messageUrl == null) &#123;</span><br><span class="line">LogUtils.telegramBot.info(<span class="string">"Telegram "</span> + this.name() + <span class="string">" : "</span> + msg);</span><br><span class="line"><span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">ApacheHttpClientManager.HttpPostRequest httpPostRequest = ApacheHttpClientManager.getInstance()</span><br><span class="line">.getHttpPostRequest(this.messageUrl);</span><br><span class="line"></span><br><span class="line">Map&lt;String, String&gt; postParam = new HashMap&lt;&gt;();</span><br><span class="line">postParam.put(<span class="string">"chat_id"</span>, chatId);</span><br><span class="line">postParam.put(<span class="string">"text"</span>, msg);</span><br><span class="line"><span class="keyword">if</span> (isHTML) &#123;</span><br><span class="line">postParam.put(<span class="string">"parse_mode"</span>, <span class="string">"HTML"</span>);</span><br><span class="line">&#125;</span><br><span class="line">httpPostRequest.setParameters(postParam);</span><br><span class="line">ApacheHttpClientManager.getInstance().execute(httpPostRequest);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">LogUtils.telegramBot.error(<span class="string">"failure message transmission msg:"</span> + msg + <span class="string">", isHTML:"</span> + isHTML, e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">C<span class="comment"># Enum example:</span></span><br><span class="line"></span><br><span class="line">using Example.Source.Net.com.util;</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Specialized;</span><br><span class="line"></span><br><span class="line">namespace Example.Source.Net.com.commons.type</span><br><span class="line">&#123;</span><br><span class="line">    public sealed class TelegramBotType</span><br><span class="line">    &#123;</span><br><span class="line">        private <span class="built_in">readonly</span> string token;</span><br><span class="line">        private <span class="built_in">readonly</span> string chatId;</span><br><span class="line">        private <span class="built_in">readonly</span> string messageUrl;</span><br><span class="line"></span><br><span class="line">        public static <span class="built_in">readonly</span> TelegramBotType Example = new TelegramBotType(<span class="string">"token_example"</span>, <span class="string">"chatid_example"</span>);</span><br><span class="line"></span><br><span class="line">        private TelegramBotType(string token, string chatId)</span><br><span class="line">        &#123;</span><br><span class="line">            this.token = token;</span><br><span class="line">            this.chatId = chatId;</span><br><span class="line">            messageUrl = <span class="string">"https://api.telegram.org/bot"</span> + token + <span class="string">"/sendMessage"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void sendMessage(string msg, int timeout)</span><br><span class="line">        &#123;</span><br><span class="line">            // 如果沒有設定，改由log4j紀錄</span><br><span class="line">            <span class="keyword">if</span> (chatId == null || token == null || messageUrl == null)</span><br><span class="line">            &#123;</span><br><span class="line">                LogUtil.logger.Warn(<span class="string">"No Telegram Setting : "</span> + msg);</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                var values = new NameValueCollection</span><br><span class="line">                &#123;</span><br><span class="line">                    &#123;<span class="string">"chat_id"</span>,  chatId&#125;,</span><br><span class="line">                    &#123;<span class="string">"text"</span>,  msg&#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                ApiServiceUtil.POST(messageUrl, values, timeout);</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception e)</span><br><span class="line">            &#123;</span><br><span class="line">                LogUtil.logger.Error(<span class="string">"failure message transmission msg:"</span> + msg + <span class="string">";"</span> + Convert.ToString(e));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>Singleton</tag>
+        <tag>Static Class</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C#如何使用Java Enum]]></title>
+    <url>%2F2019%2F12%2F17%2FC_Sharp%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JavaEnum%2F</url>
+    <content type="text"><![CDATA[C#如何使用Java Enum因C#與Java語言特性不同的關係，在enum的使用上有很大的不同。這邊提供方法相同，但寫法不同的範例提供參考。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Java Enum example:package com.commons.type;import java.io.DataOutputStream;import java.net.HttpURLConnection;import java.net.URL;import java.net.URLConnection;import java.util.HashMap;import java.util.Map;import com.manager.ApacheHttpClientManager;import com.util.LogUtils;public enum TelegramBotType &#123; Example("token_example", "chatid_example"); private String token; private String chatId; private String messageUrl; TelegramBotType(String token, String chatId) &#123; this.token = token; this.chatId = chatId; this.messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(String msg, boolean isHTML) &#123; // 如果沒有設定，改由log4j紀錄 if (this.chatId == null || this.token == null || this.messageUrl == null) &#123; LogUtils.telegramBot.info("Telegram " + this.name() + " : " + msg); return; &#125; try &#123; ApacheHttpClientManager.HttpPostRequest httpPostRequest = ApacheHttpClientManager.getInstance() .getHttpPostRequest(this.messageUrl); Map&lt;String, String&gt; postParam = new HashMap&lt;&gt;(); postParam.put("chat_id", chatId); postParam.put("text", msg); if (isHTML) &#123; postParam.put("parse_mode", "HTML"); &#125; httpPostRequest.setParameters(postParam); ApacheHttpClientManager.getInstance().execute(httpPostRequest); &#125; catch (Exception e) &#123; LogUtils.telegramBot.error("failure message transmission msg:" + msg + ", isHTML:" + isHTML, e); &#125; &#125;&#125;123456789101112131415161718192021222324252627282930313233343536373839404142434445464748C# Enum example:using Example.Source.Net.com.util;using System;using System.Collections.Specialized;namespace Example.Source.Net.com.commons.type&#123; public sealed class TelegramBotType &#123; private readonly string token; private readonly string chatId; private readonly string messageUrl; public static readonly TelegramBotType Example = new TelegramBotType("token_example", "chatid_example"); private TelegramBotType(string token, string chatId) &#123; this.token = token; this.chatId = chatId; messageUrl = "https://api.telegram.org/bot" + token + "/sendMessage"; &#125; public void sendMessage(string msg, int timeout) &#123; // 如果沒有設定，改由log4j紀錄 if (chatId == null || token == null || messageUrl == null) &#123; LogUtil.logger.Warn("No Telegram Setting : " + msg); return; &#125; try &#123; var values = new NameValueCollection &#123; &#123;"chat_id", chatId&#125;, &#123;"text", msg&#125; &#125;; ApiServiceUtil.POST(messageUrl, values, timeout); &#125; catch (Exception e) &#123; LogUtil.logger.Error("failure message transmission msg:" + msg + ";" + Convert.ToString(e)); &#125; &#125; &#125;&#125;]]></content>
       <categories>
-          
-          <category> C# </category>
-          
+        <category>C#</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> C# </tag>
-            
-            <tag> Java </tag>
-            
-            <tag> Enum </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>申請TelegramBot教學</title>
-      <link href="/2019/12/17/%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8/"/>
-      <url>/2019/12/17/%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8/</url>
-      
-        <content type="html"><![CDATA[<h3 id="申請TelegramBot教學"><a href="#申請TelegramBot教學" class="headerlink" title="申請TelegramBot教學"></a>申請TelegramBot教學</h3><a id="more"></a><p>Step1:前置作業:需安裝及申請Telegram帳號。(網路上有許多教學)<br>Step2:用搜尋方式找到申請Bot的帳號:【BotFather】</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">申請對話流程如下:</span><br><span class="line"></span><br><span class="line">申請人: /newBot</span><br><span class="line"></span><br><span class="line">BotFather: Alright, a new bot. How are we going to call it? Please choose a name <span class="keyword">for</span> your bot.</span><br><span class="line"></span><br><span class="line">申請人: 輸入欲設定的bot name</span><br><span class="line"></span><br><span class="line">BotFather: Good. Now <span class="built_in">let</span><span class="string">'s choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">申請人: 輸入欲設定的bot的username (結尾一定要有bot，這也是未來被搜尋的name)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">BotFather: </span></span><br><span class="line"><span class="string">Response1 - Sorry, this username is already taken. Please try something different. (username與他人重覆)</span></span><br><span class="line"><span class="string">Response2 - Done! Congratulations on your new bot. You will find it at telegram.me/xxxbot. </span></span><br><span class="line"><span class="string">You can now add a description, about section and profile picture for your bot, see /help for a list of commands.</span></span><br><span class="line"><span class="string">By the way, when you'</span>ve finished creating your cool bot, ping our Bot Support <span class="keyword">if</span> you want a better username <span class="keyword">for</span> it..</span><br><span class="line">Just make sure the bot is fully operational before you <span class="keyword">do</span> this.</span><br><span class="line"></span><br><span class="line">Use this token to access the HTTP API:</span><br><span class="line">【這邊會顯示Token】</span><br><span class="line"></span><br><span class="line">For a description of the Bot API, see this page: https://core.telegram.org/bots/api</span><br></pre></td></tr></table></figure><p>Step3:建立一個Telegram群組，將設定好的bot加入群組(並設置為admin)。<br>Step4:打開瀏覽器使用 <a href="https://api.telegram.org/bot{token}/getUpdates" target="_blank" rel="noopener">https://api.telegram.org/bot{token}/getUpdates</a> ，在回傳的訊息中，就可以看到chatid。<br>Step5:透過Telegram api : sendmessage，測試傳遞訊息，<a href="https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。" target="_blank" rel="noopener">https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>C#</tag>
+        <tag>Java</tag>
+        <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[申請TelegramBot教學]]></title>
+    <url>%2F2019%2F12%2F17%2F%E7%94%B3%E8%AB%8BTelegramBot%E6%95%99%E5%AD%B8%2F</url>
+    <content type="text"><![CDATA[申請TelegramBot教學Step1:前置作業:需安裝及申請Telegram帳號。(網路上有許多教學)Step2:用搜尋方式找到申請Bot的帳號:【BotFather】1234567891011121314151617181920212223申請對話流程如下:申請人: /newBotBotFather: Alright, a new bot. How are we going to call it? Please choose a name for your bot.申請人: 輸入欲設定的bot nameBotFather: Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.申請人: 輸入欲設定的bot的username (結尾一定要有bot，這也是未來被搜尋的name)BotFather: Response1 - Sorry, this username is already taken. Please try something different. (username與他人重覆)Response2 - Done! Congratulations on your new bot. You will find it at telegram.me/xxxbot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands.By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it..Just make sure the bot is fully operational before you do this.Use this token to access the HTTP API:【這邊會顯示Token】For a description of the Bot API, see this page: https://core.telegram.org/bots/apiStep3:建立一個Telegram群組，將設定好的bot加入群組(並設置為admin)。Step4:打開瀏覽器使用 https://api.telegram.org/bot{token}/getUpdates ，在回傳的訊息中，就可以看到chatid。Step5:透過Telegram api : sendmessage，測試傳遞訊息，https://api.telegram.org/bot{token}/sendMessage?chat_id={chatid}&amp;text={訊息}。]]></content>
       <categories>
-          
-          <category> TelegramBot </category>
-          
+        <category>TelegramBot</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> TelegramBot </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS設定hostname</title>
-      <link href="/2019/11/25/CentOS%E8%A8%AD%E5%AE%9Ahostname/"/>
-      <url>/2019/11/25/CentOS%E8%A8%AD%E5%AE%9Ahostname/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS設定hostname"><a href="#CentOS設定hostname" class="headerlink" title="CentOS設定hostname"></a>CentOS設定hostname</h3><a id="more"></a><p>先查看CentOS上目前hostname</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$  hostnamectl</span><br><span class="line">   Static hostname: localhost.localdomain</span><br><span class="line">         Icon name: computer-desktop</span><br><span class="line">           Chassis: desktop</span><br><span class="line">        Machine ID: f08e0bfd24b54a2aa240419122e4f8be</span><br><span class="line">           Boot ID: 8fe1951afafb40779243d362a020caab</span><br><span class="line">  Operating System: CentOS Linux 7 (Core)</span><br><span class="line">       CPE OS Name: cpe:/o:centos:centos:7</span><br><span class="line">            Kernel: Linux 3.10.0-957.el7.x86_64</span><br><span class="line">      Architecture: x86-64</span><br></pre></td></tr></table></figure><p>設定hostname</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl <span class="built_in">set</span>-hostname [NAME]</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>TelegramBot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS設定hostname]]></title>
+    <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9Ahostname%2F</url>
+    <content type="text"><![CDATA[CentOS設定hostname先查看CentOS上目前hostname12345678910$ hostnamectl Static hostname: localhost.localdomain Icon name: computer-desktop Chassis: desktop Machine ID: f08e0bfd24b54a2aa240419122e4f8be Boot ID: 8fe1951afafb40779243d362a020caab Operating System: CentOS Linux 7 (Core) CPE OS Name: cpe:/o:centos:centos:7 Kernel: Linux 3.10.0-957.el7.x86_64 Architecture: x86-64設定hostname1hostnamectl set-hostname [NAME]]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> hostname </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS設定TimeZone</title>
-      <link href="/2019/11/25/CentOS%E8%A8%AD%E5%AE%9ATimeZone/"/>
-      <url>/2019/11/25/CentOS%E8%A8%AD%E5%AE%9ATimeZone/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS設定TimeZone"><a href="#CentOS設定TimeZone" class="headerlink" title="CentOS設定TimeZone"></a>CentOS設定TimeZone</h3><a id="more"></a><p>先查看CentOS上目前TimeZone</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ timedatectl status</span><br><span class="line">      Local time: Mon 2019-11-25 16:20:29 CST</span><br><span class="line">  Universal time: Mon 2019-11-25 08:20:29 UTC</span><br><span class="line">        RTC time: Mon 2019-11-25 08:20:29</span><br><span class="line">       Time zone: Asia/Taipei (CST, +0800)</span><br><span class="line">     NTP enabled: yes</span><br><span class="line">NTP synchronized: yes</span><br><span class="line"> RTC <span class="keyword">in</span> <span class="built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br></pre></td></tr></table></figure><p>先找出TimeZone/Asia設定</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">$ timedatectl list-timezones | grep Asia</span><br><span class="line">Asia/Aden</span><br><span class="line">Asia/Almaty</span><br><span class="line">Asia/Amman</span><br><span class="line">Asia/Anadyr</span><br><span class="line">Asia/Aqtau</span><br><span class="line">Asia/Aqtobe</span><br><span class="line">Asia/Ashgabat</span><br><span class="line">Asia/Baghdad</span><br><span class="line">Asia/Bahrain</span><br><span class="line">Asia/Baku</span><br><span class="line">Asia/Bangkok</span><br><span class="line">Asia/Barnaul</span><br><span class="line">Asia/Beirut</span><br><span class="line">Asia/Bishkek</span><br><span class="line">Asia/Brunei</span><br><span class="line">Asia/Chita</span><br><span class="line">Asia/Choibalsan</span><br><span class="line">Asia/Colombo</span><br><span class="line">Asia/Damascus</span><br><span class="line">Asia/Dhaka</span><br><span class="line">Asia/Dili</span><br><span class="line">Asia/Dubai</span><br><span class="line">Asia/Dushanbe</span><br><span class="line">Asia/Gaza</span><br><span class="line">Asia/Hebron</span><br><span class="line">Asia/Ho_Chi_Minh</span><br><span class="line">Asia/Hong_Kong</span><br><span class="line">Asia/Hovd</span><br><span class="line">Asia/Irkutsk</span><br><span class="line">Asia/Jakarta</span><br><span class="line">Asia/Jayapura</span><br><span class="line">Asia/Jerusalem</span><br><span class="line">Asia/Kabul</span><br><span class="line">Asia/Kamchatka</span><br><span class="line">Asia/Karachi</span><br><span class="line">Asia/Kathmandu</span><br><span class="line">Asia/Khandyga</span><br><span class="line">Asia/Kolkata</span><br><span class="line">Asia/Krasnoyarsk</span><br><span class="line">Asia/Kuala_Lumpur</span><br><span class="line">Asia/Kuching</span><br><span class="line">Asia/Kuwait</span><br><span class="line">Asia/Macau</span><br><span class="line">Asia/Magadan</span><br><span class="line">Asia/Makassar</span><br><span class="line">Asia/Manila</span><br><span class="line">Asia/Muscat</span><br><span class="line">Asia/Nicosia</span><br><span class="line">Asia/Novokuznetsk</span><br><span class="line">Asia/Novosibirsk</span><br><span class="line">Asia/Omsk</span><br><span class="line">Asia/Oral</span><br><span class="line">Asia/Phnom_Penh</span><br><span class="line">Asia/Pontianak</span><br><span class="line">Asia/Pyongyang</span><br><span class="line">Asia/Qatar</span><br><span class="line">Asia/Qyzylorda</span><br><span class="line">Asia/Riyadh</span><br><span class="line">Asia/Sakhalin</span><br><span class="line">Asia/Samarkand</span><br><span class="line">Asia/Seoul</span><br><span class="line">Asia/Shanghai</span><br><span class="line">Asia/Singapore</span><br><span class="line">Asia/Srednekolymsk</span><br><span class="line">Asia/Taipei</span><br><span class="line">Asia/Tashkent</span><br><span class="line">Asia/Tbilisi</span><br><span class="line">Asia/Tehran</span><br><span class="line">Asia/Thimphu</span><br><span class="line">Asia/Tokyo</span><br><span class="line">Asia/Tomsk</span><br><span class="line">Asia/Ulaanbaatar</span><br><span class="line">Asia/Urumqi</span><br><span class="line">Asia/Ust-Nera</span><br><span class="line">Asia/Vientiane</span><br><span class="line">Asia/Vladivostok</span><br><span class="line">Asia/Yakutsk</span><br><span class="line">Asia/Yangon</span><br><span class="line">Asia/Yekaterinburg</span><br><span class="line">Asia/Yerevan</span><br></pre></td></tr></table></figure><p>下指令改變TimeZone Asia/Taipei</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ timedatectl <span class="built_in">set</span>-timezone Asia/Taipei</span><br></pre></td></tr></table></figure><p>查詢目前時區可用date</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ date</span><br><span class="line">Mon Nov 25 16:23:26 CST 2019</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>hostname</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS設定TimeZone]]></title>
+    <url>%2F2019%2F11%2F25%2FCentOS%E8%A8%AD%E5%AE%9ATimeZone%2F</url>
+    <content type="text"><![CDATA[CentOS設定TimeZone先查看CentOS上目前TimeZone123456789$ timedatectl status Local time: Mon 2019-11-25 16:20:29 CST Universal time: Mon 2019-11-25 08:20:29 UTC RTC time: Mon 2019-11-25 08:20:29 Time zone: Asia/Taipei (CST, +0800) NTP enabled: yesNTP synchronized: yes RTC in local TZ: no DST active: n/a先找出TimeZone/Asia設定123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081$ timedatectl list-timezones | grep AsiaAsia/AdenAsia/AlmatyAsia/AmmanAsia/AnadyrAsia/AqtauAsia/AqtobeAsia/AshgabatAsia/BaghdadAsia/BahrainAsia/BakuAsia/BangkokAsia/BarnaulAsia/BeirutAsia/BishkekAsia/BruneiAsia/ChitaAsia/ChoibalsanAsia/ColomboAsia/DamascusAsia/DhakaAsia/DiliAsia/DubaiAsia/DushanbeAsia/GazaAsia/HebronAsia/Ho_Chi_MinhAsia/Hong_KongAsia/HovdAsia/IrkutskAsia/JakartaAsia/JayapuraAsia/JerusalemAsia/KabulAsia/KamchatkaAsia/KarachiAsia/KathmanduAsia/KhandygaAsia/KolkataAsia/KrasnoyarskAsia/Kuala_LumpurAsia/KuchingAsia/KuwaitAsia/MacauAsia/MagadanAsia/MakassarAsia/ManilaAsia/MuscatAsia/NicosiaAsia/NovokuznetskAsia/NovosibirskAsia/OmskAsia/OralAsia/Phnom_PenhAsia/PontianakAsia/PyongyangAsia/QatarAsia/QyzylordaAsia/RiyadhAsia/SakhalinAsia/SamarkandAsia/SeoulAsia/ShanghaiAsia/SingaporeAsia/SrednekolymskAsia/TaipeiAsia/TashkentAsia/TbilisiAsia/TehranAsia/ThimphuAsia/TokyoAsia/TomskAsia/UlaanbaatarAsia/UrumqiAsia/Ust-NeraAsia/VientianeAsia/VladivostokAsia/YakutskAsia/YangonAsia/YekaterinburgAsia/Yerevan下指令改變TimeZone Asia/Taipei1$ timedatectl set-timezone Asia/Taipei查詢目前時區可用date12$ dateMon Nov 25 16:23:26 CST 2019]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> TimeZone </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>關閉SSHRoot遠端登入</title>
-      <link href="/2019/11/25/%E9%97%9C%E9%96%89SSHRoot%E9%81%A0%E7%AB%AF%E7%99%BB%E5%85%A5/"/>
-      <url>/2019/11/25/%E9%97%9C%E9%96%89SSHRoot%E9%81%A0%E7%AB%AF%E7%99%BB%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<h3 id="關閉-SSH-root-遠端登入"><a href="#關閉-SSH-root-遠端登入" class="headerlink" title="關閉 SSH root 遠端登入"></a>關閉 SSH root 遠端登入</h3><a id="more"></a><p>以root權限編輯SSH設定檔</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure><p>將該設定改成no</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 是否允許 root 管理者以 SSH 登入</span></span><br><span class="line">PermitRootLogin no</span><br></pre></td></tr></table></figure><p>重新啟動SSH服務</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新啟動 SSH 服務（CentOS Linux）</span></span><br><span class="line">systemctl restart sshd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新啟動 SSH 服務（Ubuntu Linux）</span></span><br><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>TimeZone</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[關閉SSHRoot遠端登入]]></title>
+    <url>%2F2019%2F11%2F25%2F%E9%97%9C%E9%96%89SSHRoot%E9%81%A0%E7%AB%AF%E7%99%BB%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[關閉 SSH root 遠端登入以root權限編輯SSH設定檔1$ vim /etc/ssh/sshd_config將該設定改成no12# 是否允許 root 管理者以 SSH 登入PermitRootLogin no重新啟動SSH服務12345# 重新啟動 SSH 服務（CentOS Linux）systemctl restart sshd# 重新啟動 SSH 服務（Ubuntu Linux）service sshd restart]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>GoPro7時間設定問題</title>
-      <link href="/2019/10/09/GoPro7%E6%99%82%E9%96%93%E8%A8%AD%E5%AE%9A%E5%95%8F%E9%A1%8C/"/>
-      <url>/2019/10/09/GoPro7%E6%99%82%E9%96%93%E8%A8%AD%E5%AE%9A%E5%95%8F%E9%A1%8C/</url>
-      
-        <content type="html"><![CDATA[<h3 id="GoPro7時間設定問題"><a href="#GoPro7時間設定問題" class="headerlink" title="GoPro7時間設定問題"></a>GoPro7時間設定問題</h3><a id="more"></a><p>寫信向忠欣反應GoPro7拍照或錄影的檔案時間格式會初始化為2016/01/01，提供序號及聯絡方式後，技術客服來電表示GoPro從第三代開始就有此問題。</p><p>因為GoPro本體本身不含任何電池，所以沒辦法對時校正，客服表示送修換一台也可能會存在此問題，目前這是一個無解的BUG。只能每次開機自行設定時間及</p><p>編輯照片或影片時在編輯上正確時間。</p>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoPro7時間設定問題]]></title>
+    <url>%2F2019%2F10%2F09%2FGoPro7%E6%99%82%E9%96%93%E8%A8%AD%E5%AE%9A%E5%95%8F%E9%A1%8C%2F</url>
+    <content type="text"><![CDATA[GoPro7時間設定問題寫信向忠欣反應GoPro7拍照或錄影的檔案時間格式會初始化為2016/01/01，提供序號及聯絡方式後，技術客服來電表示GoPro從第三代開始就有此問題。因為GoPro本體本身不含任何電池，所以沒辦法對時校正，客服表示送修換一台也可能會存在此問題，目前這是一個無解的BUG。只能每次開機自行設定時間及編輯照片或影片時在編輯上正確時間。]]></content>
       <categories>
-          
-          <category> GoPro7 </category>
-          
+        <category>GoPro7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> GoPro7 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>GoogleDrive轉移資料至另一個GoogleDrive using MultCloud</title>
-      <link href="/2019/10/08/GoogleDrive%E8%BD%89%E7%A7%BB%E8%B3%87%E6%96%99%E8%87%B3%E5%8F%A6%E4%B8%80%E5%80%8BGoogleDrive/"/>
-      <url>/2019/10/08/GoogleDrive%E8%BD%89%E7%A7%BB%E8%B3%87%E6%96%99%E8%87%B3%E5%8F%A6%E4%B8%80%E5%80%8BGoogleDrive/</url>
-      
-        <content type="html"><![CDATA[<h3 id="GoogleDrive轉移資料至另一個GoogleDrive"><a href="#GoogleDrive轉移資料至另一個GoogleDrive" class="headerlink" title="GoogleDrive轉移資料至另一個GoogleDrive"></a>GoogleDrive轉移資料至另一個GoogleDrive</h3><a id="more"></a><p>這邊介紹一個網頁服務叫MultCloud，可以註冊免費用戶(每個月有50GB的免費使用量)，MultCloud支援17種雲端硬碟的資料轉移，訂閱用戶每個月能有150GB的資料使用量</p><p>透過MultCloud能將Google Drive 的資料轉移至另一個Google Drive，非常方便。</p>]]></content>
-      
-      
+      <tags>
+        <tag>GoPro7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GoogleDrive轉移資料至另一個GoogleDrive using MultCloud]]></title>
+    <url>%2F2019%2F10%2F08%2FGoogleDrive%E8%BD%89%E7%A7%BB%E8%B3%87%E6%96%99%E8%87%B3%E5%8F%A6%E4%B8%80%E5%80%8BGoogleDrive%2F</url>
+    <content type="text"><![CDATA[GoogleDrive轉移資料至另一個GoogleDrive這邊介紹一個網頁服務叫MultCloud，可以註冊免費用戶(每個月有50GB的免費使用量)，MultCloud支援17種雲端硬碟的資料轉移，訂閱用戶每個月能有150GB的資料使用量透過MultCloud能將Google Drive 的資料轉移至另一個Google Drive，非常方便。]]></content>
       <categories>
-          
-          <category> Google Drive </category>
-          
+        <category>Google Drive</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Google Drive </tag>
-            
-            <tag> MultCloud </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>VisualStudio2019Community升級VisualStudio2019Professional方法</title>
-      <link href="/2019/10/08/VisualStudio2019Community%E5%8D%87%E7%B4%9AVisualStudio2019Professional%E6%96%B9%E6%B3%95/"/>
-      <url>/2019/10/08/VisualStudio2019Community%E5%8D%87%E7%B4%9AVisualStudio2019Professional%E6%96%B9%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h3 id="VisualStudio2019Community升級VisualStudio2019Professional方法"><a href="#VisualStudio2019Community升級VisualStudio2019Professional方法" class="headerlink" title="VisualStudio2019Community升級VisualStudio2019Professional方法"></a>VisualStudio2019Community升級VisualStudio2019Professional方法</h3><a id="more"></a><p>建議的作法是先安裝VisualStudio2019Professional版本並啟用金鑰後，確定Professional版本是可以使用的，再將Community版本刪除。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Google Drive</tag>
+        <tag>MultCloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VisualStudio2019Community升級VisualStudio2019Professional方法]]></title>
+    <url>%2F2019%2F10%2F08%2FVisualStudio2019Community%E5%8D%87%E7%B4%9AVisualStudio2019Professional%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[VisualStudio2019Community升級VisualStudio2019Professional方法建議的作法是先安裝VisualStudio2019Professional版本並啟用金鑰後，確定Professional版本是可以使用的，再將Community版本刪除。]]></content>
       <categories>
-          
-          <category> VisualStudio2019 </category>
-          
+        <category>VisualStudio2019</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> VisualStudio2019 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux使用ShellScripts刪除檔案</title>
-      <link href="/2019/09/26/Linux%E4%BD%BF%E7%94%A8ShellScripts%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88/"/>
-      <url>/2019/09/26/Linux%E4%BD%BF%E7%94%A8ShellScripts%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Linux使用ShellScripts刪除檔案"><a href="#Linux使用ShellScripts刪除檔案" class="headerlink" title="Linux使用ShellScripts刪除檔案"></a>Linux使用ShellScripts刪除檔案</h3><a id="more"></a><p>先建立Shell Scripts檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch clearLog.sh</span><br></pre></td></tr></table></figure><p>對.sh檔案編輯</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim clearLog.sh</span><br></pre></td></tr></table></figure><p>按INSERT來新增內容</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># remove 10 to 100 days ago logs</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;10..100&#125;;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line"><span class="comment">#It's for log name with the format like "2019-01-01" &amp; "20190101".</span></span><br><span class="line">    check_date=`date -d <span class="string">"-<span class="variable">$i</span> day"</span> <span class="string">"+%Y-%m-%d"</span>`</span><br><span class="line">    check_date1=`date -d <span class="string">"-<span class="variable">$i</span> day"</span> <span class="string">"+%Y%m%d"</span>`</span><br><span class="line">    find /usr/<span class="built_in">local</span>/uat_tomcat/logs/ -name <span class="string">"*<span class="variable">$check_date</span>*"</span> -<span class="built_in">exec</span> rm -f &#123;&#125; \;</span><br><span class="line">    find /usr/<span class="built_in">local</span>/uat_tomcat/logs/ -name <span class="string">"*<span class="variable">$check_date1</span>*"</span> -<span class="built_in">exec</span> rm -f &#123;&#125; \;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>存檔指令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure><p>用crontab設定排程</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">編輯</span><br><span class="line">$ crontab -e</span><br><span class="line">新增內容</span><br><span class="line"><span class="comment">#每天05:00A.M.執行</span></span><br><span class="line">0 5 * * * sh /root/clearLog.sh</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>VisualStudio2019</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux使用ShellScripts刪除檔案]]></title>
+    <url>%2F2019%2F09%2F26%2FLinux%E4%BD%BF%E7%94%A8ShellScripts%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[Linux使用ShellScripts刪除檔案先建立Shell Scripts檔案1$ touch clearLog.sh對.sh檔案編輯1$ vim clearLog.sh按INSERT來新增內容123456789# remove 10 to 100 days ago logsfor i in &#123;10..100&#125;; do#It's for log name with the format like "2019-01-01" &amp; "20190101". check_date=`date -d "-$i day" "+%Y-%m-%d"` check_date1=`date -d "-$i day" "+%Y%m%d"` find /usr/local/uat_tomcat/logs/ -name "*$check_date*" -exec rm -f &#123;&#125; \; find /usr/local/uat_tomcat/logs/ -name "*$check_date1*" -exec rm -f &#123;&#125; \;done存檔指令1:wq用crontab設定排程12345編輯$ crontab -e新增內容#每天05:00A.M.執行0 5 * * * sh /root/clearLog.sh]]></content>
       <categories>
-          
-          <category> Linux </category>
-          
+        <category>Linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> Shell Scripts </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux常用指令</title>
-      <link href="/2019/09/26/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/09/26/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Linux常用指令"><a href="#Linux常用指令" class="headerlink" title="Linux常用指令"></a>Linux常用指令</h3><a id="more"></a><p>切換root權限</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ su -</span><br></pre></td></tr></table></figure><p>新增檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch test.sh</span><br></pre></td></tr></table></figure><p>查本機對外IP</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl ipconfig.me</span><br></pre></td></tr></table></figure><p>查看檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less test.sh</span><br></pre></td></tr></table></figure><p>編輯檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.sh</span><br></pre></td></tr></table></figure><p>刪除檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -f test.sh</span><br></pre></td></tr></table></figure><p>查看硬碟空間</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ df</span><br></pre></td></tr></table></figure><p>複製檔案</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp -r /root/test.sh /root/<span class="built_in">test</span>/test.sh</span><br></pre></td></tr></table></figure><p>scp檔案從目前Server複製檔案至另一台Server(保留檔案時間與權限)</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -p /root/test.sh root@10.10.10.10:/root/test.sh</span><br></pre></td></tr></table></figure><p>取得Linux安裝的系統版本</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br></pre></td></tr></table></figure><p>解壓縮.tar.gz</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar zxvf <span class="string">"FileName"</span>.tar.gz</span><br></pre></td></tr></table></figure><p>新建立使用者，先登入root權限</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ useradd <span class="string">"username"</span></span><br></pre></td></tr></table></figure><p>替使用者新增密碼</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ passwd <span class="string">"username"</span></span><br></pre></td></tr></table></figure><h3 id="Linux觀察系統資源常用指令"><a href="#Linux觀察系統資源常用指令" class="headerlink" title="Linux觀察系統資源常用指令"></a>Linux觀察系統資源常用指令</h3><p>效能分析工具，能夠即時顯示系統中各個行程的資源佔用狀況</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ top</span><br></pre></td></tr></table></figure><p>觀察系統啟動時間與工作負載</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uptime</span><br></pre></td></tr></table></figure><p>查看記憶體的使用狀態</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ free -h</span><br></pre></td></tr></table></figure><h3 id="Linux網路常用指令"><a href="#Linux網路常用指令" class="headerlink" title="Linux網路常用指令"></a>Linux網路常用指令</h3><p>查詢網路卡狀態</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ifconfig</span><br></pre></td></tr></table></figure><p>查看網路傳送的路由情況</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ route</span><br></pre></td></tr></table></figure><p>查看對方網路是否有通</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping www.google.com.tw</span><br></pre></td></tr></table></figure><p>查詢或反查詢DNS</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nslookup www.google.com.tw</span><br><span class="line">$ nslookup 8.8.8.8</span><br></pre></td></tr></table></figure><p>追蹤通訊包傳送的狀態</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute www.google.com.tw</span><br><span class="line">$ traceroute 8.8.8.8</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>Linux</tag>
+        <tag>Shell Scripts</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux常用指令]]></title>
+    <url>%2F2019%2F09%2F26%2FLinux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Linux常用指令切換root權限1$ su -新增檔案1$ touch test.sh查本機對外IP1$ curl ipconfig.me查看檔案1$ less test.sh編輯檔案1$ vim test.sh刪除檔案1$ rm -f test.sh查看硬碟空間1$ df複製檔案1$ cp -r /root/test.sh /root/test/test.shscp檔案從目前Server複製檔案至另一台Server(保留檔案時間與權限)1$ scp -p /root/test.sh root@10.10.10.10:/root/test.sh取得Linux安裝的系統版本1$ uname -a解壓縮.tar.gz1$ tar zxvf "FileName".tar.gz新建立使用者，先登入root權限1$ useradd "username"替使用者新增密碼1$ passwd "username"Linux觀察系統資源常用指令效能分析工具，能夠即時顯示系統中各個行程的資源佔用狀況1$ top觀察系統啟動時間與工作負載1$ uptime查看記憶體的使用狀態1$ free -hLinux網路常用指令查詢網路卡狀態1$ ifconfig查看網路傳送的路由情況1$ route查看對方網路是否有通1$ ping www.google.com.tw查詢或反查詢DNS12$ nslookup www.google.com.tw$ nslookup 8.8.8.8追蹤通訊包傳送的狀態12$ traceroute www.google.com.tw$ traceroute 8.8.8.8]]></content>
       <categories>
-          
-          <category> Linux </category>
-          
+        <category>Linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux安裝Java JDK注意事項</title>
-      <link href="/2019/09/23/Linux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/"/>
-      <url>/2019/09/23/Linux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Linux安裝Java-JDK注意事項"><a href="#Linux安裝Java-JDK注意事項" class="headerlink" title="Linux安裝Java JDK注意事項"></a>Linux安裝Java JDK注意事項</h3><a id="more"></a><p>Step1: 先至 <a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts" target="_blank" rel="noopener">https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts</a> 下載所需要的JDK File<br>Step2: 若是下載Linux版本，請不要在windows系統解壓縮後放至Linux上，會造成bin資料夾可執行屬性不見<br>建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gz</span><br></pre></td></tr></table></figure><p>Step3: 確認JDK版本是否正確</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure><p>Step4: 若java -version不是新版本，需用以下指令修正bin資料夾的屬性</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 754</span><br></pre></td></tr></table></figure><p>————-Memo—————<br>執行以下指令如沒有出現版本時，請檢查 ~/.bashrc有沒有設定JAVA_HOME路徑</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure><p>檢查JAVA_HOME路徑指令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure><p>~/.bashrc設定檔</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .bashr</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific aliases and functions</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> rm=<span class="string">'rm -i'</span></span><br><span class="line"><span class="built_in">alias</span> cp=<span class="string">'cp -i'</span></span><br><span class="line"><span class="built_in">alias</span> mv=<span class="string">'mv -i'</span></span><br><span class="line"></span><br><span class="line">JAVA_HOME=/usr/<span class="built_in">local</span>/java/latest</span><br><span class="line">PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line">JAVA_OPTS=<span class="string">"-XX:-TieredCompilation"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"><span class="built_in">export</span> JAVA_OPTS</span><br><span class="line"></span><br><span class="line"><span class="comment"># Source global definitions</span></span><br><span class="line"><span class="keyword">if</span> [ -f /etc/bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . /etc/bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux安裝Java JDK注意事項]]></title>
+    <url>%2F2019%2F09%2F23%2FLinux%E5%AE%89%E8%A3%9DJDK%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%2F</url>
+    <content type="text"><![CDATA[Linux安裝Java JDK注意事項Step1: 先至 https://www.azul.com/downloads/zulu-community/?&amp;version=java-8-lts 下載所需要的JDK FileStep2: 若是下載Linux版本，請不要在windows系統解壓縮後放至Linux上，會造成bin資料夾可執行屬性不見建議將.tar.gz檔案上傳至Linux，進行解壓縮的方式安裝1tar zxvf zulu8.40.0.178-ca-jdk1.8.0_222-linux_aarch32hf.tar.gzStep3: 確認JDK版本是否正確1java -versionStep4: 若java -version不是新版本，需用以下指令修正bin資料夾的屬性1chmod 754————-Memo—————執行以下指令如沒有出現版本時，請檢查 ~/.bashrc有沒有設定JAVA_HOME路徑1java -version檢查JAVA_HOME路徑指令1echo $JAVA_HOME~/.bashrc設定檔1234567891011121314151617181920# .bashr# User specific aliases and functionsalias rm='rm -i'alias cp='cp -i'alias mv='mv -i'JAVA_HOME=/usr/local/java/latestPATH=$JAVA_HOME/bin:$PATH:$HOME/binJAVA_OPTS="-XX:-TieredCompilation"export JAVA_HOMEexport PATHexport JAVA_OPTS# Source global definitionsif [ -f /etc/bashrc ]; then . /etc/bashrcfi]]></content>
       <categories>
-          
-          <category> Linux </category>
-          
+        <category>Linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> Java JDK </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows10使用工作排程器當登入時執行NTP對時</title>
-      <link href="/2019/09/12/Windows10%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8%E7%95%B6%E7%99%BB%E5%85%A5%E6%99%82%E5%9F%B7%E8%A1%8CNTP%E5%B0%8D%E6%99%82/"/>
-      <url>/2019/09/12/Windows10%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8%E7%95%B6%E7%99%BB%E5%85%A5%E6%99%82%E5%9F%B7%E8%A1%8CNTP%E5%B0%8D%E6%99%82/</url>
-      
-        <content type="html"><![CDATA[<h3 id="本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式"><a href="#本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式" class="headerlink" title="本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式"></a>本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式</h3><a id="more"></a><p>Step1:<a href="http://www.stdtime.gov.tw/chinese/home.aspx" target="_blank" rel="noopener">國家時間與頻率標準實驗室網站</a> 下載NTPClock<br>Step2:寫一支.bat檔，用工作排程器設定登入時執行.bat<br>.bat檔內容如下:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">start C:\NTPClockeng.exe</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure><p>Step3:工作排程器設定(一般)<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/工作排程器設定1.png" width="90%"><br>Step4:工作排程器設定(觸發程序)<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/工作排程器設定2.png" width="90%"><br>Step5:工作排程器設定(動作)<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/工作排程器設定3.PNG" width="90%"></p>]]></content>
-      
-      
+      <tags>
+        <tag>Linux</tag>
+        <tag>Java JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows10使用工作排程器當登入時執行NTP對時]]></title>
+    <url>%2F2019%2F09%2F12%2FWindows10%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8%E7%95%B6%E7%99%BB%E5%85%A5%E6%99%82%E5%9F%B7%E8%A1%8CNTP%E5%B0%8D%E6%99%82%2F</url>
+    <content type="text"><![CDATA[本篇介紹如何在Windows10中，使用工作排程器設定登入時執行NTP對時程式Step1:國家時間與頻率標準實驗室網站 下載NTPClockStep2:寫一支.bat檔，用工作排程器設定登入時執行.bat.bat檔內容如下:123@echo offstart C:\NTPClockeng.exeexitStep3:工作排程器設定(一般)Step4:工作排程器設定(觸發程序)Step5:工作排程器設定(動作)]]></content>
       <categories>
-          
-          <category> Windows10 </category>
-          
+        <category>Windows10</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows10 </tag>
-            
-            <tag> NTPClock </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo啟用站內Search</title>
-      <link href="/2019/09/12/Hexo%E5%95%9F%E7%94%A8%E7%AB%99%E5%85%A7Search/"/>
-      <url>/2019/09/12/Hexo%E5%95%9F%E7%94%A8%E7%AB%99%E5%85%A7Search/</url>
-      
-        <content type="html"><![CDATA[<h3 id="為Hexo-NextT啟用站內搜尋功能"><a href="#為Hexo-NextT啟用站內搜尋功能" class="headerlink" title="為Hexo + NextT啟用站內搜尋功能"></a>為Hexo + NextT啟用站內搜尋功能</h3><a id="more"></a><p>Step1:安裝相關Plugins</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search</span><br><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure><p>Step2:對\blog_config.yml 配置文件增加以下</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure><p>Step3:修改 \blog\themes\next\ _config.yml 啟用local search</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line"><span class="comment"># Dependencies: https://github.com/flashlab/hexo-generator-search</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="comment"># if auto, trigger search by changing input</span></span><br><span class="line">  <span class="comment"># if manual, trigger search by pressing enter key or search button</span></span><br><span class="line">  trigger: auto</span><br><span class="line">  <span class="comment"># show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>Windows10</tag>
+        <tag>NTPClock</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo啟用站內Search]]></title>
+    <url>%2F2019%2F09%2F12%2FHexo%E5%95%9F%E7%94%A8%E7%AB%99%E5%85%A7Search%2F</url>
+    <content type="text"><![CDATA[為Hexo + NextT啟用站內搜尋功能Step1:安裝相關Plugins12npm install hexo-generator-searchnpm install hexo-generator-searchdbStep2:對\blog_config.yml 配置文件增加以下12345search: path: search.xml field: post format: html limit: 10000Step3:修改 \blog\themes\next\ _config.yml 啟用local search123456789# Local search# Dependencies: https://github.com/flashlab/hexo-generator-searchlocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
       <categories>
-          
-          <category> Hexo </category>
-          
+        <category>Hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7安裝Jdk和Tomcat</title>
-      <link href="/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat/"/>
-      <url>/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS7安裝Jdk和Tomcat"><a href="#CentOS7安裝Jdk和Tomcat" class="headerlink" title="CentOS7安裝Jdk和Tomcat"></a>CentOS7安裝Jdk和Tomcat</h3><a id="more"></a><p>Step1: 將jdk版本解壓縮至 /usr/local/java 下<br>Step2:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure><p>Step3: 將apache-tomcat版本解壓縮至 /usr/local 下<br>Step4:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure><p>Step5: 改正確時區 timedatectl set-timezone Asia/Taipei</p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7安裝Jdk和Tomcat]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS7%E5%AE%89%E8%A3%9DJdk%E5%92%8CTomcat%2F</url>
+    <content type="text"><![CDATA[CentOS7安裝Jdk和TomcatStep1: 將jdk版本解壓縮至 /usr/local/java 下Step2:1$ ln -s jdk1.8.0_181 latestStep3: 將apache-tomcat版本解壓縮至 /usr/local 下Step4:1$ ln -s apache-tomcat uat_tomcatStep5: 改正確時區 timedatectl set-timezone Asia/Taipei]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> JDK </tag>
-            
-            <tag> Tomcat </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7設定解析度</title>
-      <link href="/2019/09/12/CentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6/"/>
-      <url>/2019/09/12/CentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS7設定解析度"><a href="#CentOS7設定解析度" class="headerlink" title="CentOS7設定解析度"></a>CentOS7設定解析度</h3><a id="more"></a><p>Step1:先開啟Terminal</p><p>Step2:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr</span></span><br><span class="line"></span><br><span class="line">Screen 0: minimum 320 x 200, current 1920 x 1600, maximum 16384 x 16384</span><br><span class="line">DVI-I-1 connected primary 1920x1600+0+0 (normal left inverted right x axis y axis) 477mm x 268mm</span><br><span class="line">1920x1080 60.00 +</span><br><span class="line">1600x1200 60.00</span><br><span class="line">1680x1050 59.88</span><br><span class="line">1280x1024 75.02 60.02</span><br><span class="line">1440x900 59.90</span><br><span class="line">1280x960 60.00</span><br><span class="line">1280x800 74.93 59.91</span><br><span class="line">1152x864 75.00</span><br><span class="line">1024x768 75.03 70.07 60.00</span><br><span class="line">832x624 74.55</span><br><span class="line">800x600 72.19 75.00 60.32 56.25</span><br><span class="line">640x480 75.00 72.81 66.67 59.94</span><br><span class="line">720x400 70.08</span><br><span class="line">1900x1200 60.00</span><br><span class="line">1920x1600 60.00*</span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">VGA-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line"></span><br><span class="line">PS:看是DVI-I-1 或 HDMI-1 或 VGA-1 哪一種介面 connected</span><br></pre></td></tr></table></figure><p>Step3:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># gtf 1920 1600 60 -x</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1920x1600 @ 60.00 Hz (GTF) hsync: 99.36 kHz; pclk: 260.72 MHz</span></span><br><span class="line">Modeline <span class="string">"1920x1600_60.00"</span> 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +Vsync</span><br></pre></td></tr></table></figure><p>Step4:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --newmode "1920x1600" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +Vsync</span></span><br><span class="line"></span><br><span class="line">PS:newmode 後面必須要接 Modeline 後面的參數</span><br></pre></td></tr></table></figure><p>Step5:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --addmode DVI-I-1 1920x1600</span></span><br></pre></td></tr></table></figure><p>Step6:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># xrandr --output DVI-I-1 --mode 1920x1600</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>JDK</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7設定解析度]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS%E8%A8%AD%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[CentOS7設定解析度Step1:先開啟TerminalStep2:1234567891011121314151617181920212223[root@localhost ~]# xrandrScreen 0: minimum 320 x 200, current 1920 x 1600, maximum 16384 x 16384DVI-I-1 connected primary 1920x1600+0+0 (normal left inverted right x axis y axis) 477mm x 268mm1920x1080 60.00 +1600x1200 60.001680x1050 59.881280x1024 75.02 60.021440x900 59.901280x960 60.001280x800 74.93 59.911152x864 75.001024x768 75.03 70.07 60.00832x624 74.55800x600 72.19 75.00 60.32 56.25640x480 75.00 72.81 66.67 59.94720x400 70.081900x1200 60.001920x1600 60.00*HDMI-1 disconnected (normal left inverted right x axis y axis)VGA-1 disconnected (normal left inverted right x axis y axis)PS:看是DVI-I-1 或 HDMI-1 或 VGA-1 哪一種介面 connectedStep3:1234[root@localhost ~]# gtf 1920 1600 60 -x# 1920x1600 @ 60.00 Hz (GTF) hsync: 99.36 kHz; pclk: 260.72 MHzModeline "1920x1600_60.00" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncStep4:123[root@localhost ~]# xrandr --newmode "1920x1600" 260.72 1920 2064 2272 2624 1600 1601 1604 1656 -HSync +VsyncPS:newmode 後面必須要接 Modeline 後面的參數Step5:1[root@localhost ~]# xrandr --addmode DVI-I-1 1920x1600Step6:1[root@localhost ~]# xrandr --output DVI-I-1 --mode 1920x1600]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> Resolution </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7設定NTP對時</title>
-      <link href="/2019/09/12/CentOS7%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82/"/>
-      <url>/2019/09/12/CentOS7%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS7設定NTP對時"><a href="#CentOS7設定NTP對時" class="headerlink" title="CentOS7設定NTP對時"></a>CentOS7設定NTP對時</h3><a id="more"></a><p>有兩種設定方式<br>第一種:<br>可以加入ntpdate到root crontab即可</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w</span><br></pre></td></tr></table></figure><hr><p>第二種<br>Step1:在Terminal 用date指令確認時間是否正確</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># date</span></span><br><span class="line">Fri Aug 10 14:14:31 CST 2018</span><br></pre></td></tr></table></figure><p>Step2:安裝NTP套件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install ntp</span><br></pre></td></tr></table></figure><p>Step3:啟動 ntpd daemon</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># systemctl start ntpd</span></span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl status ntpd</span></span><br><span class="line">● ntpd.service - Network Time Service</span><br><span class="line">Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)</span><br><span class="line">Active: active (running) since Fri 2018-08-10 14:11:12 CST; 8s ago</span><br><span class="line">Process: 1266 ExecStart=/usr/sbin/ntpd -u ntp:ntp <span class="variable">$OPTIONS</span> (code=exited, status=0/SUCCESS)</span><br><span class="line">Main PID: 1267 (ntpd)</span><br><span class="line">CGroup: /system.slice/ntpd.service</span><br><span class="line">└─1267 /usr/sbin/ntpd -u ntp:ntp -g</span><br><span class="line"></span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 2 lo 127.0.0.1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 3 enp2s0 10.10.10.103 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 4 virbr0 172.16.122.1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 5 lo ::1 UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 6 enp2s0 fe80::4a5b:39ff:fe05:231c UDP 123</span><br><span class="line">Aug 10 14:11:12 bacintra ntpd[1267]: Listening on routing socket on fd <span class="comment">#23 for interface updates</span></span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c016 06 restart</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c011 01 freq_not_set</span><br><span class="line">Aug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c614 04 freq_mode</span><br></pre></td></tr></table></figure><p>Step4:讓系統在開機時自動啟用 ntpd daemon</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@bacintra ~]<span class="comment"># systemctl is-enabled ntpd</span></span><br><span class="line">disabled</span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl enable ntpd</span></span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/ntpd.service to /usr/lib/systemd/system/ntpd.service.</span><br><span class="line">[root@bacintra ~]<span class="comment"># systemctl is-enabled ntpd</span></span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>Resolution</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7設定NTP對時]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS7%E8%A8%AD%E5%AE%9ANTP%E5%B0%8D%E6%99%82%2F</url>
+    <content type="text"><![CDATA[CentOS7設定NTP對時有兩種設定方式第一種:可以加入ntpdate到root crontab即可10 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w第二種Step1:在Terminal 用date指令確認時間是否正確12[root@bacintra ~]# dateFri Aug 10 14:14:31 CST 2018Step2:安裝NTP套件1sudo yum -y install ntpStep3:啟動 ntpd daemon1234567891011121314151617181920[root@bacintra ~]# systemctl start ntpd[root@bacintra ~]# systemctl status ntpd● ntpd.service - Network Time ServiceLoaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)Active: active (running) since Fri 2018-08-10 14:11:12 CST; 8s agoProcess: 1266 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)Main PID: 1267 (ntpd)CGroup: /system.slice/ntpd.service└─1267 /usr/sbin/ntpd -u ntp:ntp -gAug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 2 lo 127.0.0.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 3 enp2s0 10.10.10.103 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 4 virbr0 172.16.122.1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 5 lo ::1 UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listen normally on 6 enp2s0 fe80::4a5b:39ff:fe05:231c UDP 123Aug 10 14:11:12 bacintra ntpd[1267]: Listening on routing socket on fd #23 for interface updatesAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c016 06 restartAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPMAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c011 01 freq_not_setAug 10 14:11:13 bacintra ntpd[1267]: 0.0.0.0 c614 04 freq_modeStep4:讓系統在開機時自動啟用 ntpd daemon123456[root@bacintra ~]# systemctl is-enabled ntpddisabled[root@bacintra ~]# systemctl enable ntpdCreated symlink from /etc/systemd/system/multi-user.target.wants/ntpd.service to /usr/lib/systemd/system/ntpd.service.[root@bacintra ~]# systemctl is-enabled ntpdenabled]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> NTP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7關閉SELINUX</title>
-      <link href="/2019/09/12/CentOS%E9%97%9C%E9%96%89SELINUX/"/>
-      <url>/2019/09/12/CentOS%E9%97%9C%E9%96%89SELINUX/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS7關閉SELINUX"><a href="#CentOS7關閉SELINUX" class="headerlink" title="CentOS7關閉SELINUX"></a>CentOS7關閉SELINUX</h3><a id="more"></a><p>Step1: 對 /etc/resolv.conf 新增以下指令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generated by NetworkManager</span></span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line">nameserver 168.95.1.1</span><br></pre></td></tr></table></figure><p>Step2: 針對SELINUX執行指令如下:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ setenforce 0</span><br><span class="line">$ sed -i <span class="string">'s/SELINUX=enforcing/SELINUX=disabled/g'</span> /etc/selinux/config</span><br><span class="line">$ systemctl <span class="built_in">disable</span> firewalld </span><br><span class="line">$ systemctl <span class="built_in">disable</span> NetworkManager</span><br><span class="line">$ yum -y install iptables-utils iptables-services</span><br><span class="line">$ iptables -F</span><br><span class="line">$ iptables -X</span><br><span class="line">$ service iptables save</span><br></pre></td></tr></table></figure><p>reference:</p><p>★★ 暫時性的關掉或開啟 selinux ★★</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ getenforce</span><br><span class="line">Enforcing</span><br><span class="line">$ sudo setenforce 0</span><br><span class="line">$ getenforce</span><br><span class="line">Permissive</span><br><span class="line">$ sudo setenforce 1</span><br><span class="line">$ getenforce</span><br><span class="line">Enforcing</span><br></pre></td></tr></table></figure><p>★★ 永久性的關掉 selinux ★★</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/sysconfig/selinux</span><br></pre></td></tr></table></figure><p>找到<br>SELINUX=enforcing<br>然後修改為<br>SELINUX=disabled<br>要重新開機 reboot / restart 後才會套用</p>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>NTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7關閉SELINUX]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS%E9%97%9C%E9%96%89SELINUX%2F</url>
+    <content type="text"><![CDATA[CentOS7關閉SELINUXStep1: 對 /etc/resolv.conf 新增以下指令123# Generated by NetworkManagernameserver 8.8.8.8nameserver 168.95.1.1Step2: 針對SELINUX執行指令如下:12345678$ setenforce 0$ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config$ systemctl disable firewalld $ systemctl disable NetworkManager$ yum -y install iptables-utils iptables-services$ iptables -F$ iptables -X$ service iptables savereference:★★ 暫時性的關掉或開啟 selinux ★★12345678$ getenforceEnforcing$ sudo setenforce 0$ getenforcePermissive$ sudo setenforce 1$ getenforceEnforcing★★ 永久性的關掉 selinux ★★1$ sudo vi /etc/sysconfig/selinux找到SELINUX=enforcing然後修改為SELINUX=disabled要重新開機 reboot / restart 後才會套用]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> SELINUX </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7安裝docker RabbitMQ</title>
-      <link href="/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ/"/>
-      <url>/2019/09/12/CentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ/</url>
-      
-        <content type="html"><![CDATA[<h3 id="CentOS7安裝docker-RabbitMQ"><a href="#CentOS7安裝docker-RabbitMQ" class="headerlink" title="CentOS7安裝docker RabbitMQ"></a>CentOS7安裝docker RabbitMQ</h3><a id="more"></a><p>Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install docker</span><br></pre></td></tr></table></figure><p>Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure><p>Step3:將解壓縮後的docker資料夾放 /opt 下<br>Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案</p><p>Step5:執行 /opt/docker/command</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh create-rabbitmq.sh</span><br></pre></td></tr></table></figure><p>Step6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .</span><br><span class="line">$ docker tag [IMAGE ID] rabbitmq:00</span><br><span class="line"></span><br><span class="line">$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00</span><br></pre></td></tr></table></figure><p>Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功</p>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>SELINUX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7安裝docker RabbitMQ]]></title>
+    <url>%2F2019%2F09%2F12%2FCentOS7%E5%AE%89%E8%A3%9DdockerForRabbitMQ%2F</url>
+    <content type="text"><![CDATA[CentOS7安裝docker RabbitMQStep1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：1$ sudo yum install dockerStep2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。12$ sudo service docker start$ sudo chkconfig docker onStep3:將解壓縮後的docker資料夾放 /opt 下Step4:/opt/docker/dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案Step5:執行 /opt/docker/command1$ sh create-rabbitmq.shStep6:以下三行指令必須在 /opt/docker/dockerfile下執行才能成功1234$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .$ docker tag [IMAGE ID] rabbitmq:00$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功]]></content>
       <categories>
-          
-          <category> CentOS7 </category>
-          
+        <category>CentOS7</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> CentOS7 </tag>
-            
-            <tag> Docker </tag>
-            
-            <tag> RabbitMQ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo啟用Tags功能</title>
-      <link href="/2019/09/12/Hexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD/"/>
-      <url>/2019/09/12/Hexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Hexo啟用Tags功能"><a href="#Hexo啟用Tags功能" class="headerlink" title="Hexo啟用Tags功能"></a>Hexo啟用Tags功能</h3><a id="more"></a><p>Step1:建立新page，命名為tags</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"tags"</span></span><br></pre></td></tr></table></figure><p>Step2:指令將會建立\blog\source\index.md</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br></pre></td></tr></table></figure><p>Step3:若有啟用評論功能，欲關閉時</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>Step4:修改\blog\themes\next_config.yml 配置文件，啟用tags</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>Docker</tag>
+        <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo啟用Tags功能]]></title>
+    <url>%2F2019%2F09%2F12%2FHexo%E5%95%9F%E7%94%A8Tags%E5%8A%9F%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[Hexo啟用Tags功能Step1:建立新page，命名為tags1$ hexo new page "tags"Step2:指令將會建立\blog\source\index.md123title: tagsdate: 2019-09-12 09:22:12type: "tags"Step3:若有啟用評論功能，欲關閉時1234title: tagsdate: 2019-09-12 09:22:12type: "tags"comments: falseStep4:修改\blog\themes\next_config.yml 配置文件，啟用tags123456789menu: home: / || home #about: /about/ || user tags: /tags/ || tags #categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat]]></content>
       <categories>
-          
-          <category> Hexo </category>
-          
+        <category>Hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Visual Studio Code for Java &amp; JavaScript</title>
-      <link href="/2019/09/11/VSCodeForJava/"/>
-      <url>/2019/09/11/VSCodeForJava/</url>
-      
-        <content type="html"><![CDATA[<h3 id="使用Visual-Studio-Code-來寫-Java-程式"><a href="#使用Visual-Studio-Code-來寫-Java-程式" class="headerlink" title="使用Visual Studio Code 來寫 Java 程式"></a>使用Visual Studio Code 來寫 Java 程式</h3><a id="more"></a><p>1.下載Visual Studio Code 安裝檔 :<a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">https://code.visualstudio.com/download</a></p><p>逐步安裝完，會有Visual Studio Code IDE 和 Java Extension Pack. 包含</p><pre><code>Language Support for Java(TM) by Red HatDebugger for JavaJava Test RunnerMaven for JavaJava Dependency Viewer</code></pre><p>2.需另安裝Maven，並設定環境變數 : 參考 <a href="https://www.dev2qa.com/create-java-project-with-maven/" target="_blank" rel="noopener">https://www.dev2qa.com/create-java-project-with-maven/</a></p><p>3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔</p><p>war檔有兩個地方要注意</p><p>3.1. src\main\webapp\META-INF\ 下需包含context.xml</p><p>3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置</p><p>4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.</p><p>5.SVN control</p><p>5.1 <a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">安裝小烏龜作爲基底，以及第一次取得專案</a></p><p>5.2 Interface</p><p>5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.</p><p>5.2.2 <a href="https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm" target="_blank" rel="noopener">Integrated mode: SVN</a></p><p>6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可<br><img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/JavaFormatter.png" width="100%"></p><p>7.<a href="https://github.com/checkstyle/checkstyle/tree/master/src/main/resources" target="_blank" rel="noopener">靜態程式碼檢查，安裝Checkstyle for Java</a>該連結提供兩種xml格式</p><p>將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成</p><p>8.JavaScript Editor</p><p>8.1 <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">安裝 Eslint</a></p><p>9.SQL Query</p><p>9.1 <a href="https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools" target="_blank" rel="noopener">安裝 Oracle Developer Tools for VS Code</a></p><p>9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢</p><p>10.<a href="https://marketplace.visualstudio.com/items?itemName=chuckjonas.apex-pmd" target="_blank" rel="noopener">安裝 Apex PMD</a></p><p>11.HotKey</p><p>11.1 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-linux.pdf" target="_blank" rel="noopener">keyboard-shortcuts-linux.pdf</a></p><p>11.2 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-macos.pdf" target="_blank" rel="noopener">keyboard-shortcuts-macos.pdf</a></p><p>11.3 <a href="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/keyboard-shortcuts-windows.pdf" target="_blank" rel="noopener">keyboard-shortcuts-windows.pdf</a></p><p>12.JSP Editor</p><p>12.1 <a href="https://marketplace.visualstudio.com/items?itemName=pthorsson.vscode-jsp" target="_blank" rel="noopener">Java Server Pages (JSP)</a></p><p>已知缺點</p><p>JSP 支援薄弱<br>Java Resource Bundle 不支援</p><p>Reference:</p><p>官方文件:</p><p><a href="https://code.visualstudio.com/docs/java/java-tutorial" target="_blank" rel="noopener">Writing Java with Visual Studio Code</a></p><p><a href="https://code.visualstudio.com/docs/java/java-project" target="_blank" rel="noopener">Java Project Management in VS Code</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Visual Studio Code for Java & JavaScript]]></title>
+    <url>%2F2019%2F09%2F11%2FVSCodeForJava%2F</url>
+    <content type="text"><![CDATA[使用Visual Studio Code 來寫 Java 程式1.下載Visual Studio Code 安裝檔 :https://code.visualstudio.com/download逐步安裝完，會有Visual Studio Code IDE 和 Java Extension Pack. 包含Language Support for Java(TM) by Red Hat Debugger for Java Java Test Runner Maven for Java Java Dependency Viewer2.需另安裝Maven，並設定環境變數 : 參考 https://www.dev2qa.com/create-java-project-with-maven/3.第2步驟安裝完成，即可使用 Maven for Java 對專案執行 clean package -DskipTests 編譯出 war 檔 或 jar 檔war檔有兩個地方要注意3.1. src\main\webapp\META-INF\ 下需包含context.xml3.2. src\main\config\dev\db.properties 的Oracle資料庫連線設置4.安裝 Tomcat for Java 並指定Tomcat Server的安裝目錄後，可對war檔右鍵-&gt;Run on Tomcat Server將會開始佈署至Tomcat Server.5.SVN control5.1 安裝小烏龜作爲基底，以及第一次取得專案5.2 Interface5.2.1 cmd-line mode: 安裝 TortoiseSVN 即可對專案右鍵或下command進行SVN 操作.5.2.2 Integrated mode: SVN6.匯入Java Formatter.xml，匯出Eclipse的formatter.xml，將檔名與配置檔案名稱設定成一樣，在下面這頁設定即可7.靜態程式碼檢查，安裝Checkstyle for Java該連結提供兩種xml格式將xml檔案點選右鍵 -&gt; Set Checkstyle Configuration File 即可設定完成8.JavaScript Editor8.1 安裝 Eslint9.SQL Query9.1 安裝 Oracle Developer Tools for VS Code9.2 查詢資料庫：完成設定資料庫 –&gt; 下命令 Oracle: Develop New Query –&gt; 即可查詢10.安裝 Apex PMD11.HotKey11.1 keyboard-shortcuts-linux.pdf11.2 keyboard-shortcuts-macos.pdf11.3 keyboard-shortcuts-windows.pdf12.JSP Editor12.1 Java Server Pages (JSP)已知缺點JSP 支援薄弱Java Resource Bundle 不支援Reference:官方文件:Writing Java with Visual Studio CodeJava Project Management in VS Code]]></content>
       <categories>
-          
-          <category> Visual Studio Code </category>
-          
+        <category>Visual Studio Code</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> Visual Studio Code </tag>
-            
-            <tag> JavaScript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo套用next theme</title>
-      <link href="/2019/09/11/Hexo%E5%A5%97%E7%94%A8NextT/"/>
-      <url>/2019/09/11/Hexo%E5%A5%97%E7%94%A8NextT/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Hexo套用next-theme"><a href="#Hexo套用next-theme" class="headerlink" title="Hexo套用next theme"></a>Hexo套用next theme</h3><a id="more"></a><p>Step1:安裝NextT後, \Blog\themes下出現next資料夾<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> \blog</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure><p></p><p>Step2:hexo預設使用的themes是landscape,修改blog配置文件_config.yml<br>Step2.1:搜尋並修改 theme: next 即可啟用<br>Step3:主題設定有三種模式, Muse、Mist、Pisces、Gemini, 本Blog是採用Gemini<br>Step3.1:修改themes的配置文件_config.yml<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure><p></p><p>Step4:語言設置:修改blog配置文件_config.yml<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: zh-tw</span><br></pre></td></tr></table></figure><p></p><p>References <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT 使用文档</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+        <tag>Visual Studio Code</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo套用next theme]]></title>
+    <url>%2F2019%2F09%2F11%2FHexo%E5%A5%97%E7%94%A8NextT%2F</url>
+    <content type="text"><![CDATA[Hexo套用next themeStep1:安裝NextT後, \Blog\themes下出現next資料夾12$ cd \blog$ git clone https://github.com/iissnan/hexo-theme-next themes/nextStep2:hexo預設使用的themes是landscape,修改blog配置文件_config.ymlStep2.1:搜尋並修改 theme: next 即可啟用Step3:主題設定有三種模式, Muse、Mist、Pisces、Gemini, 本Blog是採用GeminiStep3.1:修改themes的配置文件_config.yml1scheme: GeminiStep4:語言設置:修改blog配置文件_config.yml1language: zh-twReferences NexT 使用文档]]></content>
       <categories>
-          
-          <category> Hexo </category>
-          
+        <category>Hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> NextT </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>用Hexo建立Blog</title>
-      <link href="/2019/09/11/%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog/"/>
-      <url>/2019/09/11/%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog/</url>
-      
-        <content type="html"><![CDATA[<h3 id="手把手用Hexo建立個人Blog教學"><a href="#手把手用Hexo建立個人Blog教學" class="headerlink" title="手把手用Hexo建立個人Blog教學"></a>手把手用Hexo建立個人Blog教學</h3><a id="more"></a><p>Step1: Hexo事前安裝準備:node.js + Git。<br>Step2: 登入GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。<br>Step3: 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"github UserName"</span></span><br><span class="line">$ git config --global user.email <span class="string">"github email"</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">"github email"</span></span><br></pre></td></tr></table></figure><p></p><p>Step3.1:接下來詢問都按Enter略過<br>Step4: 從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。<br>Step5: 在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keys<br>Step5.1: Title任意取即可。<br>Step5.2: key填入id_rsa.pub文件內所有內容。<br>Step6: 確認node.js 是否安裝成功<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure><p></p><p>Step7: 新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><p></p><p>Step8: 初始化blog<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure><p></p><p>Step9: cd 至資料夾\blog<br>Step10:新增新文章<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new my_first_post</span><br></pre></td></tr></table></figure><p></p><p>Step11:產生靜態檔案<br>啟動local server , default port 4000<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p></p><p>更換port<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 5000 來更換port</span><br></pre></td></tr></table></figure><p></p><p>Step12:在\blog下找到配置文件_config.yml<br>Step12.1:修改deploy配置<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repository: http://github.com/用戶名/用戶名.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure><p></p><p>Step13:部署至GitHub<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p></p><p>hexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝<br></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p></p><p>Step14:在browser輸入 “UserName”.github.io 即可看到Blog</p><p>References <a href="https://junyou.tw/hexo/" target="_blank" rel="noopener">使用 Hexo 在 Github 建立部落格</a><br>References <a href="https://blog.csdn.net/qq_21808961/article/details/84476504" target="_blank" rel="noopener">hexo d命令报错 ERROR Deployer not found: git</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NextT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用Hexo建立Blog]]></title>
+    <url>%2F2019%2F09%2F11%2F%E7%94%A8Hexo%E5%BB%BA%E7%AB%8BBlog%2F</url>
+    <content type="text"><![CDATA[手把手用Hexo建立個人Blog教學Step1: Hexo事前安裝準備:node.js + Git。Step2: 登入GitHub帳號並新增一個repository且Repository name 必須命名為 UserName + “.github.io”。Step3: 使用Git Bash開啟指令視窗並輸入以下指令來獲得ssh-rsa key。123$ git config --global user.name "github UserName"$ git config --global user.email "github email"$ ssh-keygen -t rsa -C "github email"Step3.1:接下來詢問都按Enter略過Step4: 從ssh key文件預設位置 C:\Users\用戶名.ssh下，找到id_rsa.pub文件(文件內全都是key的一部分)。Step5: 在GitHub -&gt; Setting -&gt; SSH and GPG keys，新增SSH keysStep5.1: Title任意取即可。Step5.2: key填入id_rsa.pub文件內所有內容。Step6: 確認node.js 是否安裝成功1node --versionStep7: 新增hexo blog資料夾，cmd -&gt; cd至資料夾 -&gt; 安裝hexo1npm install -g hexo-cliStep8: 初始化blog1hexo init blogStep9: cd 至資料夾\blogStep10:新增新文章1hexo new my_first_postStep11:產生靜態檔案啟動local server , default port 400012hexo ghexo s更換port1hexo server -p 5000 來更換portStep12:在\blog下找到配置文件_config.ymlStep12.1:修改deploy配置1234deploy:type: gitrepository: http://github.com/用戶名/用戶名.github.io.gitbranch: masterStep13:部署至GitHub123hexo cleanhexo ghexo dhexo d (這步如有出現ERROR Deployer not found: git錯誤),在\blog下安裝1npm install hexo-deployer-git --saveStep14:在browser輸入 “UserName”.github.io 即可看到BlogReferences 使用 Hexo 在 Github 建立部落格References hexo d命令报错 ERROR Deployer not found: git]]></content>
       <categories>
-          
-          <category> Hexo </category>
-          
+        <category>Hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
 </search>
