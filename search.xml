@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LinuxPingDomainName報錯NameorServiceNotKnown]]></title>
+    <url>%2F2020%2F02%2F18%2FLinuxPingDomainName%E5%A0%B1%E9%8C%AFNameorServiceNotKnown%2F</url>
+    <content type="text"><![CDATA[LinuxPingDomainName報錯NameorServiceNotKnown這篇文章是在Linux上，ping一個外部網址時出現Name or service not known錯誤。原因是要設定dns設定，該網址才會被解析。設定語法12$ vi /etc/resolv.conf$ nameserver 8.8.8.8]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>DNS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[在Linux上對新使用者建立crontab]]></title>
     <url>%2F2020%2F02%2F14%2F%E5%9C%A8Linux%E4%B8%8A%E5%B0%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E8%80%85%E5%BB%BA%E7%AB%8Bcrontab%2F</url>
     <content type="text"><![CDATA[在Linux上對新使用者建立crontab這篇文章介紹如何在Linux上的新使用者建立自己的crontab。crontab指令12345678910--先切換root權限$ su -$ cd /var/spool/cron/--建立新使用者的crontab$ crontab -u [username] -e--新增crontab指令$ 0 * * * * /usr/sbin/ntpdate time.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w--修改權限$ sudo chown [username] [username]$ sudo chown :[group] [username]]]></content>
