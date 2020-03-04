@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於Java繼承用法]]></title>
+    <url>%2F2020%2F03%2F04%2F%E9%97%9C%E6%96%BCJava%E7%B9%BC%E6%89%BF%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[關於Java繼承用法這篇文章是介紹Java的繼承該如何實作~當原類別擴充到一定程度時，一般會將共用的部分抽出來當父類別。當有特殊功能要加在原類別上時，就會實作新的子類別並繼承父類別。父類別12345678public class father &#123; private int money = 0; private int houses = 0; private int cars = 0;&#125;子類別繼承父類別12345678910public class son extends father &#123; private int money = 0; private int houses = 0; private int cars = 0; private int bikes = 1;&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>extends</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LinuxPingDomainName報錯NameorServiceNotKnown]]></title>
     <url>%2F2020%2F02%2F18%2FLinuxPingDomainName%E5%A0%B1%E9%8C%AFNameorServiceNotKnown%2F</url>
     <content type="text"><![CDATA[LinuxPingDomainName報錯NameorServiceNotKnown這篇文章是在Linux上，ping一個外部網址時出現Name or service not known錯誤。原因是要設定dns設定，該網址才會被解析。設定語法12$ vi /etc/resolv.conf$ nameserver 8.8.8.8]]></content>
