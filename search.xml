@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[使用telnet連線IP和Port]]></title>
     <url>%2F2020%2F03%2F16%2F%E4%BD%BF%E7%94%A8telnet%E9%80%A3%E7%B7%9AIP%E5%92%8CPort%2F</url>
-    <content type="text"><![CDATA[使用telnet連線IP和PortTelnet是一種應用層協定，可用來連線目的地伺服器的IP和Port。通常用來測試目的地伺服器連線是否通不通，常用telnet指令。可連線，沒有指定Port就是預設23 port。1234telnet 192.168.5.5Trying 192.168.5.5...Connected to 192.168.5.5Escape character is ‘^]’.連線不通123telnet 192.168.5.5Trying 192.168.5.5...telnet: connect to address 192.168.5.5: Connection refused]]></content>
+    <content type="text"><![CDATA[使用telnet連線IP和PortTelnet是一種應用層協定，可用來連線目的地伺服器的IP和Port。通常用來測試目的地伺服器連線是否通不通，常用telnet指令。可連線，沒有指定Port就是預設23 port。1234telnet 192.168.5.5Trying 192.168.5.5...Connected to 192.168.5.5.Escape character is ‘^]’.連線不通123telnet 192.168.5.5Trying 192.168.5.5...telnet: connect to address 192.168.5.5: Connection refused]]></content>
       <categories>
         <category>telnet</category>
       </categories>
