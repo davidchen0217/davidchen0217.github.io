@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Struct vs. Class]]></title>
+    <url>%2F2020%2F03%2F20%2FStructVersusClass%2F</url>
+    <content type="text"><![CDATA[Struct vs. Class這篇介紹Struct和Class兩者資料結構的特性以及使用時機。兩者比較12345Class StructReference type value type可繼承 不可繼承可變更 不可變更 不能有預設建構子使用時機123456789當下列4個條件完全符合時，才建議使用Struct資料結構。沒有完全符合條件時，建議使用Class資料結構。defining a struct unless the type has all of the following characteristics:1.It logically represents a single value, similar to primitive types (int, double, &gt; &gt; etc.).2.It has an instance size under 16 bytes.3.It is immutable.4.It will not have to be boxed frequently.In all other cases, you should define your types as classes.]]></content>
+      <categories>
+        <category>Data Structure</category>
+      </categories>
+      <tags>
+        <tag>Struct</tag>
+        <tag>Class</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安裝Docker For Oracle]]></title>
     <url>%2F2020%2F03%2F18%2FDockerForOracle%2F</url>
     <content type="text"><![CDATA[安裝Docker For Oracle這篇介紹如何安裝Oracle的Docker來建立本地端資料庫。123456789101112131415161718192021221.安裝 Docker Desktop for Windows (下載後一步一步安裝)https://www.docker.com/products/docker-desktop2.匯入 Docker Repository用系統管理員權限開啟命令提示字元(cmd)//oracle11g.tar必須cd到指定路徑下$ docker import oracle11g.tar local/oracle11g//檢查狀態$ docker images -a 3. 執行 Docker$ docker run --privileged --name oraclelocal -d -p 11521:1521 -e ORACLE_ALLOW_REMOTE=true -v /home:/install local/oracle11g /assets/entrypoint.sh4.run 成功可以用 docker ps -a 檢查狀態在 docker 的 dashboard 也可以看到，如下圖參數說明1234567# Docker 執行 Image 產生 Container (run)# --privileged 是給予權限，安裝oracle時可能會需要root權限# --name oracle11g 命名 Container 為 oracle11g# -d 會自動執行 docker pull + 啟動並進入背景執行# 11521:1521 把裡面的 1521 port 導到外面的 11521 port (host Port:container Port)# -e ORACLE_ALLOW_REMOTE=true 的作用是開啟遠程連接，如果只是本地使用可以寫成這樣：# -v 掛載點 /home 目前 Local 環境目錄 ; /install Container 目錄Oracle登入資訊1234HostName/IP Address:localhostPort:11521Service Name/SID:ORCL //選擇SIDUserName:bac_test常用指令1234docker images -a 查看現有 docker local repositorydocker ps -a 查看現有 containerdocker stop oraclelocal 停止特定container 最後一個參數是 container's name or Iddocker start oraclelocal 開啟特定container 最後一個參數是 container's name or Id]]></content>
@@ -475,8 +487,8 @@
         <category>CentOS7</category>
       </categories>
       <tags>
-        <tag>CentOS7</tag>
         <tag>Docker</tag>
+        <tag>CentOS7</tag>
         <tag>RabbitMQ</tag>
       </tags>
   </entry>
