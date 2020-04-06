@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux安裝vim]]></title>
+    <url>%2F2020%2F03%2F30%2FLinux%E5%AE%89%E8%A3%9Dvim%2F</url>
+    <content type="text"><![CDATA[Linux安裝vim這篇介紹在CentOS上執行vim，如果出現-bash: vim: command not found時，如何解決~先檢查系統是否已安裝vim12345$ rpm -qa|grep vim正常要出現以下三個vim-enhanced-7.4.629-6.el7.x86_64vim-common-7.4.629-6.el7.x86_64vim-minimal-7.4.160-5.el7.x86_64如果三個少了其中一個，請用yum -y install來安裝12ex:如果少了vim-enhanced，請執行以下指令$ yum -y install vim-enhanced如果完全沒安裝過vim1$ yum -y install vim*]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AbstractClassVersusInterface]]></title>
     <url>%2F2020%2F03%2F20%2FAbstractClassVersusInterface%2F</url>
     <content type="text"><![CDATA[Abstract Class vs. Interface這篇介紹Abstract Class和Interface兩者資料結構的特性以及使用時機。兩者比較1234Abstract Class Interface可以寫方法內容 只能宣告方法可以有各種方法 只宣告public方法單一繼承 多重繼承使用時機上方兩者比較除了在繼承輸給Interface之外，Abstract Class還是彈性大。Abstract Class可以寫預設的方法，又可以讓子類別overwrite。123456789I. is a : 用繼承。ex:狗是一種動物public abstract class Animal&#123; ...&#125;public class Dog : Animal&#123; ...&#125;II. has a : 用介面。是一種...III.can do : 用介面。可以....結論如果無法判斷使用哪一個資料結構，建議使用Abstract Class。favor defining classes over interfaces.use abstract classes instead of interfaces to decouple the contract from implementations.Abstract classes, if designed correctly, allow for the same degree of decoupling between contract and implementation.何時使用interface呢? 當需要提供一個多功能value type123public struct Int32 : Icomparable, IFormattable, IConvertible&#123; ...&#125;]]></content>
