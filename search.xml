@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[System.Net.WebException:要求已經中止:無法建立SSL/TLS的安全通道]]></title>
+    <url>%2F2020%2F04%2F10%2FSystem-Net-WebException-%E8%A6%81%E6%B1%82%E5%B7%B2%E7%B6%93%E4%B8%AD%E6%AD%A2-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8BSSL-TLS%E7%9A%84%E5%AE%89%E5%85%A8%E9%80%9A%E9%81%93%2F</url>
+    <content type="text"><![CDATA[設定Linux重開機執行sh這篇介紹在C#上執行Restful Api時會出現System.Net.WebException:要求已經中止:無法建立SSL/TLS的安全通道錯誤~該如何解決SSL(Security Socket Layer)，在2014年，Google發現SSL存在安全漏洞，所以各大網站使用更安全的TLS。適用.NET版本為.NET Framework 4.5以上在request.GetResponse();之前加入以下設定:12System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate &#123; return true; &#125;;System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12|SecurityProtocolType.Ssl3| SecurityProtocolType.Tls;]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>RestfulApi</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[設定Linux重開機執行sh]]></title>
     <url>%2F2020%2F04%2F10%2F%E8%A8%AD%E5%AE%9ALinux%E9%87%8D%E9%96%8B%E6%A9%9F%E5%9F%B7%E8%A1%8Csh%2F</url>
     <content type="text"><![CDATA[設定Linux重開機執行sh這篇介紹在Linux上設定reboot執行sh檔案。crontab setting1@reboot sh /home/test/startProgram.sh &gt; /home/test/startProgram.logstartProgram.sh1234開機後兩分鐘執行另外一支.shsleep 2mcd /home/test/1sh start1.sh]]></content>
