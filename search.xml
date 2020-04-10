@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[設定Linux重開機執行sh]]></title>
+    <url>%2F2020%2F04%2F10%2F%E8%A8%AD%E5%AE%9ALinux%E9%87%8D%E9%96%8B%E6%A9%9F%E5%9F%B7%E8%A1%8Csh%2F</url>
+    <content type="text"><![CDATA[設定Linux重開機執行sh這篇介紹在Linux上設定reboot執行sh檔案。crontab setting1@reboot sh /home/test/startProgram.sh &gt; /home/test/startProgram.logstartProgram.sh1234開機後兩分鐘執行另外一支.shsleep 2mcd /home/test/1sh start1.sh]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C#EnumExtensionsMethod]]></title>
+    <url>%2F2020%2F04%2F10%2FCsharpEnumExtensionsMethod%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[C#EnumExtensionsMethod]]></title>
     <url>%2F2020%2F04%2F10%2FC-EnumExtensionsMethod%2F</url>
     <content type="text"><![CDATA[C#EnumExtensionsMethod這篇介紹在C#上如果寫出Enum的Extensions方法。enum &amp; Extensions example123456789101112131415161718192021222324252627282930namespace Test&#123; public enum CityInTaiwan &#123; Taipei = 0, NewTaipei = 1, Taoyuan = 2 &#125; public static class Extensions &#123; public static int getPersonsCount(this CityInTaiwan cityInTaiwan) &#123; int personsCount = -1; switch (cityInTaiwan) &#123; case CityInTaiwan.Taipei: personsCount = 1000000; return personsCount; case CityInTaiwan.NewTaipei: personsCount = 3000000; return personsCount; case CityInTaiwan.Taoyuan: personsCount = 2000000; return personsCount; default: return personsCount; &#125; &#125; &#125;&#125;呼叫方法123CityInTaiwan.Taipei.getPersonsCount(); //Output:1000000CityInTaiwan.NewTaipei.getPersonsCount(); //Output:3000000CityInTaiwan.Taoyuan.getPersonsCount(); //Output:2000000]]></content>
@@ -11,11 +27,6 @@
         <tag>Enum</tag>
         <tag>Extensions</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C#EnumExtensionsMethod]]></title>
-    <url>%2F2020%2F04%2F10%2FCsharpEnumExtensionsMethod%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Linux安裝vim]]></title>
@@ -330,8 +341,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Enum</tag>
         <tag>C#</tag>
+        <tag>Enum</tag>
         <tag>Java</tag>
       </tags>
   </entry>
