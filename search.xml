@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[StaticClass與Non-StaticClass差異]]></title>
+    <url>%2F2020%2F04%2F21%2FStaticClass%E8%88%87Non-StaticClass%E5%B7%AE%E7%95%B0%2F</url>
+    <content type="text"><![CDATA[Difference between static and non-static classSTATIC CLASS123456Static class is defined using static keyword. In static class, you are not allowed to create objects. The data members of static class can be directly accessed by its class name. Static class always contains static members. Static class does not contain an instance constructor. Static class cannot inherit from another class.NON-STATIC CLASS123456Non-Static class is not defined by using static keyword.In non-static class, you are allowed to create objects using new keyword.The data members of non-static class is not directly accessed by its class name.Non-static class may contain both static and non-static methods.Non-static class contains an instance constructor.Non-static class can be inherited from another class.]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>Static</tag>
+        <tag>Non-Static</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C#判斷Encoder斷線VLC播放器重連]]></title>
     <url>%2F2020%2F04%2F20%2FCSharp%E5%88%A4%E6%96%B7Encoder%E6%96%B7%E7%B7%9AVLC%E6%92%AD%E6%94%BE%E5%99%A8%E9%87%8D%E9%80%A3%2F</url>
     <content type="text"><![CDATA[C#判斷Encoder斷線VLC播放器重連從上篇C#使用Vlc64位元播放器By Vlc.DotNet:https://davidchen0217.github.io/2019/12/23/C-Sharp%E4%BD%BF%E7%94%A8VLC64%E4%BD%8D%E5%85%83%E6%92%AD%E6%94%BE%E5%99%A8/可以使用VLC播放器播放RTSP、RTMP…串流。會有一種情境發生是源頭的Encoder重啟造成播放中暫停。程式必須要新增判斷若斷線要重連斷線重連機制12345678if (vlcControl1.IsPlaying)&#123; vlcControl1.Refresh();&#125;else&#123; vlcControl1.Play(new Uri(rtsp:\\10.10.1.12));&#125;]]></content>
