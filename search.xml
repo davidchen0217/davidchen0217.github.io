@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於TelegramBot的token]]></title>
+    <url>%2F2020%2F04%2F27%2F%E9%97%9C%E6%96%BCTelegramBot%E7%9A%84token%2F</url>
+    <content type="text"><![CDATA[關於TelegramBot的token查詢自己所建立TelegramBot的token12345671.先找到@BotFather2.在視窗內下/mybots指令3.Choose a bot from the list below: 這邊會顯示你自己建立過的bot4.點選欲想查詢的@Bot5.點API Token6.顯示Token利用token查詢chat_id1在瀏覽器上key https://api.telegram.org/bot&#123;token&#125;/getUpdatesTelegramBot訊息的限制12傳10則訊息，必須等40秒後才能再傳在倒數期間傳的訊息都會Miss掉]]></content>
+      <categories>
+        <category>Telegram</category>
+      </categories>
+      <tags>
+        <tag>token</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[StaticClass與Non-StaticClass差異]]></title>
     <url>%2F2020%2F04%2F21%2FStaticClass%E8%88%87Non-StaticClass%E5%B7%AE%E7%95%B0%2F</url>
     <content type="text"><![CDATA[Difference between static and non-static classSTATIC CLASS123456Static class is defined using static keyword. In static class, you are not allowed to create objects. The data members of static class can be directly accessed by its class name. Static class always contains static members. Static class does not contain an instance constructor. Static class cannot inherit from another class.NON-STATIC CLASS123456Non-Static class is not defined by using static keyword.In non-static class, you are allowed to create objects using new keyword.The data members of non-static class is not directly accessed by its class name.Non-static class may contain both static and non-static methods.Non-static class contains an instance constructor.Non-static class can be inherited from another class.]]></content>
