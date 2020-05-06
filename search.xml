@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CSharp使用Dictionary_GetValueOrGetKey]]></title>
+    <url>%2F2020%2F05%2F06%2FCSharp%E4%BD%BF%E7%94%A8Dictionary_GetValueOrGetKey%2F</url>
+    <content type="text"><![CDATA[CSharp使用Dictionary_GetValueDictionary&lt;string, string&gt; map = new Dictionary&lt;string, string&gt;();map.Add(“1”, “1”);map.Add(“2”, “2”);map.Add(“3”, “2”);1.foreach KeyValuePair traversing1234567foreach (KeyValuePair&lt;string, string&gt; e in map)&#123; if (e.Value.Equals("2")) &#123; &#125;&#125;2.foreach map.Keys1234567foreach (string key in map.Keys)&#123; if (map[key].Equals("2")) &#123; &#125;&#125;3.Linq12//get all keysvar keys = map.Where(x =&gt; x.Value == "2").Select(y =&gt; y.Key);4.Get first key1var firstKey = map.FirstOrDefault(x =&gt; x.Value == "2").Key;]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>Dictionary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java下OracleSQLForField_IN]]></title>
     <url>%2F2020%2F04%2F27%2FJava%E4%B8%8BOracleSQLForFieldIN%2F</url>
     <content type="text"><![CDATA[Java下OracleSQL For Field_INSQL指令範例1SELECT * FROM world where position IN (SELECT /*+ CARDINALITY(T1, 100) */ * FROM TABLE(?) T1);Oracle Object 轉換12345678910111213int[] positions = new int[2];positions[0] = 1;positions[1] = 8;OracleUtils.getOracleARRAY(conn, "NUMBER_ARRAY", positions);public static ARRAY getOracleARRAY(Connection conn, String descriptor, Object elements) throws SQLException &#123; Connection nativeConn = OracleUtils.getNativeConnection(conn); ArrayDescriptor des = ArrayDescriptor.createDescriptor(descriptor, nativeConn); return new ARRAY(des, nativeConn, elements);&#125;資料庫建立Type NUMBER_ARRAY12345CREATE OR REPLACE TYPE "&#123;TABLE&#125;"."NUMBER_ARRAY" AS TABLE OF NUMBER;Introduction to Oracle NUMBER data typeThe precision is the number of digits in a number. It ranges from 1 to 38. The scale is the number of digits to the right of the decimal point in a number. It ranges from -84 to 127.]]></content>
