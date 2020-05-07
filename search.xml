@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Putty建立Tunnels使用FTP]]></title>
+    <url>%2F2020%2F05%2F07%2FPutty%E5%BB%BA%E7%AB%8BTunnels%E4%BD%BF%E7%94%A8FTP%2F</url>
+    <content type="text"><![CDATA[Putty建立Tunnels使用FTP在正式環境的Server經常會有一台做Google Authenticator的跳板機。通過跳板機的認證後才能連到後面的Web Server。這篇介紹如何建立Tunnels來將上版程式丟到Server上。建立PuTTY的Tunnels12圖片代表localhost Port:10001若通過跳板機認證，會有Tunnels連至IP:10.10.100.1，Port:12345建立FTP12圖片代表建立127.0.0.1 Port:10001若通過跳板機認證，即可連至IP:10.10.100.1，Port:12345 上傳檔案]]></content>
+      <categories>
+        <category>Putty</category>
+      </categories>
+      <tags>
+        <tag>Tunnels</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Oracle因Cursor造成Hint失效]]></title>
     <url>%2F2020%2F05%2F06%2FOracle%E5%9B%A0Cursor%E9%80%A0%E6%88%90Hint%E5%A4%B1%E6%95%88%2F</url>
     <content type="text"><![CDATA[Oracle因Cursor造成Hint失效SQL語法12345String sql = "SELECT /*+ INDEX (ACCOUNTTRACKER ACCOUNTTRACKER_PK) */ userid "+ "FROM accounttracker WHERE userid=?";ps = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE,ResultSet.CLOSE_CURSORS_AT_COMMIT);執行的結果12select rowid as "Oracle_JDBC_interal_ROWID", /*+ INDEX (ACCOUNTTRACKER ACCOUNTTRACKER_PK) */ userid FROM accounttracker WHERE userid=:1結論1使用cursor的方式執行sql，jdbc 會自動塞入rowid 在select 後面，導致原本應該直接在select後面的hint失效。]]></content>
