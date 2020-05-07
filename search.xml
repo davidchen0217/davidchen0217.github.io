@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Java使用Comparator做CollectionsSort</title>
+      <link href="/2020/05/07/Java%E4%BD%BF%E7%94%A8Comparator%E5%81%9ACollectionsSort/"/>
+      <url>/2020/05/07/Java%E4%BD%BF%E7%94%A8Comparator%E5%81%9ACollectionsSort/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Java使用Comparator做CollectionsSort"><a href="#Java使用Comparator做CollectionsSort" class="headerlink" title="Java使用Comparator做CollectionsSort"></a>Java使用Comparator做CollectionsSort</h3><a id="more"></a><p>當Server Loading較低時，可以考慮原本在SQL使用ORDER BY排序的作法，<br>改使用在該物件內@Override compare方法，並使用Collections.sort();<br>來做排序，降低資料庫Loading。</p><h3 id="物件範例-對Website、UserId排序"><a href="#物件範例-對Website、UserId排序" class="headerlink" title="物件範例-對Website、UserId排序"></a>物件範例-對Website、UserId排序</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class Example &#123;</span><br><span class="line"></span><br><span class="line">/* 避免 override compareTo 改用 comparator 比較有彈性  */</span><br><span class="line">public final static Comparator&lt;Example&gt; ascComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public int compare(Example o1, Example o2) &#123;</span><br><span class="line">int delta = Integer.compare(o1.getWebsite(), o2.getWebsite());</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (delta != 0) &#123;</span><br><span class="line"><span class="built_in">return</span> delta;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> o1.getUserId().compareTo(o2.getUserId());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">public int website;</span><br><span class="line"></span><br><span class="line">public String userId;</span><br><span class="line"></span><br><span class="line">public Example(int website, String userId) &#123;</span><br><span class="line">super();</span><br><span class="line"></span><br><span class="line">this.website = website;</span><br><span class="line">this.userId = userId;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int <span class="function"><span class="title">getWebsite</span></span>() &#123;</span><br><span class="line"><span class="built_in">return</span> website;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String <span class="function"><span class="title">getUserId</span></span>() &#123;</span><br><span class="line"><span class="built_in">return</span> userId;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="使用Collections-sort排序"><a href="#使用Collections-sort排序" class="headerlink" title="使用Collections.sort排序"></a>使用Collections.sort排序</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Example&gt; lList = new ArrayList&lt;Example&gt;();</span><br><span class="line"></span><br><span class="line">lList.add(4, <span class="string">"user0004"</span>);       </span><br><span class="line">lList.add(1, <span class="string">"user0001"</span>);</span><br><span class="line">lList.add(7, <span class="string">"user0007"</span>);</span><br><span class="line">lList.add(2, <span class="string">"user0002"</span>);</span><br><span class="line">lList.add(9, <span class="string">"user0009"</span>);</span><br><span class="line">lList.add(1, <span class="string">"user0001"</span>);</span><br><span class="line">lList.add(5, <span class="string">"user0005"</span>);</span><br><span class="line"></span><br><span class="line">Collections.sort(lList, Example.ascComparator);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Comparator </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PuTTY建立Tunnels使用FTP</title>
       <link href="/2020/05/07/Putty%E5%BB%BA%E7%AB%8BTunnels%E4%BD%BF%E7%94%A8FTP/"/>
       <url>/2020/05/07/Putty%E5%BB%BA%E7%AB%8BTunnels%E4%BD%BF%E7%94%A8FTP/</url>
