@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於/etc/hosts設定和traceroute語法在linux與windows差異]]></title>
+    <url>%2F2020%2F05%2F12%2F%E9%97%9C%E6%96%BC-etc-hosts%E5%92%8Ctraceroute%E5%9C%A8linux%E8%88%87windows%2F</url>
+    <content type="text"><![CDATA[關於/etc/hosts設定和traceroute語法在linux與windows差異/etc/hosts 在 Linux1$vim /etc/hosts/etc/hosts 在 Windows1C:\WINDOWS\system32\drivers\etc\hoststraceroute 在 Linux1$traceroute 'URL'traceroute 在 Windows1tracert 'URL']]></content>
+      <categories>
+        <category>hosts</category>
+      </categories>
+      <tags>
+        <tag>traceroute</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java使用Comparator做CollectionsSort]]></title>
     <url>%2F2020%2F05%2F07%2FJava%E4%BD%BF%E7%94%A8Comparator%E5%81%9ACollectionsSort%2F</url>
     <content type="text"><![CDATA[Java使用Comparator做CollectionsSort當Server Loading較低時，可以考慮原本在SQL使用ORDER BY排序的作法，改使用在該物件內@Override compare方法，並使用Collections.sort();來做排序，降低資料庫Loading。物件範例-對Website、UserId排序123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354public class Example &#123; /* 避免 override compareTo 改用 comparator 比較有彈性 */ public final static Comparator&lt;Example&gt; websiteAndUserIdAscComparator = new Comparator&lt;Example&gt;() &#123; @Override public int compare(Example o1, Example o2) &#123; int delta = Integer.compare(o1.getWebsite(), o2.getWebsite()); if (delta != 0) &#123; return delta; &#125; return o1.getUserId().compareTo(o2.getUserId()); &#125; &#125;; public final static Comparator&lt;Example&gt; websiteAscComparator = new Comparator&lt;Example&gt;() &#123; @Override public int compare(Example o1, Example o2) &#123; return Integer.compare(o1.getWebsite(), o2.getWebsite()); &#125; &#125;; public final static Comparator&lt;Example&gt; userIdAscComparator = new Comparator&lt;Example&gt;() &#123; @Override public int compare(Example o1, Example o2) &#123; return o1.getUserId().compareTo(o2.getUserId()); &#125; &#125;; public int website; public String userId; public Example(int website, String userId) &#123; super(); this.website = website; this.userId = userId; &#125; public int getWebsite() &#123; return website; &#125; public String getUserId() &#123; return userId; &#125;&#125;使用Collections.sort排序12345678910111213141516List&lt;Example&gt; lList = new ArrayList&lt;Example&gt;();lList.add(4, "user0004"); lList.add(1, "user0001");lList.add(7, "user0007");lList.add(2, "user0002");lList.add(9, "user0009");lList.add(1, "user0001");lList.add(5, "user0005");//對Website、UserId ASC排序Collections.sort(lList, Example.websiteAndUserIdAscComparator);//對Website ASC排序Collections.sort(lList, Example.websiteAscComparator);//對UserId ASC排序Collections.sort(lList, Example.userIdAscComparator);]]></content>
@@ -438,8 +449,8 @@
       </categories>
       <tags>
         <tag>C#</tag>
-        <tag>Vlc64bit</tag>
         <tag>Vlc.DotNet</tag>
+        <tag>Vlc64bit</tag>
       </tags>
   </entry>
   <entry>
