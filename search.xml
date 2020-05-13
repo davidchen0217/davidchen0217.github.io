@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTTPRequestWarning-InvalidCookieHeader]]></title>
+    <url>%2F2020%2F05%2F13%2FHTTPRequestWarning-InvalidCookieHeader%2F</url>
+    <content type="text"><![CDATA[HTTPRequestWarning-InvalidCookieHeaderJava上每個Request請求皆出現此訊息:May 13, 2020 3:12:04 PM org.apache.http.client.protocol.ResponseProcessCookies processCookiesWARNING: Invalid cookie header: “Set-Cookie: xxx; expires=Wed, 12 May 2021 10:48:23 GMT;HttpOnly; path=/; Domain=.xxx.net”. Invalid ‘expires’ attribute: Wed, 12 May 2021 10:48:23 GMTorg.apache.http.client.protocol.ResponseProcessCookies processCookies12解析cookie的expires屬性導致解析異常，從而導致HttpContent無法解析出正確的cookie。可以看到返回的Response cookie與期望解析的格式不一致。解決方法1HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build()).build();]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+        <tag>Cookie</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ExportRunnableJAR-Could not find main method from given luanch configuration]]></title>
     <url>%2F2020%2F05%2F13%2Fexportrunnablejarwarnings%2F</url>
     <content type="text"><![CDATA[ExportRunnableJAR-Could not find main method from given luanch configuration介紹在Export Runnable JAR時，出現Could not find main method from given luanch configuration警告。該如何解決~~Eclipse -&gt; Run -&gt; Run Configuration1在Java Application的Main Class設定要正確]]></content>
