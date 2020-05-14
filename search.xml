@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於TelegramBot收到相關ErrorResponse]]></title>
+    <url>%2F2020%2F05%2F14%2F%E9%97%9C%E6%96%BCTelegramBot%E6%94%B6%E5%88%B0%E7%9B%B8%E9%97%9CErrorResponse%2F</url>
+    <content type="text"><![CDATA[關於TelegramBot收到相關ErrorResponse400123Response:&#123;"ok":false,"error_code":400,"description":"Bad Request: message is too long"&#125;---------------------------------------------------------------------------------------Soultion:依照Telegram API文件，一則訊息的上限是4096bytes42912345Response:&#123;"ok":false,"error_code":429,"description":"Too Many Requests: retry after 899","parameters":&#123;"retry_after":899&#125;&#125;Soultion:1.When sending messages inside a particular chat, avoid sending more than one message per second.2.The API will not allow more than 30 messages per second or so.]]></content>
+      <categories>
+        <category>Telegram</category>
+      </categories>
+      <tags>
+        <tag>ErrorResponse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[HTTPRequestWarning-InvalidCookieHeader]]></title>
     <url>%2F2020%2F05%2F13%2FHTTPRequestWarning-InvalidCookieHeader%2F</url>
     <content type="text"><![CDATA[HTTPRequestWarning-InvalidCookieHeaderJava上每個Request請求皆出現此訊息:May 13, 2020 3:12:04 PM org.apache.http.client.protocol.ResponseProcessCookies processCookiesWARNING: Invalid cookie header: “Set-Cookie: xxx; expires=Wed, 12 May 2021 10:48:23 GMT;HttpOnly; path=/; Domain=.xxx.net”. Invalid ‘expires’ attribute: Wed, 12 May 2021 10:48:23 GMTorg.apache.http.client.protocol.ResponseProcessCookies processCookies12解析cookie的expires屬性導致解析異常，從而導致HttpContent無法解析出正確的cookie。可以看到返回的Response cookie與期望解析的格式不一致。解決方法1HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build()).build();]]></content>
