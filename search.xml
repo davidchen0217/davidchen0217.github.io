@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java.util.NoSuchElementException:No value present]]></title>
+    <url>%2F2020%2F05%2F27%2Fjava.util.NoSuchElementExceptionNoValuePresent%2F</url>
+    <content type="text"><![CDATA[java.util.NoSuchElementException:No value presentList執行stream().findFirst().get()時會出現java.util.NoSuchElementException:No value present錯誤訊息。Example12345List&lt;String&gt; list = new List&lt;String&gt;();list.add("A");list.add("B");list.add("C");list.stream().filter(obj -&gt; obj == "D").findFirst().get(); //這語法會造成java.util.NoSuchElementException:No value present錯誤解決方法1234Optional&lt;String&gt; result = list.stream().filter(obj -&gt; obj == "D").findFirst();if (result.isPresent()) &#123; String a = result.get();&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>stream</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於TelegramBot收到相關ErrorResponse]]></title>
     <url>%2F2020%2F05%2F14%2F%E9%97%9C%E6%96%BCTelegramBot%E6%94%B6%E5%88%B0%E7%9B%B8%E9%97%9CErrorResponse%2F</url>
     <content type="text"><![CDATA[關於TelegramBot收到相關ErrorResponse400123Response:&#123;"ok":false,"error_code":400,"description":"Bad Request: message is too long"&#125;---------------------------------------------------------------------------------------Soultion:依照Telegram API文件，一則訊息的上限是4096bytes42912345Response:&#123;"ok":false,"error_code":429,"description":"Too Many Requests: retry after 899","parameters":&#123;"retry_after":899&#125;&#125;Soultion:1.When sending messages inside a particular chat, avoid sending more than one message per second.2.The API will not allow more than 30 messages per second or so.]]></content>
@@ -321,8 +332,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>GET</tag>
         <tag>RestfulApi</tag>
+        <tag>GET</tag>
       </tags>
   </entry>
   <entry>
@@ -483,8 +494,8 @@
       </categories>
       <tags>
         <tag>C#</tag>
-        <tag>Vlc64bit</tag>
         <tag>Vlc.DotNet</tag>
+        <tag>Vlc64bit</tag>
       </tags>
   </entry>
   <entry>
