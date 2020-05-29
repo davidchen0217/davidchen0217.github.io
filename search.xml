@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Integer.parseInt vs Integer.valueOf]]></title>
+    <url>%2F2020%2F05%2F29%2FIntegerparseIntVersusIntegervalueOf%2F</url>
+    <content type="text"><![CDATA[Integer.parseInt vs Integer.valueOf在Java需要將String轉整數有兩個方法可以使用，這裡將介紹兩者的不同與使用時機。Integer.parseInt123public static int parseInt(String s) throws NumberFormatException &#123; return parseInt(s,10); &#125;Integer.parseInt return intInteger.valueOf123456public static Integer valueOf(String s) throws NumberFormatException &#123; return Integer.valueOf(parseInt(s, 10)); &#125;Integer.valueOf return Integerpublic static Integer valueOf(int i) &#123; if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) return IntegerCache.cache[i + (-IntegerCache.low)]; return new Integer(i); &#125;當 i 在 -128 ~ 127 之間會用cache中取得Integer，若不在該範圍會new Integer(i)。使用時機123如果需要int，使用Integer.parseInt()方法。如果需要Integer，使用Integer.valueOf()方法。同樣Integer、Long、Double和Float都是一樣的道理。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Integer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[java.util.NoSuchElementException:No value present]]></title>
     <url>%2F2020%2F05%2F27%2Fjava.util.NoSuchElementExceptionNoValuePresent%2F</url>
     <content type="text"><![CDATA[java.util.NoSuchElementException:No value presentList執行stream().findFirst().get()時會出現java.util.NoSuchElementException:No value present錯誤訊息。Example12345List&lt;String&gt; list = new List&lt;String&gt;();list.add("A");list.add("B");list.add("C");list.stream().filter(obj -&gt; obj == "D").findFirst().get(); //這語法會造成java.util.NoSuchElementException:No value present錯誤解決方法1234Optional&lt;String&gt; result = list.stream().filter(obj -&gt; obj == "D").findFirst();if (result.isPresent()) &#123; String a = result.get();&#125;]]></content>
@@ -494,8 +505,8 @@
       </categories>
       <tags>
         <tag>C#</tag>
-        <tag>Vlc.DotNet</tag>
         <tag>Vlc64bit</tag>
+        <tag>Vlc.DotNet</tag>
       </tags>
   </entry>
   <entry>
