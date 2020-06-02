@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Refactor重點]]></title>
     <url>%2F2020%2F06%2F02%2FRefactor%E9%87%8D%E9%BB%9E%2F</url>
-    <content type="text"><![CDATA[Refactor重點以下列出需要針對code再造的項目，以這幾個大原則為主。Refactor points123451.減少對資料庫操作，能只查一次就查一次，盡量不要在迴圈内進行查詢。2.針對時間複雜度O(n^2)的部分，盡量簡化成O(n)。對於O(n+n)的部分以讓程式易讀好維護為主，可以不用節省成O(n)。3.Request和Response盡量用物件方式來接收或傳送，減少使用Map物件來節省記憶體跟方便操作為主。4.單層Map&lt;T,T&gt;會比多層Map&lt;T,Map&lt;T,T&gt;&gt;佳，請盡量使用MuitlKey當作單層Map的Key。]]></content>
+    <content type="text"><![CDATA[Refactor重點以下列出需要針對code再造的項目，以這幾個大原則為主。Refactor points1234561.減少對資料庫操作，能只查一次就查一次，盡量不要在迴圈内進行查詢。2.針對時間複雜度O(n^2)的部分，盡量簡化成O(n)。對於O(n+n)的部分以讓程式易讀好維護為主，可以不用節省成O(n)。3.Request和Response盡量用物件方式來接收或傳送，減少使用Map物件來節省記憶體跟方便操作為主。4.單層Map&lt;T,T&gt;會比多層Map&lt;T,Map&lt;T,T&gt;&gt;佳，請盡量使用MuitlKey當作單層Map的Key。5.Map可先在主程式最上層new HashMap，並傳入BO和DAO做put可達到一個Map可重複利用。]]></content>
       <categories>
         <category>Java</category>
       </categories>
