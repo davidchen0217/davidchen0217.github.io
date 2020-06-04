@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於HTTP Headers X-Forwarded-For]]></title>
+    <url>%2F2020%2F06%2F04%2FX-Forwarded-For%2F</url>
+    <content type="text"><![CDATA[關於HTTP Headers X-Forwarded-ForX-Forwarded-For (XFF) 標頭是辨識用戶端透過 HTTP 代理或負載平衡 IP 位置來源的，事實上的標準。如果流量是在伺服器與用戶端中間擷取，伺服器日誌就只會代理或負載平衡的 IP 位置。如果要檢查用戶端的 IP 的原始來源，就會去檢查 X-Forwarded-For 請求標頭。語法123456X-Forwarded-For: &lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;---&lt;client&gt;用戶端的 IP 位置&lt;proxy1&gt;, &lt;proxy2&gt;如果請求用上了多個代理，則列出每個後續代理的 IP 地址。也就是說，最右邊的 IP 位置，是最新代理的 IP 位置；最左邊的 IP 位置，是用戶端原始來源的 IP 位置。X-Forwarded-For 可能被Hijack??1HTTP headers 可透過工具修改X-Forwarded-For內的值來達到hijack進而產生資安議題。解決方法12345在CDN上設定一組私有headers欄位來記錄 &lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;...等IP，並在CDN上將IP加密，Server端在使用解密的方式取得相關IP，來進行白名單驗證。因為在CDN上設定另一組看不到的私有headers欄位以及透過加密加強資安，讓用戶端難以進行Hijack。]]></content>
+      <categories>
+        <category>HTTP</category>
+      </categories>
+      <tags>
+        <tag>headers</tag>
+        <tag>X-Forwarded-For</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Javascript架構跟開發規範]]></title>
     <url>%2F2020%2F06%2F04%2FJavascript%E6%9E%B6%E6%A7%8B%E8%B7%9F%E9%96%8B%E7%99%BC%E8%A6%8F%E7%AF%84%2F</url>
     <content type="text"><![CDATA[Javascript架構跟開發規範介紹Javascript的架構及開發規範，提供參考。重要原則123456789101. Javascript的相關程式儘量不要直接寫在jsp頁面上，請開一個獨立的js檔案放置，因為JSP會被 tomcat編譯成servlet， 所以相關的javascript程式碼都會被轉成字串物件並放入Tomcat的string pool裡面，並佔用到server的記憶體，而獨立的js檔案則不會有這樣的問題2. JSP的註解請儘量使用&lt;%-- --%&gt;，這種屬於server端的註解，而不是使用&lt;!-- --&gt;，這種屬於瀏覽器端的註解a. Server端的註解 : 並不會傳到瀏覽器端，而且不會佔用到Server的記憶體b. 瀏覽器端的註解 : 當檢視網頁原始碼的時候可以看到，只是不會被瀏覽器執行，但這些註解會佔用到Server端的記憶體跟耗損網站頻寬3. Javascript命名請依照Java命名，讓其他同事在閱讀時能保持一致性4. 一個頁面上如果功能複雜，請依照頁面切出功能區塊，每個功能區塊由單一Javascript物件去管控，避免混亂]]></content>
