@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Javascript架構跟開發規範]]></title>
+    <url>%2F2020%2F06%2F04%2FJavascript%E6%9E%B6%E6%A7%8B%E8%B7%9F%E9%96%8B%E7%99%BC%E8%A6%8F%E7%AF%84%2F</url>
+    <content type="text"><![CDATA[Javascript架構跟開發規範介紹Javascript的架構及開發規範，提供參考。重要原則123456789101. Javascript的相關程式儘量不要直接寫在jsp頁面上，請開一個獨立的js檔案放置，因為JSP會被 tomcat編譯成servlet， 所以相關的javascript程式碼都會被轉成字串物件並放入Tomcat的string pool裡面，並佔用到server的記憶體，而獨立的js檔案則不會有這樣的問題2. JSP的註解請儘量使用&lt;%-- --%&gt;，這種屬於server端的註解，而不是使用&lt;!-- --&gt;，這種屬於瀏覽器端的註解a. Server端的註解 : 並不會傳到瀏覽器端，而且不會佔用到Server的記憶體b. 瀏覽器端的註解 : 當檢視網頁原始碼的時候可以看到，只是不會被瀏覽器執行，但這些註解會佔用到Server端的記憶體跟耗損網站頻寬3. Javascript命名請依照Java命名，讓其他同事在閱讀時能保持一致性4. 一個頁面上如果功能複雜，請依照頁面切出功能區塊，每個功能區塊由單一Javascript物件去管控，避免混亂]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Framework</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaJDBC-timeout]]></title>
     <url>%2F2020%2F06%2F04%2FJavaJDBC-timeout%2F</url>
     <content type="text"><![CDATA[JavaJDBC-timeout在Oracle JDBC執行SQL有幾個設定timeout的方法，提供參考。Connection pool123456789101112131415import org.apache.tomcat.jdbc.pool.DataSource;DataSource datasource = new DataSource();// 是否檢查借出未歸還的連線datasource.setRemoveAbandoned(true);// 借出未歸還的連線到多久的時候中斷datasource.setRemoveAbandonedTimeout(120);// 多久檢查一次借出未歸還的連線，所以這個案例最糟狀況可能是(120+60)秒datasource.setTimeBetweenEvictionRunsMillis(60 * 1000);1. 當程式從pool要求connection時開始計算，超過秒數時，pool會強制中斷連線，並從pool移除， 等隨後對conn做操作時，會拋出java.sql.SQLException: Connection has already been closed的例外2. 避免當程式忘記關connection時，資源可以被釋放3. 避免當DB連線異常時，connection持續被鎖住4. 因為是強制中斷，所以無法rollback跟commit，執行結果可能不如預期getWriteConnection(int timeout)12藉由timeout這個參數可以覆寫預設在connection pool內的abandonedTimeout時間，藉此，當我們在執行一些需要大量時間的函數時，可以避免連線被connection pool中斷setQueryTimeout(int timeout)12345在PreparedStatement裡面有一個setQueryTimeout函數，藉此可以指定執行的時間1. 執行超過指定時間，會拋出SQLTimeoutException例外，但connection不會被關閉，也不會從pool移除2. 對時間比較敏感的查詢程式，例如cache的更新，可以設定一個執行時間，超過預期時，可以查找另一個node3. 對比較依賴最後更新時間的table，可以避免執行時間過長，導致cache沒抓到資料]]></content>
