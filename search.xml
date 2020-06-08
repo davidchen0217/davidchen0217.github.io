@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[double vs. BigDecimal]]></title>
+    <url>%2F2020%2F06%2F08%2FBigDecimal%2F</url>
+    <content type="text"><![CDATA[double vs. BigDecimal這篇介紹double和BigDecimal兩者不同以及使用時機。double 基本型別123double型別的主要設計目標是為了科學計算和工程計算。他們執行二進位制浮點運算，這是為了在廣域數值範圍上提供較為精確的快速近似計算而精心設計的。然而，它們沒有提供完全精確的結果，所以不應該被用於要求精確結果的場合。但是，商業計算往往要求結果精確。Double.MAX_VALUE : 1.7976931348623157E308BigDecimal 物件1234561.比較大小用compareTo()public static int compareTo(double v1, double v2) &#123; return BigDecimalUtils.compareTo(getInstance(v1), new BigDecimal(Double.toString(v2)));&#125;2.BigDecial是immutable的，就像String一樣，它的所有操作都會生成一個新的物件3.不要用equals方法來比較BigDecimal物件，因為它的equals方法會比較scale，如果scale不一樣，它會返回false兩者比較1double是基本型別使用記憶體較小，BigDecimal是物件使用記憶體較多使用時機123456789101112131415161718192021222324251.在接收參數時數值若小於Double.MAX_VALUE，使用double基本型別來接收參數2.計算統一用BigDecimalUtils來做加減乘除3.加法public static BigDecimal add(double v1, double v2) &#123; return BigDecimalUtils.add(getInstance(v1), getInstance(v2));&#125;// new BigDecimal(double val)會有問題，ex : new BigDecimal(0.01);public static BigDecimal getInstance(double value) &#123; return BigDecimal.valueOf(value);&#125;4.減法public static BigDecimal subtract(double v1, double v2) &#123; return BigDecimalUtils.subtract(BigDecimal.valueOf(v1), BigDecimal.valueOf(v2));&#125;5.乘法public static BigDecimal multiply(double v1, double v2) &#123; return BigDecimalUtils.multiply(getInstance(v1), getInstance(v2));&#125;6.除法public static BigDecimal divide(double v1, double v2, int scale) &#123; if (scale &lt; 0) &#123; throw new IllegalArgumentException("The scale must be a positive integer or zero"); &#125; return BigDecimal.valueOf(v1).divide(BigDecimal.valueOf(v2), scale, BigDecimal.ROUND_HALF_UP);&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>double</tag>
+        <tag>BigDecimal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於HTTP Headers X-Forwarded-For]]></title>
     <url>%2F2020%2F06%2F04%2FX-Forwarded-For%2F</url>
     <content type="text"><![CDATA[關於HTTP Headers X-Forwarded-ForX-Forwarded-For (XFF) 標頭是辨識用戶端透過 HTTP 代理或負載平衡 IP 位置來源的，事實上的標準。如果流量是在伺服器與用戶端中間擷取，伺服器日誌就只會代理或負載平衡的 IP 位置。如果要檢查用戶端的 IP 的原始來源，就會去檢查 X-Forwarded-For 請求標頭。語法123456X-Forwarded-For: &lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;---&lt;client&gt;用戶端的 IP 位置&lt;proxy1&gt;, &lt;proxy2&gt;如果請求用上了多個代理，則列出每個後續代理的 IP 地址。也就是說，最右邊的 IP 位置，是最新代理的 IP 位置；最左邊的 IP 位置，是用戶端原始來源的 IP 位置。X-Forwarded-For 可能被Hijack??1HTTP headers 可透過工具修改X-Forwarded-For內的值來達到hijack進而產生資安議題。解決方法12345在CDN上設定一組私有headers欄位來記錄 &lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;...等IP，並在CDN上將IP加密，Server端在使用解密的方式取得相關IP，來進行白名單驗證。因為在CDN上設定另一組看不到的私有headers欄位以及透過加密加強資安，讓用戶端難以進行Hijack。]]></content>
@@ -425,8 +437,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>GET</tag>
         <tag>RestfulApi</tag>
+        <tag>GET</tag>
       </tags>
   </entry>
   <entry>
