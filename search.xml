@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>關於MERGE INTO</title>
+      <link href="/2020/06/09/aboutmergeinto/"/>
+      <url>/2020/06/09/aboutmergeinto/</url>
+      
+        <content type="html"><![CDATA[<h3 id="關於MERGE-INTO"><a href="#關於MERGE-INTO" class="headerlink" title="關於MERGE INTO"></a>關於MERGE INTO</h3><a id="more"></a><p>這篇介紹MERGE INTO使用情境與如何使用。</p><h3 id="使用情境"><a href="#使用情境" class="headerlink" title="使用情境"></a>使用情境</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MERGE INTO 可以達成以下需求</span><br><span class="line">如果Key MATCHED，可做 UPDATE/DELETE</span><br><span class="line">如果Key MATCHED + Condition (AND field &lt;&gt; field)，可做 UPDATE/DELETE</span><br><span class="line">如果Key NOT MATCHED，可INSERT</span><br></pre></td></tr></table></figure><h3 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use"></a>How to use</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MERGE INTO <span class="comment">#tmp1</span></span><br><span class="line">   USING <span class="comment">#tmp2</span></span><br><span class="line">   ON <span class="comment">#tmp1.key1 = #tmp2.key1 //可以多組Key</span></span><br><span class="line">WHEN MATCHED THEN   </span><br><span class="line">    UPDATE SET <span class="comment">#tmp1.Name = #tmp2.Name ,#tmp1.Phone = #tmp2.Phone </span></span><br><span class="line">WHEN MATCHED AND <span class="comment">#tmp1.Name &lt;&gt; #tmp2.Name THEN  //MATCHED可以再加條件</span></span><br><span class="line">    UPDATE SET <span class="comment">#tmp1.Name = #tmp2.Name ,#tmp1.Phone = #tmp2.Phone </span></span><br><span class="line">WHEN MATCHED AND <span class="comment">#tmp1.Name='' AND #tmp2.Name='' THEN  //MATCHED可以再加條件</span></span><br><span class="line">    DELETE //DELETE只要這樣寫</span><br><span class="line">WHEN NOT MATCHED THEN</span><br><span class="line">    INSERT VALUES(<span class="comment">#tmp2.co1,#tmp2.col2,#tmp2.col3);</span></span><br><span class="line"></span><br><span class="line">(1) <span class="comment">#tmp1:要被INSERT/UPDATE/DELETE的Table</span></span><br><span class="line">(2) <span class="comment">#tmp2:被參考的Table</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MergeInto </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java-Quartz vs. Linux-Crontab</title>
       <link href="/2020/06/08/javaquartzversuslinuxcrontab/"/>
       <url>/2020/06/08/javaquartzversuslinuxcrontab/</url>
