@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於TelegramSupergroups]]></title>
+    <url>%2F2020%2F06%2F10%2F%E9%97%9C%E6%96%BCTelegramSupergroups%2F</url>
+    <content type="text"><![CDATA[關於TelegramSupergroups通常在Telegram建立新群組時，會是一般群組。這邊介紹如何成升級supergroups。升級supergroups123451.先建立Group2.加入一位好友3.將好友設為Admin，並且將權限全開。4.已升級成supergroups，可以用https://api.telegram.org/&#123;BotToken&#125;/getUpdates來確認chat_id。5.chat_id若是-100開頭就是supergroups。]]></content>
+      <categories>
+        <category>Telegram</category>
+      </categories>
+      <tags>
+        <tag>supergroups</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java的HttpClient關閉cookie支援]]></title>
     <url>%2F2020%2F06%2F09%2FJava%E5%9C%A8HttpClient%E9%97%9C%E9%96%89cookie%E6%94%AF%E6%8F%B4%2F</url>
     <content type="text"><![CDATA[Java在HttpClient關閉cookie支援通常在API Server不需要使用cookie，這篇介紹如何在Java的HttpClient關閉cookie支援。在initial將cookie資源管理disable123456789101112131415//API連線不需要使用cookie，因此關閉cookie管理，降低系統資源耗用。//主要是.disableCookieManagement() 和 .disableAutomaticRetries() 來關閉cookie管理。private CloseableHttpClient httpClient = null;protected RequestConfig requestConfig = null;requestConfig = RequestConfig.custom().setSocketTimeout(SOCKET_HOLD_TIMEOUT) .setConnectTimeout(CONNECTION_TIMEOUT).setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT) .build();httpClient = HttpClients.custom().setConnectionManager(cm).setKeepAliveStrategy(keepAliveStrategy) .setDefaultRequestConfig(requestConfig).disableCookieManagement() .setUserAgent( "mozilla/4.0 (compatible; msie 8.0; windows nt 6.1; wow64; trident/4.0; slcc2; .net clr 2.0.50727; .net clr 3.5.30729; .net clr 3.0.30729; media center pc 6.0; masn)") .disableAutomaticRetries().build();]]></content>
