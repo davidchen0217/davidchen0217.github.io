@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[多台Server利用SelectForUpdate對資料庫只做一次操作]]></title>
+    <url>%2F2020%2F06%2F10%2F%E5%A4%9A%E5%8F%B0Server%E5%88%A9%E7%94%A8SelectForUpdate%E5%B0%8D%E8%B3%87%E6%96%99%E5%BA%AB%E5%8F%AA%E5%81%9A%E4%B8%80%E6%AC%A1%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[多台Server利用SelectForUpdate對資料庫只做一次操作有一種設計是同時讓多台Server做同一項功能，但一次只有一台Server能搶到優先執行權。除了搶到執行權的Server，其它台可以當作備援Server使用，以防只有一台Server又發生故障時，還有其它台Server可以執行。先執行到Select For update的會搶到執行權，其它台Server進來會select到null直接跳掉。Select For Update123456SELECT updatedate from systemsetting where key = 'function1' FOR UPDATE;if (updatedate != null) &#123; //do one thing&#125;用以上設計，同時四台Server進來執行該SQL時，只會有一台Server會先拿到updatedate其它三台Server會拿到null，就只會有一台Server可以拿到執行權。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>SelectForUpdate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於TelegramSupergroups]]></title>
     <url>%2F2020%2F06%2F10%2F%E9%97%9C%E6%96%BCTelegramSupergroups%2F</url>
     <content type="text"><![CDATA[關於TelegramSupergroups通常在Telegram建立新群組時，會是一般群組。這邊介紹如何成升級supergroups。升級supergroups123451.先建立Group2.加入一位好友3.將好友設為Admin，並且將權限全開。4.已升級成supergroups，可以用https://api.telegram.org/&#123;BotToken&#125;/getUpdates來確認chat_id。5.chat_id若是-100開頭就是supergroups。]]></content>
