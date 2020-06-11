@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Session與Cookie差別]]></title>
+    <url>%2F2020%2F06%2F11%2FSession%E8%88%87Cookie%E5%B7%AE%E5%88%A5%2F</url>
+    <content type="text"><![CDATA[Session與Cookie差別這篇介紹在瀏覽器的世界中，常用的Session和cookie。HTTP本身是個無狀態(Stateless)的協定，可以在Client與Server兩端進行溝通，但是無法紀錄網路上的行為。Cookie和Session因此誕生，用來解決無紀錄狀態的問題。Cookie12345678910由Server送給使用者瀏覽器的一小塊資料(文檔)。瀏覽器會儲存它並且在瀏覽器下一次發送要求的時候將它送回原本送來的伺服器。基本上，它是用來區分兩個要求是來自同一個瀏覽器 — 以此去保持使用者的登入狀態。例如，它提供了保存狀態資訊的功能，來幫助HTTP這個無法紀錄狀態的通訊協定。Cookie 由瀏覽器處理，具有兩個特性：特定網域：只針對原本的 網域(domain) 起作用。舉例: 在 *.gaagle.com 存入的 Cookie，不會出現在 *.not-gaagle.com有生命期限: 到了所設定的生命期限之後會失效。向這個domain的server發送請求時，也會被一併帶進去該請求中。缺點:Cookie中的所有數據在Client端就可以被修改，數據非常容易被偽造，那麼一些重要的數據就不能存放在Cookie。Session123456Session負責紀錄在server端上的使用者訊息，會在一個用戶完成身分認證後，存下所需的用戶資料，接著產生一組對應的 ID，存入 Cookie 後傳回用戶端。 Session泛指有始有終的系列動作/消息。Client端的Request建一個Session的時候，Server會先檢查這個Client端的Request裡是否有包含了Session標識(Session id)，如果已包含一個Session id，表示這個發起Request的Client端是已經存放過的id，Server就按照Session id，把這個Session找出來使用。但如果Client端請求不包含Session id，，則表示他是新臉孔，那Server端就為此Client端創建一個Session，並生成一個Session id，並Response給Client端保存。結論12Session：帳號登錄驗證過後，Server端所發的識別證Cookie：是瀏覽器存放資料的地方，可以存放seesion之類的資料]]></content>
+      <categories>
+        <category>Browser</category>
+      </categories>
+      <tags>
+        <tag>Cookie</tag>
+        <tag>Session</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[多台Server利用SelectForUpdate讓只有一台Server有執行權]]></title>
     <url>%2F2020%2F06%2F10%2F%E5%A4%9A%E5%8F%B0Server%E5%88%A9%E7%94%A8SelectForUpdate%E5%B0%8D%E8%B3%87%E6%96%99%E5%BA%AB%E5%8F%AA%E5%81%9A%E4%B8%80%E6%AC%A1%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[多台Server利用SelectForUpdate讓只有一台Server有執行權有一種設計是同時讓多台Server做同一項功能，但一次只有一台Server能搶到優先執行權。除了搶到執行權的Server，其它台可以當作備援Server使用，以防只有一台Server又發生故障時，還有其它台Server可以執行。先執行到Select For update的會搶到執行權，其它台Server進來會select到null直接跳掉。Select For Update123456SELECT updatedate from systemsetting where key = 'function1' FOR UPDATE;if (updatedate != null) &#123; //do one thing&#125;用以上設計，同時四台Server進來執行該SQL時，只會有一台Server會先拿到updatedate其它三台Server會拿到null，就只會有一台Server可以拿到執行權。]]></content>
+    <content type="text"><![CDATA[多台Server利用SelectForUpdate讓只有一台Server有執行權這種設計是同時讓多台Server做同一項功能，但一次只有一台Server能搶到優先執行權。除了搶到執行權的Server，其它台可以當作備援Server使用，以防只有一台Server又發生故障時，還有其它台Server可以執行。先執行到Select For update的會搶到執行權，其它台Server進來會select到null直接跳掉。Select For Update123456SELECT updatedate from systemsetting where key = 'function1' FOR UPDATE;if (updatedate != null) &#123; //do one thing&#125;用以上設計，同時四台Server進來執行該SQL時，只會有一台Server會先拿到updatedate其它三台Server會拿到null，就只會有一台Server可以拿到執行權。]]></content>
       <categories>
         <category>Java</category>
       </categories>
