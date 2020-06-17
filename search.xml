@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Bandicut分割影片軟體]]></title>
+    <url>%2F2020%2F06%2F17%2FBandicut%E5%88%86%E5%89%B2%E5%BD%B1%E7%89%87%E8%BB%9F%E9%AB%94%2F</url>
+    <content type="text"><![CDATA[Bandicut分割影片軟體最近有分割mp4影片的需求，之前使用過Mp4Split軟體做影片分割。功能簡單但只有用多少秒分割一個影片的選項，自己仍需要去計算多少秒分割一個影片，最近找到Bandicut這個軟體，它提供一個可以一部影片分割多少部影片的選項。是一個更好的影片分割軟體的選擇。官方網站下載1https://www.bandicam.com/bandicut-video-cutter/tw/免費版開啟有修剪、分割、合併三個功能點選分割後，選擇檔案會出現需要分割影片的數量再點選兩個開始後，影片就開始分割]]></content>
+      <categories>
+        <category>Bandicut</category>
+      </categories>
+      <tags>
+        <tag>SplitVideo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jenkins設定EmailNotification]]></title>
     <url>%2F2020%2F06%2F15%2FJenkins%E8%A8%AD%E5%AE%9AEmailNotification%2F</url>
     <content type="text"><![CDATA[Jenkins設定EmailNotification通常在Jenkins上設定完每日建置專案後，需要設定EmailNotification來通知相關人員bulid的結果，這篇教如何設定EmailNotification設定步驟12345678Jenkins&gt;&gt;專案名稱&gt;&gt;組態1-1.上方Tab選擇建置設定將電子郵件通知(打勾1-2.Recipients-&gt;key上接收人員的Email(多位請,分隔)1-3.Send e-mail for every unstable build 1-4.Send separate e-mails to individuals who broke the build(打勾1-5.Send e-mail for each failed module(打勾2-1.上方Tab選擇建置後動作&gt;&gt;可編式電子郵件通知&gt;&gt;專案收件人清單，要key上接收人員的Email(多位請,分隔)2-2.建置後動作&gt;&gt;Advanced Settings...&gt;&gt;Triggers&gt;&gt; 1.Failure - Any Send To 'Recipient List' and Always Send To 'Recipient List'建置設定圖示建置後動作 &gt; Advanced Settings… &gt; Triggers]]></content>
