@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[websocket-getAsyncRemote() Versus getBasicRemote()]]></title>
+    <url>%2F2020%2F07%2F09%2Fwebsocket-getAsyncRemote()VersusgetBasicRemote()%2F</url>
+    <content type="text"><![CDATA[websocket-getAsyncRemote() Versus getBasicRemote()WebSocket是一種網路傳輸協定，可在單個TCP連接上進行全雙工通訊，位於OSI模型的應用層。WebSocket協定在2011年由IETF標準化為RFC 6455，後由RFC 7936補充規範。Web IDL中的WebSocket API由W3C標準化。WebSocket使得客戶端和伺服器之間的資料交換變得更加簡單，允許伺服器端主動向客戶端推播資料。在WebSocket API中，瀏覽器和伺服器只需要完成一次交握，兩者之間就可以建立永續性的連接，並進行雙向資料傳輸。websocket Session sendText() 有兩種模式12345678(1) session.getAsyncRemote().sendText() 非同步 可平行處理，一次發送多個 不在乎順序(2) session.getBasicRemote().sendText() 同步 第二個要等第一個發送完才繼續發送session.getBasicRemote().sendText()1234567891011121314151617181920/** * Send a text message in parts, blocking until all of the message has been transmitted. The runtime * reads the message in order. Non-final parts of the message are sent with isLast set to false. The final part * must be sent with isLast set to true. * * @param partialMessage the parts of the message being sent. * @param isLast Whether the partial message being sent is the last part of the message. * @throws IOException if there is a problem delivering the message fragment. * @throws IllegalArgumentException if the partialMessage is &#123;@code null&#125;. */void sendText(String partialMessage, boolean isLast) throws IOException;exmaple:session.getBasicRemote().sendText(message, false); session.getBasicRemote().sendBinary(data);session.getBasicRemote().sendText(message, true); 由於同步特性，第二行必须等待第一行發送完成後才能進行，而第一行的剩餘message要等第二行發送完才能繼續發送，所以在第二行會throw IllegalStateException。如果要使用getBasicRemote()同步sendText，請避免一次發送全部，使用部分發送。結論12大部分的情況請使用非同步session.getAsyncRemote().sendText()方法有特殊需求要進行部分發送時，請使用session.getBasicRemote().sendText()方法]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>webSocket</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java8-Optional]]></title>
     <url>%2F2020%2F07%2F09%2FJava8-Optional%2F</url>
     <content type="text"><![CDATA[Java8-OptionalOptional是一個class，可以包含也可以不包含非null值。Optional在Java 8中導入。目的是為了解决NullPointerExceptions的問題。A container object which may or may not contain a non-null value.If a value is present, {@code isPresent()} will return {@code true} and{@code get()} will return the value.before Optional123456789101112131415161718在Java 8之前，開發人員在方法內return null而不是Optional。這種方法有一些缺點。第一是没有明確的方法來表示null可能是一個特殊值。相比之下，在API中返回Optional是明確的定義，其中可能没有值。如果我们要確保不會出現NullPointerExceptions，則需要對每個引用進行檢查。private void getIsoCode(User user)&#123; if (user != null) &#123; Address address = user.getAddress(); if (address != null) &#123; Country country = address.getCountry(); if (country != null) &#123; String isocode = country.getIsocode(); if (isocode != null) &#123; isocode = isocode.toUpperCase(); &#125; &#125; &#125; &#125;&#125;Optional:staticOptionalempty()1234// Creating an empty optionalOptional&lt;String&gt; empty = Optional.empty();-----Returns an empty &#123;@code Optional&#125; instance. No value is present for this Optional.Optional:staticOptionalof(T value)12345// Creating an optional using ofString name = "java";Optional&lt;String&gt; opt = Optional.of(name);-----Returns an &#123;@code Optional&#125; with the specified present non-null value.Optional:staticOptionalofNullable(T value)1234567891011121314// Possible null valueOptional&lt;String&gt; optional = Optional.ofNullable(name());private String name() &#123; String name = "Java"; return (name.length() &gt; 5) ? name : null;&#125;-----Returns an &#123;@code Optional&#125; describing the specified value, if non-null,otherwise returns an empty &#123;@code Optional&#125;.Optional:boolean isPresent()1234567891011//ispresentOptional optional1 = Optional.of("javaone");if (optional1.isPresent()) &#123; //Do something, normally a get&#125;-----Return &#123;@code true&#125; if there is a value present, otherwise &#123;@code false&#125;.Optional:void ifPresent(Consumer&lt;? super T&gt; consumer)12345678//ifpresentOptional&lt;String&gt; optional1 = Optional.of("javaone");optional1.ifPresent(s -&gt; System.out.println(s.length()));-----If a value is present, invoke the specified consumer with the value,otherwise do nothing.Optional:T get()12345678//getOptional&lt;String&gt; optional1 = Optional.of("javaone");if (optional1.isPresent())&#123; String value = optional1.get();&#125;-----If a value is present in this &#123;@code Optional&#125;, returns the value,otherwise throws &#123;@code NoSuchElementException&#125;.Optional:T orElse(T other)12345//orElseString nullName = null;String name = Optional.ofNullable(nullName).orElse("default_name");-----Return the value if present, otherwise return &#123;@code other&#125;.Optional:T orElseGet(Supplier&lt;? extends T&gt; other)12345//orElseGetString name = Optional.ofNullable(nullName).orElseGet(() -&gt; "david");-----Return the value if present, otherwise invoke &#123;@code other&#125; and returnthe result of that invocation.結論123456When to use?User user = users.stream().findFirst().orElse(new User("default", "1234"));When don't use?1.不可序列化2.不能拿來做建構子或方法的參數，會導致代碼變複雜User user = new User("david@gmail.com", "1234", Optional.empty());]]></content>
@@ -739,8 +750,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>GET</tag>
         <tag>RestfulApi</tag>
+        <tag>GET</tag>
       </tags>
   </entry>
   <entry>
