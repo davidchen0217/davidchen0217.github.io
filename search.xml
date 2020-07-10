@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java.math.BigDecimal.toPlainString()]]></title>
+    <url>%2F2020%2F07%2F10%2FBigDeaimaltoPlainString%2F</url>
+    <content type="text"><![CDATA[Java.math.BigDecimal.toPlainString()java.math.BigDecimal.toPlainString() 返回此BigDecimal的字符串表示形式不帶指數字段。為具有正的精度值，中位數的小數點右邊的數字用於指示精度。method 宣告1public String toPlainString()BigDecimal.toPlainString() Example1234567891011121314151617181920212223public class BigDecimalDemo &#123; public static void main(String[] args) &#123; // create a BigDecimal object BigDecimal bg; // create a String object String s; MathContext mc = new MathContext(3); // 3 precision bg = new BigDecimal("1234E+4",mc); // assign the plain string value of bg to s s = bg.toPlainString(); String str = "Plain string value of " + bg + " is " + s; // print s value System.out.println( str ); &#125;&#125;Output1Plain string value of 1.23E+7 is 12300000]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>BigDecimal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[websocket-getAsyncRemote() Versus getBasicRemote()]]></title>
     <url>%2F2020%2F07%2F09%2Fwebsocket-getAsyncRemote()VersusgetBasicRemote()%2F</url>
     <content type="text"><![CDATA[websocket-getAsyncRemote() Versus getBasicRemote()WebSocket是一種網路傳輸協定，可在單個TCP連接上進行全雙工通訊，位於OSI模型的應用層。WebSocket協定在2011年由IETF標準化為RFC 6455，後由RFC 7936補充規範。Web IDL中的WebSocket API由W3C標準化。WebSocket使得客戶端和伺服器之間的資料交換變得更加簡單，允許伺服器端主動向客戶端推播資料。在WebSocket API中，瀏覽器和伺服器只需要完成一次交握，兩者之間就可以建立永續性的連接，並進行雙向資料傳輸。websocket Session sendText() 有兩種模式12345678(1) session.getAsyncRemote().sendText() 非同步 可平行處理，一次發送多個 不在乎順序(2) session.getBasicRemote().sendText() 同步 第二個要等第一個發送完才繼續發送session.getBasicRemote().sendText()1234567891011121314151617181920/** * Send a text message in parts, blocking until all of the message has been transmitted. The runtime * reads the message in order. Non-final parts of the message are sent with isLast set to false. The final part * must be sent with isLast set to true. * * @param partialMessage the parts of the message being sent. * @param isLast Whether the partial message being sent is the last part of the message. * @throws IOException if there is a problem delivering the message fragment. * @throws IllegalArgumentException if the partialMessage is &#123;@code null&#125;. */void sendText(String partialMessage, boolean isLast) throws IOException;exmaple:session.getBasicRemote().sendText(message, false); session.getBasicRemote().sendBinary(data);session.getBasicRemote().sendText(message, true); 由於同步特性，第二行必须等待第一行發送完成後才能進行，而第一行的剩餘message要等第二行發送完才能繼續發送，所以在第二行會throw IllegalStateException。如果要使用getBasicRemote()同步sendText，請避免一次發送全部，使用部分發送。結論12大部分的情況請使用非同步session.getAsyncRemote().sendText()方法有特殊需求要進行部分發送時，請使用session.getBasicRemote().sendText()方法]]></content>
@@ -321,8 +332,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>double</tag>
         <tag>BigDecimal</tag>
+        <tag>double</tag>
       </tags>
   </entry>
   <entry>
@@ -750,8 +761,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>RestfulApi</tag>
         <tag>GET</tag>
+        <tag>RestfulApi</tag>
       </tags>
   </entry>
   <entry>
