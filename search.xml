@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux crontab執行jar]]></title>
+    <url>%2F2020%2F07%2F13%2FLinuxcrontab%E5%9F%B7%E8%A1%8Cjar%2F</url>
+    <content type="text"><![CDATA[Linux crontab執行jar在linux下面執行java程式，一般情況下我們先打包成jar檔案，放在linux下，用crontab執行Shell script去執行jar檔。upload.sh1234export JAVA_HOME=/usr/java/jdk1.8.0_181-amd64export PATH=$JAVA_HOME/bin:$PATH java -jar /opt/local/test/DavidTest.jarcrontab16,16,26,36,46,56 * * * * sh /root/deploy/upload.sh &gt;&gt; /root/deploy/upload.log結論12必須在upload.sh 匯入java的環境變數，為什麼要匯入這些內容，是因為crontab定時程式呼叫指令碼時，系統的環境變數是沒有載入的。其次執行jar的命令是java -jar 加jar檔名稱就可以了，這個命令是跨平臺的。]]></content>
+      <categories>
+        <category>crontab</category>
+      </categories>
+      <tags>
+        <tag>Javas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於ignite Server]]></title>
     <url>%2F2020%2F07%2F13%2F%E9%97%9C%E6%96%BCigniteserver%2F</url>
     <content type="text"><![CDATA[關於ignite Server安裝路徑:/usr/local/apache-ignite-2.7.0-binlog路徑:/usr/local/apache-ignite-2.7.0-bin/work/log執行與關閉指令1234start:/usr/local/apache-ignite-2.7.0-bin/bin/startIgnite.shshutdown:/usr/local/apache-ignite-2.7.0-bin/bin/shutdownIgnite.sh重啟順序12341. All Tomcat server shutdown2. All Ignite server shutdown (到此步驟請檢查 java process 是否已全部關閉)3. All Ignite server startup4. All Tomcat server startupIgnite Visor12345678910111213Visor 為 Ignite 提供了腳本化的監控能力，它可以用於獲得與節點、緩存和任務有關的統計數據，顯示與拓撲有關的各種指標的一般細節，還有節點的配置屬性也可以在這裡看到，它還可以用於啟動和停止遠程節點。執行路徑: /usr/local/apache-ignite-2.7.0-bin/bin/ignitevisorcmd.sh選擇 ignite config 路徑:1. 輸入 open2. 選擇 config (這裡選擇 ignite startup 指定的 config)查看 cluster 狀態visor&gt; top查看 cache size / heap 使用率visor&gt; cache -a]]></content>
