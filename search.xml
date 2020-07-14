@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Install Filebeat]]></title>
+    <url>%2F2020%2F07%2F14%2FInstallFilebeat%2F</url>
+    <content type="text"><![CDATA[Install FilebeatFilebeat is a lightweight software for sending logs is available for Windows, MacOS and Linux.Install Filebeat from rpm package123456789101112Download rpm package (with sha512 checked)$ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-x86_64.rpm$ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-x86_64.rpm.sha512Install Filebeat$ rpm -ivh filebeat-7.2.0-x86_64.rpmCheck filebeat version (7.2.0)$ filebeat versionMove custom.yml(content differ from every project) into filebeat directory.$mv custom.yml /etc/filebeat/(Optional) Install Filebeat from binary12345678910Download Filebeat 7.2.0 binary (with sha512 checked)$wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-linux-x86_64.tar.gz$wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-linux-x86_64.tar.gz.sha512Unzip filebeat package.Check filebeat version (7.2.0)$ ./filebeat versionMove custom.yml(content differ from every project) into filebeat directory.Modify custom.yml1234567891011121314151617181920212223242526272829303132Modify absolute source log path &amp; instance name.Linux version:--------------------------------------------------------filebeat.inputs:- type: log paths: - /usr/local/apache/tomcat/logs/catalina.log fields: pipeline_log_id: project instance: custom_instance fields_under_root: true tail_files: false scan_frequency: 3s idle_timeout: 3soutput.logstash: hosts: ["www.elk02.co:5044"] worker: 5--------------------------------------------------------MS windows version:--------------------------------------------------------filebeat.inputs:- type: log paths: - 'C:\tomcat\logs\catalina.log' fields: pipeline_log_id: project instance: custom_instance fields_under_root: true tail_files: false scan_frequency: 3s idle_timeout: 3soutput.logstash: hosts: ["www.elk02.co:5044"] worker: 5Modify log sending destination.12345678910111213filebeat.inputs:- type: log paths: - /usr/local/apache/tomcat/logs/catalina.log fields: pipeline_log_id: project instance: custom_instance fields_under_root: true tail_files: false scan_frequency: 3s idle_timeout: 3soutput.logstash: hosts: ["www.elk02.co:5044"] worker: 5Run filebeat12345Change directory into filebeat folder.Execute filebeat.MS windows version: (Keep the window opened)C:\filebeat&gt; filebeat.exe -c custom.ymlLinux windows version:[root@localhost filebeat]$nohup filebeat -c custom.yml &amp;]]></content>
+      <categories>
+        <category>Filebeat</category>
+      </categories>
+      <tags>
+        <tag>Filebeat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux crontab執行jar]]></title>
     <url>%2F2020%2F07%2F13%2FLinuxcrontab%E5%9F%B7%E8%A1%8Cjar%2F</url>
     <content type="text"><![CDATA[Linux crontab執行jar在linux下面執行java程式，一般情況下我們先打包成jar檔案，放在linux下，用crontab執行Shell script去執行jar檔。upload.sh1234export JAVA_HOME=/usr/java/jdk1.8.0_181-amd64export PATH=$JAVA_HOME/bin:$PATH java -jar /opt/local/test/DavidTest.jarcrontab16,16,26,36,46,56 * * * * sh /root/deploy/upload.sh &gt;&gt; /root/deploy/upload.log結論12必須在upload.sh 匯入java的環境變數，為什麼要匯入這些內容，是因為crontab定時程式呼叫指令碼時，系統的環境變數是沒有載入的。其次執行jar的命令是java -jar 加jar檔名稱就可以了，這個命令是跨平臺的。]]></content>
@@ -8,7 +19,8 @@
         <category>crontab</category>
       </categories>
       <tags>
-        <tag>Javas</tag>
+        <tag>Java</tag>
+        <tag>jar</tag>
       </tags>
   </entry>
   <entry>
