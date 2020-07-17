@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於Java-ExecutorService]]></title>
+    <url>%2F2020%2F07%2F17%2F%E9%97%9C%E6%96%BCJavaExecutorService%2F</url>
+    <content type="text"><![CDATA[關於Java-ExecutorService在Java5之後，透過Executor來啟動Thread比用Thread的start()更好。在此功能中，可以很容易控制Thread的啟動、執行和關閉，還可以很容易管理Thread Pool。How to use12class 必須 implements Runnable，並撰寫run() 方法create java.util.concurrent.ExecutorService 來執行taskExecutorService123456ExecutorService提供了管理终止的方法，以及可追蹤一個或多個非同步task而生成 Future 的方法。 可以關閉 ExecutorService，這將導致其停止接受新task。關閉後，執行程序將終止，將會沒有任務在執行，也没有任務在等待執行，並且無法提交新任務。ExecutorService executorService = Executors.newFixedThreadPool(3);executorService.execute(new TestRunnable());executorService.shutdown();get task return value123在Java5後，task分兩種：第一種是class implements Runnable，另一種是class implements Callable。兩者都可以被ExecutorService執行，但是Runnable task没有return value，而Callable task有return value。且Callable的call()方法只能透過ExecutorService的(&lt;T&gt; task) 方法執行，return 每一個&lt;T&gt;，是表示task等待完成的 Future&lt;T&gt;。提供以下方法執行task1231.executorService.execute 沒有retuen value2.executorService.submit 有return value3.executorService.invokeAny(任一task完成即cancel其它task) 和 executorService.invokeAll(必須所有task都完成)]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>ExecutorService</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於CopyOnWriteArrayList]]></title>
     <url>%2F2020%2F07%2F15%2F%E9%97%9C%E6%96%BCCopyOnWriteArrayList%2F</url>
     <content type="text"><![CDATA[關於CopyOnWriteArrayList當有需要對List同時讀和寫操作時，我們會需要使用CopyOnWriteArrayList。對ArrayList同時做讀和寫操作時會java.lang.RuntimeException: java.util.ConcurrentModificationException12345678在程式啟動執行緒時會一邊讀資料一邊寫資料，這樣有可能在執行這支程式的時侯發生 Exception，如下：Exception in thread "main" java.lang.RuntimeException: java.util.ConcurrentModificationException at com.company.Main.main(Main.java:24)Caused by: java.util.ConcurrentModificationException at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:909) at java.util.ArrayList$Itr.next(ArrayList.java:859) at com.company.Main.main(Main.java:20)CopyOnWriteArrayList 是在Read的時侯複製出一份相同的資料內容，這樣就避免了同時讀寫一個 List 遇到的問題12345678910111213141516171819202122232425import java.util.concurrent.CopyOnWriteArrayList;public class Main &#123; public static void main(String[] args) &#123; try &#123; final CopyOnWriteArrayList&lt;String&gt; list = new CopyOnWriteArrayList&lt;String&gt;(); list.add("a1"); list.add("a2"); list.add("a3"); list.add("a4"); list.add("a5"); list.add("a6"); Thread thread = new Thread(new ThreadExample(list)); thread.start(); for(String s: list) &#123; System.out.println(s); &#125; &#125; catch(Exception e) &#123; throw new RuntimeException(e); &#125; &#125;&#125;使用情境12使用 CopyOnWriteArrayList 適合的使用情境是當資料讀取的次數比寫入的次數還多的時侯，因為寫入的資料不多 copy 的大小也不會太大，所以在此情況下執行的效能會較好。]]></content>
