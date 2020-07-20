@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java-parallelStream]]></title>
+    <url>%2F2020%2F07%2F17%2FJava-streamparallel%2F</url>
+    <content type="text"><![CDATA[關於Java-stream parallelstream是Java8中新增的一個特性，被統稱為流。stream更像一個高階版本的 Iterator，而和Iterator不同的是，Stream 可以進行Concurrent操作。example123456789101112131415List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);numbers.parallelStream() .forEach(out::println); -------------------------------134567892使用parallelStream()會進行Concurrent操作，得到結果的順序不會排序。可以呼叫forEachOrdered()，可得到按照原來Stream的資料順序12345678910111213List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);numbers.parallelStream() .forEachOrdered(out::println); -------------------------------123456789parallelStream 使用時機1234567891011如果你的原始數據結構是:ArrayList、HashMap、HashSet、ConcurrentHashMap、Arrays、int和long的stream，這些適合使用parallelStream原因是可以精準切割成任意大小的子程序 讓thread劃分工作變得簡單操作上很大程度的影響了Concurrent的效能，如果你在操作做了很多工作 而且工作與工作間彼此依賴(比如說下一個操作依賴於上一個操作)，這種情況不適合Concurrent比較好的操作是reduce、min、max、count、sum、anyMatch、allMatch、noneMatch比較不好的操作是collect]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>parallelStream</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於Java-CountDownLatch]]></title>
     <url>%2F2020%2F07%2F17%2F%E9%97%9C%E6%96%BCJavaCountDownLatch%2F</url>
     <content type="text"><![CDATA[關於Java-CountDownLatchCountDownLatch 可以看作一個計數器，不過計數是原子操作，也就是說同一時間只有一個執行緒能夠操作該計數器。常用方法介紹123456789Public constructorsCountDownLatch(int count)-------------------Public methodsvoid await()boolean await(long timeout, TimeUnit unit)void countDown()long getCount()String toString()example123456789101112131415161718192021222324252627282930313233343536373839private static ExecutorService exec;public static void setUpBeforeClass() &#123; exec = Executors.newFixedThreadPool(1000);&#125;final CountDownLatch latch = new CountDownLatch(13 * 13 * 14 * 13 * 13 * 14);for (int i = 0; i &lt;= 12; i++) &#123; for (int j = 0; j &lt;= 12; j++) &#123; for (int k = 0; k &lt;= 13; k++) &#123; for (int l = 0; l &lt;= 12; l++) &#123; for (int m = 0; m &lt;= 12; m++) &#123; for (int n = 0; n &lt;= 13; n++) &#123; Runnable task = new Runnable() &#123; @Override public void run() &#123; try &#123; //To do something &#125; catch (Exception e) &#123; LogUtils.error.error("Failure!!! type:" + type, e); &#125; finally &#123; latch.countDown(); &#125; &#125; &#125;; exec.execute(task); &#125; &#125; &#125; &#125; &#125;&#125;latch.await();System.out.println("All tasks are already finish!!");此例子會使用1000個執行緒跑13 * 13 * 14 * 13 * 13 * 14個task因為有使用CountDownLatch 每執行一個task會使用latch.countDown();去減1最後latch.await(); 變成0時就代表所有執行緒皆已完成。]]></content>
