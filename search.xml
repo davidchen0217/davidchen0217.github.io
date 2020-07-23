@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Intro Redis DataStructure]]></title>
+    <url>%2F2020%2F07%2F23%2FIntroRedisDataStructure%2F</url>
+    <content type="text"><![CDATA[Intro Redis DataStructure這篇將介紹Redis的幾個dataStructure。INCRBY key integer123456789TIME COMPLEXITY: O(1)DESCRIPTION: Increment or decrement the number stored at key by one. If the key does not exist or contains a value of a wrong type, set the key to the value of "0" before to perform the increment or decrement operation.INCRBY and DECRBY work just like INCR and DECR but instead to increment/decrement by 1 the increment/decrement is integer.INCR commands are limited to 64 bit signed integers.RETURN VALUE: Integer reply, this commands will reply with the new value of key after the increment or decrement.HMSET key field value [field value …]12345TIME COMPLEXITY: O(N) where N is the number of fields being set.DESCRIPTION: Sets the specified fields to their respective values in the hash stored at key. This command overwrites any existing fields in the hash. If key does not exist, a new key holding a hash is created.RETURN VALUE: Status code replySPOP key1234567TIME COMPLEXITY: O(1)DESCRIPTION: Remove a random element from a Set returning it as return value. If the Set is empty or the key does not exist, a nil object is returned.The SRANDMEMBER command does a similar work but the returned element is not removed from the Set.RETURN VALUE: Bulk replyLPUSH key string123456TIME COMPLEXITY: O(1)DESCRIPTION: Add the string value to the head (RPUSH) or tail (LPUSH) of the list stored at key. If the key does not exist an empty list is created just before the append operation. If the key exists but is not a List an error is returned.RETURN VALUE: Status code replyLLEN key123456TIME COMPLEXITY: O(1)DESCRIPTION: Return the length of the list stored at the specified key. If the key does not exist zero is returned (the same behaviour as for empty lists). If the value stored at key is not a list an error is returned.RETURN VALUE: Integer reply of the length of the list.]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>DataStructure</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git Error:remote:HTTP Basic Access denied]]></title>
     <url>%2F2020%2F07%2F22%2FgitError-remote-HTTPBasicAccessDenied%2F</url>
     <content type="text"><![CDATA[git Error:remote:HTTP Basic Access deniedSourceTree的remote操作pull、push…等，出現remote: HTTP Basic: Access denied fatal: Authentication failed for “http://xxx/xxx.git&quot;檢查gitconfig1234C:\Program Files\Git\mingw64\etc\gitconfig有沒有以下兩行指令，沒有的話請加上[credential] helper = manager]]></content>
