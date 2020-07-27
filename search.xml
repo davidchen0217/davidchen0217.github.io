@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於Redis的Key]]></title>
+    <url>%2F2020%2F07%2F27%2F%E9%97%9C%E6%96%BCRedis%E7%9A%84Key%2F</url>
+    <content type="text"><![CDATA[關於Redis的Key在使用Redis時，建立一個好的Key是相當重要的。以下先介紹官網對Key的一些描述和建議。Redis官網對Key的描述和建議123451.不推薦使用非常長的Key:超過1024bytes效能會變差2.使用原本Key的Hash值也是好方法3.Key最好有可讀性，讓key設計不重覆 example: u200taiwan -&gt; userid:200:taiwan4.嘗試固定格式: :(分隔) ， . 或 - (用於多個組合字元) exmaple: userid:200:taiwan:father-man5.Key最大512MBkey命名設計123(1)可讀性和可管理性，以業務名(或資料庫名)為前綴(防止key衝突)，用冒號分隔，比如業務名:表名:id(2)簡潔性，在保證語義的前提下，控制key的長度，當key較多時，記憶體的使用率要注意(3)不要包含特殊字符，example：包含空格、換行、單雙引號以及其他特殊符號value設計1234567(1)拒絕bigkey，string類型控制在10KB以內，hash、list、set、zset元素個數不要超過5000。example:一個包含200萬個元素的list。非字串的bigkey，不要使用del刪除，使用hscan、sscan、zscan方式漸進式刪除，同時要注意防止bigkey過期時間自動刪除問題。(2)選擇適合的資料結構example:hmset user:1 name tom age 19 favor football(3)控制key的生命周期，redis不是垃圾桶。 建議使用expire設置過期時間命令使用12341.O(N)關注N的數量，example:hgetall、lrange、smembers、zrange、sinter等並非不能使用，但是需要明確N的值。有iterator的需求可以使用hscan、sscan、zscan代替。2.禁用命令:禁止線上使用keys、flushall、flushdb等，通過redis的rename機制禁掉命令，或者使用scan的方式處理。3.使用批量操作提高效率原生命令:例如mget、mset。非原生命令：可以使用pipeline提高效率。要注意控制一次批量操作的元素個數(example:500以內，實際也和元素字節數有關)。]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Key</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何取消vim編輯器的高亮模式]]></title>
     <url>%2F2020%2F07%2F27%2F%E5%A6%82%E4%BD%95%E5%8F%96%E6%B6%88vim%E7%B7%A8%E8%BC%AF%E5%99%A8%E7%9A%84%E9%AB%98%E4%BA%AE%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[如何取消vim編輯器的高亮模式在Linux上常常會按到shift + 3(#) or shift + 8(*)將高亮模式叫出來，這篇介紹如何取消高亮模式。取消高亮模式指令123$ :noh或$ :/aaa (随便的字母或数字都可)]]></content>
