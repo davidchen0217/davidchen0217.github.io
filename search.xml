@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[簡介WebSocket]]></title>
     <url>%2F2020%2F07%2F29%2F%E9%97%9C%E6%96%BCWebSocket%2F</url>
-    <content type="text"><![CDATA[關於WebSocketWebSocket是一種網路傳輸協定，可在單個TCP連接上進行雙向溝通。有HTTP為什麼還需要WebSocket?12345678HTTP Protocol 有個缺點，request只能由client發起。舉例來說，今天想要查某支股票的資訊，在HTTP的世界中，只能用瀏覽器(client)向Server請求某支股票的資訊。HTTP無法做到由Server主動推送訊息給client。這種單向請求的特性，若Server端有連續的狀態變化，client要知道訊息就非常繁瑣，只能用pooling的方式每隔一段時間就發出request來確認server有沒有新的資料。pooling的效率低，耗資源，造就工程師思考出更好的方法。WebSocket就是這樣被發明的。簡介WebSocket12345678910WebSocket最大的特色是，server可以主動向client推送資料，client也可以主動向server發送資料，是真正的雙向溝通。其他特色包含以下:1.建立在TCP Protocol之上，在Server上實作較容易。2.與HTTP Protocol有著良好的相容性。預設port是80和443，且Handshake採用HTTP Protocol，因此Handshake時，能通過各種HTTP proxy server。3.資料輕量化，耗效能小。4.可以推送text data，也可以推送binary data。5.没有Same Origin Policy，client可以與任何server溝通。6.Protocol開頭符號是ws，(如果加密，則為wss)。example:ws://example.com/some/path]]></content>
+    <content type="text"><![CDATA[簡介WebSocketWebSocket是一種網路傳輸協定，可在單個TCP連接上進行雙向溝通。有HTTP為什麼還需要WebSocket?12345678HTTP Protocol 有個缺點，request只能由client發起。舉例來說，今天想要查某支股票的資訊，在HTTP的世界中，只能用瀏覽器(client)向Server請求某支股票的資訊。HTTP無法做到由Server主動推送訊息給client。這種單向請求的特性，若Server端有連續的狀態變化，client要知道訊息就非常繁瑣，只能用pooling的方式每隔一段時間就發出request來確認server有沒有新的資料。pooling的效率低，耗資源，造就工程師思考出更好的方法。WebSocket就是這樣被發明的。WebSocket優點&amp;特色12345678910WebSocket最大優點是，server可以主動向client推送資料，client也可以主動向server發送資料，是真正的雙向溝通。其他特色包含以下:1.建立在TCP Protocol之上，在Server上實作較容易。2.與HTTP Protocol有著良好的相容性。預設port是80和443，且Handshake採用HTTP Protocol，因此Handshake時，能通過各種HTTP proxy server。3.資料輕量化，耗效能小。4.可以推送text data，也可以推送binary data。5.没有Same Origin Policy，client可以與任何server溝通。6.Protocol開頭符號是ws，(如果加密，則為wss)。example:ws://example.com/some/path]]></content>
       <categories>
         <category>WebSocket</category>
       </categories>
