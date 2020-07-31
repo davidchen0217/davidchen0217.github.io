@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Shell Script判斷檔案或目錄是否存在]]></title>
+    <url>%2F2020%2F07%2F31%2FShellScript%E5%88%A4%E6%96%B7%E6%AA%94%E6%A1%88%E6%88%96%E7%9B%AE%E9%8C%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%2F</url>
+    <content type="text"><![CDATA[Shell Script判斷檔案或目錄是否存在shell script 是利用 shell 的功能所寫的一個『程式 (program)』，這個程式是使用純文字檔，將一些 shell 的語法與指令(含外部指令)寫在裡面， 搭配正規表示法、管線命令與資料流重導向等功能，以達到我們所想要的處理目的。檢查檔案是否存在:1234567if [ -f "/path/dir/filename" ]; then # 檔案 /path/dir/filename 存在 echo "File /path/dir/filename exists."else # 檔案 /pat/dir/filename 不存在 echo "File /path/dir/filename does not exists."fi檢查目錄是否存在:1234567if [ -d "/path/dir" ]; then # 目錄 /path/dir 存在 echo "Directory /path/dir exists."else # 目錄 /path/dir 不存在 echo "Directory /path/dir does not exists."fi如果檔案不存在, 便用 touch 建立檔案:1[ ! -f /tmp/testfile.log ] &amp;&amp; touch /tmp/testfile.log如果目錄不存在, 便用 mkdir 建立檔案:1[ ! -d /tmp/mydir ] &amp;&amp; mkdir -p /tmp/mydir]]></content>
+      <categories>
+        <category>Shell Script</category>
+      </categories>
+      <tags>
+        <tag>Instruction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[簡介WebSocket]]></title>
     <url>%2F2020%2F07%2F29%2F%E9%97%9C%E6%96%BCWebSocket%2F</url>
     <content type="text"><![CDATA[簡介WebSocketWebSocket是一種網路傳輸協定，可在單個TCP連接上進行雙向溝通。有HTTP為什麼還需要WebSocket?12345678HTTP Protocol 有個缺點，request只能由client發起。舉例來說，今天想要查某支股票的資訊，在HTTP的世界中，只能用瀏覽器(client)向Server請求某支股票的資訊。HTTP無法做到由Server主動推送訊息給client。這種單向請求的特性，若Server端有連續的狀態變化，client要知道訊息就非常繁瑣，只能用pooling的方式每隔一段時間就發出request來確認server有沒有新的資料。pooling的效率低，耗資源，造就工程師思考出更好的方法。WebSocket就是這樣被發明的。WebSocket優點&amp;特色12345678910WebSocket最大優點是，server可以主動向client推送資料，client也可以主動向server發送資料，是真正的雙向溝通。其他特色包含以下:1.建立在TCP Protocol之上，在Server上實作較容易。2.與HTTP Protocol有著良好的相容性。預設port是80和443，且Handshake採用HTTP Protocol，因此Handshake時，能通過各種HTTP proxy server。3.資料輕量化，耗效能小。4.可以推送text data，也可以推送binary data。5.没有Same Origin Policy，client可以與任何server溝通。6.Protocol開頭符號是ws，(如果加密，則為wss)。example:ws://example.com/some/path]]></content>
