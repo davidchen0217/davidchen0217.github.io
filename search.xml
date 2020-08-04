@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於ForkJoin Pool]]></title>
+    <url>%2F2020%2F08%2F04%2F%E9%97%9C%E6%96%BCForkJoinPool%2F</url>
+    <content type="text"><![CDATA[關於ForkJoin Pool在Java7，實作出與以往不同的thread pool，它實作了working stealing scheduling。概念是將一個大的task，切分成多個中型的task，再把中型的task切分成多個小個task。讓一個團隊每個人可以將小的task完成後，將小的task整合成中的task，再將中的task整合原本大的專案。Work Stealing12345ForkJoin Pool是為了解決問題平行化的solution，相較於一般的Thread Pool，大家共用一個queue。ForkJoin Pool是每個thread有一個自己的queue，而且是雙向的Double-ended queue(deque)。當一個task進來，他會把一部分的工作fork(切)出來先放到queue的最後面，另外一部分開始做。當然可能做進去後，發現task還是太大，就會繼續切更小，並再放到queue的最後方。如此一邊切一邊往下執行，直到task夠小可以直接運算為止。與傳統Thread Pool比較12345678其實這是兩種不同的執行策略，分別是producer consumer(thread Pool)跟recursion(ForkJoin Pool)。前者適合每個task是獨立的，它可以把大事小事都平均分攤在每個thread去執行；後者是透過divide and conquer演算法，用work stealing的方式去執行。而ForkJoinPool有一個很大的好處是減少thread因為blocking造成context switching。不管是fork, compute, join都幾乎不會blocking(只有join少數情況會要等待結果)。這可以讓thread一直保持running的狀態，一直到時間到了被context switch，而不是自己卡住了造成的context switch。但ForkJoinPool對於不可分割的task，並且處理時間差異很大的情境比較不適合，畢竟每個thread都有一個queue。就很像在大賣場排隊結帳，只要運氣不好排到一個前面卡比較久的task就要等比較久。但是別排又沒有閒到可以把你steal走，那就沒有辦法做到先到先處理的特性了。Java8 Parallel Stream1Java8的Stream API的parallel stream事實上也是用ForkJoinPool，他透過Spliterator來定義怎麼去split(或稱fork)你的input data。若執行結果需要collect，就會join回最後的result。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>ForkJoin Pool</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shell Script判斷檔案或目錄是否存在]]></title>
     <url>%2F2020%2F07%2F31%2FShellScript%E5%88%A4%E6%96%B7%E6%AA%94%E6%A1%88%E6%88%96%E7%9B%AE%E9%8C%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%2F</url>
     <content type="text"><![CDATA[Shell Script判斷檔案或目錄是否存在shell script 是利用 shell 的功能所寫的一個『程式 (program)』，這個程式是使用純文字檔，將一些 shell 的語法與指令(含外部指令)寫在裡面， 搭配正規表示法、管線命令與資料流重導向等功能，以達到我們所想要的處理目的。檢查檔案是否存在:1234567if [ -f "/path/dir/filename" ]; then # 檔案 /path/dir/filename 存在 echo "File /path/dir/filename exists."else # 檔案 /pat/dir/filename 不存在 echo "File /path/dir/filename does not exists."fi檢查目錄是否存在:1234567if [ -d "/path/dir" ]; then # 目錄 /path/dir 存在 echo "Directory /path/dir exists."else # 目錄 /path/dir 不存在 echo "Directory /path/dir does not exists."fi如果檔案不存在, 便用 touch 建立檔案:1[ ! -f /tmp/testfile.log ] &amp;&amp; touch /tmp/testfile.log如果目錄不存在, 便用 mkdir 建立檔案:1[ ! -d /tmp/mydir ] &amp;&amp; mkdir -p /tmp/mydir]]></content>
