@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shellscriptforandifelsefi]]></title>
+    <url>%2F2020%2F08%2F05%2Fshellscriptforandifelsefi%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>ShellScript</category>
+      </categories>
+      <tags>
+        <tag>Instruction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ForkJoinPool Example]]></title>
+    <url>%2F2020%2F08%2F05%2FForkJoinPoolExample%2F</url>
+    <content type="text"><![CDATA[ForkJoinPool Example繼上一篇簡單介紹ForkJoinPool與一般的thread有哪些不同的特點，這邊介紹幾個ForkJoinPool的使用範例。自定義的ForkJoinPool，該範例執行效果等同於Callable的invokeAll123456789101112131415ConcurrentMap&lt;String, String&gt; map1 = new ConcurrentHashMap&lt;&gt;();ForkJoinPool customThreadPool = new ForkJoinPool(10);int[] values1 = customThreadPool.submit(() -&gt; IntStream.range(1, 1000000).parallel().filter(x -&gt; &#123; map1.put(Thread.currentThread().toString(), String.valueOf(x)); return (x % 2 == 1);&#125;).toArray()).get();System.out.println(map1.keySet());System.out.println("thread size:" + map1.keySet().size() + ", array size:" + values1.length);customThreadPool.shutdown();Output:[Thread[ForkJoinPool-1-worker-10,5,main], Thread[ForkJoinPool-1-worker-15,5,main], Thread[ForkJoinPool-1-worker-11,5,main], Thread[ForkJoinPool-1-worker-8,5,main], Thread[ForkJoinPool-1-worker-2,5,main], Thread[ForkJoinPool-1-worker-9,5,main], Thread[ForkJoinPool-1-worker-4,5,main], Thread[ForkJoinPool-1-worker-1,5,main], Thread[ForkJoinPool-1-worker-6,5,main], Thread[ForkJoinPool-1-worker-13,5,main]]thread size:10, array size:500000共用的ForkJoinPool，該範例執行效果等同於Callable的invokeAll12345678910111213ConcurrentMap&lt;String, String&gt; map2 = new ConcurrentHashMap&lt;&gt;();int[] values2 = IntStream.range(1, 1000000).parallel().filter(x -&gt; &#123; map2.put(Thread.currentThread().toString(), String.valueOf(x)); return (x % 2 == 1);&#125;).toArray();System.out.println(map2.keySet());System.out.println("thread size:" + map2.keySet().size() + ", array size:" + values2.length);Output:[Thread[ForkJoinPool.commonPool-worker-2,5,main], Thread[main,5,main], Thread[ForkJoinPool.commonPool-worker-1,5,main], Thread[ForkJoinPool.commonPool-worker-3,5,main]]thread size:4, array size:500000共用的ForkJoinPool，該範例執行效果等同Runnable的execute123456789101112ConcurrentMap&lt;String, String&gt; map3 = new ConcurrentHashMap&lt;&gt;();IntStream.range(1, 1000000).parallel().forEach(x -&gt; &#123; map3.put(Thread.currentThread().toString(), String.valueOf(x));&#125;);System.out.println(map3.keySet());System.out.println("thread size:" + map3.keySet().size());Output:[Thread[ForkJoinPool.commonPool-worker-2,5,main], Thread[main,5,main], Thread[ForkJoinPool.commonPool-worker-1,5,main], Thread[ForkJoinPool.commonPool-worker-3,5,main]]thread size:4自定義的ForkJoinPool，該範例執行執行效果等同Runnable的execute123456789101112131415161718ForkJoinPool customThreadPool2 = new ForkJoinPool(10);ConcurrentMap&lt;String, String&gt; map4 = new ConcurrentHashMap&lt;&gt;();customThreadPool2.execute(() -&gt; &#123; IntStream.range(1, 1000000).parallel().forEach(x -&gt; &#123; map4.put(Thread.currentThread().toString(), String.valueOf(x)); &#125;);&#125;);// 測試程式過快結束，會導致沒有執行完成，因此等待3秒Thread.sleep(3000);System.out.println(map4.keySet());System.out.println("thread size:" + map4.keySet().size());customThreadPool2.shutdown();Output:[Thread[ForkJoinPool-1-worker-10,5,main], Thread[ForkJoinPool-1-worker-15,5,main], Thread[ForkJoinPool-1-worker-11,5,main], Thread[ForkJoinPool-1-worker-2,5,main], Thread[ForkJoinPool-1-worker-9,5,main], Thread[ForkJoinPool-1-worker-4,5,main], Thread[ForkJoinPool-1-worker-6,5,main], Thread[ForkJoinPool-1-worker-13,5,main]]thread size:8]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>ForkJoinPool</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於ForkJoin Pool]]></title>
     <url>%2F2020%2F08%2F04%2F%E9%97%9C%E6%96%BCForkJoinPool%2F</url>
     <content type="text"><![CDATA[關於ForkJoin Pool在Java7，實作出與以往不同的thread pool，它實作了working stealing scheduling。概念是將一個大的task，切分成多個中型的task，再把中型的task切分成多個小個task。讓一個團隊每個人可以將小的task完成後，將小的task整合成中的task，再將中的task整合原本大的專案。Work Stealing12345ForkJoin Pool是為了解決問題平行化的solution，相較於一般的Thread Pool，大家共用一個queue。ForkJoin Pool是每個thread有一個自己的queue，而且是雙向的Double-ended queue(deque)。當一個task進來，他會把一部分的工作fork(切)出來先放到queue的最後面，另外一部分開始做。當然可能做進去後，發現task還是太大，就會繼續切更小，並再放到queue的最後方。如此一邊切一邊往下執行，直到task夠小可以直接運算為止。與傳統Thread Pool比較12345678其實這是兩種不同的執行策略，分別是producer consumer(thread Pool)跟recursion(ForkJoin Pool)。前者適合每個task是獨立的，它可以把大事小事都平均分攤在每個thread去執行；後者是透過divide and conquer演算法，用work stealing的方式去執行。而ForkJoinPool有一個很大的好處是減少thread因為blocking造成context switching。不管是fork, compute, join都幾乎不會blocking(只有join少數情況會要等待結果)。這可以讓thread一直保持running的狀態，一直到時間到了被context switch，而不是自己卡住了造成的context switch。但ForkJoinPool對於不可分割的task，並且處理時間差異很大的情境比較不適合，畢竟每個thread都有一個queue。就很像在大賣場排隊結帳，只要運氣不好排到一個前面卡比較久的task就要等比較久。但是別排又沒有閒到可以把你steal走，那就沒有辦法做到先到先處理的特性了。Java8 Parallel Stream1Java8的Stream API的parallel stream事實上也是用ForkJoinPool，他透過Spliterator來定義怎麼去split(或稱fork)你的input data。若執行結果需要collect，就會join回最後的result。]]></content>
@@ -8,7 +30,7 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>ForkJoin Pool</tag>
+        <tag>ForkJoinPool</tag>
       </tags>
   </entry>
   <entry>
