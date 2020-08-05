@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[shellscriptfor]]></title>
+    <title><![CDATA[ShellScript intro how to use for]]></title>
     <url>%2F2020%2F08%2F05%2Fshellscriptfor%2F</url>
     <content type="text"><![CDATA[ShellScript intro how to use for這篇主要介紹在ShellScripts上的指令for如何使用。for:1~100 不使用帶入參數1234for i in &#123;1..100&#125;;do echo $i;donefor:1~100 使用帶入參數123456start=1end=100for i in $(seq $start $end);do echo $i;donefor:1~100 使用帶入參數，另一種寫法123456start=1end=100for ((i=$start; i&lt;=$end; i++))do echo $i;done列出0~10偶數1234567for i in &#123;0..10..2&#125;do echo $idoneOutput:印出 0 2 4 6 8 10列出1~10奇數1234567for i in $(seq 1 2 10);do echo $i;doneOutput:印出 1 3 5 7 9]]></content>
       <categories>
