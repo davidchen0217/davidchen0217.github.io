@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shellscriptfor]]></title>
+    <url>%2F2020%2F08%2F05%2Fshellscriptfor%2F</url>
+    <content type="text"><![CDATA[ShellScript intro how to use for這篇主要介紹在ShellScripts上的指令for如何使用。for:1~100 不使用帶入參數1234for i in &#123;1..100&#125;;do echo $i;donefor:1~100 使用帶入參數123456start=1end=100for i in $(seq $start $end);do echo $i;donefor:1~100 使用帶入參數，另一種寫法123456start=1end=100for ((i=$start; i&lt;=$end; i++))do echo $i;done列出0~10偶數1234567for i in &#123;0..10..2&#125;do echo $idoneOutput:印出 0 2 4 6 8 10列出1~10奇數1234567for i in $(seq 1 2 10);do echo $i;doneOutput:印出 1 3 5 7 9]]></content>
+      <categories>
+        <category>ShellScript</category>
+      </categories>
+      <tags>
+        <tag>Instruction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ShellScript intro how to use if else fi]]></title>
     <url>%2F2020%2F08%2F05%2Fshellscriptforandifelsefi%2F</url>
     <content type="text"><![CDATA[ShellScript intro how to use if else fi這篇主要介紹在ShellScripts上的指令if else fi如何使用。if1234#!/bin/shif [ "$1" = "123" ] then echo "var is 123"fiif else fi123456#!/bin/shif [ "$1" = "123" ] then echo "var is 123"else echo "var is 456"fiif else elseif fi12345678#!/bin/shif [ "$1" = "123" ] then echo "var is 123"elif [ "$1" = "456" ] then echo "var is 456"else echo "var is 789"fi- intruction12345678-d file : 是目錄回傳 true.-f file : 是檔案回傳 true.-r file : 可讀回傳 true.-s file : 的體積大於 0 (不是空檔案) 回傳 true.-w file : 可寫入回傳 true.-x file : 可執行回傳 true.-n $str : 當 $str1 不是 null, 回傳 true.-z $str : 當 $str1 是 null, 回傳 true.判斷指令12345678$str1 = $str2 : 判斷 $str1 與 $str2 字串是否相同。$str1 != $str2 : 判斷 $str1 與 $str2 字串是否不相同。var1 -eq var2 : var1 等於 var2 回傳 true.var1 -ne var2 : var1 不等於 var2 回傳 true.var1 -gt var2 : var1 大於 var2 回傳 true.var1 -ge var2 : var1 大於或等於 var2 回傳 true.var1 -lt var2 : var1 小於 var2 回傳 true.var1 -le var2 : var1 小於或等於 var2 回傳 true.]]></content>
