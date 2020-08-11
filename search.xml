@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Telegram Add GitLab Bot]]></title>
     <url>%2F2020%2F08%2F11%2FTelegramAddGitlabBot%2F</url>
-    <content type="text"><![CDATA[Telegram Add GitLab Bot如何將GitLab Bot 加入 Telegram，透過設定GitLab WebHook 達到通知呢~有以下兩種實作方式:1.自己實作 Telegram Bot，架Server起來，再設定 GitLab WebHook2.使用 Telegram 官方提供的 GitLab Bot，再設定 GitLab WebHook用Telegram官方提供的GitLab Bot123456從 Telegram 搜尋 username @gitlab_bot ，依你的需要加入 channel 或是 group。``` &lt;img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/searchGitLabBotForTelegram.png" width="50%" /&gt;```sh加入後 Bot 會自動提示你訊息：12接下來可以利用這個 WebHook URL 到 GitLab 做設定：Setting &gt; Integration &gt; WebHooks 把需要通知的事件勾選，存檔並測試就可以囉]]></content>
+    <content type="text"><![CDATA[Telegram Add GitLab Bot如何將GitLab Bot 加入 Telegram，透過設定GitLab WebHook 達到通知呢~有以下兩種實作方式:1.自己實作 Telegram Bot，架Server起來，再設定 GitLab WebHook2.使用 Telegram 官方提供的 GitLab Bot，再設定 GitLab WebHook用Telegram官方提供的GitLab Bot1234567從 Telegram 搜尋 username @gitlab_bot ，依你的需要加入 channel 或是 group。``` &lt;img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/searchGitLabBotForTelegram.png" width="50%" /&gt;### 加入GitLab Bot的訊息```sh加入後 Bot 會自動提示你訊息：在GitLab 設定 WebHook12接下來可以利用這個 WebHook URL 到 GitLab 做設定：Setting &gt; Integration &gt; WebHooks 把需要通知的事件勾選，存檔並測試就可以囉]]></content>
       <categories>
         <category>Telegram</category>
       </categories>
