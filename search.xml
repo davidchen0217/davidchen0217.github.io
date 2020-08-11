@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Telegram Add GitLab Bot]]></title>
+    <url>%2F2020%2F08%2F11%2FTelegramAddGitlabBot%2F</url>
+    <content type="text"><![CDATA[Telegram Add GitLab Bot如何將GitLab Bot 加入 Telegram，透過設定GitLab WebHook 達到通知呢~有以下兩種實作方式:1.自己實作 Telegram Bot，架Server起來，再設定 GitLab WebHook2.使用 Telegram 官方提供的 GitLab Bot，再設定 GitLab WebHook用Telegram官方提供的GitLab Bot123456從 Telegram 搜尋 username @gitlab_bot ，依你的需要加入 channel 或是 group。``` &lt;img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/searchGitLabBotForTelegram.png" width="50%" /&gt;```sh加入後 Bot 會自動提示你訊息：12接下來可以利用這個 WebHook URL 到 GitLab 做設定：Setting &gt; Integration &gt; WebHooks 把需要通知的事件勾選，存檔並測試就可以囉]]></content>
+      <categories>
+        <category>Telegram</category>
+      </categories>
+      <tags>
+        <tag>Telegram</tag>
+        <tag>GitLab Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Eclipse Install JSHint]]></title>
     <url>%2F2020%2F08%2F11%2FEclipseInstallJSHint%2F</url>
     <content type="text"><![CDATA[Eclipse Install JSHintJSHint 是一個community-driven工具，用來檢查JavaScript代碼中的錯誤和潛在的問題，規範編碼風格，確保代碼質量。安裝方法1231.Eclipse主選單 -&gt; Help -&gt; Install New Software2.在Work with -&gt; http://github.eclipsesource.com/jshint-eclipse/updates/3.Name -&gt; 將JSHint打勾更新方法12如果已經安装了，就可以進行更新:Eclipse主選單 -&gt; Help -&gt; Check for Updates卸載方法12Eclipse主選單 -&gt; Help -&gt; About Eclipse -&gt; Installation Detailschoose JSHint Eclipse Integration -&gt; Uninstall開啟功能1Eclipse主選單 -&gt; Window -&gt; Show View -&gt; Markers]]></content>
