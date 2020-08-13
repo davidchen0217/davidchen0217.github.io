@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[判斷Socket連線是否斷線]]></title>
+    <url>%2F2020%2F08%2F13%2F%E5%88%A4%E6%96%B7Socket%E9%80%A3%E7%B7%9A%E6%98%AF%E5%90%A6%E6%96%B7%E7%B7%9A%2F</url>
+    <content type="text"><![CDATA[判斷Socket連線是否斷線這篇介紹在TCP/IP Protocol中，C#如何偵測Socket是否斷線。Socket.Connected1234567使用Socket.Connected檢查連線狀態，但若在測試時直接關閉連線或結束程式，程式並不會偵測到已經斷線的事實!Connected 屬性會取得上次 I/O 作業的 Client 通訊端連接狀態。當它傳回 false 時，即表示 Client 通訊端不是從未連接過，就是不再連接了。因為 Connected 屬性只反映最近一次作業的連接狀態，所以您應嘗試傳送或接收訊息，以判斷目前的狀態。訊息傳送失敗之後，這個屬性就不再傳回 true。請注意，這種行為是設計上的預期行為。您可能無法很穩定地測試連接的狀態，原因是有可能在測試和收發 (訊息) 之間就失去該連接。您的程式碼應假設該通訊端是連接的，然後再小心處理傳輸失敗的情況。socket.Poll and SocketFlags.Peek example123456789101112131415161718192021if (socket.Connected &amp;&amp; !checkSocketConnection(socket))&#123; //To Do Something&#125;public bool checkSocketConnection(Socket socket)&#123; bool closed = false; try &#123; //使用Peek測試連線是否仍存在 if (socket.Poll(0, SelectMode.SelectRead)) closed = socket.Receive(new byte[1], SocketFlags.Peek) == 0; &#125; catch (SocketException ex) &#123; LogUtil.logger.Info("(EndRead)checkSocketConnection SocketException" + ex.ToString()); closed = true; &#125; return closed;&#125;]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>Socket</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Telegram Add GitLab Bot]]></title>
     <url>%2F2020%2F08%2F11%2FTelegramAddGitlabBot%2F</url>
     <content type="text"><![CDATA[Telegram Add GitLab Bot如何將GitLab Bot 加入 Telegram，透過設定GitLab WebHook 達到通知呢~有以下兩種實作方式:1.自己實作 Telegram Bot，架Server起來，再設定 GitLab WebHook2.使用 Telegram 官方提供的 GitLab Bot，再設定 GitLab WebHook用Telegram官方提供的GitLab Bot1從 Telegram 搜尋 username @gitlab_bot ，依你的需要加入 channel 或是 group。加入GitLab Bot的訊息1加入後 Bot 會自動提示你訊息：在GitLab 設定 WebHook12接下來可以利用這個 WebHook URL 到 GitLab 做設定：Setting &gt; Integration &gt; WebHooks 把需要通知的事件勾選，存檔並測試就可以囉]]></content>
