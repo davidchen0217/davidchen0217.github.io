@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Tomcat web.xml JSP相關設定]]></title>
+    <url>%2F2020%2F08%2F20%2Fwebxml-JSP%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A%2F</url>
+    <content type="text"><![CDATA[Tomcat web.xml JSP相關設定這篇介紹在Tomcat的web.xm如何設定與JSP相關的參數。Tomcat web.xml1234567891011121314151617181920212223242526272829303132333435363738394041&lt;servlet&gt; &lt;servlet-name&gt;jsp&lt;/servlet-name&gt; &lt;servlet-class&gt;org.apache.jasper.servlet.JspServlet&lt;/servlet-class&gt; &lt;init-param&gt; &lt;param-name&gt;fork&lt;/param-name&gt; &lt;param-value&gt;false&lt;/param-value&gt; &lt;/init-param&gt; &lt;init-param&gt; &lt;param-name&gt;xpoweredBy&lt;/param-name&gt; &lt;param-value&gt;false&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- Tomcat 8.5 開頭版本預設是1.7，要改1.8才能在JSP使用Java 1.8後語法 --&gt; &lt;init-param&gt; &lt;param-name&gt;compiler&lt;/param-name&gt; &lt;param-value&gt;modern&lt;/param-value&gt; &lt;/init-param&gt; &lt;init-param&gt; &lt;param-name&gt;compilerSourceVM&lt;/param-name&gt; &lt;param-value&gt;1.8&lt;/param-value&gt; &lt;/init-param&gt; &lt;init-param&gt; &lt;param-name&gt;compilerTargetVM&lt;/param-name&gt; &lt;param-value&gt;1.8&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 把JSP編譯成class直接直譯 --&gt; &lt;init-param&gt; &lt;param-name&gt;suppressSmap&lt;/param-name&gt; &lt;param-value&gt;false&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 丟上JSP之後會自動reload --&gt; &lt;init-param&gt; &lt;param-name&gt;development&lt;/param-name&gt; &lt;param-value&gt;true&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 記錄完整jsp的debug msg --&gt; &lt;init-param&gt; &lt;param-name&gt;classdebuginfo&lt;/param-name&gt; &lt;param-value&gt;true&lt;/param-value&gt; &lt;/init-param&gt; &lt;load-on-startup&gt;3&lt;/load-on-startup&gt;&lt;/servlet&gt;]]></content>
+      <categories>
+        <category>Tomcat</category>
+      </categories>
+      <tags>
+        <tag>JSP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C#使用PerformanceCounter查詢CPU與記憶體使用狀況]]></title>
     <url>%2F2020%2F08%2F18%2FCSharp%E4%BD%BF%E7%94%A8PerformanceCounter%E6%9F%A5%E8%A9%A2CPU%E8%88%87%E8%A8%98%E6%86%B6%E9%AB%94%E4%BD%BF%E7%94%A8%E7%8B%80%E6%B3%81%2F</url>
     <content type="text"><![CDATA[C#使用PerformanceCounter查詢CPU與記憶體使用狀況最近有個需求是要監控多台windows電腦上的CPU和memory使用率。PerformanceCounter example12345678910111213141516171819202122using System;using System.Diagnostics;using System.Threading; namespace test&#123; class Program &#123; static PerformanceCounter cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total"); static PerformanceCounter memory = new PerformanceCounter("Memory", "% Committed Bytes in Use"); static void Main(string[] args) &#123; while (true) &#123; Console.WriteLine("CPU: &#123;0:n1&#125;%", cpu.NextValue()); Console.WriteLine("Memory: &#123;0:n0&#125;%", memory.NextValue()); Thread.Sleep(1000); &#125; &#125; &#125;&#125;]]></content>
