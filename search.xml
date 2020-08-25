@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Git的core.autocrlf參數]]></title>
     <url>%2F2020%2F08%2F24%2FGit%E7%9A%84core-autocrlf%E5%8F%83%E6%95%B8%2F</url>
-    <content type="text"><![CDATA[Git的core.autocrlf參數在換行的世界，windows是CRLF，Linux是LF。Git上設定 core.autocrlf1234Git會把儲存成LF的檔案，在Windows checkout的時候自動幫你補上CR請修改成input，以LF爲主$ git config --global core.autocrlf input]]></content>
+    <content type="text"><![CDATA[Git的core.autocrlf參數在換行的世界，windows是CRLF( \r\n ) ( 0x0D 0x0A )，Linux是LF (\n ) ( 0x0A )。Git上設定 core.autocrlf = true123作用是 commit 時會自動將 CRLF 轉成 LF ； checkout 時會自動將 LF 轉成 CRLF$ git config --global core.autocrlf trueGit上設定 core.autocrlf = input123作用是 commit 時會自動將 CRLF 轉成 LF ； checkout 時不轉換$ git config --global core.autocrlf inputGit上設定 core.autocrlf = false123作用是 停止自動轉換，不管 commit 或是 checkout 都不會進行轉換$ git config --global core.autocrlf false不允許 有 LF 與 CRLF 混合的檔案1$ git config --global core.safecrlf true允許 有 LF 與 CRLF 混合的檔案1$ git config --global core.safecrlf false允許 有 LF 與 CRLF 混合的檔案，但是會出現 warning 警告訊息1$ git config --global core.safecrlf warn]]></content>
       <categories>
         <category>Git</category>
       </categories>
