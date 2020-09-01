@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Intro NetworkManager]]></title>
+    <url>%2F2020%2F09%2F01%2FIntroNetworkManager%2F</url>
+    <content type="text"><![CDATA[Intro NetworkManagerNetworkManager是一個自動化網路管理套件，用來管理網路卡。好處是自動化，只要掃描到網路硬體，就會自動產生資料。這功能用在筆電、個人電腦可自動設定網路卡，非常方便。但用在伺服器，不是很方便。NetworkManager優點12網路可隨插即用，NetworkManager是活動的，使用者只要接上網路(WiFi、行動網路)就會自動配置，方便使用者連接網路。網路設定不保存 &amp; 網路設備相容性高12插上網路設備後自動產生，拔除網路設備後自動消失。也可以手動設定為永久設定。可接受大多數網路設備(USB無線網卡、手機網路共用...等)NetworkManager套件12345主要由以下四個組成:NetworkManager-team =&gt; 群組網路裝置共享函式庫NetworkManager-libnm =&gt; NetworkManager API 函式庫NetworkManager =&gt; 主要設定檔及指令NetworkManager-tui =&gt; nmtui 介面套件]]></content>
+      <categories>
+        <category>NetworkManager</category>
+      </categories>
+      <tags>
+        <tag>NetworkManager</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git的core.autocrlf與core.safecrlf參數]]></title>
     <url>%2F2020%2F08%2F24%2FGit%E7%9A%84core-autocrlf%E5%8F%83%E6%95%B8%2F</url>
     <content type="text"><![CDATA[Git的core.autocrlf與core.safecrlf參數在換行的世界，windows是CRLF( \r\n ) ( 0x0D 0x0A )，Linux是LF (\n ) ( 0x0A )。Git上設定 core.autocrlf = true123作用是 commit 時會自動將 CRLF 轉成 LF ； checkout 時會自動將 LF 轉成 CRLF$ git config --global core.autocrlf trueGit上設定 core.autocrlf = input123作用是 commit 時會自動將 CRLF 轉成 LF ； checkout 時不轉換$ git config --global core.autocrlf inputGit上設定 core.autocrlf = false123作用是 停止自動轉換，不管 commit 或是 checkout 都不會進行轉換$ git config --global core.autocrlf false不允許 有 LF 與 CRLF 混合的檔案1$ git config --global core.safecrlf true允許 有 LF 與 CRLF 混合的檔案1$ git config --global core.safecrlf false允許 有 LF 與 CRLF 混合的檔案，但是會出現 warning 警告訊息1$ git config --global core.safecrlf warn]]></content>
