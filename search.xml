@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Git設定Tip</title>
+      <link href="/2020/09/02/Git%E8%A8%AD%E5%AE%9ATip/"/>
+      <url>/2020/09/02/Git%E8%A8%AD%E5%AE%9ATip/</url>
+      
+        <content type="html"><![CDATA[<p>這篇將介紹幾個Git設定上的Tip~</p><p>將rebase當做pull的預設值</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global pull.rebase <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">目的:避免pull時產生多餘的merge，造成歷程線圖複雜</span><br></pre></td></tr></table></figure><p>將no-fast-foward當作merge的預設值</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global merge.ff no</span><br><span class="line"></span><br><span class="line">目的:強制merge時產生新的commit，維持原本分支歷程的線圖</span><br></pre></td></tr></table></figure><p>將prune設為fetch的預設值</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global fetch.prune <span class="literal">true</span></span><br><span class="line">$ git config --global fetch.pruneTags <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">目的:移除遠端已經被刪除的branch/tag在本地端的參考</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Intro NetworkManager</title>
       <link href="/2020/09/01/IntroNetworkManager/"/>
       <url>/2020/09/01/IntroNetworkManager/</url>
@@ -2609,9 +2634,9 @@
       
         <tags>
             
-            <tag> GET </tag>
-            
             <tag> RestfulApi </tag>
+            
+            <tag> GET </tag>
             
         </tags>
       
