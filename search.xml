@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[關於ansible.cfg]]></title>
+    <url>%2F2020%2F09%2F16%2F%E9%97%9C%E6%96%BCansible-cfg%2F</url>
+    <content type="text"><![CDATA[什麼是ansible.cfg?在 Ansible 中，我們可以透過配置 Ansible 的組態檔案 - ansible.cfg，來指定 Ansible 要去哪裡查找 role 的路徑。在workspace下新增ansible.cfg，並加入以下內容123456[defaults]roles_path = /path/to/roles若有多個路徑要設定:[defaults]roles_path = /path/to/public_roles:/path/to/private_roles其它參數設定1234[defaults]private_key_file = /path/to/private_keyinventory = /path/to/inventoryroles_path = /path/to/roles上述範例檔案配置123456789workspace├── Vagrantfile├── ansible.cfg├── inventory├── playbook.yml└── roles └── pip └── tasks └── main.yml官方其它不同檔案配置12341.設置環境變量 (ANSIBLE_CONFIG)2.置於當前目錄下的 ansible.cfg（這次範例中使用的方法）3.置於根目錄下的 .ansible.cfg4.置於 /etc/ansible/ 下的 ansible.cfg]]></content>
+      <categories>
+        <category>Ansible</category>
+      </categories>
+      <tags>
+        <tag>Ansible</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[在Linux上安裝OracleDocker]]></title>
     <url>%2F2020%2F09%2F15%2F%E5%9C%A8Linux%E4%B8%8A%E5%AE%89%E8%A3%9DOracleDocker%2F</url>
     <content type="text"><![CDATA[在Linux上安裝OracleDocker在Linux上會有需要裝Oracle Docker的需求，來做一些CI/CD的測試。提供Docker的網站1https://hub.docker.com/INSTALL DOCKER12345678910111213141516Uninstall old versions$ yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latestlogrotate docker-logrotate docker-engineInstall using the repository$ yum install -y yum-utils device-mapper-persistent-data lvm2$ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repoInstall Docker Engine$ yum install –y docker-ce docker-ce-cli containerd.ioTo install a specific version$ yum list docker-ce --showduplicates | sort$ yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.ioStart Docker$ systemctl start dockerDOWNLOAD IMAGES12345Download images$ docker pull "hub.docker.path"Check image$ docker imagesCREATE CONTAINER123456789Create container$ docker run -d --name &lt;container_name&gt; --shm-size=1g -p 1521:1521 -p 18080:8080 -e ORACLE_PWD=&lt;your_password&gt; -v &lt;volume_name&gt;:/u01/app/oracle/oradata "hub.docker.path"Parameters--name The name of the container--shm-size Amount of Linux shared memory-p The port mapping of the host port to the container port.&lt;host_port&gt;:&lt;container_port&gt;-e The Oracle Database SYS, SYSTEM and PDB_ADMIN password-v The data volume to use for the database. If omitted the database will not be persisted over container recreation.ENTER CONTAINER12345Check container$ docker ps –aStart up sqlplus$ docker exec -it &lt;container_name&gt; bash -c "source /home/oracle/.bashrc; sqlplus /nolog"]]></content>
