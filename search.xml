@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PuTTY備份]]></title>
+    <url>%2F2020%2F09%2F17%2Fputty%E5%82%99%E4%BB%BD%2F</url>
+    <content type="text"><![CDATA[putty備份PuTTY 是 SSH 與 Telnet 連線軟體，我們都會把常用的主機連線儲存在 PuTTY 裡面，方便快速連線，但 PuTTY 並沒有提供匯出與匯入設定檔的功能，若遇到重灌或是更換電腦的情況，必須手動從 Windows 的「登錄編輯程式」匯出 PuTTY 的設定。備份 PuTTY 設定12345678910111213STEP 1:輸入「regedit」，開啟「登錄編輯程式」。STEP 2:選擇 HKEY_CURRENT_USER。STEP 3:選擇 Software。STEP 4:選擇 SimonTatham。STEP 5:選擇 SimonTatham 之後，點選「檔案」中的「匯出」，將裡面的設定備份出來。STEP 6:輸入欲匯出的檔案名稱，並選擇儲存檔案的目錄，然後按下「存檔」。這樣就完成 PuTTY 設定的匯出動作了，而該登錄檔中就包含了所有的 PuTTY 設定。回復 PuTTY 設定1234567若要在別台電腦匯入 PuTTY 的設定，可將剛匯出的登錄檔複製到新的電腦上，依照以下步驟會匯入。STEP 1:在該登錄檔按下右鍵，選擇「合併」。STEP 2:若合併來路不明的登錄檔，可能會造成問題，而我們是使用自己匯出的登錄檔。直接按下「是」即可執行登錄檔的合併。STEP 3:登錄成功之後，會出現成功的訊息。]]></content>
+      <categories>
+        <category>PuTTY</category>
+      </categories>
+      <tags>
+        <tag>backup</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[關於ansible.cfg]]></title>
     <url>%2F2020%2F09%2F16%2F%E9%97%9C%E6%96%BCansible-cfg%2F</url>
     <content type="text"><![CDATA[什麼是ansible.cfg?在 Ansible 中，我們可以透過配置 Ansible 的組態檔案 - ansible.cfg，來指定 Ansible 要去哪裡查找 role 的路徑。在workspace下新增ansible.cfg，並加入以下內容123456[defaults]roles_path = /path/to/roles若有多個路徑要設定:[defaults]roles_path = /path/to/public_roles:/path/to/private_roles其它參數設定1234[defaults]private_key_file = /path/to/private_keyinventory = /path/to/inventoryroles_path = /path/to/roles上述範例檔案配置123456789workspace├── Vagrantfile├── ansible.cfg├── inventory├── playbook.yml└── roles └── pip └── tasks └── main.yml官方其它不同檔案配置12341.設置環境變量 (ANSIBLE_CONFIG)2.置於當前目錄下的 ansible.cfg（這次範例中使用的方法）3.置於根目錄下的 .ansible.cfg4.置於 /etc/ansible/ 下的 ansible.cfg]]></content>
