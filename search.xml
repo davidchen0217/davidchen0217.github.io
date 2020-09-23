@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux查詢Tomcat版本]]></title>
+    <url>%2F2020%2F09%2F23%2FLinux%E6%9F%A5%E8%A9%A2Tomcat%E7%89%88%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[Linux查詢Tomcat版本這篇介紹如何在Linux查詢Tomcat版本Linux查詢Tomcat版本12345678910111213141516$ cd /usr/local/tomcat/bin$ ./version.shOutput:Using CATALINA_BASE: /usr/local/tomcatUsing CATALINA_HOME: /usr/local/apache/latestUsing CATALINA_TMPDIR: /usr/local/tomcat/tempUsing JRE_HOME: /usr/local/java/latestUsing CLASSPATH: /usr/local/apache/latest/bin/bootstrap.jar:/usr/local/apache/latest/bin/tomcat-juli.jarServer version: Apache Tomcat/8.5.57Server built: Jun 30 2020 21:49:10 UTCServer number: 8.5.57.0OS Name: LinuxOS Version: 3.10.0-957.el7.x86_64Architecture: amd64JVM Version: 1.8.0_265-b11JVM Vendor: Azul Systems, Inc.]]></content>
+      <categories>
+        <category>Tomcat</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用VisualStudioCompiler C語言]]></title>
     <url>%2F2020%2F09%2F22%2F%E4%BD%BF%E7%94%A8VisualStudioCompilerC%E8%AA%9E%E8%A8%80%2F</url>
     <content type="text"><![CDATA[使用VisualStudioCompiler C語言這篇介紹如何使用VisualStudioCompiler C語言。Visual Studio 2019 在預設情境下沒有辦法直接建 C 專案，只能建 C++ 專案。不過 Visual C++ 仍然保有編譯 C 原始碼的功能Visual Studio 2019 安裝&lt;使用C++的桌面開發&gt;建立新專案 -&gt; 主控台應用程式 (C++ Windows 主控台)設定新的專案將HelloWorld.cpp刪除來源檔案 -&gt; 右鍵 -&gt; 新增項目 -&gt; main.c在main.c寫一個印出HelloWorld程式專案 -&gt; 右鍵 -&gt; 屬性 -&gt; C/C++ -&gt; 所有選項 -&gt; 尋找選項或參數Key上&lt;編譯&gt; -&gt; 編譯成 改成 編譯成C程式碼(/TC)編譯成HelloWorld.exe -&gt; 執行exe]]></content>
