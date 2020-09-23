@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux查詢Tomcat版本]]></title>
     <url>%2F2020%2F09%2F23%2FLinux%E6%9F%A5%E8%A9%A2Tomcat%E7%89%88%E6%9C%AC%2F</url>
-    <content type="text"><![CDATA[Linux查詢Tomcat版本這篇介紹如何在Linux查詢Tomcat版本Linux查詢Tomcat版本12345678910111213141516$ cd /usr/local/tomcat/bin$ ./version.shOutput:Using CATALINA_BASE: /usr/local/tomcatUsing CATALINA_HOME: /usr/local/apache/latestUsing CATALINA_TMPDIR: /usr/local/tomcat/tempUsing JRE_HOME: /usr/local/java/latestUsing CLASSPATH: /usr/local/apache/latest/bin/bootstrap.jar:/usr/local/apache/latest/bin/tomcat-juli.jarServer version: Apache Tomcat/8.5.57Server built: Jun 30 2020 21:49:10 UTCServer number: 8.5.57.0OS Name: LinuxOS Version: 3.10.0-957.el7.x86_64Architecture: amd64JVM Version: 1.8.0_265-b11JVM Vendor: Azul Systems, Inc.]]></content>
+    <content type="text"><![CDATA[Linux查詢Tomcat版本這篇介紹如何在Linux查詢Tomcat版本Linux查詢Tomcat版本123456789101112131415161718$ cd /usr/local/tomcat/bin$ ./version.shOutput:Using CATALINA_BASE: /usr/local/tomcatUsing CATALINA_HOME: /usr/local/apache/latestUsing CATALINA_TMPDIR: /usr/local/tomcat/tempUsing JRE_HOME: /usr/local/java/latestUsing CLASSPATH: /usr/local/apache/latest/bin/bootstrap.jar:/usr/local/apache/latest/bin/tomcat-juli.jarServer version: Apache Tomcat/8.5.57Server built: Jun 30 2020 21:49:10 UTCServer number: 8.5.57.0OS Name: LinuxOS Version: 3.10.0-957.el7.x86_64Architecture: amd64JVM Version: 1.8.0_265-b11JVM Vendor: Azul Systems, Inc.]]></content>
       <categories>
         <category>Tomcat</category>
       </categories>
