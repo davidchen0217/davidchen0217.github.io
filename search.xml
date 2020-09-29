@@ -394,7 +394,7 @@
   <entry>
     <title><![CDATA[git Error:remote:HTTP Basic Access denied]]></title>
     <url>%2F2020%2F07%2F22%2FgitError-remote-HTTPBasicAccessDenied%2F</url>
-    <content type="text"><![CDATA[git Error:remote:HTTP Basic Access deniedSourceTree的remote操作pull、push…等，出現remote: HTTP Basic: Access denied fatal: Authentication failed for “http://xxx/xxx.git&quot;檢查gitconfig1234C:\Program Files\Git\mingw64\etc\gitconfig有沒有以下兩行指令，沒有的話請加上[credential] helper = manager]]></content>
+    <content type="text"><![CDATA[git Error:remote:HTTP Basic Access deniedSourceTree的remote操作pull、push… 或clone GitLab專案時等，出現remote: HTTP Basic: Access deniedfatal: Authentication failed for ‘http://xxx/xxx.git&#39;原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突1234567891011Step1:在作業系統中以管理員身份開啟命令列工具Step2:輸入git config --system --unset credential.helper命令，作用就是清空本地儲存的使用者名稱和密碼Step3:這裡一定要以管理員身份開啟，不然會出現：error: could not lock config file C:/Program Files/Git/mingw64/etc/gitconfig: Permission denied再執行遠端操作，會提示輸入遠端端的使用者名稱和密碼重新輸入遠端端的使用者名稱和密碼Step4:每次操作遠端倉庫都需要重新輸入使用者名稱和密碼，原因是git config --system --unset credential.helper這個命令清空gitconfig裡的自動儲存使用者名稱和密碼配置檢查gitconfig1234C:\Program Files\Git\mingw64\etc\gitconfig有沒有以下兩行指令，沒有的話請加上[credential] helper = manager]]></content>
       <categories>
         <category>git</category>
       </categories>
