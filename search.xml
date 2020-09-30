@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-ES6-let]]></title>
+    <url>%2F2020%2F09%2F30%2FJavaScript-ES6-let%2F</url>
+    <content type="text"><![CDATA[JavaScript-ES6-letES6 新增了let語法，用來宣告變數。它的用法類似var，但是所宣告的變數，let語法只在所在的代碼區塊内有效。let語法只在所在的代碼區塊内有效 - Example1234567&#123; let a = 10; var b = 1;&#125;a // ReferenceError: a is not defined.b // 1for迴圈適合用let語法定義123456for (let i = 0; i &lt; 10; i++) &#123; // ...&#125;console.log(i);// ReferenceError: i is not definedfor迴圈特殊用法12345678910for (let i = 0; i &lt; 3; i++) &#123; let i = 'abc'; console.log(i);&#125;// abc// abc// abc上述例子印出三次abc，表示(let i = 0) 和 let i = 'abc';兩者屬於不同區塊let宣告必須在使用變數前宣告，否則報錯1234567// var 的情况console.log(foo); // 輸出undefinedvar foo = 2;// let 的情况console.log(bar); // 報錯ReferenceErrorlet bar = 2;let語法宣告在區塊內的變數，就會綁定在區塊內，不受外部影響12345678910111213141516var tmp = 123;if (true) &#123; tmp = 'abc'; // ReferenceError let tmp;&#125;-----------------------------------typeof x; // ReferenceErrorlet x;-----------------------------------// no errorvar x = x;// errorlet x = x;// ReferenceError: x is not definedlet語法不允許在同個區塊內，重複宣告123456789101112131415161718192021222324// errorfunction func() &#123; let a = 10; var a = 1;&#125;// errorfunction func() &#123; let a = 10; let a = 1;&#125;------------------function func(arg) &#123; let arg;&#125;func() // errorfunction func(arg) &#123; &#123; let arg; &#125;&#125;func() // no errorES6-let12345678910111213141516171819function f1() &#123; let n = 5; if (true) &#123; let n = 10; &#125; console.log(n); // 5&#125;-----------------------// IIFE 寫法(function () &#123; var tmp = ...; ...&#125;());// ES6-寫法&#123; let tmp = ...; ...&#125;優先使用function expression1234567// 優先使用function expression&#123; let a = 'secret'; let f = function () &#123; return a; &#125;;&#125;有 { } 就有區塊1234567// errorif (true) let x = 1;// no errorif (true) &#123; let x = 1;&#125;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>let</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript-Object.freeze() & deepFreeze()]]></title>
     <url>%2F2020%2F09%2F29%2FJavaScript-ObjectFreezeVersusObjectSeal%2F</url>
     <content type="text"><![CDATA[JavaScript-Object.Freeze() &amp; deepFreeze()在 ES6 中，我們可以把變數宣告為常數const來使其不能被修改。要阻止一個物件包含內部成員被修改可以視需求使用Object.freeze()或deepFreeze()來解決這個問題。使用Object.freeze來保護物件123456789101112131415161718192021const obj = &#123; num: 10, obj: &#123; content: "mutable object" &#125;&#125;Object.freeze(obj);obj.num = 5;obj.obj = &#123; content: "changed!" &#125; console.log(obj);Output:&#123; num: 10, obj: &#123; content: "changed!" &#125;&#125;obj.num不可更改，但obj.obj仍然可以被更改MDN 提供 deepFreeze123456789101112131415161718192021222324252627282930313233343536function deepFreeze(object) &#123; // Retrieve the property names defined on object var propNames = Object.getOwnPropertyNames(object) // Freeze properties before freezing self for (let name of propNames) &#123; let value = object[name] object[name] = value &amp;&amp; typeof value === "object" ? deepFreeze(value) : value &#125; return Object.freeze(object)&#125;Input:const obj = &#123; num: 10, obj: &#123; content: "mutable object" &#125;&#125;deepFreeze(obj);obj.num = 5;obj.obj = &#123; content: "changed!" &#125; console.log(obj);Output:&#123; num: 10, obj: &#123; content: "mutable object" &#125;&#125;]]></content>
@@ -1456,8 +1467,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1505,8 +1516,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
