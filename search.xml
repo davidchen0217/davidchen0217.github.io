@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Intro Basic TypeScript]]></title>
+    <url>%2F2020%2F10%2F06%2FIntroTypeScriptBasic%2F</url>
+    <content type="text"><![CDATA[Intro Basic TypeScript這篇介紹TypeScript的基本語法。宣告-型態12345678910export function f(x: i32): i32 &#123; if (x === 1 || x === 2) &#123; return 1; &#125; return f(x - 1) + f(x - 2)&#125;說明x: i32 : 表示宣告一個變數x，型態為i32i32 &#123; : 表示這個函數的回傳型態是i32export-宣告123456789export function f(x: i32): i32 &#123; if (x === 1 || x === 2) &#123; return 1; &#125; return f(x - 1) + f(x - 2)&#125;說明export : 表示這個函數可以被javascript呼叫declare-宣告1234declare function log(s: f64): void;說明declare : 宣告一個外部的javascript函數，並定義相關的參數內容，這邊並沒有主體，須由外部js實作字串預設值-設定123456export function test(arg2: string = "abc"): void &#123;export function test(arg2: string | null): void &#123;說明參數可以指定字串的預設值，如果有指定了預設值，那就是非必要傳入參數參數可以指定可能為null泛型123456function test2&lt;T&gt;(arg1: T): void &#123; log(arg1);&#125;說明表示型態未定義，不能宣告export]]></content>
+      <categories>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JaveScript-ES6-const]]></title>
     <url>%2F2020%2F09%2F30%2FJaveScript-ES6-const%2F</url>
     <content type="text"><![CDATA[JaveScript-ES6-constconst用來宣告常數變數，一旦宣告就無法改變。const-一旦宣告就無法改變12345const PI = 3.1415;PI // 3.1415PI = 3;// TypeError: Assignment to constant variable.const一旦宣告，必須賦予初始值12const foo;// SyntaxError: Missing initializer in const declaration只在宣告的區塊內有效12345if (true) &#123; const MAX = 5;&#125;MAX // Uncaught ReferenceError: MAX is not definedconst只能在宣告後使用1234if (true) &#123; console.log(MAX); // ReferenceError const MAX = 5;&#125;不可重複宣告123456var message = "Hello!";let age = 25;// 以下兩行都errorconst message = "Goodbye!";const age = 30;const不能改變記憶體位址12345678910111213const foo = &#123;&#125;;// 可以在 foo 增加屬性foo.prop = 123;foo.prop // 123// 将 foo 指向 &#123; &#125;，errorfoo = &#123;&#125;; // TypeError: "foo" is read-only-------------------------------------------const a = [];a.push('Hello'); // oka.length = 0; // oka = ['Dave']; // error]]></content>
@@ -1752,8 +1763,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Visual Studio Code</tag>
         <tag>JavaScript</tag>
+        <tag>Visual Studio Code</tag>
       </tags>
   </entry>
   <entry>
