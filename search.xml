@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[JavaScript-ES6-variable]]></title>
+    <title><![CDATA[JavaScript-ES6-variable 1st]]></title>
     <url>%2F2020%2F10%2F08%2FJavaScript-ES6-Variable%2F</url>
-    <content type="text"><![CDATA[JavaScript-ES6-variable這篇介紹在JavaScript-ES6 有關variable的基本用法及簡介。variable assign value12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455在ES6之前:let a = 1;let b = 2;let c = 3;ES6可以這樣寫:let [a, b, c] = [1, 2, 3];let [foo, [[bar], baz]] = [1, [[2], 3]];foo // 1bar // 2baz // 3let [ , , third] = ["foo", "bar", "baz"];third // "baz"let [x, , y] = [1, 2, 3];x // 1y // 3let [head, ...tail] = [1, 2, 3, 4];head // 1tail // [2, 3, 4]let [x, y, ...z] = ['a'];x // "a"y // undefinedz // []Destructuration 失敗example:let [foo] = [];let [bar, foo] = [1];Output:foo : undefined不完全Destructuration example:let [x, y] = [1, 2, 3];x // 1y // 2let [a, [b], d] = [1, [2, 3], 4];a // 1b // 2d // 4若=左邊是array，但=右邊不是array，則會errorlet [foo] = 1;let [foo] = false;let [foo] = NaN;let [foo] = undefined;let [foo] = null;let [foo] = &#123;&#125;;Set也可以使用array Destructuration:let [x, y, z] = new Set(['a', 'b', 'c']);x // "a"]]></content>
+    <content type="text"><![CDATA[JavaScript-ES6-variable 1st這篇介紹在JavaScript-ES6 有關variable的基本用法及簡介。variable assign value1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556在ES6之前:let a = 1;let b = 2;let c = 3;ES6可以這樣寫:let [a, b, c] = [1, 2, 3];let [foo, [[bar], baz]] = [1, [[2], 3]];foo // 1bar // 2baz // 3let [ , , third] = ["foo", "bar", "baz"];third // "baz"let [x, , y] = [1, 2, 3];x // 1y // 3let [head, ...tail] = [1, 2, 3, 4];head // 1tail // [2, 3, 4]let [x, y, ...z] = ['a'];x // "a"y // undefinedz // []Destructuration 失敗example:let [foo] = [];let [bar, foo] = [1];Output:foo : undefined不完全Destructuration example:let [x, y] = [1, 2, 3];x // 1y // 2let [a, [b], d] = [1, [2, 3], 4];a // 1b // 2d // 4若=左邊是array，但=右邊不是array，則會error//errorlet [foo] = 1;let [foo] = false;let [foo] = NaN;let [foo] = undefined;let [foo] = null;let [foo] = &#123;&#125;;Set也可以使用array Destructuration:let [x, y, z] = new Set(['a', 'b', 'c']);x // "a"]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -1522,8 +1522,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1571,8 +1571,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
