@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-ES6-ObjectDestructuration]]></title>
+    <url>%2F2020%2F10%2F08%2FJavaScript-ES6-ObjectDestructuration%2F</url>
+    <content type="text"><![CDATA[JavaScript-ES6-ObjectDestructuration這篇簡介JavaScript-ES6 Object Destructuration。Object Destructuration1234Destructuration不僅可以用在array，也可以用在objectlet &#123; foo, bar &#125; = &#123; foo: 'aaa', bar: 'bbb' &#125;;foo // "aaa"bar // "bbb"array Destructuration versus object Destructuration123456789101112array Destructuration -&gt; 有順序性Destructurationobject Destructuration -&gt; 不存在順序性，variable必須對應屬性名才能取值let &#123; bar, foo &#125; = &#123; foo: 'aaa', bar: 'bbb' &#125;; --&gt; 順序並不影響foo // "aaa"bar // "bbb"let &#123; baz &#125; = &#123; foo: 'aaa', bar: 'bbb' &#125;; --&gt; 沒有對應的同名屬性故取不到值，Destructuration失敗故undefinedbaz // undefinedlet &#123; foo &#125; = &#123; bar: 'baz' &#125;; --&gt; = 右邊的object沒有foo屬性，所以variable foo 取不到值，故undefinedfoo // undefinedObject Destructuration default value1234567891011121314151617181920212223242526272829303132let &#123; foo: baz &#125; = &#123; foo: 'aaa', bar: 'bbb' &#125;;baz // "aaa"object Destructuration的內部機制是先找到同名屬性後，將值assign給對應的variable故真正被assign的是後者(baz)，不是前者(foo)let &#123; foo: baz &#125; = &#123; foo: 'aaa', bar: 'bbb' &#125;;baz // "aaa"foo // error: foo is not defineddefault value 生效條件 : object 屬性值 === undefinedvar &#123;x = 3&#125; = &#123;&#125;;x // 3var &#123;x, y = 5&#125; = &#123;x: 1&#125;;x // 1y // 5var &#123;x: y = 3&#125; = &#123;&#125;;y // 3var &#123;x: y = 3&#125; = &#123;x: 5&#125;;y // 5var &#123; message: msg = 'Something went wrong' &#125; = &#123;&#125;;msg // "Something went wrong"屬性x 等於 null，因為null !=== undefined，導致default value 不會生效var &#123;x = 3&#125; = &#123;x: undefined&#125;;x // 3var &#123;x = 3&#125; = &#123;x: null&#125;;x // null]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>object</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript-ES6-variable 2nd]]></title>
     <url>%2F2020%2F10%2F08%2FJavaScript-ES6-variable2nd%2F</url>
     <content type="text"><![CDATA[JavaScript-ES6-variable 2nd這篇簡介JavaScript-ES6 variable destructuration default。variable destructuration default1234567891011121314151617181920212223242526272829303132333435destructuration allow default value:let [foo = true] = [];foo // truelet [x, y = 'b'] = ['a']; // x='a', y='b'let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'ES6內部使用 === 來判斷值，當array內 === undefined時才會使default value生效let [x = 1] = [undefined];x // 1當assign null時，因 !=== undefined，default value不生效let [x = 1] = [null];x // null這個例子因x有default value，所以f()不會執行function f() &#123; console.log('aaa');&#125;let [x = f()] = [1];上例等於下方codelet x;if ([1][0] === undefined) &#123; x = f();&#125; else &#123; x = [1][0];&#125;default value可以引用variable，但該variable必須已assign valuelet [x = 1, y = x] = []; // x=1; y=1let [x = 1, y = x] = [2]; // x=2; y=2let [x = 1, y = x] = [1, 2]; // x=1; y=2let [x = y, y = 1] = []; // ReferenceError: y is not defined -&gt; variable y 還沒assign value 就給 x 當 default value]]></content>
