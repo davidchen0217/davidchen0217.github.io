@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-ES6-variable 2nd]]></title>
+    <url>%2F2020%2F10%2F08%2FJavaScript-ES6-variable2nd%2F</url>
+    <content type="text"><![CDATA[JavaScript-ES6-variable 2nd這篇簡介JavaScript-ES6 variable destructuration default。variable destructuration default1234567891011121314151617181920212223242526272829303132333435destructuration allow default value:let [foo = true] = [];foo // truelet [x, y = 'b'] = ['a']; // x='a', y='b'let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'ES6內部使用 === 來判斷值，當array內 === undefined時才會使default value生效let [x = 1] = [undefined];x // 1當assign null時，因 !=== undefined，default value不生效let [x = 1] = [null];x // null這個例子因x有default value，所以f()不會執行function f() &#123; console.log('aaa');&#125;let [x = f()] = [1];上例等於下方codelet x;if ([1][0] === undefined) &#123; x = f();&#125; else &#123; x = [1][0];&#125;default value可以引用variable，但該variable必須已assign valuelet [x = 1, y = x] = []; // x=1; y=1let [x = 1, y = x] = [2]; // x=2; y=2let [x = 1, y = x] = [1, 2]; // x=1; y=2let [x = y, y = 1] = []; // ReferenceError: y is not defined -&gt; variable y 還沒assign value 就給 x 當 default value]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>variable</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript-ES6-variable 1st]]></title>
     <url>%2F2020%2F10%2F08%2FJavaScript-ES6-Variable%2F</url>
     <content type="text"><![CDATA[JavaScript-ES6-variable 1st這篇介紹在JavaScript-ES6 有關variable的基本用法及簡介。variable assign value1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556在ES6之前:let a = 1;let b = 2;let c = 3;ES6可以這樣寫:let [a, b, c] = [1, 2, 3];let [foo, [[bar], baz]] = [1, [[2], 3]];foo // 1bar // 2baz // 3let [ , , third] = ["foo", "bar", "baz"];third // "baz"let [x, , y] = [1, 2, 3];x // 1y // 3let [head, ...tail] = [1, 2, 3, 4];head // 1tail // [2, 3, 4]let [x, y, ...z] = ['a'];x // "a"y // undefinedz // []Destructuration 失敗example:let [foo] = [];let [bar, foo] = [1];Output:foo : undefined不完全Destructuration example:let [x, y] = [1, 2, 3];x // 1y // 2let [a, [b], d] = [1, [2, 3], 4];a // 1b // 2d // 4若=左邊是array，但=右邊不是array，則會error//errorlet [foo] = 1;let [foo] = false;let [foo] = NaN;let [foo] = undefined;let [foo] = null;let [foo] = &#123;&#125;;Set也可以使用array Destructuration:let [x, y, z] = new Set(['a', 'b', 'c']);x // "a"]]></content>
