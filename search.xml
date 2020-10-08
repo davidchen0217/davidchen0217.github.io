@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-ES6-variable]]></title>
+    <url>%2F2020%2F10%2F08%2FJavaScript-ES6-Variable%2F</url>
+    <content type="text"><![CDATA[JavaScript-ES6-variable這篇介紹在JavaScript-ES6 有關variable的基本用法及簡介。variable assign value12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455在ES6之前:let a = 1;let b = 2;let c = 3;ES6可以這樣寫:let [a, b, c] = [1, 2, 3];let [foo, [[bar], baz]] = [1, [[2], 3]];foo // 1bar // 2baz // 3let [ , , third] = ["foo", "bar", "baz"];third // "baz"let [x, , y] = [1, 2, 3];x // 1y // 3let [head, ...tail] = [1, 2, 3, 4];head // 1tail // [2, 3, 4]let [x, y, ...z] = ['a'];x // "a"y // undefinedz // []Destructuration 失敗example:let [foo] = [];let [bar, foo] = [1];Output:foo : undefined不完全Destructuration example:let [x, y] = [1, 2, 3];x // 1y // 2let [a, [b], d] = [1, [2, 3], 4];a // 1b // 2d // 4若=左邊是array，但=右邊不是array，則會errorlet [foo] = 1;let [foo] = false;let [foo] = NaN;let [foo] = undefined;let [foo] = null;let [foo] = &#123;&#125;;Set也可以使用array Destructuration:let [x, y, z] = new Set(['a', 'b', 'c']);x // "a"]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>variable</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java-String versus StringBuffer versus StringBuilder]]></title>
     <url>%2F2020%2F10%2F07%2FJava-StringVersusStringBufferVensusStringBuilder%2F</url>
     <content type="text"><![CDATA[Java-String versus StringBuffer versus StringBuilder這篇介紹String versus StringBuffer versus StringBuilder個別的差異以及效能上的議題。String12String的值是不可變的(immutable)，這造成每次對String的操作都會生成新的String物件，不僅效率低下，而且大量浪費有限的記憶體空間。String的操作都是call by reference而不是call by valueStringBuffer12StringBuffer:Synchronized、thread-safe。若需要經常對字串內容進行修改，使用StringBuffer的效率最好，如果想轉成String型別，可以呼叫StringBuffer的toString()方法。StringBuilder12StringBuilder:non-thread-safe。StringBuilder物件被當作是一個包含字元序列的變長陣列。但不保證同步。該class被設計用作 StringBuffer 的一個簡易替換，用在字串緩衝區被單個執行緒使用的時候。String和StringBuffer區別12345需經常改變內容的字串不建議使用String，因為每次生成物件都會對系統性能產生影響，特別當記憶體中無引用物件多了以後，JVM 的 GC 就會開始工作，效能就會降低。使用 StringBuffer 時，每次都會對 StringBuffer 物件本身進行操作，而不是生成新的物件並改變物件引用。所以多數情況下推薦使用 StringBuffer ，特別是字串物件經常改變的情況下。StringBuilder versus StringBuffer12StringBuilder與StringBuffer有public parent class - AbstractStringBuilder。StringBuilder、StringBuffer的方法都會呼叫AbstractStringBuilder中的公共方法，如super.append(…)。只是StringBuffer會在方方法上加synchronized關鍵字，進行同步。使用建議12345671.基本原則：如果要操作少量的資料，用String單執行緒操作大量資料，用StringBuilder多執行緒操作大量資料，用StringBuffer2.不要使用String class的"+"來進行頻繁的拼接，因為那樣會頻繁建立String result儲存結果，效能極差，應該使用StringBuffer或StringBuilder class，在Java的優化上是一條比較重要的原則。]]></content>
@@ -1511,8 +1522,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -1560,8 +1571,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
