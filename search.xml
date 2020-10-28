@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[e.currentTarget Versus e.target]]></title>
+    <url>%2F2020%2F10%2F28%2Fe-currentTargetVersuse-target%2F</url>
+    <content type="text"><![CDATA[e.currentTarget Versus e.target這篇介紹e.currentTarget和e.target兩者差異，當一個dom物件被觸發一個事件後，事件會冒泡，如果冒泡到父節點，且父節點也bind相同e.事件的話就會觸發該事件。這是可通過e.currentTarget 和 e.target來判斷事件的bind物件和觸發物件分別是誰。Example123456789101112131415HTML:&lt;ul id="fa"&gt; &lt;li class="son1"&gt;son1&lt;/li&gt; &lt;li class="son2"&gt;son2&lt;/li&gt; &lt;li class="son3"&gt;son3&lt;/li&gt;&lt;/ul&gt;JavaScript:let fa = document.getElementById('fa');fa.onclick = function(e) &#123; console.log(`%ccurrentTarget: %c$&#123;e.currentTarget.innerHTML&#125;`, 'color: red', 'color: red'); console.log(`%ctarget: %c$&#123;e.target.innerHTML&#125;`, 'color: yellow', 'color:yellow');&#125;當點選&lt;ul&gt;&lt;/ul&gt;相當於在id=fa的節點上觸發時間，因此target、currentTarget均指向id=fa節點當點選&lt;li&gt;son1、son2、son3&lt;/li&gt;時，事件是在子節點觸發，但事件是繫結在父節點上，因此currentTarget指向ul節點，target指向li節點結論12e.currentTarget：指的是註冊事件物件e.target：指的是實際觸發事件的物件]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[jQuery each Versus ES6 foreach Performance]]></title>
     <url>%2F2020%2F10%2F27%2FJQuery-eachVersusES6foreachPerformance%2F</url>
     <content type="text"><![CDATA[jQuery each Versus ES6 foreach Performance這篇比較JQuery each 和 ES6 foreach效能。效能比較1234567891011121314HTML:&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"&gt;&lt;/script&gt;&lt;link rel="stylesheet" href="style.min.css" type="text/css"&gt;&lt;link rel="stylesheet" href="style.min.css" type="text/css"&gt;&lt;link rel="stylesheet" href="style.min.css" type="text/css"&gt;&lt;link rel="stylesheet" href="style.min.css" type="text/css"&gt;&lt;link rel="stylesheet" href="style.min.css" type="text/css"&gt;Test case(ES6 Native):var linkEls = document.querySelectorAll('link[href*=".min.css"]');[].forEach.call(linkEls,function(el)&#123;&#125;);Test case(jQuery):$('link[href*=".min.css"]').each(function()&#123;&#125;);Result &amp; Conclusion:12345forEach (Native) : forEach (Native) x 338,628 ops/sec ±2.48% (62 runs sampled)each (jQuery) : each (jQuery) x 265,555 ops/sec ±3.18% (62 runs sampled)Fastest: forEach (Native)Slowest: each (jQuery)]]></content>
