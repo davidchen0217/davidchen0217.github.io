@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript-ES6-function]]></title>
+    <url>%2F2020%2F10%2F29%2FJavaScript-ES6-function%2F</url>
+    <content type="text"><![CDATA[JavaScript-ES6-function這篇簡介JavaScript-ES6-function。default parameter1234567891011121314151617181920212223242526272829303132333435363738394041424344454647ES6 allow default parameter:---------function log(x, y = 'World') &#123; console.log(x, y);&#125;log('Hello') // Hello Worldlog('Hello', 'China') // Hello Chinalog('Hello', '') // Hello---------function Point(x = 0, y = 0) &#123; this.x = x; this.y = y;&#125;const p = new Point();p // &#123; x: 0, y: 0 &#125;---------default parameter can't redeclare let or const:function foo(x = 5) &#123; let x = 1; // error const x = 2; // error&#125;---------default parameter -&gt; function can't have same parameter's name:// non-errorfunction foo(x, x, y) &#123; // ...&#125;// errorfunction foo(x, x, y = 1) &#123; // ...&#125;// SyntaxError: Duplicate parameter name not allowed in this context---------每次呼叫function時，default parameter都會重新計算 x + 1，不會使用上一次的default parameterlet x = 99;function foo(p = x + 1) &#123; console.log(p);&#125;foo() // 100x = 100;foo() // 101default parameter combine Destructuration12345678function foo(&#123;x, y = 5&#125;) &#123; console.log(x, y);&#125;foo(&#123;&#125;) // undefined 5foo(&#123;x: 1&#125;) // 1 5foo(&#123;x: 1, y: 2&#125;) // 1 2foo() // TypeError: Cannot read property 'x' of undefined]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>function</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Iterate Array Avoid Using for...in 和 for...of]]></title>
     <url>%2F2020%2F10%2F29%2FJavaScriptAvoidUsingForInAndForOf%2F</url>
     <content type="text"><![CDATA[Iterate Array Avoid Using for…in 和 for…ofIterate 陣列時避免使用for…in, for…of 因可能有非預期的值出現。Example12345678910111213141516171819202122232425262728293031var a = []; // Create a new empty array.a[5] = 5; // Perfectly legal JavaScript that resizes the array.for (var i = 0; i &lt; a.length; i++) &#123; // Iterate over numeric indexes from 0 to 5, as everyone expects. console.log(a[i]);&#125;/* Will display: undefined undefined undefined undefined undefined 5*/--------var a = [];a[5] = 5;for (var x in a) &#123; // Shows only the explicitly set index of "5", and ignores 0-4 console.log(x);&#125;/* Will display: 5*/上述用同一個Example不同for方法~兩個例子會有不同的結果，且for...in是非預期的。因此避免使用]]></content>
