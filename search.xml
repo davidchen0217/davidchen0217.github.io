@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Iterate Array Avoid Using for...in 和 for...of]]></title>
+    <url>%2F2020%2F10%2F29%2FJavaScriptAvoidUsingForInAndForOf%2F</url>
+    <content type="text"><![CDATA[Iterate Array Avoid Using for…in 和 for…ofIterate 陣列時避免使用for…in, for…of 因可能有非預期的值出現。Example12345678910111213141516171819202122232425262728293031var a = []; // Create a new empty array.a[5] = 5; // Perfectly legal JavaScript that resizes the array.for (var i = 0; i &lt; a.length; i++) &#123; // Iterate over numeric indexes from 0 to 5, as everyone expects. console.log(a[i]);&#125;/* Will display: undefined undefined undefined undefined undefined 5*/--------var a = [];a[5] = 5;for (var x in a) &#123; // Shows only the explicitly set index of "5", and ignores 0-4 console.log(x);&#125;/* Will display: 5*/上述用同一個Example不同for方法~兩個例子會有不同的結果，且for...in是非預期的。因此避免使用]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>for</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Intro Fully qualified domain name]]></title>
     <url>%2F2020%2F10%2F29%2FIntroFQDN%2F</url>
     <content type="text"><![CDATA[Fully qualified domain name這篇介紹Fully qualified domain name。完全限定域名（英語：Fully qualified domain name），縮寫為FQDN，又譯為完全資格域名、完整領域名稱，又稱為絕對領域名稱（absolute domain name）、絕對域名。簡介123456網域名稱的一種，能指定其在域名系統 (DNS) 樹狀圖下的一個確實位置。一個完全資格域名會包含所有域名級別，包括 Top-level Domain 和 RootDomain。完整網域名稱這個名稱的由來，是因為它沒有模糊空間，只能用一種方式來解析。完整網域名稱是因應網際網路上需要一個統一識別方式而出現，在1980年代後期快速成長。Example: myhost.example.comRootDomain: myhostTop-level Domain: com網域唯一1234完整網域名稱由主機名稱與母網域名稱兩部份所組成，例如有一部伺服器的本地主機名為myhost，而其母域名為example.com，那指向該伺服器的完整網域名稱就是myhost.example.com。雖然世界上可能有很多伺服器的本地主機名是myhost，但myhost.example.com是唯一的，因此完整網域名稱能識別該特定伺服器。]]></content>
@@ -1632,8 +1643,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1681,8 +1692,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
