@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Intro JsonView]]></title>
     <url>%2F2020%2F10%2F29%2FIntroJsonView%2F</url>
-    <content type="text"><![CDATA[Intro JsonView &amp; How to use這篇簡介JsonView &amp; How to use，因為資料或功能模組定義，針對同樣的項目(table/item)允許或需要操作的欄位(column/attribute)有所不同。可以用JsonView來定義需要產出的欄位。Example123456789101112131415161718192021222324public class TestJsonView &#123; public interface TestView &#123; &#125; private String userName; private String passWord; @JsonView(&#123;TestView.class&#125;) public String getUserName() &#123; return userName; &#125; public String getPassWord() &#123; return passWord; &#125; &#125;----------String jsonString = JSONUtils.toJsonString(redPacketActClose, TestJsonView.TestView.class);Output: &#123;"userName" : "xxx"&#125;只列出userName，不會列出passWord]]></content>
+    <content type="text"><![CDATA[Intro JsonView &amp; How to use這篇簡介JsonView &amp; How to use，因為資料或功能模組定義，針對同樣的項目(table/item)允許或需要操作的欄位(column/attribute)有所不同。可以用JsonView來定義需要產出的欄位。Example123456789101112131415161718192021222324public class TestJsonView &#123; public interface TestView &#123; &#125; private String userName; private String passWord; @JsonView(&#123;TestView.class&#125;) public String getUserName() &#123; return userName; &#125; public String getPassWord() &#123; return passWord; &#125; &#125;----------String jsonString = JSONUtils.toJsonString(TestJsonViewObj, TestJsonView.TestView.class);Output: &#123;"userName" : "xxx"&#125;只列出userName，不會列出passWord]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -1665,8 +1665,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1714,8 +1714,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
