@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HttpPost Use Proxy To Target]]></title>
+    <url>%2F2020%2F12%2F08%2FHttpPostUseProxyToTarget%2F</url>
+    <content type="text"><![CDATA[HttpPost Use Proxy To Target這篇介紹在Java如何透過HttpHost via Proxy to Target。Proxy url1http://user:password@10.10.10.1:9988Sample code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455package org.apache.http.examples.client;import org.apache.http.HttpHost;import org.apache.http.auth.AuthScope;import org.apache.http.auth.UsernamePasswordCredentials;import org.apache.http.client.CredentialsProvider;import org.apache.http.client.config.RequestConfig;import org.apache.http.client.methods.CloseableHttpResponse;import org.apache.http.client.methods.HttpGet;import org.apache.http.impl.client.BasicCredentialsProvider;import org.apache.http.impl.client.CloseableHttpClient;import org.apache.http.impl.client.HttpClients;import org.apache.http.util.EntityUtils;/** * A simple example that uses HttpClient to execute an HTTP request * over a secure connection tunneled through an authenticating proxy. */public class ClientProxyAuthentication &#123; public static void main(String[] args) throws Exception &#123; CredentialsProvider credsProvider = new BasicCredentialsProvider(); credsProvider.setCredentials( new AuthScope("localhost", 8888), new UsernamePasswordCredentials("squid", "squid")); credsProvider.setCredentials( new AuthScope("httpbin.org", 80), new UsernamePasswordCredentials("user", "passwd")); CloseableHttpClient httpclient = HttpClients.custom() .setDefaultCredentialsProvider(credsProvider).build(); try &#123; HttpHost target = new HttpHost("httpbin.org", 80, "http"); HttpHost proxy = new HttpHost("localhost", 8888); RequestConfig config = RequestConfig.custom() .setProxy(proxy) .build(); HttpGet httpget = new HttpGet("/basic-auth/user/passwd"); httpget.setConfig(config); System.out.println("Executing request " + httpget.getRequestLine() + " to " + target + " via " + proxy); CloseableHttpResponse response = httpclient.execute(target, httpget); try &#123; System.out.println("----------------------------------------"); System.out.println(response.getStatusLine()); System.out.println(EntityUtils.toString(response.getEntity())); &#125; finally &#123; response.close(); &#125; &#125; finally &#123; httpclient.close(); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Http</category>
+      </categories>
+      <tags>
+        <tag>Proxy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Intro Linux Dig]]></title>
     <url>%2F2020%2F12%2F07%2FIntroLinuxDig%2F</url>
     <content type="text"><![CDATA[Intro Linux Dig這篇介紹在Linux如何使用dig指令。安裝dig1yum install bind-utils常用 dig debug 的幾個參數說明1234@global-server: 指定 DNS server 要用哪台-x: 反向查詢+trace: 查看 DNS 從最上層 root 往下跑，到底經過哪些節點+short: 簡短輸出 (寫程式 追蹤方便使用)dig 使用操作範例1234$ dig @ns1.google.com www.google.com # 指定 NS1 的 dns server$ dig google.com @8.8.4.4 # 指定 dns server$ dig +trace google.com # 追蹤看經過哪些節點$ dig +trace google.com @8.8.8.8 # 指定 dns server + 追蹤路徑經過]]></content>
@@ -1570,8 +1581,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>POST</tag>
         <tag>RestfulApi</tag>
+        <tag>POST</tag>
       </tags>
   </entry>
   <entry>
