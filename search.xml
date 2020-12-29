@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[HighLevelApiForElk Over 10000筆查詢作法]]></title>
+    <title><![CDATA[HighLevelApiForElasticSearch Over 10000筆查詢作法]]></title>
     <url>%2F2020%2F12%2F29%2FHighLevelApiForElkOver10000%E7%AD%86%E6%9F%A5%E8%A9%A2%E4%BD%9C%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[HighLevelApiForElk Over 10000筆查詢作法這篇介紹HighLevelApiForElk Over 10000筆查詢作法。Example1234567891011121314151617181920212223242526272829303132333435public static List&lt;Detail&gt; getDetail(String userId) &#123; SearchSourceBuilder sourceBuilder = new SearchSourceBuilder(); BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery(); boolQueryBuilder.filter(QueryBuilders.termQuery("userId", userId)); sourceBuilder.query(boolQueryBuilder); sourceBuilder.size(ELKManager.MAX_REQUEST_SIZE); List&lt;Detail&gt; details = new ArrayList&lt;Detail&gt;(); Object[] sortValues = null; SearchHit[] searchHits; do &#123; if (sortValues != null) &#123; sourceBuilder.searchAfter(sortValues); &#125; SearchResponse searchResponse = ELKManager.search(sourceBuilder, INDEX_NAME_PREFIX + "*"); searchHits = searchResponse.getHits().getHits(); if (searchHits.length &gt; 0) &#123; Iterator&lt;SearchHit&gt; iterator = searchResponse.getHits().iterator(); while (iterator.hasNext()) &#123; Detail detail = new Detail(); Map&lt;String, Object&gt; result = iterator.next().getSourceAsMap(); detail.setUserId((String) result.get("userId")); detail.setPassWord((String) result.get("passWord")); &#125; sortValues = searchResponse.getHits().getAt(searchHits.length - 1).getSortValues(); &#125; &#125; while (searchHits.length &gt; 0); return details;&#125;]]></content>
+    <content type="text"><![CDATA[HighLevelApiForElasticSearch Over 10000筆查詢作法這篇介紹HighLevelApiForElasticSearch Over 10000筆查詢作法。Example1234567891011121314151617181920212223242526272829303132333435public static List&lt;Detail&gt; getDetail(String userId) &#123; SearchSourceBuilder sourceBuilder = new SearchSourceBuilder(); BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery(); boolQueryBuilder.filter(QueryBuilders.termQuery("userId", userId)); sourceBuilder.query(boolQueryBuilder); sourceBuilder.size(ELKManager.MAX_REQUEST_SIZE); List&lt;Detail&gt; details = new ArrayList&lt;Detail&gt;(); Object[] sortValues = null; SearchHit[] searchHits; do &#123; if (sortValues != null) &#123; sourceBuilder.searchAfter(sortValues); &#125; SearchResponse searchResponse = ELKManager.search(sourceBuilder, INDEX_NAME_PREFIX + "*"); searchHits = searchResponse.getHits().getHits(); if (searchHits.length &gt; 0) &#123; Iterator&lt;SearchHit&gt; iterator = searchResponse.getHits().iterator(); while (iterator.hasNext()) &#123; Detail detail = new Detail(); Map&lt;String, Object&gt; result = iterator.next().getSourceAsMap(); detail.setUserId((String) result.get("userId")); detail.setPassWord((String) result.get("passWord")); &#125; sortValues = searchResponse.getHits().getAt(searchHits.length - 1).getSortValues(); &#125; &#125; while (searchHits.length &gt; 0); return details;&#125;]]></content>
       <categories>
         <category>ElasticSearch</category>
       </categories>
@@ -1764,8 +1764,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1813,8 +1813,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
