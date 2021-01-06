@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[The valid characters are defined in RFC 7230 and RFC 3986]]></title>
+    <url>%2F2021%2F01%2F06%2FThevalidcharactersaredefinedinRFC7230andRFC3986%2F</url>
+    <content type="text"><![CDATA[The valid characters are defined in RFC 7230 and RFC 3986這篇介紹透過GET對jsp操作時，有特殊字元會被tomcat擋住之解決方法。瀏覽器執行jsp1234在瀏覽器執行 https://&#123;host&#125;/xxx.jsp?value=&#123;"A":"CCC"&#125;出現The valid characters are defined in RFC 7230 and RFC 3986錯誤訊息因特殊字元被tomcat擋住。不更動tomcat設定下之解決方法123curl --location --request POST 'https://&#123;host&#125;/xxx.jsp' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'value=&#123;"A":"CCC"&#125;'在 xxx.jsp 需做 String value = URLDecoder.decode(RequestParser.getStringParameter(request, 3000, "value", null), "UTF-8");]]></content>
+      <categories>
+        <category>URLEncoder</category>
+      </categories>
+      <tags>
+        <tag>URLEncoder</tag>
+        <tag>URLDecoder</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Intro Kibana Query Language For UpdateByQuery And DeleteByQuery]]></title>
     <url>%2F2021%2F01%2F06%2FIntroKibanaQueryLanguageForUpdateByQueryAndDeleteByQuery%2F</url>
     <content type="text"><![CDATA[Intro Kibana Query Language For UpdateByQuery And DeleteByQuery這篇介紹透過Kibana Query Language 做 UpdateByQuery Or DeleteByQuery Record。UpdateByQuery1234567891011121314151617181920212223242526272829303132333435363738POST table*/_update_by_query&#123; "track_total_hits":true, "query": &#123; "bool": &#123; "filter": [ &#123; "range": &#123; "StartTime": &#123; "from": "2020/12/11 00:00:00.000", "to": "2020/12/11 23:59:00.000", "include_upper": true, "include_lower": true, "format": "yyyy/MM/dd HH:mm:ss.SSS" &#125; &#125; &#125; ], "should": [ &#123; "term": &#123; "status": &#123; "value": 1 &#125; &#125; &#125; ], "minimum_should_match": 1 &#125; &#125;, "script": &#123; "source": "ctx._source.status=2", "lang": "painless" &#125;&#125;memo:將StartTim符合2020/12/11 00:00:00.000 ~ 2020/12/11 23:59:00.000時間區間內 且 status = 1的資料改成status = 2DeleteByQuery12345678POST table*/_delete_by_query?scroll_size=5000&#123; "query": &#123; "term": &#123; "key": "value" &#125; &#125;&#125;]]></content>
@@ -1627,8 +1639,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>GET</tag>
         <tag>RestfulApi</tag>
+        <tag>GET</tag>
       </tags>
   </entry>
   <entry>
@@ -1776,8 +1788,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -1825,8 +1837,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
