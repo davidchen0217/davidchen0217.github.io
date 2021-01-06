@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Intro Kibana Query Language For UpdateByQuery And DeleteByQuery]]></title>
+    <url>%2F2021%2F01%2F06%2FIntroKibanaQueryLanguageForUpdateByQueryAndDeleteByQuery%2F</url>
+    <content type="text"><![CDATA[Intro Kibana Query Language For UpdateByQuery And DeleteByQuery這篇介紹透過Kibana Query Language 做 UpdateByQuery Or DeleteByQuery Record。UpdateByQuery1234567891011121314151617181920212223242526272829303132333435363738POST table*/_update_by_query&#123; "track_total_hits":true, "query": &#123; "bool": &#123; "filter": [ &#123; "range": &#123; "StartTime": &#123; "from": "2020/12/11 00:00:00.000", "to": "2020/12/11 23:59:00.000", "include_upper": true, "include_lower": true, "format": "yyyy/MM/dd HH:mm:ss.SSS" &#125; &#125; &#125; ], "should": [ &#123; "term": &#123; "status": &#123; "value": 1 &#125; &#125; &#125; ], "minimum_should_match": 1 &#125; &#125;, "script": &#123; "source": "ctx._source.status=2", "lang": "painless" &#125;&#125;memo:將StartTim符合2020/12/11 00:00:00.000 ~ 2020/12/11 23:59:00.000時間區間內 且 status = 1的資料改成status = 2DeleteByQuery12345678POST table*/_delete_by_query?scroll_size=5000&#123; "query": &#123; "term": &#123; "key": "value" &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
+        <tag>KibanaQueryLanguage</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[HighLevelApiForElasticSearch 查詢超過10000筆作法]]></title>
     <url>%2F2020%2F12%2F29%2FHighLevelApiForElkOver10000%E7%AD%86%E6%9F%A5%E8%A9%A2%E4%BD%9C%E6%B3%95%2F</url>
     <content type="text"><![CDATA[HighLevelApiForElasticSearch 查詢超過10000筆作法這篇介紹HighLevelApiForElasticSearch 查詢超過10000筆作法。Example1234567891011121314151617181920212223242526272829303132333435public static List&lt;Detail&gt; getDetail(String userId) &#123; SearchSourceBuilder sourceBuilder = new SearchSourceBuilder(); BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery(); boolQueryBuilder.filter(QueryBuilders.termQuery("userId", userId)); sourceBuilder.query(boolQueryBuilder); sourceBuilder.size(ELKManager.MAX_REQUEST_SIZE); List&lt;Detail&gt; details = new ArrayList&lt;Detail&gt;(); Object[] sortValues = null; SearchHit[] searchHits; do &#123; if (sortValues != null) &#123; sourceBuilder.searchAfter(sortValues); &#125; SearchResponse searchResponse = ELKManager.search(sourceBuilder, INDEX_NAME_PREFIX + "*"); searchHits = searchResponse.getHits().getHits(); if (searchHits.length &gt; 0) &#123; Iterator&lt;SearchHit&gt; iterator = searchResponse.getHits().iterator(); while (iterator.hasNext()) &#123; Detail detail = new Detail(); Map&lt;String, Object&gt; result = iterator.next().getSourceAsMap(); detail.setUserId((String) result.get("userId")); detail.setPassWord((String) result.get("passWord")); &#125; sortValues = searchResponse.getHits().getAt(searchHits.length - 1).getSortValues(); &#125; &#125; while (searchHits.length &gt; 0); return details;&#125;]]></content>
@@ -1603,8 +1615,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>RestfulApi</tag>
         <tag>POST</tag>
+        <tag>RestfulApi</tag>
       </tags>
   </entry>
   <entry>
