@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Generate SSH Key To Login Linux]]></title>
+    <url>%2F2021%2F01%2F22%2FUseSSHKeyToLoginLinux%2F</url>
+    <content type="text"><![CDATA[Generate SSH Key To Login Linux這篇介紹透過Public Key Authentication的使用方式，可以不用輸入密碼直接登入Linu。步驟123456789101112131415Step1:在建立金鑰之前，要先建立 ~/.ssh 這個目錄，並設定正確的權限$ mkdir -p ~/.ssh$ mkdir -p ~/.sshStep2:以 ssh-keygen 產生金鑰$ ssh-keygenStep3:Generating public/private rsa key pair.Enter file in which to save the key (/home/user/.ssh/id_rsa): ==&gt; EnterCreated directory '/home/user/.ssh'.Enter passphrase (empty for no passphrase): ==&gt; EnterEnter same passphrase again: ==&gt; EnterStep4:在/home/user/.ssh/id_rsa.pub 會有 Public Key]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+        <tag>PublicKey</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[The valid characters are defined in RFC 7230 and RFC 3986]]></title>
     <url>%2F2021%2F01%2F06%2FThevalidcharactersaredefinedinRFC7230andRFC3986%2F</url>
     <content type="text"><![CDATA[The valid characters are defined in RFC 7230 and RFC 3986這篇介紹透過GET對jsp操作時，有特殊字元會被tomcat擋住之解決方法。瀏覽器執行jsp1234在瀏覽器執行 https://&#123;host&#125;/xxx.jsp?value=&#123;"A":"CCC"&#125;出現The valid characters are defined in RFC 7230 and RFC 3986錯誤訊息因特殊字元被tomcat擋住。不更動tomcat設定下之解決方法123curl --location --request POST 'https://&#123;host&#125;/xxx.jsp' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'value=&#123;"A":"CCC"&#125;'在 xxx.jsp 需做 String value = URLDecoder.decode(RequestParser.getStringParameter(request, 3000, "value", null), "UTF-8");]]></content>
@@ -1788,8 +1800,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -1837,8 +1849,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
