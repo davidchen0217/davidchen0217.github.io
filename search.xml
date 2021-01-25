@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Puttygen ppk from linux to windows]]></title>
     <url>%2F2021%2F01%2F25%2FPuttygenppkfromlinuxtowindows%2F</url>
-    <content type="text"><![CDATA[Puttygen ppk from linux to windows這篇介紹透過PuTTY Key Generator將Linux上產生的private key generate 成 windows可用的.ppk格式。Intro```sh繼上一篇，在Linux上產生的private key。在windows上必須用PuTTYgen先Load Linux上的.pub 在產生 .ppk格式。用Putty ssh登入才能import .ppk。 ```sh]]></content>
+    <content type="text"><![CDATA[Puttygen ppk from linux to windows這篇介紹透過PuTTY Key Generator將Linux上產生的private key generate 成 windows可用的.ppk格式。Intro1234繼上一篇，在Linux上產生的private key。在windows上必須用PuTTYgen先Load Linux上的.pub 在產生 .ppk格式。用Putty ssh登入才能import .ppk。&lt;img src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/puttygen.png" width="50%" /&gt;]]></content>
       <categories>
         <category>Puttygen</category>
       </categories>
