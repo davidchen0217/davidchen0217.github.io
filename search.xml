@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Puttygen ppk from linux to windows]]></title>
+    <url>%2F2021%2F01%2F25%2FPuttygenppkfromlinuxtowindows%2F</url>
+    <content type="text"><![CDATA[Puttygen ppk from linux to windows這篇介紹透過PuTTY Key Generator將Linux上產生的private key generate 成 windows可用的.ppk格式。Intro```sh繼上一篇，在Linux上產生的private key。在windows上必須用PuTTYgen先Load Linux上的.pub 在產生 .ppk格式。用Putty ssh登入才能import .ppk。 ```sh]]></content>
+      <categories>
+        <category>Puttygen</category>
+      </categories>
+      <tags>
+        <tag>PublicKey</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Generate SSH Key To Login Linux]]></title>
     <url>%2F2021%2F01%2F22%2FUseSSHKeyToLoginLinux%2F</url>
-    <content type="text"><![CDATA[Generate SSH Key To Login Linux這篇介紹透過Public Key Authentication的使用方式，可以不用輸入密碼直接登入Linu。步驟123456789101112131415Step1:在建立金鑰之前，要先建立 ~/.ssh 這個目錄，並設定正確的權限$ mkdir -p ~/.ssh$ mkdir -p ~/.sshStep2:以 ssh-keygen 產生金鑰$ ssh-keygenStep3:Generating public/private rsa key pair.Enter file in which to save the key (/home/user/.ssh/id_rsa): ==&gt; EnterCreated directory '/home/user/.ssh'.Enter passphrase (empty for no passphrase): ==&gt; EnterEnter same passphrase again: ==&gt; EnterStep4:在/home/user/.ssh/id_rsa.pub 會有 Public Key]]></content>
+    <content type="text"><![CDATA[Generate SSH Key To Login Linux這篇介紹透過Public Key Authentication的使用方式，可以不用輸入密碼直接登入Linux。步驟123456789101112131415Step1:在建立金鑰之前，要先建立 ~/.ssh 這個目錄，並設定正確的權限$ mkdir -p ~/.ssh$ mkdir -p ~/.sshStep2:以 ssh-keygen 產生金鑰$ ssh-keygenStep3:Generating public/private rsa key pair.Enter file in which to save the key (/home/user/.ssh/id_rsa): ==&gt; EnterCreated directory '/home/user/.ssh'.Enter passphrase (empty for no passphrase): ==&gt; EnterEnter same passphrase again: ==&gt; EnterStep4:在/home/user/.ssh/id_rsa.pub 會有 Public Key]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>SSH</tag>
         <tag>PublicKey</tag>
+        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -1800,8 +1811,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1849,8 +1860,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
