@@ -25,7 +25,7 @@
   <entry>
     <title><![CDATA[Generate SSH Key To Login Linux]]></title>
     <url>%2F2021%2F01%2F22%2FUseSSHKeyToLoginLinux%2F</url>
-    <content type="text"><![CDATA[Generate SSH Key To Login Linux這篇介紹透過Public Key Authentication的使用方式，可以不用輸入密碼直接登入Linux。步驟123456789101112131415Step1:在建立金鑰之前，要先建立 ~/.ssh 這個目錄，並設定正確的權限$ mkdir -p ~/.ssh$ mkdir -p ~/.sshStep2:以 ssh-keygen 產生金鑰$ ssh-keygenStep3:Generating public/private rsa key pair.Enter file in which to save the key (/home/user/.ssh/id_rsa): ==&gt; EnterCreated directory '/home/user/.ssh'.Enter passphrase (empty for no passphrase): ==&gt; EnterEnter same passphrase again: ==&gt; EnterStep4:在/home/user/.ssh/id_rsa.pub 會有 Public Key]]></content>
+    <content type="text"><![CDATA[Generate SSH Key To Login Linux這篇介紹透過Public Key Authentication的使用方式，可以不用輸入密碼直接登入Linux。步驟123456789101112131415Step1:在建立金鑰之前，要先建立 ~/.ssh 這個目錄，並設定正確的權限$ mkdir -p ~/.ssh$ chmod 700 ~/.sshStep2:以 ssh-keygen 產生金鑰$ ssh-keygenStep3:Generating public/private rsa key pair.Enter file in which to save the key (/home/user/.ssh/id_rsa): ==&gt; EnterCreated directory '/home/user/.ssh'.Enter passphrase (empty for no passphrase): ==&gt; EnterEnter same passphrase again: ==&gt; EnterStep4:在/home/user/.ssh/id_rsa.pub 會有 Public Keyabout public &amp; private key12id_rsa.pub：公開金鑰（public key），這是可以對外公開的金鑰，之後要將它放在遠端的 Linux 伺服器上作認證使用。id_rsa：私密金鑰（private key），這是要保護好的金鑰，它等同於你的 Linux 密碼，放在自己的電腦中。]]></content>
       <categories>
         <category>Linux</category>
       </categories>
