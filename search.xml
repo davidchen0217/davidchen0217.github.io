@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[How To Install Gitlab Docker]]></title>
+    <url>%2F2021%2F01%2F29%2FHowToInstallGitlabDocker%2F</url>
+    <content type="text"><![CDATA[How To Install Gitlab Docker這篇介紹How To Install Gitlab Docker.How To Install Gitlab Docker.123456Build gitlab with docker:Use official gitlab image to build gitlab and version is 13.3.6.$ docker run --detach --hostname &#123;&#123;ip&#125;&#125; -p &#123;&#123;port&#125;&#125;:80 --name gitlab --restart always --volume /home/gitlab/config:/etc/gitlab --volume /home/gitlab/logs:/var/log/gitlab --volume /home/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:13.3.6-ce.0&#123;ip&#125;:host ip address&#123;port&#125;:open up externally port numberHardware requirements1234567Gitlab- Storage The necessary hard drive space largely depends on the size of the repositories you want to store in GitLab- CPU 4 cores is the recommended minimum number- Memory 4GB RAM is the required minimum memory size]]></content>
+      <categories>
+        <category>Gitlab</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Gitlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Intro Jenkins]]></title>
     <url>%2F2021%2F01%2F29%2FIntroJenkins%2F</url>
     <content type="text"><![CDATA[Intro Jenkins這篇介紹Jenkins - The leading open source automation server,Jenkins provides hundreds of plugins to support building, deploying and automating any project.Intro Jenkins12345678910111213141516Jenkins provides users with a Web GUI to operate.Jenkins plugin:Jenkins provides thousands of plugins to meet your multiple needs.https://plugins.jenkins.io/](https://plugins.jenkins.io/What can you do in Jenkins:- Build tomcat war- Deploy tomcat war- Use ansible- Run shell script- Check config with ansibleHow to build Jenkins:We use docker to build jenkins and use volume to keep config.So it's easy for rebuild when your jenkins is dead and also easy for upgrade.Build jenkins with docker1234567891011121314151617181920Pull docker image:$ docker pull &#123;url&#125;Create jenkins container:$ docker run -itd --name jenkins -v jenkins:/var/jenkins_home --restart always -p &#123;port&#125;:8080 -e JAVA_OPTS=-Duser.timezone=Asia/Taipei -e TZ=Asia/Taipei -e LANG=en_US.UTF8 &#123;url&#125;memo:&#123;port&#125;:open up externally port numberCheck your jenkins container:$ docker ps -aOpen your browser and enter ip:port and you will see jenkins ask administrator password:Use command to get administrator password:$ docker logs jenkinsHow to upgrade Jenkins:$ docker stop jenkins$ docker rm jenkins]]></content>
@@ -8,6 +20,7 @@
         <category>Jenkins</category>
       </categories>
       <tags>
+        <tag>Docker</tag>
         <tag>Jenkins</tag>
       </tags>
   </entry>
