@@ -1672,8 +1672,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>RestfulApi</tag>
         <tag>POST</tag>
+        <tag>RestfulApi</tag>
       </tags>
   </entry>
   <entry>
@@ -1833,8 +1833,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1882,8 +1882,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C#</tag>
+        <tag>Java</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
