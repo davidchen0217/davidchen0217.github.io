@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Redisson getKeys getKeysByPatterns Problem]]></title>
+    <url>%2F2021%2F02%2F23%2FRedissongetKeysgetKeysByPatternsProblem%2F</url>
+    <content type="text"><![CDATA[Redisson getKeys getKeysByPatterns Problem這篇介紹Redisson getKeys getKeysByPatterns 所碰到的Problem。Problem123使用redissonClient.getKeys().getKeysByPatterns(key);發現查詢過慢 -&gt; 1 second --&gt; 4~5分鐘原因:因key突然變多有幾十萬個key，在撈的時候必須要從幾十萬筆Full Scan。Solution123新增一個RSet&lt;String&gt;來記錄key使用redissonClient.getSet來取得key取代redissonClient.getKeys().getKeysByPatterns(key);方法避免Full Scan。]]></content>
+      <categories>
+        <category>Redisson</category>
+      </categories>
+      <tags>
+        <tag>Redisson</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tomcat Error:A child container failed during start]]></title>
     <url>%2F2021%2F02%2F23%2FtomcaterrorAchildcontainerfailedduringstart%2F</url>
     <content type="text"><![CDATA[Tomcat Error:A child container failed during start這篇介紹Tomcat Error:A child container failed during start。Error Message123456789101112131415161718192021222324252627严重: A child container failed during startjava.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost]. StandardContext[/patyee]] at java.util.concurrent.FutureTask.report(FutureTask.java:122) at java.util.concurrent.FutureTask.get(FutureTask.java:192)...... at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) at java.lang.Thread.run(Thread.java:745)Caused by: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/patyee]] at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154) ... 6 moreSolution123Eclipse:檢查Server LocationServer Path是否設定正確路徑]]></content>
@@ -1868,8 +1879,8 @@
         <category>Thread.sleep(0);</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -1917,8 +1928,8 @@
         <category>C#</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>Java</tag>
+        <tag>C#</tag>
         <tag>Enum</tag>
       </tags>
   </entry>
