@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[The Background Cache Eviction Process Was Unable To Free]]></title>
+    <url>%2F2021%2F03%2F10%2FTheBackgroundCacheEvictionProcessWasUnableToFree%2F</url>
+    <content type="text"><![CDATA[The Background Cache Eviction Process Was Unable To Free這篇介紹關於The Background Cache Eviction Process Was Unable To Free。Tomcat alert Error12345678910-Mar-2021 14:19:15.667 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.webresources.Cache.backgroundProcess The background cache eviction process was unable to free [10] percent of the cache for Context [] - consider increasing the maximum size of the cache. After eviction approximately [10,181] KB of data remained in the cache.根據apache官方文件:The maximum size of the static resource cache in kilobytes. If not specified, the default value is 10240 (10 megabytes).This value may be changed while the web application is running (e.g. via JMX). If the cache is using more memory than the new limit the cache will attempt to reduce in size over time to meet the new limit.If necessary, cacheObjectMaxSize will be reduced to ensure that it is no larger than cacheMaxSize/20.解決方法12$ vim /usr/local/tomcat/conf/context.xml加上 &lt;Resources cachingAllowed="true" cacheMaxSize="100000" /&gt;]]></content>
+      <categories>
+        <category>tomcat</category>
+      </categories>
+      <tags>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FileBeat造成ERROR常見問題]]></title>
     <url>%2F2021%2F03%2F08%2FFileBeat%E9%80%A0%E6%88%90ERROR%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%2F</url>
     <content type="text"><![CDATA[FileBeat造成ERROR常見問題這篇介紹FileBeat造成ERROR常見問題。Filebeat ERROR123在/logs/filebeat 會出現 ERROR 字樣，看不出來是什麼原因造成錯誤。1. 硬碟滿了，造成寫Log只寫到一半，parse 資料錯誤。2. log的資料與yml設定的欄位格式不一致，無法mapping解決方法121. 做Server硬碟空間告警，超過80%即通知相關人員2. 有用到filebeat推資料的log，需要統一控管格式]]></content>
