@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[List執行addAll()出現UnsupportedOperationException]]></title>
+    <url>%2F2021%2F03%2F12%2FList%E5%9C%A8addAll%E6%99%82%E5%87%BA%E7%8F%BEUnsupportedOperationException%2F</url>
+    <content type="text"><![CDATA[List執行addAll()出現UnsupportedOperationException這篇介紹List執行addAll()出現UnsupportedOperationException。原因1234使用Arrays.asList to list時，執行addAll加入List元素出錯java.lang.UnsupportedOperationException: null因Arrays.asList是固定長度的List且不具備add remove...方法，請慎用解決方法12new ArrayList&lt;T&gt;(Arrays.asList()) 取代 Arrays.asList()就可以執行 List.addAll(List)]]></content>
+      <categories>
+        <category>Collection</category>
+      </categories>
+      <tags>
+        <tag>Collection</tag>
+        <tag>List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[The Background Cache Eviction Process Was Unable To Free]]></title>
     <url>%2F2021%2F03%2F10%2FTheBackgroundCacheEvictionProcessWasUnableToFree%2F</url>
     <content type="text"><![CDATA[The Background Cache Eviction Process Was Unable To Free這篇介紹關於The Background Cache Eviction Process Was Unable To Free。Tomcat alert Error12345678910-Mar-2021 14:19:15.667 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.webresources.Cache.backgroundProcess The background cache eviction process was unable to free [10] percent of the cache for Context [] - consider increasing the maximum size of the cache. After eviction approximately [10,181] KB of data remained in the cache.根據apache官方文件:The maximum size of the static resource cache in kilobytes. If not specified, the default value is 10240 (10 megabytes).This value may be changed while the web application is running (e.g. via JMX). If the cache is using more memory than the new limit the cache will attempt to reduce in size over time to meet the new limit.If necessary, cacheObjectMaxSize will be reduced to ensure that it is no larger than cacheMaxSize/20.解決方法12$ vim /usr/local/tomcat/conf/context.xml加上 &lt;Resources cachingAllowed="true" cacheMaxSize="100000" /&gt;]]></content>
