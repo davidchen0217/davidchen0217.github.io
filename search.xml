@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[List透過Java8轉成Map]]></title>
+    <url>%2F2021%2F03%2F12%2FList%E9%80%8F%E9%81%8EJava8%E8%BD%89%E6%88%90Map%2F</url>
+    <content type="text"><![CDATA[List透過Java8轉成Map這篇介紹關於List透過Java8轉成Map。Example1234567891011List data structure:User (Long Id, String username)List&lt;User&gt; userList = new ArrayList&lt;&gt;();userList.add(new User(1L, "aaa"));userList.add(new User(2L, "bbb"));userList.add(new User(3L, "ccc"));userList.add(new User(2L, "ddd"));userList.add(new User(3L, "eee"));1.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername);Error: java.lang.IllegalStateException: Duplicate key bbb解決方法1234567891.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername, (v1, v2) -&gt; v1)); //取前面的值2.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername, (v1, v2) -&gt; v2)); //取後面的值3.Map&lt;Long, List&lt;String&gt;&gt; map = userList.stream().collect(Collectors.toMap(User::getId, e -&gt; new ArrayList&lt;String&gt;(Arrays.asList(e.getUsername())), (List&lt;String&gt; oldList, List&lt;String&gt; newList) -&gt; &#123; oldList.addAll(newList); return oldList; &#125;));//相同的key，把不同的value存在同一個List&lt;String&gt;]]></content>
+      <categories>
+        <category>Java8</category>
+      </categories>
+      <tags>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[List執行addAll()出現UnsupportedOperationException]]></title>
     <url>%2F2021%2F03%2F12%2FList%E5%9C%A8addAll%E6%99%82%E5%87%BA%E7%8F%BEUnsupportedOperationException%2F</url>
     <content type="text"><![CDATA[List執行addAll()出現UnsupportedOperationException這篇介紹List執行addAll()出現UnsupportedOperationException。原因1234使用Arrays.asList to list時，執行addAll加入List元素出錯java.lang.UnsupportedOperationException: null因Arrays.asList是固定長度的List且不具備add remove...方法，請慎用解決方法12new ArrayList&lt;T&gt;(Arrays.asList()) 取代 Arrays.asList()就可以執行 List.addAll(List)]]></content>
