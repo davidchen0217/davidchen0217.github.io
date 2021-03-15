@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Intro Java8 groupingBy Collector]]></title>
+    <url>%2F2021%2F03%2F15%2FIntroJava8groupingByCollector%2F</url>
+    <content type="text"><![CDATA[Intro Java8 groupingBy Collector這篇介紹Intro Java8 groupingBy Collector。Example Code Setup123456789101112131415161718192021222324252627To demonstrate the usage of groupingBy(), let's define a BlogPost class (we will use a stream of BlogPost objects):class BlogPost &#123; String title; String author; BlogPostType type; int likes;&#125;Next, the BlogPostType:enum BlogPostType &#123; NEWS, REVIEW, GUIDE&#125;Then the List of BlogPost objects:List&lt;BlogPost&gt; posts = Arrays.asList( ... );Let's also define a Tuple class that will be used to group posts by the combination of their type and author attributes:class Tuple &#123; BlogPostType type; String author;&#125;Example : Simple Grouping by a Single Column1Map&lt;BlogPostType, List&lt;BlogPost&gt;&gt; postsPerType = posts.stream().collect(groupingBy(BlogPost::getType));Example : groupingBy with a Complex Map Key Type1Map&lt;Tuple, List&lt;BlogPost&gt;&gt; postsPerTypeAndAuthor = posts.stream().collect(groupingBy(post -&gt; new Tuple(post.getType(), post.getAuthor())));]]></content>
+      <categories>
+        <category>Java8</category>
+      </categories>
+      <tags>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[List透過Java8轉成Map]]></title>
     <url>%2F2021%2F03%2F12%2FList%E9%80%8F%E9%81%8EJava8%E8%BD%89%E6%88%90Map%2F</url>
     <content type="text"><![CDATA[List透過Java8轉成Map這篇介紹關於List透過Java8轉成Map。Example1234567891011List data structure:User (Long Id, String username)List&lt;User&gt; userList = new ArrayList&lt;&gt;();userList.add(new User(1L, "aaa"));userList.add(new User(2L, "bbb"));userList.add(new User(3L, "ccc"));userList.add(new User(2L, "ddd"));userList.add(new User(3L, "eee"));1.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername);Error: java.lang.IllegalStateException: Duplicate key bbb解決方法1234567891.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername, (v1, v2) -&gt; v1)); //取前面的值2.Map&lt;Long, String&gt; map = userList.stream().collect(Collectors.toMap(User::getId, User::getUsername, (v1, v2) -&gt; v2)); //取後面的值3.Map&lt;Long, List&lt;String&gt;&gt; map = userList.stream().collect(Collectors.toMap(User::getId, e -&gt; new ArrayList&lt;String&gt;(Arrays.asList(e.getUsername())), (List&lt;String&gt; oldList, List&lt;String&gt; newList) -&gt; &#123; oldList.addAll(newList); return oldList; &#125;));//相同的key，把不同的value存在同一個List&lt;String&gt;]]></content>
