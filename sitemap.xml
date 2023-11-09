@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchenblog.com/posts/8d1e6725/</loc>
+    
+    <lastmod>2023-11-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/posts/b4b10b33/</loc>
     
     <lastmod>2023-11-09</lastmod>
@@ -3674,15 +3683,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/posts/8d1e6725/</loc>
-    
-    <lastmod>2021-09-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/posts/64ce43fd/</loc>
     
     <lastmod>2021-09-07</lastmod>
@@ -3755,7 +3755,7 @@
 
   
   <url>
-    <loc>https://davidchenblog.com/tags/AWS/</loc>
+    <loc>https://davidchenblog.com/tags/Github/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3769,14 +3769,21 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Github/</loc>
+    <loc>https://davidchenblog.com/tags/Redisson/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Redisson/</loc>
+    <loc>https://davidchenblog.com/tags/Log4j2/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/AWS/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3797,35 +3804,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Log4j2/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Java/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/CSharp/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Abstract-Class/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Interface/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3839,7 +3818,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/SplitVideo/</loc>
+    <loc>https://davidchenblog.com/tags/BigDecimal/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3853,7 +3832,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/BigDecimal/</loc>
+    <loc>https://davidchenblog.com/tags/SplitVideo/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/CSharp/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3874,6 +3860,34 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/POST/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Vlc32bit/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Abstract-Class/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Interface/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/Vlc64bit/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -3882,13 +3896,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Vlc-DotNet/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Vlc32bit/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3909,35 +3916,14 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/Dictionary/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/PerformanceCounter/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/POST/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/HttpClient/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/RestfulApi/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Encoder/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3952,27 +3938,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/USB/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Thread/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Exception/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Log4net/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4014,7 +3979,28 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Dictionary/</loc>
+    <loc>https://davidchenblog.com/tags/HttpClient/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/RestfulApi/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Log4net/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Encoder/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4028,14 +4014,49 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/NTP/</loc>
+    <loc>https://davidchenblog.com/tags/JDK/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/hostname/</loc>
+    <loc>https://davidchenblog.com/tags/Tomcat/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Thread/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Exception/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Docker/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/RabbitMQ/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/NTP/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4063,28 +4084,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Docker/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/RabbitMQ/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/JDK/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Tomcat/</loc>
+    <loc>https://davidchenblog.com/tags/Resolution/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4098,13 +4098,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Resolution/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/SELINUX/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4112,7 +4105,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/curl/</loc>
+    <loc>https://davidchenblog.com/tags/hostname/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4140,14 +4133,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/JSHint/</loc>
+    <loc>https://davidchenblog.com/tags/Oracle/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Oracle/</loc>
+    <loc>https://davidchenblog.com/tags/curl/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4161,7 +4154,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/LineBreak/</loc>
+    <loc>https://davidchenblog.com/tags/JSHint/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4176,6 +4169,20 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Containerd/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/LineBreak/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/TCP/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4203,13 +4210,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/TCP/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Putty/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4224,14 +4224,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/GitHub/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/domain/</loc>
+    <loc>https://davidchenblog.com/tags/Dissect/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4259,7 +4252,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Dissect/</loc>
+    <loc>https://davidchenblog.com/tags/GitHub/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/domain/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4274,13 +4274,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/GoPro7/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/GoogleSearchConsole/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4308,6 +4301,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/GoogleSearchConsole/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/Hexo/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4316,20 +4316,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/NextT/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Gitlab/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Hexo8/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4350,7 +4336,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Jre/</loc>
+    <loc>https://davidchenblog.com/tags/Hexo8/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4358,6 +4344,20 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/SourceTree/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Jre/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Gitlab/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4385,14 +4385,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Dig/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Windows/</loc>
+    <loc>https://davidchenblog.com/tags/Nginx/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4406,14 +4399,21 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Nginx/</loc>
+    <loc>https://davidchenblog.com/tags/RLock/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/RLock/</loc>
+    <loc>https://davidchenblog.com/tags/Dig/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Windows/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4448,13 +4448,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Setting/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Heap/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4463,6 +4456,27 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Ping/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Ip/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Setting/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Image/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4497,13 +4511,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Mockito/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/DependencyExclusions/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4512,13 +4519,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Navicat/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Image/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4553,7 +4553,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Reduce/</loc>
+    <loc>https://davidchenblog.com/tags/Mockito/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4567,7 +4567,28 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Ip/</loc>
+    <loc>https://davidchenblog.com/tags/Pom/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Dependencies/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Profile/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Reduce/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4581,21 +4602,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/TLS1-2/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/jackson/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Pom/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4637,14 +4644,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Dependencies/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Profile/</loc>
+    <loc>https://davidchenblog.com/tags/TLS1-2/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4665,7 +4665,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Cast/</loc>
+    <loc>https://davidchenblog.com/tags/Catalina/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Chrome/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4686,21 +4693,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Obsolete/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Catalina/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Collections/</loc>
+    <loc>https://davidchenblog.com/tags/Cast/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4714,14 +4707,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Chrome/</loc>
+    <loc>https://davidchenblog.com/tags/Collections/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/CVE/</loc>
+    <loc>https://davidchenblog.com/tags/Obsolete/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4735,7 +4728,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/plugin/</loc>
+    <loc>https://davidchenblog.com/tags/CVE/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4749,7 +4742,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/RestHighLevelApi/</loc>
+    <loc>https://davidchenblog.com/tags/plugin/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4764,6 +4757,13 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Kibana/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/RestHighLevelApi/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4791,14 +4791,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Json/</loc>
+    <loc>https://davidchenblog.com/tags/KibanaQueryLanguage/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/KibanaQueryLanguage/</loc>
+    <loc>https://davidchenblog.com/tags/Json/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4819,13 +4819,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/ORA-01461/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Predicate/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4834,6 +4827,13 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/String/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/ORA-01461/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4875,13 +4875,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/DataStructure/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Distributed-Lock/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4896,14 +4889,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Sentinel/</loc>
+    <loc>https://davidchenblog.com/tags/DataStructure/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Response/</loc>
+    <loc>https://davidchenblog.com/tags/Sentinel/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4918,6 +4911,13 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Chroncy/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Response/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4952,13 +4952,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/parallelStream/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/Performance/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -4966,7 +4959,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/try-with-resource/</loc>
+    <loc>https://davidchenblog.com/tags/parallelStream/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4974,6 +4967,20 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Optional/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/LocalDateTime/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/try-with-resource/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4994,7 +5001,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/LocalDateTime/</loc>
+    <loc>https://davidchenblog.com/tags/function/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5002,13 +5009,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/variable/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/function/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5029,7 +5029,21 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/Static/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/for/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Framework/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5050,20 +5064,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Framework/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Static/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/IN/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5078,7 +5078,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/const/</loc>
+    <loc>https://davidchenblog.com/tags/binarySearch/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5092,14 +5092,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/binarySearch/</loc>
+    <loc>https://davidchenblog.com/tags/Jedis/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Jedis/</loc>
+    <loc>https://davidchenblog.com/tags/const/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5127,7 +5127,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/nameserver/</loc>
+    <loc>https://davidchenblog.com/tags/Java-JDK/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5141,14 +5141,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Java-JDK/</loc>
+    <loc>https://davidchenblog.com/tags/vim/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/vim/</loc>
+    <loc>https://davidchenblog.com/tags/nameserver/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5163,20 +5163,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/List/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Cursor/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Hint/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5204,14 +5190,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/quartz/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Cron/</loc>
+    <loc>https://davidchenblog.com/tags/PublicKey/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5225,7 +5204,28 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/PublicKey/</loc>
+    <loc>https://davidchenblog.com/tags/Cursor/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Hint/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/quartz/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Cron/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5267,6 +5267,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/Instruction/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/Singleton/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5275,27 +5282,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Static-Class/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Instruction/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Struct/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Class/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5316,21 +5302,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Telegram/</loc>
+    <loc>https://davidchenblog.com/tags/Struct/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/GitLab-Bot/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/WebHook/</loc>
+    <loc>https://davidchenblog.com/tags/Class/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5345,6 +5324,13 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/URLDecoder/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/SSH/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5372,35 +5358,21 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/SSH/</loc>
+    <loc>https://davidchenblog.com/tags/Telegram/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/Windows10/</loc>
+    <loc>https://davidchenblog.com/tags/GitLab-Bot/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/NTPClock/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/headers/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/X-Forwarded-For/</loc>
+    <loc>https://davidchenblog.com/tags/WebHook/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5421,7 +5393,42 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/headers/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/X-Forwarded-For/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/Windows10/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/NTPClock/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/MergeInto/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/JsonParseException/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5449,14 +5456,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/JsonParseException/</loc>
+    <loc>https://davidchenblog.com/tags/jstat/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/jstat/</loc>
+    <loc>https://davidchenblog.com/tags/Puttygen/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5471,13 +5478,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Value/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Puttygen/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5568,6 +5568,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/JSP/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/TCP-IP/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5582,7 +5589,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/JSP/</loc>
+    <loc>https://davidchenblog.com/tags/C/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5596,7 +5603,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/C/</loc>
+    <loc>https://davidchenblog.com/tags/Socket/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5604,13 +5611,6 @@
   
   <url>
     <loc>https://davidchenblog.com/tags/Type-Casting/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/Socket/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5631,21 +5631,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/localhost-access-log/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/tags/TelegramBot/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/tags/traceroute/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/tags/localhost-access-log/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5659,6 +5652,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/tags/TelegramBot/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/tags/CountDownLatch/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5666,14 +5666,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/extends/</loc>
+    <loc>https://davidchenblog.com/tags/ExecutorService/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/ExecutorService/</loc>
+    <loc>https://davidchenblog.com/tags/extends/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5701,14 +5701,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/ErrorResponse/</loc>
+    <loc>https://davidchenblog.com/tags/API/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/supergroups/</loc>
+    <loc>https://davidchenblog.com/tags/ErrorResponse/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5722,7 +5722,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/tags/API/</loc>
+    <loc>https://davidchenblog.com/tags/supergroups/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5759,7 +5759,7 @@
 
   
   <url>
-    <loc>https://davidchenblog.com/categories/AWS/</loc>
+    <loc>https://davidchenblog.com/categories/Github/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5767,13 +5767,6 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/ElasticSearch/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/Github/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5794,28 +5787,14 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/AWS/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/ApacheKafka/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/Data-Structure/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/Bandicut/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/Information-Security/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5829,7 +5808,28 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/Information-Security/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/Bandicut/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/CSharp/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/Data-Structure/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5850,20 +5850,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/CentOS/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/curl/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/CloudFlare/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5871,7 +5857,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/JavaScript/</loc>
+    <loc>https://davidchenblog.com/categories/CentOS/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5885,7 +5871,21 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/curl/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/Eclipse/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/JavaScript/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5913,14 +5913,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/GitHub/</loc>
+    <loc>https://davidchenblog.com/categories/WinForm/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/WinForm/</loc>
+    <loc>https://davidchenblog.com/categories/GitHub/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -5941,13 +5941,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/GoogleSearchConsole/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/GoogleAdsense/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5962,6 +5955,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/GoogleSearchConsole/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/Hexo/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -5969,14 +5969,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Gitlab/</loc>
+    <loc>https://davidchenblog.com/categories/SourceTree/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/SourceTree/</loc>
+    <loc>https://davidchenblog.com/categories/Gitlab/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6004,7 +6004,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Dig/</loc>
+    <loc>https://davidchenblog.com/categories/Nginx/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6018,7 +6018,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Nginx/</loc>
+    <loc>https://davidchenblog.com/categories/Dig/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6060,13 +6060,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Mockito/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/Navicat/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6102,6 +6095,20 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/Mockito/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/TCP/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/class/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6110,13 +6117,6 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/Network/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/TCP/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6144,13 +6144,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Cloudinary/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/Catalina/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6158,7 +6151,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Collections/</loc>
+    <loc>https://davidchenblog.com/categories/Chrome/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/Cloudinary/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6172,7 +6172,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Chrome/</loc>
+    <loc>https://davidchenblog.com/categories/Collections/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6207,13 +6207,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Schedule/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/PuTTY/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6221,7 +6214,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Response/</loc>
+    <loc>https://davidchenblog.com/categories/Schedule/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6229,6 +6222,13 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/Rocky/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/Response/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6256,14 +6256,14 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/NextT/</loc>
+    <loc>https://davidchenblog.com/categories/Collection/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Collection/</loc>
+    <loc>https://davidchenblog.com/categories/NextT/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6312,13 +6312,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/Telegram/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/URLEncoder/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6327,6 +6320,13 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/Hexo8/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/VisualStudioCode/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6347,7 +6347,7 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/VisualStudioCode/</loc>
+    <loc>https://davidchenblog.com/categories/Telegram/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6431,13 +6431,6 @@
   </url>
   
   <url>
-    <loc>https://davidchenblog.com/categories/TelegramBot/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://davidchenblog.com/categories/hosts/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6446,6 +6439,13 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/Ternary-Operators/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://davidchenblog.com/categories/TelegramBot/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -6466,6 +6466,13 @@
   </url>
   
   <url>
+    <loc>https://davidchenblog.com/categories/WebSocket/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://davidchenblog.com/categories/Ansible/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -6474,13 +6481,6 @@
   
   <url>
     <loc>https://davidchenblog.com/categories/ignite/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://davidchenblog.com/categories/WebSocket/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
