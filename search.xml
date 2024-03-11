@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>About ElasticSearch Composite Aggregation AfterKey</title>
-    <url>/posts/9774d5f7/</url>
-    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
-<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
-<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ElasticSearch</category>
-      </categories>
-      <tags>
-        <tag>ElasticSearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AWS instance R5 Versus R5a</title>
     <url>/posts/d948bba5/</url>
     <content><![CDATA[<h3 id="Intro-AWS-instance-R5-Versus-R5a"><a href="#Intro-AWS-instance-R5-Versus-R5a" class="headerlink" title="Intro AWS instance R5 Versus R5a"></a>Intro AWS instance R5 Versus R5a</h3><span id="more"></span>
@@ -24,6 +11,19 @@
       </categories>
       <tags>
         <tag>AWS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About ElasticSearch Composite Aggregation AfterKey</title>
+    <url>/posts/9774d5f7/</url>
+    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
+<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
+<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
       </tags>
   </entry>
   <entry>
@@ -344,6 +344,25 @@
       </tags>
   </entry>
   <entry>
+    <title>C#Log4net設定</title>
+    <url>/posts/46ed40f7/</url>
+    <content><![CDATA[<h3 id="C-Log4net設定"><a href="#C-Log4net設定" class="headerlink" title="C#Log4net設定"></a>C#Log4net設定</h3><span id="more"></span>
+<p>這篇介紹在C#上安裝Log4net以及如何設定及使用功能</p>
+<h3 id="對專案右鍵-gt-管理NuGet套件-gt-安裝log4net"><a href="#對專案右鍵-gt-管理NuGet套件-gt-安裝log4net" class="headerlink" title="對專案右鍵-&gt;管理NuGet套件-&gt;安裝log4net"></a>對專案右鍵-&gt;管理NuGet套件-&gt;安裝log4net</h3><p>log4net.config 如下<br>ERROR和FATAL會多印出程式行號</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;log4net&gt;</span><br><span class="line">    &lt;root&gt;</span><br><span class="line">      &lt;level value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;DebugRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;InfoRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;WarnRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;ErrorRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;FatalRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">    &lt;/root&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;DebugRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;DEBUG&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;DEBUG&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;InfoRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;INFO&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;INFO&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;INFO&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;INFO&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;WarnRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;WARN&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;WARN&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;WARN&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;WARN&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;ErrorRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;ERROR&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;ERROR&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method](%logger:%line) - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;ERROR&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;ERROR&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;FatalRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;FATAL&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;FATAL&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date [%-5level] [%method](%logger:%line) - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;FATAL&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;FATAL&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">  &lt;/log4net&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="需要使用的-cs-需加入設定"><a href="#需要使用的-cs-需加入設定" class="headerlink" title="需要使用的.cs 需加入設定"></a>需要使用的.cs 需加入設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">XmlConfigurator.Configure(new FileInfo(<span class="string">&quot;./log4net.config&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="程式行號功能需搭配-pdb"><a href="#程式行號功能需搭配-pdb" class="headerlink" title="程式行號功能需搭配.pdb"></a>程式行號功能需搭配.pdb</h3><p>工具-&gt;選項-偵錯-&gt;符號<br>符號檔(.pdb)位置勾選Microsoft符號伺服器<br>佈版需要將.exe執行檔和.pdb符號檔一起deploy<br>log才會顯示行號</p>
+<h3 id="Log使用方法"><a href="#Log使用方法" class="headerlink" title="Log使用方法"></a>Log使用方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class LogUtil</span><br><span class="line">&#123;</span><br><span class="line">	public static <span class="built_in">readonly</span> log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);</span><br><span class="line">&#125;</span><br><span class="line">LogUtil.logger.Info(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Debug(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Warn(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Error(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Fatal(<span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CSharp</category>
+      </categories>
+      <tags>
+        <tag>Log4net</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C# Enum Extensions Method</title>
     <url>/posts/9f330179/</url>
     <content><![CDATA[<h3 id="C-EnumExtensionsMethod"><a href="#C-EnumExtensionsMethod" class="headerlink" title="C#EnumExtensionsMethod"></a>C#EnumExtensionsMethod</h3><span id="more"></span>
@@ -381,25 +400,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C#Log4net設定</title>
-    <url>/posts/46ed40f7/</url>
-    <content><![CDATA[<h3 id="C-Log4net設定"><a href="#C-Log4net設定" class="headerlink" title="C#Log4net設定"></a>C#Log4net設定</h3><span id="more"></span>
-<p>這篇介紹在C#上安裝Log4net以及如何設定及使用功能</p>
-<h3 id="對專案右鍵-gt-管理NuGet套件-gt-安裝log4net"><a href="#對專案右鍵-gt-管理NuGet套件-gt-安裝log4net" class="headerlink" title="對專案右鍵-&gt;管理NuGet套件-&gt;安裝log4net"></a>對專案右鍵-&gt;管理NuGet套件-&gt;安裝log4net</h3><p>log4net.config 如下<br>ERROR和FATAL會多印出程式行號</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;log4net&gt;</span><br><span class="line">    &lt;root&gt;</span><br><span class="line">      &lt;level value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;DebugRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;InfoRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;WarnRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;ErrorRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">      &lt;appender-ref ref=<span class="string">&quot;FatalRollingFileAppender&quot;</span>/&gt;</span><br><span class="line">    &lt;/root&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;DebugRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;DEBUG&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;DEBUG&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;InfoRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;INFO&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;INFO&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;INFO&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;INFO&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;WarnRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;WARN&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;WARN&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method] - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;WARN&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;WARN&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;ErrorRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;ERROR&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;ERROR&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date %-5level [%method](%logger:%line) - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;ERROR&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;ERROR&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;FatalRollingFileAppender&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;log4net.Appender.RollingFileAppender&quot;</span> level=<span class="string">&quot;FATAL&quot;</span>&gt;</span><br><span class="line">      &lt;file <span class="built_in">type</span>=<span class="string">&quot;log4net.Util.PatternString&quot;</span> value=<span class="string">&quot;C:\NetLog\.log&quot;</span>/&gt;</span><br><span class="line">      &lt;preserveLogFileNameExtension value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;staticLogFileName value=<span class="string">&quot;false&quot;</span>/&gt;</span><br><span class="line">      &lt;param name=<span class="string">&quot;AppendToFile&quot;</span> value=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">      &lt;rollingStyle value=<span class="string">&quot;Composite&quot;</span>/&gt;</span><br><span class="line">      &lt;datePattern value=<span class="string">&quot;yyyyMMdd-&#x27;FATAL&#x27;&quot;</span>/&gt;</span><br><span class="line">      &lt;encoding value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">      &lt;maxSizeRollBackups value=<span class="string">&quot;30&quot;</span> /&gt;</span><br><span class="line">      &lt;maximumFileSize value=<span class="string">&quot;100MB&quot;</span>/&gt;</span><br><span class="line">      &lt;countDirection value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">      &lt;layout <span class="built_in">type</span>=<span class="string">&quot;log4net.Layout.PatternLayout&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;ConversionPattern&quot;</span> value=<span class="string">&quot;%date [%-5level] [%method](%logger:%line) - %message%newline&quot;</span>/&gt;</span><br><span class="line">      &lt;/layout&gt;</span><br><span class="line">      &lt;filter <span class="built_in">type</span>=<span class="string">&quot;log4net.Filter.LevelRangeFilter&quot;</span>&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMin&quot;</span> value=<span class="string">&quot;FATAL&quot;</span> /&gt;</span><br><span class="line">        &lt;param name=<span class="string">&quot;LevelMax&quot;</span> value=<span class="string">&quot;FATAL&quot;</span> /&gt;</span><br><span class="line">      &lt;/filter&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">  &lt;/log4net&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="需要使用的-cs-需加入設定"><a href="#需要使用的-cs-需加入設定" class="headerlink" title="需要使用的.cs 需加入設定"></a>需要使用的.cs 需加入設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">XmlConfigurator.Configure(new FileInfo(<span class="string">&quot;./log4net.config&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="程式行號功能需搭配-pdb"><a href="#程式行號功能需搭配-pdb" class="headerlink" title="程式行號功能需搭配.pdb"></a>程式行號功能需搭配.pdb</h3><p>工具-&gt;選項-偵錯-&gt;符號<br>符號檔(.pdb)位置勾選Microsoft符號伺服器<br>佈版需要將.exe執行檔和.pdb符號檔一起deploy<br>log才會顯示行號</p>
-<h3 id="Log使用方法"><a href="#Log使用方法" class="headerlink" title="Log使用方法"></a>Log使用方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class LogUtil</span><br><span class="line">&#123;</span><br><span class="line">	public static <span class="built_in">readonly</span> log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);</span><br><span class="line">&#125;</span><br><span class="line">LogUtil.logger.Info(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Debug(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Warn(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Error(<span class="string">&quot;&quot;</span>);</span><br><span class="line">LogUtil.logger.Fatal(<span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CSharp</category>
-      </categories>
-      <tags>
-        <tag>Log4net</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C#使用HttpClient</title>
     <url>/posts/994c3a70/</url>
     <content><![CDATA[<h3 id="C-使用HttpClient"><a href="#C-使用HttpClient" class="headerlink" title="C#使用HttpClient"></a>C#使用HttpClient</h3><span id="more"></span>
@@ -416,20 +416,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C#使用PerformanceCounter查詢CPU與記憶體使用狀況</title>
-    <url>/posts/f4ee45d7/</url>
-    <content><![CDATA[<h3 id="C-使用PerformanceCounter查詢CPU與記憶體使用狀況"><a href="#C-使用PerformanceCounter查詢CPU與記憶體使用狀況" class="headerlink" title="C#使用PerformanceCounter查詢CPU與記憶體使用狀況"></a>C#使用PerformanceCounter查詢CPU與記憶體使用狀況</h3><span id="more"></span>
-<p>最近有個需求是要監控多台windows電腦上的CPU和memory使用率。</p>
-<h3 id="PerformanceCounter-example"><a href="#PerformanceCounter-example" class="headerlink" title="PerformanceCounter example"></a>PerformanceCounter example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Diagnostics;</span><br><span class="line">using System.Threading;</span><br><span class="line"> </span><br><span class="line">namespace <span class="built_in">test</span></span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static PerformanceCounter cpu = new PerformanceCounter(<span class="string">&quot;Processor&quot;</span>, <span class="string">&quot;% Processor Time&quot;</span>, <span class="string">&quot;_Total&quot;</span>);</span><br><span class="line">        static PerformanceCounter memory = new PerformanceCounter(<span class="string">&quot;Memory&quot;</span>, <span class="string">&quot;% Committed Bytes in Use&quot;</span>);</span><br><span class="line"> </span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;CPU: &#123;0:n1&#125;%&quot;</span>, cpu.NextValue());</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;Memory: &#123;0:n0&#125;%&quot;</span>, memory.NextValue());</span><br><span class="line">                Thread.Sleep(1000);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CSharp</category>
-      </categories>
-      <tags>
-        <tag>PerformanceCounter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C#使用SerialPort協定控制USB開關</title>
     <url>/posts/9ec91d0e/</url>
     <content><![CDATA[<h3 id="C-使用SerialPort協定控制USB開關"><a href="#C-使用SerialPort協定控制USB開關" class="headerlink" title="C#使用SerialPort協定控制USB開關"></a>C#使用SerialPort協定控制USB開關</h3><span id="more"></span>
@@ -443,6 +429,20 @@
         <tag>CSharp</tag>
         <tag>SerialPort</tag>
         <tag>USB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C#使用PerformanceCounter查詢CPU與記憶體使用狀況</title>
+    <url>/posts/f4ee45d7/</url>
+    <content><![CDATA[<h3 id="C-使用PerformanceCounter查詢CPU與記憶體使用狀況"><a href="#C-使用PerformanceCounter查詢CPU與記憶體使用狀況" class="headerlink" title="C#使用PerformanceCounter查詢CPU與記憶體使用狀況"></a>C#使用PerformanceCounter查詢CPU與記憶體使用狀況</h3><span id="more"></span>
+<p>最近有個需求是要監控多台windows電腦上的CPU和memory使用率。</p>
+<h3 id="PerformanceCounter-example"><a href="#PerformanceCounter-example" class="headerlink" title="PerformanceCounter example"></a>PerformanceCounter example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Diagnostics;</span><br><span class="line">using System.Threading;</span><br><span class="line"> </span><br><span class="line">namespace <span class="built_in">test</span></span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static PerformanceCounter cpu = new PerformanceCounter(<span class="string">&quot;Processor&quot;</span>, <span class="string">&quot;% Processor Time&quot;</span>, <span class="string">&quot;_Total&quot;</span>);</span><br><span class="line">        static PerformanceCounter memory = new PerformanceCounter(<span class="string">&quot;Memory&quot;</span>, <span class="string">&quot;% Committed Bytes in Use&quot;</span>);</span><br><span class="line"> </span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;CPU: &#123;0:n1&#125;%&quot;</span>, cpu.NextValue());</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;Memory: &#123;0:n0&#125;%&quot;</span>, memory.NextValue());</span><br><span class="line">                Thread.Sleep(1000);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CSharp</category>
+      </categories>
+      <tags>
+        <tag>PerformanceCounter</tag>
       </tags>
   </entry>
   <entry>
@@ -553,30 +553,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS7安裝docker RabbitMQ</title>
-    <url>/posts/27b5d2f3/</url>
-    <content><![CDATA[<h3 id="CentOS7安裝docker-RabbitMQ"><a href="#CentOS7安裝docker-RabbitMQ" class="headerlink" title="CentOS7安裝docker RabbitMQ"></a>CentOS7安裝docker RabbitMQ</h3><span id="more"></span>
-<p>Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br></pre></td></tr></table></figure>
-<p>Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure>
-<p>Step3:將解壓縮後的docker資料夾放 &#x2F;opt 下<br>Step4:&#x2F;opt&#x2F;docker&#x2F;dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案</p>
-<p>Step5:執行 &#x2F;opt&#x2F;docker&#x2F;command</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sh create-rabbitmq.sh</span><br></pre></td></tr></table></figure>
-<p>Step6:以下三行指令必須在 &#x2F;opt&#x2F;docker&#x2F;dockerfile下執行才能成功</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .</span><br><span class="line">$ docker tag [IMAGE ID] rabbitmq:00</span><br><span class="line"></span><br><span class="line">$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00</span><br></pre></td></tr></table></figure>
-<p>Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功</p>
-]]></content>
-      <categories>
-        <category>CentOS7</category>
-      </categories>
-      <tags>
-        <tag>CentOS7</tag>
-        <tag>Docker</tag>
-        <tag>RabbitMQ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS7設定NTP對時</title>
     <url>/posts/a7ed551f/</url>
     <content><![CDATA[<h2 id="CentOS7設定NTP對時"><a href="#CentOS7設定NTP對時" class="headerlink" title="CentOS7設定NTP對時"></a>CentOS7設定NTP對時</h2><span id="more"></span>
@@ -602,6 +578,30 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS7安裝docker RabbitMQ</title>
+    <url>/posts/27b5d2f3/</url>
+    <content><![CDATA[<h3 id="CentOS7安裝docker-RabbitMQ"><a href="#CentOS7安裝docker-RabbitMQ" class="headerlink" title="CentOS7安裝docker RabbitMQ"></a>CentOS7安裝docker RabbitMQ</h3><span id="more"></span>
+<p>Step1:CentOS7 系統 CentOS-Extras 庫中已內建 Docker，可以直接安裝：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br></pre></td></tr></table></figure>
+<p>Step2:安裝之後啟動 Docker 服務，並讓它隨系統啟動自動載入。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure>
+<p>Step3:將解壓縮後的docker資料夾放 &#x2F;opt 下<br>Step4:&#x2F;opt&#x2F;docker&#x2F;dockerfile下需要有passwd.template 和 run-rabbitmq-server.sh 兩個檔案</p>
+<p>Step5:執行 &#x2F;opt&#x2F;docker&#x2F;command</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sh create-rabbitmq.sh</span><br></pre></td></tr></table></figure>
+<p>Step6:以下三行指令必須在 &#x2F;opt&#x2F;docker&#x2F;dockerfile下執行才能成功</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ docker build -f /opt/docker/dockerfile/rabbitmq -t rabbitmq:00 .</span><br><span class="line">$ docker tag [IMAGE ID] rabbitmq:00</span><br><span class="line"></span><br><span class="line">$ docker run -itd --name rabbitMQ --privileged --net mynetwork --ip 172.18.0.10 --restart always -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:00</span><br></pre></td></tr></table></figure>
+<p>Step7:172.18.0.10:15672 有 rabbitMQ 登入畫面即成功</p>
+]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>Docker</tag>
+        <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS How to Install htop To Monitor CPU Cores</title>
     <url>/posts/72bb0ec0/</url>
     <content><![CDATA[<h2 id="CentOS-How-to-Install-htop-To-Monitor-CPU-Cores"><a href="#CentOS-How-to-Install-htop-To-Monitor-CPU-Cores" class="headerlink" title="CentOS How to Install htop To Monitor CPU Cores"></a>CentOS How to Install htop To Monitor CPU Cores</h2><span id="more"></span>
@@ -620,6 +620,29 @@
         <tag>Linux</tag>
         <tag>CentOS</tag>
         <tag>CPU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS設定TimeZone</title>
+    <url>/posts/303e660c/</url>
+    <content><![CDATA[<h3 id="CentOS設定TimeZone"><a href="#CentOS設定TimeZone" class="headerlink" title="CentOS設定TimeZone"></a>CentOS設定TimeZone</h3><span id="more"></span>
+<p>先查看CentOS上目前TimeZone</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl status</span><br><span class="line">      Local time: Mon 2019-11-25 16:20:29 CST</span><br><span class="line">  Universal time: Mon 2019-11-25 08:20:29 UTC</span><br><span class="line">        RTC time: Mon 2019-11-25 08:20:29</span><br><span class="line">       Time zone: Asia/Taipei (CST, +0800)</span><br><span class="line">     NTP enabled: <span class="built_in">yes</span></span><br><span class="line">NTP synchronized: <span class="built_in">yes</span></span><br><span class="line"> RTC <span class="keyword">in</span> <span class="built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br></pre></td></tr></table></figure>
+
+<p>先找出TimeZone&#x2F;Asia設定</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl list-timezones | grep Asia</span><br><span class="line">Asia/Aden</span><br><span class="line">Asia/Almaty</span><br><span class="line">Asia/Amman</span><br><span class="line">Asia/Anadyr</span><br><span class="line">Asia/Aqtau</span><br><span class="line">Asia/Aqtobe</span><br><span class="line">Asia/Ashgabat</span><br><span class="line">Asia/Baghdad</span><br><span class="line">Asia/Bahrain</span><br><span class="line">Asia/Baku</span><br><span class="line">Asia/Bangkok</span><br><span class="line">Asia/Barnaul</span><br><span class="line">Asia/Beirut</span><br><span class="line">Asia/Bishkek</span><br><span class="line">Asia/Brunei</span><br><span class="line">Asia/Chita</span><br><span class="line">Asia/Choibalsan</span><br><span class="line">Asia/Colombo</span><br><span class="line">Asia/Damascus</span><br><span class="line">Asia/Dhaka</span><br><span class="line">Asia/Dili</span><br><span class="line">Asia/Dubai</span><br><span class="line">Asia/Dushanbe</span><br><span class="line">Asia/Gaza</span><br><span class="line">Asia/Hebron</span><br><span class="line">Asia/Ho_Chi_Minh</span><br><span class="line">Asia/Hong_Kong</span><br><span class="line">Asia/Hovd</span><br><span class="line">Asia/Irkutsk</span><br><span class="line">Asia/Jakarta</span><br><span class="line">Asia/Jayapura</span><br><span class="line">Asia/Jerusalem</span><br><span class="line">Asia/Kabul</span><br><span class="line">Asia/Kamchatka</span><br><span class="line">Asia/Karachi</span><br><span class="line">Asia/Kathmandu</span><br><span class="line">Asia/Khandyga</span><br><span class="line">Asia/Kolkata</span><br><span class="line">Asia/Krasnoyarsk</span><br><span class="line">Asia/Kuala_Lumpur</span><br><span class="line">Asia/Kuching</span><br><span class="line">Asia/Kuwait</span><br><span class="line">Asia/Macau</span><br><span class="line">Asia/Magadan</span><br><span class="line">Asia/Makassar</span><br><span class="line">Asia/Manila</span><br><span class="line">Asia/Muscat</span><br><span class="line">Asia/Nicosia</span><br><span class="line">Asia/Novokuznetsk</span><br><span class="line">Asia/Novosibirsk</span><br><span class="line">Asia/Omsk</span><br><span class="line">Asia/Oral</span><br><span class="line">Asia/Phnom_Penh</span><br><span class="line">Asia/Pontianak</span><br><span class="line">Asia/Pyongyang</span><br><span class="line">Asia/Qatar</span><br><span class="line">Asia/Qyzylorda</span><br><span class="line">Asia/Riyadh</span><br><span class="line">Asia/Sakhalin</span><br><span class="line">Asia/Samarkand</span><br><span class="line">Asia/Seoul</span><br><span class="line">Asia/Shanghai</span><br><span class="line">Asia/Singapore</span><br><span class="line">Asia/Srednekolymsk</span><br><span class="line">Asia/Taipei</span><br><span class="line">Asia/Tashkent</span><br><span class="line">Asia/Tbilisi</span><br><span class="line">Asia/Tehran</span><br><span class="line">Asia/Thimphu</span><br><span class="line">Asia/Tokyo</span><br><span class="line">Asia/Tomsk</span><br><span class="line">Asia/Ulaanbaatar</span><br><span class="line">Asia/Urumqi</span><br><span class="line">Asia/Ust-Nera</span><br><span class="line">Asia/Vientiane</span><br><span class="line">Asia/Vladivostok</span><br><span class="line">Asia/Yakutsk</span><br><span class="line">Asia/Yangon</span><br><span class="line">Asia/Yekaterinburg</span><br><span class="line">Asia/Yerevan</span><br></pre></td></tr></table></figure>
+
+<p>下指令改變TimeZone Asia&#x2F;Taipei</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl set-timezone Asia/Taipei</span><br></pre></td></tr></table></figure>
+
+<p>查詢目前時區可用date</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">date</span></span><br><span class="line">Mon Nov 25 16:23:26 CST 2019</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>TimeZone</tag>
       </tags>
   </entry>
   <entry>
@@ -858,27 +881,6 @@
       </tags>
   </entry>
   <entry>
-    <title>安裝Docker For Oracle</title>
-    <url>/posts/f1a2c8af/</url>
-    <content><![CDATA[<h3 id="安裝Docker-For-Oracle"><a href="#安裝Docker-For-Oracle" class="headerlink" title="安裝Docker For Oracle"></a>安裝Docker For Oracle</h3><span id="more"></span>
-<p>這篇介紹如何安裝Oracle的Docker來建立本地端資料庫。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.安裝 Docker Desktop <span class="keyword">for</span> Windows (下載後一步一步安裝)</span><br><span class="line"></span><br><span class="line">https://www.docker.com/products/docker-desktop</span><br><span class="line"></span><br><span class="line">2.匯入 Docker Repository</span><br><span class="line"></span><br><span class="line">用系統管理員權限開啟命令提示字元(cmd)</span><br><span class="line"></span><br><span class="line">//oracle11g.tar必須<span class="built_in">cd</span>到指定路徑下</span><br><span class="line">$ docker import oracle11g.tar <span class="built_in">local</span>/oracle11g</span><br><span class="line">//檢查狀態</span><br><span class="line">$ docker images -a </span><br><span class="line"></span><br><span class="line">3. 執行 Docker</span><br><span class="line"></span><br><span class="line">$ docker run --privileged --name oraclelocal -d -p 11521:1521 -e ORACLE_ALLOW_REMOTE=<span class="literal">true</span> -v /home:/install <span class="built_in">local</span>/oracle11g /assets/entrypoint.sh</span><br><span class="line"></span><br><span class="line">4.run 成功</span><br><span class="line"></span><br><span class="line">可以用 docker ps -a 檢查狀態</span><br><span class="line"></span><br><span class="line">在 docker 的 dashboard 也可以看到，如下圖</span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/DockerSuccuss.png" width="50%" />
-
-<h3 id="參數說明"><a href="#參數說明" class="headerlink" title="參數說明"></a>參數說明</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Docker 執行 Image 產生 Container (run)</span></span><br><span class="line"><span class="comment"># --privileged 是給予權限，安裝oracle時可能會需要root權限</span></span><br><span class="line"><span class="comment"># --name oracle11g 命名 Container 為 oracle11g</span></span><br><span class="line"><span class="comment"># -d 會自動執行 docker pull + 啟動並進入背景執行</span></span><br><span class="line"><span class="comment"># 11521:1521 把裡面的 1521 port 導到外面的 11521 port (host Port:container Port)</span></span><br><span class="line"><span class="comment"># -e ORACLE_ALLOW_REMOTE=true 的作用是開啟遠程連接，如果只是本地使用可以寫成這樣：</span></span><br><span class="line"><span class="comment"># -v 掛載點 /home 目前 Local 環境目錄 ; /install Container 目錄</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Oracle登入資訊"><a href="#Oracle登入資訊" class="headerlink" title="Oracle登入資訊"></a>Oracle登入資訊</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">HostName/IP Address:localhost</span><br><span class="line">Port:11521</span><br><span class="line">Service Name/SID:ORCL			//選擇SID</span><br><span class="line">UserName:bac_test</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker images -a			查看現有 docker <span class="built_in">local</span> repository</span><br><span class="line">docker ps -a				查看現有 container</span><br><span class="line">docker stop oraclelocal		停止特定container 最後一個參數是 container<span class="string">&#x27;s name or Id</span></span><br><span class="line"><span class="string">docker start oraclelocal	開啟特定container 最後一個參數是 container&#x27;</span>s name or Id</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Eclipse Install JSHint</title>
     <url>/posts/e321f856/</url>
     <content><![CDATA[<h3 id="Eclipse-Install-JSHint"><a href="#Eclipse-Install-JSHint" class="headerlink" title="Eclipse Install JSHint"></a>Eclipse Install JSHint</h3><span id="more"></span>
@@ -898,6 +900,27 @@
       </categories>
       <tags>
         <tag>JSHint</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝Docker For Oracle</title>
+    <url>/posts/f1a2c8af/</url>
+    <content><![CDATA[<h3 id="安裝Docker-For-Oracle"><a href="#安裝Docker-For-Oracle" class="headerlink" title="安裝Docker For Oracle"></a>安裝Docker For Oracle</h3><span id="more"></span>
+<p>這篇介紹如何安裝Oracle的Docker來建立本地端資料庫。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.安裝 Docker Desktop <span class="keyword">for</span> Windows (下載後一步一步安裝)</span><br><span class="line"></span><br><span class="line">https://www.docker.com/products/docker-desktop</span><br><span class="line"></span><br><span class="line">2.匯入 Docker Repository</span><br><span class="line"></span><br><span class="line">用系統管理員權限開啟命令提示字元(cmd)</span><br><span class="line"></span><br><span class="line">//oracle11g.tar必須<span class="built_in">cd</span>到指定路徑下</span><br><span class="line">$ docker import oracle11g.tar <span class="built_in">local</span>/oracle11g</span><br><span class="line">//檢查狀態</span><br><span class="line">$ docker images -a </span><br><span class="line"></span><br><span class="line">3. 執行 Docker</span><br><span class="line"></span><br><span class="line">$ docker run --privileged --name oraclelocal -d -p 11521:1521 -e ORACLE_ALLOW_REMOTE=<span class="literal">true</span> -v /home:/install <span class="built_in">local</span>/oracle11g /assets/entrypoint.sh</span><br><span class="line"></span><br><span class="line">4.run 成功</span><br><span class="line"></span><br><span class="line">可以用 docker ps -a 檢查狀態</span><br><span class="line"></span><br><span class="line">在 docker 的 dashboard 也可以看到，如下圖</span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/DockerSuccuss.png" width="50%" />
+
+<h3 id="參數說明"><a href="#參數說明" class="headerlink" title="參數說明"></a>參數說明</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Docker 執行 Image 產生 Container (run)</span></span><br><span class="line"><span class="comment"># --privileged 是給予權限，安裝oracle時可能會需要root權限</span></span><br><span class="line"><span class="comment"># --name oracle11g 命名 Container 為 oracle11g</span></span><br><span class="line"><span class="comment"># -d 會自動執行 docker pull + 啟動並進入背景執行</span></span><br><span class="line"><span class="comment"># 11521:1521 把裡面的 1521 port 導到外面的 11521 port (host Port:container Port)</span></span><br><span class="line"><span class="comment"># -e ORACLE_ALLOW_REMOTE=true 的作用是開啟遠程連接，如果只是本地使用可以寫成這樣：</span></span><br><span class="line"><span class="comment"># -v 掛載點 /home 目前 Local 環境目錄 ; /install Container 目錄</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Oracle登入資訊"><a href="#Oracle登入資訊" class="headerlink" title="Oracle登入資訊"></a>Oracle登入資訊</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">HostName/IP Address:localhost</span><br><span class="line">Port:11521</span><br><span class="line">Service Name/SID:ORCL			//選擇SID</span><br><span class="line">UserName:bac_test</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker images -a			查看現有 docker <span class="built_in">local</span> repository</span><br><span class="line">docker ps -a				查看現有 container</span><br><span class="line">docker stop oraclelocal		停止特定container 最後一個參數是 container<span class="string">&#x27;s name or Id</span></span><br><span class="line"><span class="string">docker start oraclelocal	開啟特定container 最後一個參數是 container&#x27;</span>s name or Id</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -1528,6 +1551,21 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Change Jre To Zulu Jdk Path</title>
+    <url>/posts/1abbf144/</url>
+    <content><![CDATA[<h3 id="How-To-Change-Jre-To-Zulu-Jdk-Path"><a href="#How-To-Change-Jre-To-Zulu-Jdk-Path" class="headerlink" title="How To Change Jre To Zulu Jdk Path"></a>How To Change Jre To Zulu Jdk Path</h3><span id="more"></span>
+<p>這篇介紹How To Change Jre To Zulu Jdk Path。</p>
+<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Eclipse -&gt; Window -&gt; Preferences -&gt; Java -&gt; Installd JREs -&gt; select -&gt; Edit -&gt; Modify JRE home</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Eclipse</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+        <tag>Eclipse</tag>
+        <tag>Jre</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Check Docker Hub Rate Limiting</title>
     <url>/posts/104776f5/</url>
     <content><![CDATA[<h2 id="How-To-Check-Docker-Hub-Rate-Limiting"><a href="#How-To-Check-Docker-Hub-Rate-Limiting" class="headerlink" title="How To Check Docker Hub Rate Limiting"></a>How To Check Docker Hub Rate Limiting</h2><span id="more"></span>
@@ -1544,21 +1582,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>DockerHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Change Jre To Zulu Jdk Path</title>
-    <url>/posts/1abbf144/</url>
-    <content><![CDATA[<h3 id="How-To-Change-Jre-To-Zulu-Jdk-Path"><a href="#How-To-Change-Jre-To-Zulu-Jdk-Path" class="headerlink" title="How To Change Jre To Zulu Jdk Path"></a>How To Change Jre To Zulu Jdk Path</h3><span id="more"></span>
-<p>這篇介紹How To Change Jre To Zulu Jdk Path。</p>
-<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Eclipse -&gt; Window -&gt; Preferences -&gt; Java -&gt; Installd JREs -&gt; select -&gt; Edit -&gt; Modify JRE home</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Eclipse</category>
-      </categories>
-      <tags>
-        <tag>JDK</tag>
-        <tag>Eclipse</tag>
-        <tag>Jre</tag>
       </tags>
   </entry>
   <entry>
@@ -1582,6 +1605,20 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Check Redis ERR AUTH Password</title>
+    <url>/posts/fdb7d82c/</url>
+    <content><![CDATA[<h3 id="How-To-Check-Redis-ERR-AUTH-Password"><a href="#How-To-Check-Redis-ERR-AUTH-Password" class="headerlink" title="How To Check Redis ERR AUTH Password"></a>How To Check Redis ERR AUTH Password</h3><span id="more"></span>
+<p>這篇介紹How To Check Redis ERR AUTH Password。</p>
+<h3 id="錯誤訊息-amp-設定password"><a href="#錯誤訊息-amp-設定password" class="headerlink" title="錯誤訊息&amp;設定password"></a>錯誤訊息&amp;設定password</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ERR AUTH&lt;password&gt; called without anypassword configured <span class="keyword">for</span> the default user.</span><br><span class="line"></span><br><span class="line">1.檢查Redis是否正常啟動</span><br><span class="line">$ redis-cli</span><br><span class="line"></span><br><span class="line">2.檢查Redis密碼</span><br><span class="line">$ keys *</span><br><span class="line">$ (empty array)  -&gt; 沒有設置密碼</span><br><span class="line"></span><br><span class="line">3.設定Redis密碼</span><br><span class="line">$ config <span class="built_in">set</span> requirpass &#123;password&#125;</span><br><span class="line">$ OK</span><br><span class="line"></span><br><span class="line">4.檢查密碼是否設置成功</span><br><span class="line">$ auth &#123;password&#125;</span><br><span class="line">$ OK</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Create Private Registry On Docker</title>
     <url>/posts/45dd2d61/</url>
     <content><![CDATA[<h2 id="How-To-Create-Private-Registry-On-Docker"><a href="#How-To-Create-Private-Registry-On-Docker" class="headerlink" title="How To Create Private Registry On Docker"></a>How To Create Private Registry On Docker</h2><span id="more"></span>
@@ -1597,20 +1634,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>PrivateRegistry</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Check Redis ERR AUTH Password</title>
-    <url>/posts/fdb7d82c/</url>
-    <content><![CDATA[<h3 id="How-To-Check-Redis-ERR-AUTH-Password"><a href="#How-To-Check-Redis-ERR-AUTH-Password" class="headerlink" title="How To Check Redis ERR AUTH Password"></a>How To Check Redis ERR AUTH Password</h3><span id="more"></span>
-<p>這篇介紹How To Check Redis ERR AUTH Password。</p>
-<h3 id="錯誤訊息-amp-設定password"><a href="#錯誤訊息-amp-設定password" class="headerlink" title="錯誤訊息&amp;設定password"></a>錯誤訊息&amp;設定password</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ERR AUTH&lt;password&gt; called without anypassword configured <span class="keyword">for</span> the default user.</span><br><span class="line"></span><br><span class="line">1.檢查Redis是否正常啟動</span><br><span class="line">$ redis-cli</span><br><span class="line"></span><br><span class="line">2.檢查Redis密碼</span><br><span class="line">$ keys *</span><br><span class="line">$ (empty array)  -&gt; 沒有設置密碼</span><br><span class="line"></span><br><span class="line">3.設定Redis密碼</span><br><span class="line">$ config <span class="built_in">set</span> requirpass &#123;password&#125;</span><br><span class="line">$ OK</span><br><span class="line"></span><br><span class="line">4.檢查密碼是否設置成功</span><br><span class="line">$ auth &#123;password&#125;</span><br><span class="line">$ OK</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Redis</category>
-      </categories>
-      <tags>
-        <tag>Redis</tag>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1716,26 +1739,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Install Podman On Linux</title>
-    <url>/posts/4d3c1cad/</url>
-    <content><![CDATA[<h2 id="How-To-Install-Podman-On-Linux"><a href="#How-To-Install-Podman-On-Linux" class="headerlink" title="How To Install Podman On Linux"></a>How To Install Podman On Linux</h2><span id="more"></span>
-<p>How To Install Podman On Linux</p>
-<h2 id="Install-Process"><a href="#Install-Process" class="headerlink" title="Install Process:"></a>Install Process:</h2><p>$ yum install podman -y<br>…</p>
-<p>$ podman –version<br>podman version 1.6.4</p>
-<p>$ podman info<br>…</p>
-<h2 id="Download-docker-images"><a href="#Download-docker-images" class="headerlink" title="Download docker images:"></a>Download docker images:</h2><p>$ podman images<br>…</p>
-<p>$ podman pull {dockerHubName}<br>…</p>
-<p>$ podman images<br>…<br>check install status</p>
-]]></content>
-      <categories>
-        <category>Podman</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Podman</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Install Gitlab Docker</title>
     <url>/posts/cd9b51d9/</url>
     <content><![CDATA[<h3 id="How-To-Install-Gitlab-Docker"><a href="#How-To-Install-Gitlab-Docker" class="headerlink" title="How To Install Gitlab Docker"></a>How To Install Gitlab Docker</h3><span id="more"></span>
@@ -1764,6 +1767,26 @@
         <tag>Linux</tag>
         <tag>Rocky8</tag>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Install Podman On Linux</title>
+    <url>/posts/4d3c1cad/</url>
+    <content><![CDATA[<h2 id="How-To-Install-Podman-On-Linux"><a href="#How-To-Install-Podman-On-Linux" class="headerlink" title="How To Install Podman On Linux"></a>How To Install Podman On Linux</h2><span id="more"></span>
+<p>How To Install Podman On Linux</p>
+<h2 id="Install-Process"><a href="#Install-Process" class="headerlink" title="Install Process:"></a>Install Process:</h2><p>$ yum install podman -y<br>…</p>
+<p>$ podman –version<br>podman version 1.6.4</p>
+<p>$ podman info<br>…</p>
+<h2 id="Download-docker-images"><a href="#Download-docker-images" class="headerlink" title="Download docker images:"></a>Download docker images:</h2><p>$ podman images<br>…</p>
+<p>$ podman pull {dockerHubName}<br>…</p>
+<p>$ podman images<br>…<br>check install status</p>
+]]></content>
+      <categories>
+        <category>Podman</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Podman</tag>
       </tags>
   </entry>
   <entry>
@@ -2085,19 +2108,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Solve Java Lang No Class Def Found Error Org Mockito Mockito</title>
-    <url>/posts/7febd23d/</url>
-    <content><![CDATA[<h3 id="How-To-Solve-Java-Lang-No-Class-Def-Found-Error-Org-Mockito-Mockito"><a href="#How-To-Solve-Java-Lang-No-Class-Def-Found-Error-Org-Mockito-Mockito" class="headerlink" title="How To Solve Java Lang No Class Def Found Error Org Mockito Mockito"></a>How To Solve Java Lang No Class Def Found Error Org Mockito Mockito</h3><span id="more"></span>
-<p>這篇介紹How To Solve Java Lang No Class Def Found Error Org Mockito Mockito。</p>
-<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">The scope <span class="built_in">test</span> indicates that the dependencies (binary files) </span><br><span class="line">are only used using maven<span class="string">&#x27;s test phase.</span></span><br><span class="line"><span class="string">They are not delivered with the final target jar though. </span></span><br><span class="line"><span class="string">So if you run tests yourself (rather than letting maven do it),</span></span><br><span class="line"><span class="string">you&#x27;</span>d better leave the default runtime scope, as follows:</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mockito&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mockito-all&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.0.2-beta&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">結論是將&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;拿掉即可解決!</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Mockito</category>
-      </categories>
-      <tags>
-        <tag>Mockito</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Solve Java Lang Unsupported Class Version Error</title>
     <url>/posts/eccfbf1e/</url>
     <content><![CDATA[<h3 id="How-To-Solve-Java-Lang-Unsupported-Class-Version-Error"><a href="#How-To-Solve-Java-Lang-Unsupported-Class-Version-Error" class="headerlink" title="How To Solve Java Lang Unsupported Class Version Error"></a>How To Solve Java Lang Unsupported Class Version Error</h3><span id="more"></span>
@@ -2109,6 +2119,19 @@
       <tags>
         <tag>JDK17</tag>
         <tag>JDK21</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Solve Java Lang No Class Def Found Error Org Mockito Mockito</title>
+    <url>/posts/7febd23d/</url>
+    <content><![CDATA[<h3 id="How-To-Solve-Java-Lang-No-Class-Def-Found-Error-Org-Mockito-Mockito"><a href="#How-To-Solve-Java-Lang-No-Class-Def-Found-Error-Org-Mockito-Mockito" class="headerlink" title="How To Solve Java Lang No Class Def Found Error Org Mockito Mockito"></a>How To Solve Java Lang No Class Def Found Error Org Mockito Mockito</h3><span id="more"></span>
+<p>這篇介紹How To Solve Java Lang No Class Def Found Error Org Mockito Mockito。</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">The scope <span class="built_in">test</span> indicates that the dependencies (binary files) </span><br><span class="line">are only used using maven<span class="string">&#x27;s test phase.</span></span><br><span class="line"><span class="string">They are not delivered with the final target jar though. </span></span><br><span class="line"><span class="string">So if you run tests yourself (rather than letting maven do it),</span></span><br><span class="line"><span class="string">you&#x27;</span>d better leave the default runtime scope, as follows:</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mockito&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mockito-all&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.0.2-beta&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">結論是將&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;拿掉即可解決!</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Mockito</category>
+      </categories>
+      <tags>
+        <tag>Mockito</tag>
       </tags>
   </entry>
   <entry>
@@ -2268,39 +2291,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題</title>
-    <url>/posts/ffb93473/</url>
-    <content><![CDATA[<h3 id="Intro-How-To-Solve-TIME-WAIT-amp-CLOSE-WAIT-過多問題"><a href="#Intro-How-To-Solve-TIME-WAIT-amp-CLOSE-WAIT-過多問題" class="headerlink" title="Intro How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題"></a>Intro How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題</h3><span id="more"></span>
-<p>這篇介紹How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題。</p>
-<h3 id="OKHttp"><a href="#OKHttp" class="headerlink" title="OKHttp"></a>OKHttp</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">增加Conncetion Keepalive使用數量</span><br><span class="line"></span><br><span class="line">ex:</span><br><span class="line">before</span><br><span class="line">OkHttpClient.Builder client = new OkHttpClient.Builder();</span><br><span class="line">client.connectionPool(new ConnectionPool(10, 60, TimeUnit.SECONDS));</span><br><span class="line"></span><br><span class="line">after</span><br><span class="line">OkHttpClient.Builder client = new OkHttpClient.Builder();</span><br><span class="line">client.connectionPool(new ConnectionPool(100, 60, TimeUnit.SECONDS));</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>TCP</category>
-      </categories>
-      <tags>
-        <tag>TCP</tag>
-        <tag>OKHttp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</title>
-    <url>/posts/2faabf0c/</url>
-    <content><![CDATA[<h2 id="How-To-Solve-VMware-Workstation-Does-Not-Support-Nested-Virtualization-On-This-Host"><a href="#How-To-Solve-VMware-Workstation-Does-Not-Support-Nested-Virtualization-On-This-Host" class="headerlink" title="How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host"></a>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</h2><span id="more"></span>
-<p>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</p>
-<h2 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h2><p>繼上一篇<a href="https://davidchenblog.com/posts/78192777/#more">https://davidchenblog.com/posts/78192777/#more</a> 處理完後，重新開機再次啟動<br>VMware Workstation Pro並打開虛擬機，會出現VMware Workstation does not support<br>nested virtualization on this host.錯誤導致無法正常啟動。</p>
-<p>解決方法</p>
-<ol>
-<li>Turn Off Hyper-V<br>Go to “Turn Windows features on or off” -&gt; 開啟或關閉Windows功能<br>Make sure Hyper-v is not ticked. If it is Ticked, untick it and click “Ok”. -&gt; 將Hyper-v功能不打勾</li>
-</ol>
-<p>2.cmd (命令提示字元) -&gt; 以系統管理員身分執行 -&gt; $ bcdedit &#x2F;set hypervisorlaunchtype off </p>
-]]></content>
-      <categories>
-        <category>VMwareWorkstation</category>
-      </categories>
-      <tags>
-        <tag>VMwareWorkstation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Solve Stream Sum Precision Problem</title>
     <url>/posts/bcf1919f/</url>
     <content><![CDATA[<h3 id="How-To-Solve-Stream-Sum-Precision-Problem"><a href="#How-To-Solve-Stream-Sum-Precision-Problem" class="headerlink" title="How To Solve Stream Sum Precision Problem"></a>How To Solve Stream Sum Precision Problem</h3><span id="more"></span>
@@ -2314,6 +2304,20 @@
       <tags>
         <tag>Stream</tag>
         <tag>Reduce</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題</title>
+    <url>/posts/ffb93473/</url>
+    <content><![CDATA[<h3 id="Intro-How-To-Solve-TIME-WAIT-amp-CLOSE-WAIT-過多問題"><a href="#Intro-How-To-Solve-TIME-WAIT-amp-CLOSE-WAIT-過多問題" class="headerlink" title="Intro How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題"></a>Intro How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題</h3><span id="more"></span>
+<p>這篇介紹How To Solve TIME_WAIT &amp; CLOSE_WAIT 過多問題。</p>
+<h3 id="OKHttp"><a href="#OKHttp" class="headerlink" title="OKHttp"></a>OKHttp</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">增加Conncetion Keepalive使用數量</span><br><span class="line"></span><br><span class="line">ex:</span><br><span class="line">before</span><br><span class="line">OkHttpClient.Builder client = new OkHttpClient.Builder();</span><br><span class="line">client.connectionPool(new ConnectionPool(10, 60, TimeUnit.SECONDS));</span><br><span class="line"></span><br><span class="line">after</span><br><span class="line">OkHttpClient.Builder client = new OkHttpClient.Builder();</span><br><span class="line">client.connectionPool(new ConnectionPool(100, 60, TimeUnit.SECONDS));</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>TCP</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>OKHttp</tag>
       </tags>
   </entry>
   <entry>
@@ -2336,20 +2340,22 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03</title>
-    <url>/posts/1d14e482/</url>
-    <content><![CDATA[<h3 id="How-To-Solve-Unrecognized-Option-ALL-UNNAMED-On-Eclipse-2023-03"><a href="#How-To-Solve-Unrecognized-Option-ALL-UNNAMED-On-Eclipse-2023-03" class="headerlink" title="How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03"></a>How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03</h3><span id="more"></span>
-<p>這篇介紹How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03。</p>
-<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Error message : Unrecognized option: --add-opens=java.base/java.lang=ALL-UNNAMED</span><br><span class="line"></span><br><span class="line">1.因jre選到預設的 要改選自己安裝的jre path</span><br><span class="line">2.移除原tomcat設定 重新設定並把1選擇正確的jre path</span><br></pre></td></tr></table></figure>
-
+    <title>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</title>
+    <url>/posts/2faabf0c/</url>
+    <content><![CDATA[<h2 id="How-To-Solve-VMware-Workstation-Does-Not-Support-Nested-Virtualization-On-This-Host"><a href="#How-To-Solve-VMware-Workstation-Does-Not-Support-Nested-Virtualization-On-This-Host" class="headerlink" title="How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host"></a>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</h2><span id="more"></span>
+<p>How To Solve VMware Workstation Does Not Support Nested Virtualization On This Host</p>
+<h2 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h2><p>繼上一篇<a href="https://davidchenblog.com/posts/78192777/#more">https://davidchenblog.com/posts/78192777/#more</a> 處理完後，重新開機再次啟動<br>VMware Workstation Pro並打開虛擬機，會出現VMware Workstation does not support<br>nested virtualization on this host.錯誤導致無法正常啟動。</p>
+<p>解決方法</p>
+<ol>
+<li>Turn Off Hyper-V<br>Go to “Turn Windows features on or off” -&gt; 開啟或關閉Windows功能<br>Make sure Hyper-v is not ticked. If it is Ticked, untick it and click “Ok”. -&gt; 將Hyper-v功能不打勾</li>
+</ol>
+<p>2.cmd (命令提示字元) -&gt; 以系統管理員身分執行 -&gt; $ bcdedit &#x2F;set hypervisorlaunchtype off </p>
 ]]></content>
       <categories>
-        <category>Eclipse</category>
+        <category>VMwareWorkstation</category>
       </categories>
       <tags>
-        <tag>JDK</tag>
-        <tag>Eclipse</tag>
-        <tag>Jre</tag>
+        <tag>VMwareWorkstation</tag>
       </tags>
   </entry>
   <entry>
@@ -2366,6 +2372,23 @@
       <tags>
         <tag>VMwareWorkstation</tag>
         <tag>BIOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03</title>
+    <url>/posts/1d14e482/</url>
+    <content><![CDATA[<h3 id="How-To-Solve-Unrecognized-Option-ALL-UNNAMED-On-Eclipse-2023-03"><a href="#How-To-Solve-Unrecognized-Option-ALL-UNNAMED-On-Eclipse-2023-03" class="headerlink" title="How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03"></a>How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03</h3><span id="more"></span>
+<p>這篇介紹How To Solve Unrecognized Option ALL-UNNAMED On Eclipse 2023-03。</p>
+<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Error message : Unrecognized option: --add-opens=java.base/java.lang=ALL-UNNAMED</span><br><span class="line"></span><br><span class="line">1.因jre選到預設的 要改選自己安裝的jre path</span><br><span class="line">2.移除原tomcat設定 重新設定並把1選擇正確的jre path</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Eclipse</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+        <tag>Eclipse</tag>
+        <tag>Jre</tag>
       </tags>
   </entry>
   <entry>
@@ -2415,21 +2438,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Test OSI Network Layer To Application Layer Is Work?</title>
-    <url>/posts/fdd7fe05/</url>
-    <content><![CDATA[<h3 id="How-To-Test-OSI-Network-Layer-To-Application-Layer-Is-Work"><a href="#How-To-Test-OSI-Network-Layer-To-Application-Layer-Is-Work" class="headerlink" title="How To Test OSI Network Layer To Application Layer Is Work?"></a>How To Test OSI Network Layer To Application Layer Is Work?</h3><span id="more"></span>
-<p>這篇介紹How To Test OSI Network Layer To Application Layer Is Work?。</p>
-<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ Ping 127.0.0.1 </span><br><span class="line">有正常回應代表Network layer 至 Application layer 正常運作</span><br><span class="line"></span><br><span class="line">Ping只能測試Application layer 至 Network layer，</span><br><span class="line">至於Physical layer和 Datalink layer，是網路卡的測試!</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>Network</tag>
-        <tag>Ping</tag>
-        <tag>OSI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Update Docker Image Version</title>
     <url>/posts/74b8cacf/</url>
     <content><![CDATA[<h3 id="How-To-Update-Docker-Image-Version"><a href="#How-To-Update-Docker-Image-Version" class="headerlink" title="How To Update Docker Image Version"></a>How To Update Docker Image Version</h3><span id="more"></span>
@@ -2444,17 +2452,18 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Update Git Version</title>
-    <url>/posts/f4e089b4/</url>
-    <content><![CDATA[<h2 id="How-To-Update-Git-Version"><a href="#How-To-Update-Git-Version" class="headerlink" title="How To Update Git Version"></a>How To Update Git Version</h2><span id="more"></span>
-<p>這篇介紹如何透過command line指令升級Git version。</p>
-<h2 id="instruction"><a href="#instruction" class="headerlink" title="instruction:"></a>instruction:</h2><p>若目前的版本是 2.16.1 以上，請使用<br>$ git update-git-for-windows<br>進行升級</p>
-]]></content>
+    <title>How To Test OSI Network Layer To Application Layer Is Work?</title>
+    <url>/posts/fdd7fe05/</url>
+    <content><![CDATA[<h3 id="How-To-Test-OSI-Network-Layer-To-Application-Layer-Is-Work"><a href="#How-To-Test-OSI-Network-Layer-To-Application-Layer-Is-Work" class="headerlink" title="How To Test OSI Network Layer To Application Layer Is Work?"></a>How To Test OSI Network Layer To Application Layer Is Work?</h3><span id="more"></span>
+<p>這篇介紹How To Test OSI Network Layer To Application Layer Is Work?。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ Ping 127.0.0.1 </span><br><span class="line">有正常回應代表Network layer 至 Application layer 正常運作</span><br><span class="line"></span><br><span class="line">Ping只能測試Application layer 至 Network layer，</span><br><span class="line">至於Physical layer和 Datalink layer，是網路卡的測試!</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Git</category>
+        <category>Network</category>
       </categories>
       <tags>
-        <tag>Git</tag>
+        <tag>Network</tag>
+        <tag>Ping</tag>
+        <tag>OSI</tag>
       </tags>
   </entry>
   <entry>
@@ -2474,6 +2483,20 @@
       <tags>
         <tag>Docker</tag>
         <tag>Dockerfile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Update Git Version</title>
+    <url>/posts/f4e089b4/</url>
+    <content><![CDATA[<h2 id="How-To-Update-Git-Version"><a href="#How-To-Update-Git-Version" class="headerlink" title="How To Update Git Version"></a>How To Update Git Version</h2><span id="more"></span>
+<p>這篇介紹如何透過command line指令升級Git version。</p>
+<h2 id="instruction"><a href="#instruction" class="headerlink" title="instruction:"></a>instruction:</h2><p>若目前的版本是 2.16.1 以上，請使用<br>$ git update-git-for-windows<br>進行升級</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -2731,6 +2754,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String</title>
+    <url>/posts/4dc3b2f0/</url>
+    <content><![CDATA[<h3 id="Intro-ClassCastException-java-lang-Integer-cannot-be-cast-to-java-lang-String"><a href="#Intro-ClassCastException-java-lang-Integer-cannot-be-cast-to-java-lang-String" class="headerlink" title="Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String"></a>Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String</h3><span id="more"></span>
+<p>這篇介紹ClassCastException java.lang.Integer cannot be cast to java.lang.String。</p>
+<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">從Elasticsearch撈欄位資料，將它轉型並塞至物件。</span><br><span class="line"></span><br><span class="line">example:</span><br><span class="line">xxx.setStatus(Integer.parseInt((String) hit.get(&quot;status&quot;)));</span><br><span class="line"></span><br><span class="line">在 (String) hit.get(<span class="string">&quot;status&quot;</span>) 這句會出現ClassCastException</span><br><span class="line"></span><br><span class="line">因為Integer和String是不同基礎型別的Object，不能直接cast</span><br></pre></td></tr></table></figure>
+
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">xxx.setStatus(Integer.parseInt((String) hit.get(&quot;status&quot;))); </span><br><span class="line">改成 </span><br><span class="line">xxx.setStatus(Integer.parseInt(String.valueOf(hit.get(<span class="string">&quot;status&quot;</span>))));</span><br><span class="line">可避免轉型錯誤</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Cast</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Intro Class Object Method Naming</title>
     <url>/posts/4b24713c/</url>
     <content><![CDATA[<h2 id="Intro-Class-Object-Method-Naming"><a href="#Intro-Class-Object-Method-Naming" class="headerlink" title="Intro Class Object Method Naming"></a>Intro Class Object Method Naming</h2><span id="more"></span>
@@ -2746,22 +2785,6 @@
       </categories>
       <tags>
         <tag>Naming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String</title>
-    <url>/posts/4dc3b2f0/</url>
-    <content><![CDATA[<h3 id="Intro-ClassCastException-java-lang-Integer-cannot-be-cast-to-java-lang-String"><a href="#Intro-ClassCastException-java-lang-Integer-cannot-be-cast-to-java-lang-String" class="headerlink" title="Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String"></a>Intro ClassCastException java.lang.Integer cannot be cast to java.lang.String</h3><span id="more"></span>
-<p>這篇介紹ClassCastException java.lang.Integer cannot be cast to java.lang.String。</p>
-<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">從Elasticsearch撈欄位資料，將它轉型並塞至物件。</span><br><span class="line"></span><br><span class="line">example:</span><br><span class="line">xxx.setStatus(Integer.parseInt((String) hit.get(&quot;status&quot;)));</span><br><span class="line"></span><br><span class="line">在 (String) hit.get(<span class="string">&quot;status&quot;</span>) 這句會出現ClassCastException</span><br><span class="line"></span><br><span class="line">因為Integer和String是不同基礎型別的Object，不能直接cast</span><br></pre></td></tr></table></figure>
-
-<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">xxx.setStatus(Integer.parseInt((String) hit.get(&quot;status&quot;))); </span><br><span class="line">改成 </span><br><span class="line">xxx.setStatus(Integer.parseInt(String.valueOf(hit.get(<span class="string">&quot;status&quot;</span>))));</span><br><span class="line">可避免轉型錯誤</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Cast</tag>
       </tags>
   </entry>
   <entry>
@@ -2822,6 +2845,22 @@
       </categories>
       <tags>
         <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro C# Obsolete</title>
+    <url>/posts/5948b9/</url>
+    <content><![CDATA[<h3 id="Intro-C-Obsolete"><a href="#Intro-C-Obsolete" class="headerlink" title="Intro C# Obsolete"></a>Intro C# Obsolete</h3><span id="more"></span>
+<p>Obsolete 屬性 (Attribute) 會標記不再建議使用的程式實體 (Entity)。<br>每次使用標記為過時的實體時，會視設定此屬性的方法，產生警告或是錯誤。</p>
+<h3 id="Obsolete-String"><a href="#Obsolete-String" class="headerlink" title="Obsolete(String)"></a>Obsolete(String)</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line">&#123;</span><br><span class="line">    [Obsolete(<span class="string">&quot;Don&#x27;t use Old Method!&quot;</span>)]</span><br><span class="line">    public static void ShowMessage(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">編譯時，系統會跳出警告，並顯示出警告提示「Dont<span class="string">&#x27; use Old Method!」。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Obsolete-String-true"><a href="#Obsolete-String-true" class="headerlink" title="Obsolete(String, true)"></a>Obsolete(String, true)</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line">&#123;</span><br><span class="line">    [Obsolete(<span class="string">&quot;Don&#x27;t use Old Method!&quot;</span>, <span class="literal">true</span>)]</span><br><span class="line">    public static void ShowMessage(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">編譯時，系統會跳出錯誤，並顯示出錯誤提示「Dont<span class="string">&#x27; use Old Method!」。</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CSharp</category>
+      </categories>
+      <tags>
+        <tag>Obsolete</tag>
       </tags>
   </entry>
   <entry>
@@ -2958,29 +2997,6 @@ else
       </tags>
   </entry>
   <entry>
-    <title>CentOS設定TimeZone</title>
-    <url>/posts/303e660c/</url>
-    <content><![CDATA[<h3 id="CentOS設定TimeZone"><a href="#CentOS設定TimeZone" class="headerlink" title="CentOS設定TimeZone"></a>CentOS設定TimeZone</h3><span id="more"></span>
-<p>先查看CentOS上目前TimeZone</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl status</span><br><span class="line">      Local time: Mon 2019-11-25 16:20:29 CST</span><br><span class="line">  Universal time: Mon 2019-11-25 08:20:29 UTC</span><br><span class="line">        RTC time: Mon 2019-11-25 08:20:29</span><br><span class="line">       Time zone: Asia/Taipei (CST, +0800)</span><br><span class="line">     NTP enabled: <span class="built_in">yes</span></span><br><span class="line">NTP synchronized: <span class="built_in">yes</span></span><br><span class="line"> RTC <span class="keyword">in</span> <span class="built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br></pre></td></tr></table></figure>
-
-<p>先找出TimeZone&#x2F;Asia設定</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl list-timezones | grep Asia</span><br><span class="line">Asia/Aden</span><br><span class="line">Asia/Almaty</span><br><span class="line">Asia/Amman</span><br><span class="line">Asia/Anadyr</span><br><span class="line">Asia/Aqtau</span><br><span class="line">Asia/Aqtobe</span><br><span class="line">Asia/Ashgabat</span><br><span class="line">Asia/Baghdad</span><br><span class="line">Asia/Bahrain</span><br><span class="line">Asia/Baku</span><br><span class="line">Asia/Bangkok</span><br><span class="line">Asia/Barnaul</span><br><span class="line">Asia/Beirut</span><br><span class="line">Asia/Bishkek</span><br><span class="line">Asia/Brunei</span><br><span class="line">Asia/Chita</span><br><span class="line">Asia/Choibalsan</span><br><span class="line">Asia/Colombo</span><br><span class="line">Asia/Damascus</span><br><span class="line">Asia/Dhaka</span><br><span class="line">Asia/Dili</span><br><span class="line">Asia/Dubai</span><br><span class="line">Asia/Dushanbe</span><br><span class="line">Asia/Gaza</span><br><span class="line">Asia/Hebron</span><br><span class="line">Asia/Ho_Chi_Minh</span><br><span class="line">Asia/Hong_Kong</span><br><span class="line">Asia/Hovd</span><br><span class="line">Asia/Irkutsk</span><br><span class="line">Asia/Jakarta</span><br><span class="line">Asia/Jayapura</span><br><span class="line">Asia/Jerusalem</span><br><span class="line">Asia/Kabul</span><br><span class="line">Asia/Kamchatka</span><br><span class="line">Asia/Karachi</span><br><span class="line">Asia/Kathmandu</span><br><span class="line">Asia/Khandyga</span><br><span class="line">Asia/Kolkata</span><br><span class="line">Asia/Krasnoyarsk</span><br><span class="line">Asia/Kuala_Lumpur</span><br><span class="line">Asia/Kuching</span><br><span class="line">Asia/Kuwait</span><br><span class="line">Asia/Macau</span><br><span class="line">Asia/Magadan</span><br><span class="line">Asia/Makassar</span><br><span class="line">Asia/Manila</span><br><span class="line">Asia/Muscat</span><br><span class="line">Asia/Nicosia</span><br><span class="line">Asia/Novokuznetsk</span><br><span class="line">Asia/Novosibirsk</span><br><span class="line">Asia/Omsk</span><br><span class="line">Asia/Oral</span><br><span class="line">Asia/Phnom_Penh</span><br><span class="line">Asia/Pontianak</span><br><span class="line">Asia/Pyongyang</span><br><span class="line">Asia/Qatar</span><br><span class="line">Asia/Qyzylorda</span><br><span class="line">Asia/Riyadh</span><br><span class="line">Asia/Sakhalin</span><br><span class="line">Asia/Samarkand</span><br><span class="line">Asia/Seoul</span><br><span class="line">Asia/Shanghai</span><br><span class="line">Asia/Singapore</span><br><span class="line">Asia/Srednekolymsk</span><br><span class="line">Asia/Taipei</span><br><span class="line">Asia/Tashkent</span><br><span class="line">Asia/Tbilisi</span><br><span class="line">Asia/Tehran</span><br><span class="line">Asia/Thimphu</span><br><span class="line">Asia/Tokyo</span><br><span class="line">Asia/Tomsk</span><br><span class="line">Asia/Ulaanbaatar</span><br><span class="line">Asia/Urumqi</span><br><span class="line">Asia/Ust-Nera</span><br><span class="line">Asia/Vientiane</span><br><span class="line">Asia/Vladivostok</span><br><span class="line">Asia/Yakutsk</span><br><span class="line">Asia/Yangon</span><br><span class="line">Asia/Yekaterinburg</span><br><span class="line">Asia/Yerevan</span><br></pre></td></tr></table></figure>
-
-<p>下指令改變TimeZone Asia&#x2F;Taipei</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ timedatectl set-timezone Asia/Taipei</span><br></pre></td></tr></table></figure>
-
-<p>查詢目前時區可用date</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">date</span></span><br><span class="line">Mon Nov 25 16:23:26 CST 2019</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CentOS7</category>
-      </categories>
-      <tags>
-        <tag>CentOS7</tag>
-        <tag>TimeZone</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Intro Curl 56 Recv Failure Connection Reset By Peer</title>
     <url>/posts/d9bdc5f0/</url>
     <content><![CDATA[<h3 id="Intro-curl-56-Recv-failure-Connection-reset-by-peer"><a href="#Intro-curl-56-Recv-failure-Connection-reset-by-peer" class="headerlink" title="Intro curl: (56) Recv failure: Connection reset by peer"></a>Intro curl: (56) Recv failure: Connection reset by peer</h3><span id="more"></span>
@@ -3013,24 +3029,6 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Docker Basic Instructions II</title>
-    <url>/posts/af91e7d1/</url>
-    <content><![CDATA[<h2 id="Intro-Docker-Basic-Instructions-II"><a href="#Intro-Docker-Basic-Instructions-II" class="headerlink" title="Intro Docker Basic Instructions II"></a>Intro Docker Basic Instructions II</h2><span id="more"></span>
-<p>Intro Docker Basic Instructions II</p>
-<h2 id="Docker-Basic-Instructions-II"><a href="#Docker-Basic-Instructions-II" class="headerlink" title="Docker Basic Instructions II"></a>Docker Basic Instructions II</h2><p>docker exec<br>$ docker run –name mysql-4 -it mysql &#x2F;bin&#x2F;bash<br>$ docker exec mysql-4 cat &#x2F;etc&#x2F;hostname (after docker start mysql-4)</p>
-<p>docker inspect<br>$ docker inspect mysql-4 (All params)<br>$ docker inspect -f ‘‘ mysql-4<br>$ docker inspect mysql-4 | grep IPAddress</p>
-<p>docker ps<br>$ docker ps (running docker)<br>$ docker ps -a (all)</p>
-<p>docker rm<br>$ docker rm {Container Name}<br>$ docker rm {Container ID}</p>
-<p>docker rmi 順序先rm -&gt; rmi<br>$ docker rmi {docker image id}<br>$ docker rmi {docker image id} –force (強制刪除，不推薦使用)</p>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Intro Dependency Check Maven Tool</title>
     <url>/posts/e0b356/</url>
     <content><![CDATA[<h3 id="Intro-Dependency-Check-Maven-Tool"><a href="#Intro-Dependency-Check-Maven-Tool" class="headerlink" title="Intro Dependency Check Maven Tool"></a>Intro Dependency Check Maven Tool</h3><span id="more"></span>
@@ -3047,22 +3045,21 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Docker Hub Pull Limit</title>
-    <url>/posts/a04c00f/</url>
-    <content><![CDATA[<h2 id="Intro-Docker-Hub-Pull-Limit"><a href="#Intro-Docker-Hub-Pull-Limit" class="headerlink" title="Intro Docker Hub Pull Limit"></a>Intro Docker Hub Pull Limit</h2><span id="more"></span>
-<p>Intro Docker Hub Pull Limit</p>
-<h2 id="define"><a href="#define" class="headerlink" title="define:"></a>define:</h2><p>使用DockerHub pull image 是有其限制的，預設是每6小時只能pull 100個container images(Public IP)<br>實際上同一家公司同一個對外IP，pull 10幾次就會達到100次上限。</p>
-<p>可以註冊DockerHub並且登入，就可以每6小時pull 200個container images(不看IP，可達200次)</p>
-<p>付費帳號Docker Pro 或 Docker Team<br>每24小時可pull 50000個container images</p>
-<p>超過預設每6小時只能pull 100個container images，建議的解決方法有<br>1.註冊DockerHub帳號<br>2.使用先下載好的docker images (docker load -i xxx.tar.gz)<br>3.使用private registry</p>
-<p>若使用量遠遠超過200個 container images，解法3是最佳解!</p>
+    <title>Intro Docker Basic Instructions II</title>
+    <url>/posts/af91e7d1/</url>
+    <content><![CDATA[<h2 id="Intro-Docker-Basic-Instructions-II"><a href="#Intro-Docker-Basic-Instructions-II" class="headerlink" title="Intro Docker Basic Instructions II"></a>Intro Docker Basic Instructions II</h2><span id="more"></span>
+<p>Intro Docker Basic Instructions II</p>
+<h2 id="Docker-Basic-Instructions-II"><a href="#Docker-Basic-Instructions-II" class="headerlink" title="Docker Basic Instructions II"></a>Docker Basic Instructions II</h2><p>docker exec<br>$ docker run –name mysql-4 -it mysql &#x2F;bin&#x2F;bash<br>$ docker exec mysql-4 cat &#x2F;etc&#x2F;hostname (after docker start mysql-4)</p>
+<p>docker inspect<br>$ docker inspect mysql-4 (All params)<br>$ docker inspect -f ‘‘ mysql-4<br>$ docker inspect mysql-4 | grep IPAddress</p>
+<p>docker ps<br>$ docker ps (running docker)<br>$ docker ps -a (all)</p>
+<p>docker rm<br>$ docker rm {Container Name}<br>$ docker rm {Container ID}</p>
+<p>docker rmi 順序先rm -&gt; rmi<br>$ docker rmi {docker image id}<br>$ docker rmi {docker image id} –force (強制刪除，不推薦使用)</p>
 ]]></content>
       <categories>
-        <category>DockerHub</category>
+        <category>Docker</category>
       </categories>
       <tags>
-        <tag>DockerHub</tag>
-        <tag>Pull</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -3082,6 +3079,25 @@ else
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro Docker Hub Pull Limit</title>
+    <url>/posts/a04c00f/</url>
+    <content><![CDATA[<h2 id="Intro-Docker-Hub-Pull-Limit"><a href="#Intro-Docker-Hub-Pull-Limit" class="headerlink" title="Intro Docker Hub Pull Limit"></a>Intro Docker Hub Pull Limit</h2><span id="more"></span>
+<p>Intro Docker Hub Pull Limit</p>
+<h2 id="define"><a href="#define" class="headerlink" title="define:"></a>define:</h2><p>使用DockerHub pull image 是有其限制的，預設是每6小時只能pull 100個container images(Public IP)<br>實際上同一家公司同一個對外IP，pull 10幾次就會達到100次上限。</p>
+<p>可以註冊DockerHub並且登入，就可以每6小時pull 200個container images(不看IP，可達200次)</p>
+<p>付費帳號Docker Pro 或 Docker Team<br>每24小時可pull 50000個container images</p>
+<p>超過預設每6小時只能pull 100個container images，建議的解決方法有<br>1.註冊DockerHub帳號<br>2.使用先下載好的docker images (docker load -i xxx.tar.gz)<br>3.使用private registry</p>
+<p>若使用量遠遠超過200個 container images，解法3是最佳解!</p>
+]]></content>
+      <categories>
+        <category>DockerHub</category>
+      </categories>
+      <tags>
+        <tag>DockerHub</tag>
+        <tag>Pull</tag>
       </tags>
   </entry>
   <entry>
@@ -3131,22 +3147,6 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Dockerfile Example</title>
-    <url>/posts/9cbdc718/</url>
-    <content><![CDATA[<h2 id="Intro-Dockerfile-Example"><a href="#Intro-Dockerfile-Example" class="headerlink" title="Intro Dockerfile Example"></a>Intro Dockerfile Example</h2><span id="more"></span>
-<p>Intro Dockerfile Example</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>FROM centos:7<br>LABEL description&#x3D;”A basic Apache container on CentOS 7”<br>ADD CentOS-Base.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo<br>RUN yum -y update &amp;&amp; <br>    yum install -y httpd &amp;&amp; <br>    yum clean all<br>EXPOSE 80 						  &#x2F;&#x2F; 可以設定多個port<br>CMD [“httpd”,”-D”,”FOREGROUND”]   &#x2F;&#x2F; -D背景執行，沒設定會咬住當前控制權</p>
-<p>可針對以上範例做docker build image</p>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Dockerfile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Intro Docker cp Between Host And Container</title>
     <url>/posts/4b242fb0/</url>
     <content><![CDATA[<h2 id="Intro-Docker-cp-Between-Host-And-Container"><a href="#Intro-Docker-cp-Between-Host-And-Container" class="headerlink" title="Intro Docker cp Between Host And Container"></a>Intro Docker cp Between Host And Container</h2><span id="more"></span>
@@ -3160,6 +3160,22 @@ else
       <tags>
         <tag>Docker</tag>
         <tag>Container</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro Dockerfile Example</title>
+    <url>/posts/9cbdc718/</url>
+    <content><![CDATA[<h2 id="Intro-Dockerfile-Example"><a href="#Intro-Dockerfile-Example" class="headerlink" title="Intro Dockerfile Example"></a>Intro Dockerfile Example</h2><span id="more"></span>
+<p>Intro Dockerfile Example</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>FROM centos:7<br>LABEL description&#x3D;”A basic Apache container on CentOS 7”<br>ADD CentOS-Base.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo<br>RUN yum -y update &amp;&amp; <br>    yum install -y httpd &amp;&amp; <br>    yum clean all<br>EXPOSE 80 						  &#x2F;&#x2F; 可以設定多個port<br>CMD [“httpd”,”-D”,”FOREGROUND”]   &#x2F;&#x2F; -D背景執行，沒設定會咬住當前控制權</p>
+<p>可針對以上範例做docker build image</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Dockerfile</tag>
       </tags>
   </entry>
   <entry>
@@ -3552,24 +3568,6 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Jenkins</title>
-    <url>/posts/35f7a1d0/</url>
-    <content><![CDATA[<h3 id="Intro-Jenkins"><a href="#Intro-Jenkins" class="headerlink" title="Intro Jenkins"></a>Intro Jenkins</h3><span id="more"></span>
-<p>這篇介紹Jenkins - The leading open source automation server,<br>Jenkins provides hundreds of plugins to support building, deploying and automating any project.</p>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/jenkinsneedyou.png" width="10%" />
-
-<h3 id="Intro-Jenkins-1"><a href="#Intro-Jenkins-1" class="headerlink" title="Intro Jenkins"></a>Intro Jenkins</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Jenkins provides <span class="built_in">users</span> with a Web GUI to operate.</span><br><span class="line"></span><br><span class="line">Jenkins plugin:</span><br><span class="line">Jenkins provides thousands of plugins to meet your multiple needs.</span><br><span class="line">https://plugins.jenkins.io/](https://plugins.jenkins.io/</span><br><span class="line"></span><br><span class="line">What can you <span class="keyword">do</span> <span class="keyword">in</span> Jenkins:</span><br><span class="line">- Build tomcat war</span><br><span class="line">- Deploy tomcat war</span><br><span class="line">- Use ansible</span><br><span class="line">- Run shell script</span><br><span class="line">- Check config with ansible</span><br><span class="line"></span><br><span class="line">How to build Jenkins:</span><br><span class="line">We use docker to build jenkins and use volume to keep config.</span><br><span class="line">So it<span class="string">&#x27;s easy for rebuild when your jenkins is dead and also easy for upgrade.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Build-jenkins-with-docker"><a href="#Build-jenkins-with-docker" class="headerlink" title="Build jenkins with docker"></a>Build jenkins with docker</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Pull docker image:</span><br><span class="line">$ docker pull &#123;url&#125;</span><br><span class="line"></span><br><span class="line">Create jenkins container:</span><br><span class="line">$ docker run -itd --name jenkins -v jenkins:/var/jenkins_home --restart always -p &#123;port&#125;:8080 -e JAVA_OPTS=-Duser.timezone=Asia/Taipei -e TZ=Asia/Taipei -e LANG=en_US.UTF8 &#123;url&#125;</span><br><span class="line"></span><br><span class="line">memo:</span><br><span class="line">&#123;port&#125;:open up externally port number</span><br><span class="line"></span><br><span class="line">Check your jenkins container:</span><br><span class="line">$ docker ps -a</span><br><span class="line"></span><br><span class="line">Open your browser and enter ip:port and you will see jenkins ask administrator password:</span><br><span class="line"></span><br><span class="line">Use <span class="built_in">command</span> to get administrator password:</span><br><span class="line">$ docker logs jenkins</span><br><span class="line"></span><br><span class="line">How to upgrade Jenkins:</span><br><span class="line">$ docker stop jenkins</span><br><span class="line">$ docker <span class="built_in">rm</span> jenkins</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Intro JsonView</title>
     <url>/posts/2ca890e3/</url>
     <content><![CDATA[<h2 id="Intro-JsonView-amp-How-to-use"><a href="#Intro-JsonView-amp-How-to-use" class="headerlink" title="Intro JsonView &amp; How to use"></a>Intro JsonView &amp; How to use</h2><span id="more"></span>
@@ -3770,35 +3768,21 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro NetworkManager</title>
-    <url>/posts/c2206ec3/</url>
-    <content><![CDATA[<h3 id="Intro-NetworkManager"><a href="#Intro-NetworkManager" class="headerlink" title="Intro NetworkManager"></a>Intro NetworkManager</h3><span id="more"></span>
-<p>NetworkManager是一個自動化網路管理套件，用來管理網路卡。好處是自動化，<br>只要掃描到網路硬體，就會自動產生資料。這功能用在筆電、個人電腦可自動設定<br>網路卡，非常方便。但用在伺服器，不是很方便。</p>
-<h3 id="NetworkManager優點"><a href="#NetworkManager優點" class="headerlink" title="NetworkManager優點"></a>NetworkManager優點</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">網路可隨插即用，NetworkManager是活動的，使用者只要接上網路(WiFi、行動網路)就會</span><br><span class="line">自動配置，方便使用者連接網路。</span><br></pre></td></tr></table></figure>
+    <title>Intro Jenkins</title>
+    <url>/posts/35f7a1d0/</url>
+    <content><![CDATA[<h3 id="Intro-Jenkins"><a href="#Intro-Jenkins" class="headerlink" title="Intro Jenkins"></a>Intro Jenkins</h3><span id="more"></span>
+<p>這篇介紹Jenkins - The leading open source automation server,<br>Jenkins provides hundreds of plugins to support building, deploying and automating any project.</p>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/jenkinsneedyou.png" width="10%" />
 
-<h3 id="網路設定不保存-amp-網路設備相容性高"><a href="#網路設定不保存-amp-網路設備相容性高" class="headerlink" title="網路設定不保存 &amp; 網路設備相容性高"></a>網路設定不保存 &amp; 網路設備相容性高</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">插上網路設備後自動產生，拔除網路設備後自動消失。也可以手動設定為永久設定。</span><br><span class="line">可接受大多數網路設備(USB無線網卡、手機網路共用...等)</span><br></pre></td></tr></table></figure>
+<h3 id="Intro-Jenkins-1"><a href="#Intro-Jenkins-1" class="headerlink" title="Intro Jenkins"></a>Intro Jenkins</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Jenkins provides <span class="built_in">users</span> with a Web GUI to operate.</span><br><span class="line"></span><br><span class="line">Jenkins plugin:</span><br><span class="line">Jenkins provides thousands of plugins to meet your multiple needs.</span><br><span class="line">https://plugins.jenkins.io/](https://plugins.jenkins.io/</span><br><span class="line"></span><br><span class="line">What can you <span class="keyword">do</span> <span class="keyword">in</span> Jenkins:</span><br><span class="line">- Build tomcat war</span><br><span class="line">- Deploy tomcat war</span><br><span class="line">- Use ansible</span><br><span class="line">- Run shell script</span><br><span class="line">- Check config with ansible</span><br><span class="line"></span><br><span class="line">How to build Jenkins:</span><br><span class="line">We use docker to build jenkins and use volume to keep config.</span><br><span class="line">So it<span class="string">&#x27;s easy for rebuild when your jenkins is dead and also easy for upgrade.</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="NetworkManager套件"><a href="#NetworkManager套件" class="headerlink" title="NetworkManager套件"></a>NetworkManager套件</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">主要由以下四個組成:</span><br><span class="line">NetworkManager-team =&gt; 群組網路裝置共享函式庫</span><br><span class="line">NetworkManager-libnm =&gt; NetworkManager API 函式庫</span><br><span class="line">NetworkManager =&gt; 主要設定檔及指令</span><br><span class="line">NetworkManager-tui =&gt; nmtui 介面套件</span><br></pre></td></tr></table></figure>
-
-]]></content>
+<h3 id="Build-jenkins-with-docker"><a href="#Build-jenkins-with-docker" class="headerlink" title="Build jenkins with docker"></a>Build jenkins with docker</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Pull docker image:</span><br><span class="line">$ docker pull &#123;url&#125;</span><br><span class="line"></span><br><span class="line">Create jenkins container:</span><br><span class="line">$ docker run -itd --name jenkins -v jenkins:/var/jenkins_home --restart always -p &#123;port&#125;:8080 -e JAVA_OPTS=-Duser.timezone=Asia/Taipei -e TZ=Asia/Taipei -e LANG=en_US.UTF8 &#123;url&#125;</span><br><span class="line"></span><br><span class="line">memo:</span><br><span class="line">&#123;port&#125;:open up externally port number</span><br><span class="line"></span><br><span class="line">Check your jenkins container:</span><br><span class="line">$ docker ps -a</span><br><span class="line"></span><br><span class="line">Open your browser and enter ip:port and you will see jenkins ask administrator password:</span><br><span class="line"></span><br><span class="line">Use <span class="built_in">command</span> to get administrator password:</span><br><span class="line">$ docker logs jenkins</span><br><span class="line"></span><br><span class="line">How to upgrade Jenkins:</span><br><span class="line">$ docker stop jenkins</span><br><span class="line">$ docker <span class="built_in">rm</span> jenkins</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>NetworkManager</category>
+        <category>Jenkins</category>
       </categories>
       <tags>
-        <tag>NetworkManager</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro Nginx Ip Hash</title>
-    <url>/posts/25a864af/</url>
-    <content><![CDATA[<h3 id="Intro-Nginx-Ip-Hash"><a href="#Intro-Nginx-Ip-Hash" class="headerlink" title="Intro Nginx Ip Hash"></a>Intro Nginx Ip Hash</h3><span id="more"></span>
-<p>這篇介紹Nginx Ip Hash。</p>
-<h3 id="ip-hash"><a href="#ip-hash" class="headerlink" title="ip_hash"></a>ip_hash</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Nginx ip_hash</span><br><span class="line"></span><br><span class="line">看以下<span class="built_in">source</span> code:</span><br><span class="line"><span class="keyword">for</span> (i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">	<span class="built_in">hash</span> = (<span class="built_in">hash</span> * 113 + iphp-&gt;addr[i]) % 6271; //將IP用.的方式拆分成4段(ex: xxx.xxx.xxx.xxx)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">將1~3段加入<span class="built_in">hash</span>函數來保證相同的xxx.xxx.xxx.aaa會分配到同一台Server。</span><br><span class="line">正常來說相同的1~3段會是在同一區域或附近，使用相同的Backend Server是合理的。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
+        <tag>Docker</tag>
+        <tag>Jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -3808,21 +3792,6 @@ else
 <p>這篇介紹Nginx Location Rewrite Setting.</p>
 <h2 id="How-to-set-redirect"><a href="#How-to-set-redirect" class="headerlink" title="How to set redirect?"></a>How to set redirect?</h2><p>From <span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMS4xL2FhYS8xMjM=">http://192.168.1.1/aaa/123<i class="fa fa-external-link-alt"></i></span> To <span class="exturl" data-url="aHR0cDovLzE3Mi4xLjAuMS8xMjM=">http://172.1.0.1/123<i class="fa fa-external-link-alt"></i></span></p>
 <p>Nginx Setting:<br>location &#x2F;aaa&#x2F;123&#x2F; {<br>    rewrite &#x2F;aaa&#x2F;(.*) &#x2F;$1 break;<br>    proxy_pass <span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMS4xLw==">http://192.168.1.1<i class="fa fa-external-link-alt"></i></span>;<br>    proxy_set_header Host $host;<br>    proxy_set_header X-Real-IP $remote_addr;<br>    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>    proxy_set_header X-Forwarded-Proto $scheme;<br>}</p>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro Nginx Warn Conflicting Server Name On Ignored</title>
-    <url>/posts/b4da31e1/</url>
-    <content><![CDATA[<h2 id="Intro-Nginx-Warn-Conflicting-Server-Name-On-Ignored"><a href="#Intro-Nginx-Warn-Conflicting-Server-Name-On-Ignored" class="headerlink" title="Intro Nginx Warn Conflicting Server Name On Ignored"></a>Intro Nginx Warn Conflicting Server Name On Ignored</h2><span id="more"></span>
-<p>這篇介紹Nginx Warn Conflicting Server Name On Ignored。</p>
-<h2 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境:"></a>發生情境:</h2><p>[root@test]# nginx -t<br>nginx: [warn] conflicting server name “{domain}” on 0.0.0.0:80, ignored</p>
-<p>原因<br>server_name重複，請檢查所有的.conf</p>
 ]]></content>
       <categories>
         <category>Nginx</category>
@@ -3899,6 +3868,53 @@ else
       </tags>
   </entry>
   <entry>
+    <title>Intro NetworkManager</title>
+    <url>/posts/c2206ec3/</url>
+    <content><![CDATA[<h3 id="Intro-NetworkManager"><a href="#Intro-NetworkManager" class="headerlink" title="Intro NetworkManager"></a>Intro NetworkManager</h3><span id="more"></span>
+<p>NetworkManager是一個自動化網路管理套件，用來管理網路卡。好處是自動化，<br>只要掃描到網路硬體，就會自動產生資料。這功能用在筆電、個人電腦可自動設定<br>網路卡，非常方便。但用在伺服器，不是很方便。</p>
+<h3 id="NetworkManager優點"><a href="#NetworkManager優點" class="headerlink" title="NetworkManager優點"></a>NetworkManager優點</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">網路可隨插即用，NetworkManager是活動的，使用者只要接上網路(WiFi、行動網路)就會</span><br><span class="line">自動配置，方便使用者連接網路。</span><br></pre></td></tr></table></figure>
+
+<h3 id="網路設定不保存-amp-網路設備相容性高"><a href="#網路設定不保存-amp-網路設備相容性高" class="headerlink" title="網路設定不保存 &amp; 網路設備相容性高"></a>網路設定不保存 &amp; 網路設備相容性高</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">插上網路設備後自動產生，拔除網路設備後自動消失。也可以手動設定為永久設定。</span><br><span class="line">可接受大多數網路設備(USB無線網卡、手機網路共用...等)</span><br></pre></td></tr></table></figure>
+
+<h3 id="NetworkManager套件"><a href="#NetworkManager套件" class="headerlink" title="NetworkManager套件"></a>NetworkManager套件</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">主要由以下四個組成:</span><br><span class="line">NetworkManager-team =&gt; 群組網路裝置共享函式庫</span><br><span class="line">NetworkManager-libnm =&gt; NetworkManager API 函式庫</span><br><span class="line">NetworkManager =&gt; 主要設定檔及指令</span><br><span class="line">NetworkManager-tui =&gt; nmtui 介面套件</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>NetworkManager</category>
+      </categories>
+      <tags>
+        <tag>NetworkManager</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro Nginx Ip Hash</title>
+    <url>/posts/25a864af/</url>
+    <content><![CDATA[<h3 id="Intro-Nginx-Ip-Hash"><a href="#Intro-Nginx-Ip-Hash" class="headerlink" title="Intro Nginx Ip Hash"></a>Intro Nginx Ip Hash</h3><span id="more"></span>
+<p>這篇介紹Nginx Ip Hash。</p>
+<h3 id="ip-hash"><a href="#ip-hash" class="headerlink" title="ip_hash"></a>ip_hash</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Nginx ip_hash</span><br><span class="line"></span><br><span class="line">看以下<span class="built_in">source</span> code:</span><br><span class="line"><span class="keyword">for</span> (i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">	<span class="built_in">hash</span> = (<span class="built_in">hash</span> * 113 + iphp-&gt;addr[i]) % 6271; //將IP用.的方式拆分成4段(ex: xxx.xxx.xxx.xxx)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">將1~3段加入<span class="built_in">hash</span>函數來保證相同的xxx.xxx.xxx.aaa會分配到同一台Server。</span><br><span class="line">正常來說相同的1~3段會是在同一區域或附近，使用相同的Backend Server是合理的。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro Nginx Warn Conflicting Server Name On Ignored</title>
+    <url>/posts/b4da31e1/</url>
+    <content><![CDATA[<h2 id="Intro-Nginx-Warn-Conflicting-Server-Name-On-Ignored"><a href="#Intro-Nginx-Warn-Conflicting-Server-Name-On-Ignored" class="headerlink" title="Intro Nginx Warn Conflicting Server Name On Ignored"></a>Intro Nginx Warn Conflicting Server Name On Ignored</h2><span id="more"></span>
+<p>這篇介紹Nginx Warn Conflicting Server Name On Ignored。</p>
+<h2 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境:"></a>發生情境:</h2><p>[root@test]# nginx -t<br>nginx: [warn] conflicting server name “{domain}” on 0.0.0.0:80, ignored</p>
+<p>原因<br>server_name重複，請檢查所有的.conf</p>
+]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Intro Predicate And strip And Indent</title>
     <url>/posts/99f4289/</url>
     <content><![CDATA[<h3 id="Intro-Predicate-And-strip-And-Indent"><a href="#Intro-Predicate-And-strip-And-Indent" class="headerlink" title="Intro Predicate And strip And Indent"></a>Intro Predicate And strip And Indent</h3><span id="more"></span>
@@ -3911,49 +3927,6 @@ else
         <tag>Java</tag>
         <tag>Predicate</tag>
         <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro Producer Consumer Mode Advantage I</title>
-    <url>/posts/341d1e6f/</url>
-    <content><![CDATA[<h3 id="Intro-Producer-Consumer-Mode-Advantage"><a href="#Intro-Producer-Consumer-Mode-Advantage" class="headerlink" title="Intro Producer Consumer Mode Advantage"></a>Intro Producer Consumer Mode Advantage</h3><span id="more"></span>
-<p>這篇介紹Producer Consumer Mode Advantage。</p>
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producer -&gt; Buffer -&gt; Consumer</span><br><span class="line"></span><br><span class="line">Producer Consumer模式在軟體專案開發很常運用在現實情境。</span><br><span class="line">為什麼不讓Consumer直接使用Producer的資源呢? 還要特別建立</span><br><span class="line">Buffer區!</span><br><span class="line"></span><br><span class="line">要介紹以下幾個優點:</span><br><span class="line">1.Decoupling(解耦) : 增加Buffer區是為了不讓Producer、Consumer</span><br><span class="line">互相依賴，若沒有Buffer區則Consumer的代碼修改，可能會影響到Producer。</span><br><span class="line">在兩者依賴於Buffer區，不互相依賴的話，相對耦合也降低。</span><br><span class="line"></span><br><span class="line">2.Concurrency(併發) : 若Producer直接呼叫Consumer的方法，由於call <span class="keyword">function</span>是</span><br><span class="line">Synchronize，在Consumer尚未<span class="built_in">return</span>之前，Producer只能一直等待。萬一Consumer</span><br><span class="line">處理很慢，Producer則會浪費時間去等待。</span><br><span class="line">增加Buffer區，可將Producer和Consumer視為獨立的併發主體，Producer把產生的data往</span><br><span class="line">Buffer區送，就可以繼續產生下一個data，而不用依賴Consumer的資料處理速度。</span><br><span class="line"></span><br><span class="line">3.Support busy time : 增加Buffer區其中一個好處是，若產生data的速度時快時慢，當</span><br><span class="line">data產生快時，Consumer會來不及處理，這些未處理的data將暫存在Buffer區。等Producer</span><br><span class="line">產生的速度慢下來時，Consumer會慢慢處理消化data。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>DesignPattern</category>
-      </categories>
-      <tags>
-        <tag>DesignPattern</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro PuTTY Protocol Options</title>
-    <url>/posts/acb3e81b/</url>
-    <content><![CDATA[<h3 id="Intro-PuTTY-Protocol-Options"><a href="#Intro-PuTTY-Protocol-Options" class="headerlink" title="Intro PuTTY Protocol Options"></a>Intro PuTTY Protocol Options</h3><span id="more"></span>
-<p>這篇介紹透過PuTTY Protocol Options的設定，讓跳板機輸入完Verification code後不會往下登入。</p>
-<h3 id="Intro-PuTTY-Protocol-Options-1"><a href="#Intro-PuTTY-Protocol-Options-1" class="headerlink" title="Intro PuTTY Protocol Options"></a>Intro PuTTY Protocol Options</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">設定的位置</span><br><span class="line">Category: -&gt; Connection -&gt; SSH -&gt; Don<span class="string">&#x27;t start a shell or command at all 打勾</span></span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/PuttyProtocolOptions.PNG" width="50%" />]]></content>
-      <categories>
-        <category>PuTTY</category>
-      </categories>
-      <tags>
-        <tag>Setting</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intro Quartz Versus FixedRate Versus FixedDelay</title>
-    <url>/posts/51816722/</url>
-    <content><![CDATA[<h3 id="Intro-Quartz-Versus-FixedRate-Versus-FixedDelay"><a href="#Intro-Quartz-Versus-FixedRate-Versus-FixedDelay" class="headerlink" title="Intro Quartz Versus FixedRate Versus FixedDelay"></a>Intro Quartz Versus FixedRate Versus FixedDelay</h3><span id="more"></span>
-<p>這篇介紹Quartz Versus FixedRate Versus FixedDelay.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在使用quartz做排程時，</span><br><span class="line">要注意在job class的定義上必須加上</span><br><span class="line">@DisallowConcurrentExecution的annotation，才不會一直重複執行。</span><br><span class="line"></span><br><span class="line">以每秒排程為例</span><br><span class="line">有加@DisallowConcurrentExecution -&gt; 會等該job執行完才會進行下一個schedule</span><br><span class="line">沒加@DisallowConcurrentExecution -&gt; 不會等該job執行完，在每秒繼續執行下一個schedule</span><br><span class="line"></span><br><span class="line">quartz和ScheduleAtFixedRate or ScheduleWithFixedDelay建議使用情境:</span><br><span class="line">1.quartz用在固定時間的排程使用 ex.每天中午12點執行一次排程</span><br><span class="line">2.ScheduleAtFixedRate or ScheduleWithFixedDelay:</span><br><span class="line">  rate:等待rate時間就執行task</span><br><span class="line">  delay:該task執行完後，delay設定時間再繼續執行下一個task</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Schedule</category>
-      </categories>
-      <tags>
-        <tag>Schedule</tag>
-        <tag>Quartz</tag>
-        <tag>ScheduleAtFixedRate</tag>
-        <tag>ScheduleWithFixedDelay</tag>
       </tags>
   </entry>
   <entry>
@@ -4815,19 +4788,20 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Intro C# Obsolete</title>
-    <url>/posts/5948b9/</url>
-    <content><![CDATA[<h3 id="Intro-C-Obsolete"><a href="#Intro-C-Obsolete" class="headerlink" title="Intro C# Obsolete"></a>Intro C# Obsolete</h3><span id="more"></span>
-<p>Obsolete 屬性 (Attribute) 會標記不再建議使用的程式實體 (Entity)。<br>每次使用標記為過時的實體時，會視設定此屬性的方法，產生警告或是錯誤。</p>
-<h3 id="Obsolete-String"><a href="#Obsolete-String" class="headerlink" title="Obsolete(String)"></a>Obsolete(String)</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line">&#123;</span><br><span class="line">    [Obsolete(<span class="string">&quot;Don&#x27;t use Old Method!&quot;</span>)]</span><br><span class="line">    public static void ShowMessage(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">編譯時，系統會跳出警告，並顯示出警告提示「Dont<span class="string">&#x27; use Old Method!」。</span></span><br></pre></td></tr></table></figure>
+    <title>Java使用Comparator做CollectionsSort</title>
+    <url>/posts/d43f962c/</url>
+    <content><![CDATA[<h3 id="Java使用Comparator做CollectionsSort"><a href="#Java使用Comparator做CollectionsSort" class="headerlink" title="Java使用Comparator做CollectionsSort"></a>Java使用Comparator做CollectionsSort</h3><span id="more"></span>
 
-<h3 id="Obsolete-String-true"><a href="#Obsolete-String-true" class="headerlink" title="Obsolete(String, true)"></a>Obsolete(String, true)</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line">&#123;</span><br><span class="line">    [Obsolete(<span class="string">&quot;Don&#x27;t use Old Method!&quot;</span>, <span class="literal">true</span>)]</span><br><span class="line">    public static void ShowMessage(string msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">編譯時，系統會跳出錯誤，並顯示出錯誤提示「Dont<span class="string">&#x27; use Old Method!」。</span></span><br></pre></td></tr></table></figure>
+<p>當Server Loading較低時，可以考慮原本在SQL使用ORDER BY排序的作法，<br>改使用在該物件內@Override compare方法，並使用Collections.sort();<br>來做排序，降低資料庫Loading。</p>
+<h3 id="物件範例-對Website、UserId排序"><a href="#物件範例-對Website、UserId排序" class="headerlink" title="物件範例-對Website、UserId排序"></a>物件範例-對Website、UserId排序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class Example &#123;</span><br><span class="line">	</span><br><span class="line">	/* 避免 override compareTo 改用 comparator 比較有彈性  */</span><br><span class="line">	public final static Comparator&lt;Example&gt; websiteAndUserIdAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			int delta = Integer.compare(o1.getWebsite(), o2.getWebsite());</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (delta != 0) &#123;</span><br><span class="line">				<span class="built_in">return</span> delta;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> o1.getUserId().compareTo(o2.getUserId());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	public final static Comparator&lt;Example&gt; websiteAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			<span class="built_in">return</span> Integer.compare(o1.getWebsite(), o2.getWebsite());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	public final static Comparator&lt;Example&gt; userIdAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			<span class="built_in">return</span> o1.getUserId().compareTo(o2.getUserId());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	public int website;</span><br><span class="line"></span><br><span class="line">	public String userId;</span><br><span class="line"></span><br><span class="line">	public Example(int website, String userId) &#123;</span><br><span class="line">		super();</span><br><span class="line"></span><br><span class="line">		this.website = website;</span><br><span class="line">		this.userId = userId;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getWebsite</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> website;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getUserId</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> userId;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Collections-sort排序"><a href="#使用Collections-sort排序" class="headerlink" title="使用Collections.sort排序"></a>使用Collections.sort排序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">List&lt;Example&gt; lList = new ArrayList&lt;Example&gt;();</span><br><span class="line"></span><br><span class="line">lList.add(4, <span class="string">&quot;user0004&quot;</span>);       </span><br><span class="line">lList.add(1, <span class="string">&quot;user0001&quot;</span>);</span><br><span class="line">lList.add(7, <span class="string">&quot;user0007&quot;</span>);</span><br><span class="line">lList.add(2, <span class="string">&quot;user0002&quot;</span>);</span><br><span class="line">lList.add(9, <span class="string">&quot;user0009&quot;</span>);</span><br><span class="line">lList.add(1, <span class="string">&quot;user0001&quot;</span>);</span><br><span class="line">lList.add(5, <span class="string">&quot;user0005&quot;</span>);</span><br><span class="line"></span><br><span class="line">//對Website、UserId ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.websiteAndUserIdAscComparator);</span><br><span class="line">//對Website ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.websiteAscComparator);</span><br><span class="line">//對UserId ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.userIdAscComparator);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>CSharp</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>Obsolete</tag>
+        <tag>Comparator</tag>
       </tags>
   </entry>
   <entry>
@@ -5955,20 +5929,6 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Share Refactor Code Experience</title>
-    <url>/posts/f4060d9a/</url>
-    <content><![CDATA[<h2 id="Share-Refactor-Code-Experience"><a href="#Share-Refactor-Code-Experience" class="headerlink" title="Share Refactor Code Experience"></a>Share Refactor Code Experience</h2><span id="more"></span>
-<p>Share Refactor Code Experience</p>
-<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介:"></a>簡介:</h2><p>通常專案需要重構時，有幾個大方向可以思考<br>1.找出執行效率差的程式碼或方法，針對效率慢的部份Refactor。<br>2.找出I&#x2F;O次數高的部分，採用查詢中間cache層，減少對外部的I&#x2F;O次數來增進效率及降低耦合。<br>3.採用容易維護與閱讀的寫法 ex.Java 8 stream用法<br>4.將一支有幾萬行的程式碼，依照功能來拆成多支的程式碼<br>5.程式沒使用到的參數、方法…等，將其移除。</p>
-]]></content>
-      <categories>
-        <category>Refactor</category>
-      </categories>
-      <tags>
-        <tag>Refactor</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How to Set Nginx For WebSocket</title>
     <url>/posts/fc3b80da/</url>
     <content><![CDATA[<h3 id="How-to-Set-Nginx-For-WebSocket"><a href="#How-to-Set-Nginx-For-WebSocket" class="headerlink" title="How to Set Nginx For WebSocket"></a>How to Set Nginx For WebSocket</h3><span id="more"></span>
@@ -6004,6 +5964,20 @@ return &#123;
       <tags>
         <tag>Java</tag>
         <tag>Cache</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Share Refactor Code Experience</title>
+    <url>/posts/f4060d9a/</url>
+    <content><![CDATA[<h2 id="Share-Refactor-Code-Experience"><a href="#Share-Refactor-Code-Experience" class="headerlink" title="Share Refactor Code Experience"></a>Share Refactor Code Experience</h2><span id="more"></span>
+<p>Share Refactor Code Experience</p>
+<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介:"></a>簡介:</h2><p>通常專案需要重構時，有幾個大方向可以思考<br>1.找出執行效率差的程式碼或方法，針對效率慢的部份Refactor。<br>2.找出I&#x2F;O次數高的部分，採用查詢中間cache層，減少對外部的I&#x2F;O次數來增進效率及降低耦合。<br>3.採用容易維護與閱讀的寫法 ex.Java 8 stream用法<br>4.將一支有幾萬行的程式碼，依照功能來拆成多支的程式碼<br>5.程式沒使用到的參數、方法…等，將其移除。</p>
+]]></content>
+      <categories>
+        <category>Refactor</category>
+      </categories>
+      <tags>
+        <tag>Refactor</tag>
       </tags>
   </entry>
   <entry>
@@ -6750,21 +6724,6 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>git Error:remote:HTTP Basic Access denied</title>
-    <url>/posts/a78d729d/</url>
-    <content><![CDATA[<h3 id="git-Error-remote-HTTP-Basic-Access-denied"><a href="#git-Error-remote-HTTP-Basic-Access-denied" class="headerlink" title="git Error:remote:HTTP Basic Access denied"></a>git Error:remote:HTTP Basic Access denied</h3><span id="more"></span>
-<p>SourceTree的remote操作pull、push… 或clone GitLab專案時等，出現<br>remote: HTTP Basic: Access denied<br>fatal: Authentication failed for ‘<span class="exturl" data-url="aHR0cDovL3h4eC94eHguZ2l0">http://xxx/xxx.git<i class="fa fa-external-link-alt"></i></span>‘</p>
-<h3 id="原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突"><a href="#原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突" class="headerlink" title="原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突"></a>原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Step1:在作業系統中以管理員身份開啟命令列工具</span><br><span class="line"></span><br><span class="line">Step2:輸入git config --system --<span class="built_in">unset</span> credential.helper命令，作用就是清空本地儲存的使用者名稱和密碼</span><br><span class="line"></span><br><span class="line">Step3:這裡一定要以管理員身份開啟，不然會出現：</span><br><span class="line"></span><br><span class="line">error: could not lock config file C:/Program Files/Git/mingw64/etc/gitconfig: Permission denied</span><br><span class="line">再執行遠端操作，會提示輸入遠端端的使用者名稱和密碼重新輸入遠端端的使用者名稱和密碼</span><br><span class="line"></span><br><span class="line">Step4:每次操作遠端倉庫都需要重新輸入使用者名稱和密碼，原因是git config --system --<span class="built_in">unset</span> credential.helper</span><br><span class="line">這個命令清空gitconfig裡的自動儲存使用者名稱和密碼配置</span><br></pre></td></tr></table></figure>
-
-<h3 id="檢查gitconfig"><a href="#檢查gitconfig" class="headerlink" title="檢查gitconfig"></a>檢查gitconfig</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Git\mingw64\etc\gitconfig</span><br><span class="line">有沒有以下兩行指令，沒有的話請加上</span><br><span class="line">[credential]</span><br><span class="line">  helper = manager</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>SourceTree</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How to solve (fork: retry: Resource temporarily unavaliable)</title>
     <url>/posts/af09333a/</url>
     <content><![CDATA[<h2 id="How-to-solve-fork-retry-Resource-temporarily-unavaliable"><a href="#How-to-solve-fork-retry-Resource-temporarily-unavaliable" class="headerlink" title="How to solve (fork: retry: Resource temporarily unavaliable)"></a>How to solve (fork: retry: Resource temporarily unavaliable)</h2><span id="more"></span>
@@ -6781,6 +6740,21 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git Error:remote:HTTP Basic Access denied</title>
+    <url>/posts/a78d729d/</url>
+    <content><![CDATA[<h3 id="git-Error-remote-HTTP-Basic-Access-denied"><a href="#git-Error-remote-HTTP-Basic-Access-denied" class="headerlink" title="git Error:remote:HTTP Basic Access denied"></a>git Error:remote:HTTP Basic Access denied</h3><span id="more"></span>
+<p>SourceTree的remote操作pull、push… 或clone GitLab專案時等，出現<br>remote: HTTP Basic: Access denied<br>fatal: Authentication failed for ‘<span class="exturl" data-url="aHR0cDovL3h4eC94eHguZ2l0">http://xxx/xxx.git<i class="fa fa-external-link-alt"></i></span>‘</p>
+<h3 id="原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突"><a href="#原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突" class="headerlink" title="原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突"></a>原因是remote的使用者名稱和密碼與當前系統中git儲存的使用者名稱和密碼有衝突</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Step1:在作業系統中以管理員身份開啟命令列工具</span><br><span class="line"></span><br><span class="line">Step2:輸入git config --system --<span class="built_in">unset</span> credential.helper命令，作用就是清空本地儲存的使用者名稱和密碼</span><br><span class="line"></span><br><span class="line">Step3:這裡一定要以管理員身份開啟，不然會出現：</span><br><span class="line"></span><br><span class="line">error: could not lock config file C:/Program Files/Git/mingw64/etc/gitconfig: Permission denied</span><br><span class="line">再執行遠端操作，會提示輸入遠端端的使用者名稱和密碼重新輸入遠端端的使用者名稱和密碼</span><br><span class="line"></span><br><span class="line">Step4:每次操作遠端倉庫都需要重新輸入使用者名稱和密碼，原因是git config --system --<span class="built_in">unset</span> credential.helper</span><br><span class="line">這個命令清空gitconfig裡的自動儲存使用者名稱和密碼配置</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查gitconfig"><a href="#檢查gitconfig" class="headerlink" title="檢查gitconfig"></a>檢查gitconfig</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Git\mingw64\etc\gitconfig</span><br><span class="line">有沒有以下兩行指令，沒有的話請加上</span><br><span class="line">[credential]</span><br><span class="line">  helper = manager</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>SourceTree</tag>
       </tags>
   </entry>
   <entry>
@@ -7059,6 +7033,22 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>redisSentinel 參數調整</title>
+    <url>/posts/8fad938a/</url>
+    <content><![CDATA[<h3 id="redisSentinel參數調整"><a href="#redisSentinel參數調整" class="headerlink" title="redisSentinel參數調整"></a>redisSentinel參數調整</h3><span id="more"></span>
+<p>這篇介紹redisSentinel參數調整。</p>
+<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">原本要建立專用redis publish/subscribe 的 Sentinel Server，</span><br><span class="line">用官方給的預設參數將建立redis連線上去後，連線是有建立起來，</span><br><span class="line">但使用Manager.get().getTopic(<span class="string">&quot;channel&quot;</span>).countSubscribers();</span><br><span class="line">發現publish/subscribe的數量皆為0，上去redis Sentinel用指令</span><br><span class="line">查詢也是0，看到初始參數有兩個預設參數:</span><br><span class="line"><span class="string">&quot;readMode&quot;</span>: <span class="string">&quot;SLAVE&quot;</span></span><br><span class="line"><span class="string">&quot;subscriptionMode&quot;</span>: <span class="string">&quot;SLAVE&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將這兩個預設參數修改為:</span><br><span class="line"><span class="string">&quot;readMode&quot;</span>: <span class="string">&quot;MASTER&quot;</span></span><br><span class="line"><span class="string">&quot;subscriptionMode&quot;</span>: <span class="string">&quot;MASTER&quot;</span></span><br><span class="line">即可用程式碼或指令查詢到publish/subscribe的數量</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Redisson</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Intro reveal.js</title>
     <url>/posts/32e13d78/</url>
     <content><![CDATA[<h3 id="Intro-reveal-js"><a href="#Intro-reveal-js" class="headerlink" title="Intro reveal.js"></a>Intro reveal.js</h3><span id="more"></span>
@@ -7107,22 +7097,6 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>Instruction</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redisSentinel 參數調整</title>
-    <url>/posts/8fad938a/</url>
-    <content><![CDATA[<h3 id="redisSentinel參數調整"><a href="#redisSentinel參數調整" class="headerlink" title="redisSentinel參數調整"></a>redisSentinel參數調整</h3><span id="more"></span>
-<p>這篇介紹redisSentinel參數調整。</p>
-<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">原本要建立專用redis publish/subscribe 的 Sentinel Server，</span><br><span class="line">用官方給的預設參數將建立redis連線上去後，連線是有建立起來，</span><br><span class="line">但使用Manager.get().getTopic(<span class="string">&quot;channel&quot;</span>).countSubscribers();</span><br><span class="line">發現publish/subscribe的數量皆為0，上去redis Sentinel用指令</span><br><span class="line">查詢也是0，看到初始參數有兩個預設參數:</span><br><span class="line"><span class="string">&quot;readMode&quot;</span>: <span class="string">&quot;SLAVE&quot;</span></span><br><span class="line"><span class="string">&quot;subscriptionMode&quot;</span>: <span class="string">&quot;SLAVE&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將這兩個預設參數修改為:</span><br><span class="line"><span class="string">&quot;readMode&quot;</span>: <span class="string">&quot;MASTER&quot;</span></span><br><span class="line"><span class="string">&quot;subscriptionMode&quot;</span>: <span class="string">&quot;MASTER&quot;</span></span><br><span class="line">即可用程式碼或指令查詢到publish/subscribe的數量</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Redis</category>
-      </categories>
-      <tags>
-        <tag>Redisson</tag>
-        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -7354,6 +7328,23 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>使用telnet連線IP和Port</title>
+    <url>/posts/ff4a2f25/</url>
+    <content><![CDATA[<h3 id="使用telnet連線IP和Port"><a href="#使用telnet連線IP和Port" class="headerlink" title="使用telnet連線IP和Port"></a>使用telnet連線IP和Port</h3><span id="more"></span>
+<p>Telnet是一種應用層協定，可用來連線目的地伺服器的IP和Port。<br>通常用來測試目的地伺服器連線是否通不通，常用telnet指令。</p>
+<h3 id="可連線，沒有指定Port就是預設23-port。"><a href="#可連線，沒有指定Port就是預設23-port。" class="headerlink" title="可連線，沒有指定Port就是預設23 port。"></a>可連線，沒有指定Port就是預設23 port。</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">telnet 192.168.5.5</span><br><span class="line">Trying 192.168.5.5...</span><br><span class="line">Connected to 192.168.5.5.</span><br><span class="line">Escape character is ‘^]’.</span><br></pre></td></tr></table></figure>
+
+<h3 id="連線不通"><a href="#連線不通" class="headerlink" title="連線不通"></a>連線不通</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">telnet 192.168.5.5</span><br><span class="line">Trying 192.168.5.5...</span><br><span class="line">telnet: connect to address 192.168.5.5: Connection refused</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>telnet</category>
+      </categories>
+      <tags>
+        <tag>TCP/IP</tag>
+        <tag>Port</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>傳值參數 使用Enum 優於 基本型別</title>
     <url>/posts/1d230d54/</url>
     <content><![CDATA[<h3 id="傳值參數用Enum優於基本型別"><a href="#傳值參數用Enum優於基本型別" class="headerlink" title="傳值參數用Enum優於基本型別"></a>傳值參數用Enum優於基本型別</h3><span id="more"></span>
@@ -7371,6 +7362,35 @@ Java Dependency Viewer
       <tags>
         <tag>Enum</tag>
         <tag>Primitives</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>判斷Socket連線是否斷線</title>
+    <url>/posts/c07f118/</url>
+    <content><![CDATA[<h3 id="判斷Socket連線是否斷線"><a href="#判斷Socket連線是否斷線" class="headerlink" title="判斷Socket連線是否斷線"></a>判斷Socket連線是否斷線</h3><span id="more"></span>
+<p>這篇介紹在TCP&#x2F;IP Protocol中，C#如何偵測Socket是否斷線。</p>
+<h3 id="Socket-Connected"><a href="#Socket-Connected" class="headerlink" title="Socket.Connected"></a>Socket.Connected</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">使用Socket.Connected檢查連線狀態，但若在測試時直接關閉連線或結束程式，程式並不會偵測到已經斷線的事實!</span><br><span class="line"></span><br><span class="line">Connected 屬性會取得上次 I/O 作業的 Client 通訊端連接狀態。當它傳回 <span class="literal">false</span> 時，即表示 Client 通訊端不是從未連接過，就是不再連接了。</span><br><span class="line"></span><br><span class="line">因為 Connected 屬性只反映最近一次作業的連接狀態，所以您應嘗試傳送或接收訊息，以判斷目前的狀態。</span><br><span class="line">訊息傳送失敗之後，這個屬性就不再傳回 <span class="literal">true</span>。請注意，這種行為是設計上的預期行為。您可能無法很穩定地測試連接的狀態，</span><br><span class="line">原因是有可能在測試和收發 (訊息) 之間就失去該連接。您的程式碼應假設該通訊端是連接的，然後再小心處理傳輸失敗的情況。</span><br></pre></td></tr></table></figure>
+
+<h3 id="socket-Poll-and-SocketFlags-Peek-example"><a href="#socket-Poll-and-SocketFlags-Peek-example" class="headerlink" title="socket.Poll and SocketFlags.Peek example"></a>socket.Poll and SocketFlags.Peek example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (socket.Connected &amp;&amp; !checkSocketConnection(socket))</span><br><span class="line">&#123;</span><br><span class="line">	//To Do Something</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public bool checkSocketConnection(Socket socket)</span><br><span class="line">&#123;</span><br><span class="line">	bool closed = <span class="literal">false</span>;</span><br><span class="line">	try</span><br><span class="line">	&#123;</span><br><span class="line">		//使用Peek測試連線是否仍存在</span><br><span class="line">		<span class="keyword">if</span> (socket.Poll(0, SelectMode.SelectRead))</span><br><span class="line">			closed = socket.Receive(new byte[1], SocketFlags.Peek) == 0;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (SocketException ex)</span><br><span class="line">	&#123;</span><br><span class="line">		LogUtil.logger.Info(<span class="string">&quot;(EndRead)checkSocketConnection SocketException&quot;</span> + ex.ToString());</span><br><span class="line">		closed = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> closed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CSharp</category>
+      </categories>
+      <tags>
+        <tag>Socket</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro PuTTY Protocol Options</title>
+    <url>/posts/acb3e81b/</url>
+    <content><![CDATA[<h3 id="Intro-PuTTY-Protocol-Options"><a href="#Intro-PuTTY-Protocol-Options" class="headerlink" title="Intro PuTTY Protocol Options"></a>Intro PuTTY Protocol Options</h3><span id="more"></span>
+<p>這篇介紹透過PuTTY Protocol Options的設定，讓跳板機輸入完Verification code後不會往下登入。</p>
+<h3 id="Intro-PuTTY-Protocol-Options-1"><a href="#Intro-PuTTY-Protocol-Options-1" class="headerlink" title="Intro PuTTY Protocol Options"></a>Intro PuTTY Protocol Options</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">設定的位置</span><br><span class="line">Category: -&gt; Connection -&gt; SSH -&gt; Don<span class="string">&#x27;t start a shell or command at all 打勾</span></span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/PuttyProtocolOptions.PNG" width="50%" />]]></content>
+      <categories>
+        <category>PuTTY</category>
+      </categories>
+      <tags>
+        <tag>Setting</tag>
       </tags>
   </entry>
   <entry>
@@ -7396,6 +7416,22 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>Intro Quartz Versus FixedRate Versus FixedDelay</title>
+    <url>/posts/51816722/</url>
+    <content><![CDATA[<h3 id="Intro-Quartz-Versus-FixedRate-Versus-FixedDelay"><a href="#Intro-Quartz-Versus-FixedRate-Versus-FixedDelay" class="headerlink" title="Intro Quartz Versus FixedRate Versus FixedDelay"></a>Intro Quartz Versus FixedRate Versus FixedDelay</h3><span id="more"></span>
+<p>這篇介紹Quartz Versus FixedRate Versus FixedDelay.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在使用quartz做排程時，</span><br><span class="line">要注意在job class的定義上必須加上</span><br><span class="line">@DisallowConcurrentExecution的annotation，才不會一直重複執行。</span><br><span class="line"></span><br><span class="line">以每秒排程為例</span><br><span class="line">有加@DisallowConcurrentExecution -&gt; 會等該job執行完才會進行下一個schedule</span><br><span class="line">沒加@DisallowConcurrentExecution -&gt; 不會等該job執行完，在每秒繼續執行下一個schedule</span><br><span class="line"></span><br><span class="line">quartz和ScheduleAtFixedRate or ScheduleWithFixedDelay建議使用情境:</span><br><span class="line">1.quartz用在固定時間的排程使用 ex.每天中午12點執行一次排程</span><br><span class="line">2.ScheduleAtFixedRate or ScheduleWithFixedDelay:</span><br><span class="line">  rate:等待rate時間就執行task</span><br><span class="line">  delay:該task執行完後，delay設定時間再繼續執行下一個task</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Schedule</category>
+      </categories>
+      <tags>
+        <tag>Quartz</tag>
+        <tag>Schedule</tag>
+        <tag>ScheduleAtFixedRate</tag>
+        <tag>ScheduleWithFixedDelay</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Java將double轉型BigDecimal注意事項</title>
     <url>/posts/19d9c492/</url>
     <content><![CDATA[<h3 id="在Java將double轉型BigDecimal注意事項"><a href="#在Java將double轉型BigDecimal注意事項" class="headerlink" title="在Java將double轉型BigDecimal注意事項"></a>在Java將double轉型BigDecimal注意事項</h3><span id="more"></span>
@@ -7412,21 +7448,6 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>判斷Socket連線是否斷線</title>
-    <url>/posts/c07f118/</url>
-    <content><![CDATA[<h3 id="判斷Socket連線是否斷線"><a href="#判斷Socket連線是否斷線" class="headerlink" title="判斷Socket連線是否斷線"></a>判斷Socket連線是否斷線</h3><span id="more"></span>
-<p>這篇介紹在TCP&#x2F;IP Protocol中，C#如何偵測Socket是否斷線。</p>
-<h3 id="Socket-Connected"><a href="#Socket-Connected" class="headerlink" title="Socket.Connected"></a>Socket.Connected</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">使用Socket.Connected檢查連線狀態，但若在測試時直接關閉連線或結束程式，程式並不會偵測到已經斷線的事實!</span><br><span class="line"></span><br><span class="line">Connected 屬性會取得上次 I/O 作業的 Client 通訊端連接狀態。當它傳回 <span class="literal">false</span> 時，即表示 Client 通訊端不是從未連接過，就是不再連接了。</span><br><span class="line"></span><br><span class="line">因為 Connected 屬性只反映最近一次作業的連接狀態，所以您應嘗試傳送或接收訊息，以判斷目前的狀態。</span><br><span class="line">訊息傳送失敗之後，這個屬性就不再傳回 <span class="literal">true</span>。請注意，這種行為是設計上的預期行為。您可能無法很穩定地測試連接的狀態，</span><br><span class="line">原因是有可能在測試和收發 (訊息) 之間就失去該連接。您的程式碼應假設該通訊端是連接的，然後再小心處理傳輸失敗的情況。</span><br></pre></td></tr></table></figure>
-
-<h3 id="socket-Poll-and-SocketFlags-Peek-example"><a href="#socket-Poll-and-SocketFlags-Peek-example" class="headerlink" title="socket.Poll and SocketFlags.Peek example"></a>socket.Poll and SocketFlags.Peek example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (socket.Connected &amp;&amp; !checkSocketConnection(socket))</span><br><span class="line">&#123;</span><br><span class="line">	//To Do Something</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public bool checkSocketConnection(Socket socket)</span><br><span class="line">&#123;</span><br><span class="line">	bool closed = <span class="literal">false</span>;</span><br><span class="line">	try</span><br><span class="line">	&#123;</span><br><span class="line">		//使用Peek測試連線是否仍存在</span><br><span class="line">		<span class="keyword">if</span> (socket.Poll(0, SelectMode.SelectRead))</span><br><span class="line">			closed = socket.Receive(new byte[1], SocketFlags.Peek) == 0;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (SocketException ex)</span><br><span class="line">	&#123;</span><br><span class="line">		LogUtil.logger.Info(<span class="string">&quot;(EndRead)checkSocketConnection SocketException&quot;</span> + ex.ToString());</span><br><span class="line">		closed = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> closed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CSharp</category>
-      </categories>
-      <tags>
-        <tag>Socket</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Linux上修改DNS設定</title>
     <url>/posts/f1db9e6f/</url>
     <content><![CDATA[<h3 id="在Linux上修改DNS設定"><a href="#在Linux上修改DNS設定" class="headerlink" title="在Linux上修改DNS設定"></a>在Linux上修改DNS設定</h3><span id="more"></span>
@@ -7440,23 +7461,6 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>DNS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用telnet連線IP和Port</title>
-    <url>/posts/ff4a2f25/</url>
-    <content><![CDATA[<h3 id="使用telnet連線IP和Port"><a href="#使用telnet連線IP和Port" class="headerlink" title="使用telnet連線IP和Port"></a>使用telnet連線IP和Port</h3><span id="more"></span>
-<p>Telnet是一種應用層協定，可用來連線目的地伺服器的IP和Port。<br>通常用來測試目的地伺服器連線是否通不通，常用telnet指令。</p>
-<h3 id="可連線，沒有指定Port就是預設23-port。"><a href="#可連線，沒有指定Port就是預設23-port。" class="headerlink" title="可連線，沒有指定Port就是預設23 port。"></a>可連線，沒有指定Port就是預設23 port。</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">telnet 192.168.5.5</span><br><span class="line">Trying 192.168.5.5...</span><br><span class="line">Connected to 192.168.5.5.</span><br><span class="line">Escape character is ‘^]’.</span><br></pre></td></tr></table></figure>
-
-<h3 id="連線不通"><a href="#連線不通" class="headerlink" title="連線不通"></a>連線不通</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">telnet 192.168.5.5</span><br><span class="line">Trying 192.168.5.5...</span><br><span class="line">telnet: connect to address 192.168.5.5: Connection refused</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>telnet</category>
-      </categories>
-      <tags>
-        <tag>TCP/IP</tag>
-        <tag>Port</tag>
       </tags>
   </entry>
   <entry>
@@ -7519,6 +7523,19 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>多台Server利用SelectForUpdate讓只有一台Server有執行權</title>
+    <url>/posts/a4c74dbc/</url>
+    <content><![CDATA[<h3 id="多台Server利用SelectForUpdate讓只有一台Server有執行權"><a href="#多台Server利用SelectForUpdate讓只有一台Server有執行權" class="headerlink" title="多台Server利用SelectForUpdate讓只有一台Server有執行權"></a>多台Server利用SelectForUpdate讓只有一台Server有執行權</h3><span id="more"></span>
+<p>這種設計是同時讓多台Server做同一項功能，但一次只有一台Server能搶到優先執行權。<br>除了搶到執行權的Server，其它台可以當作備援Server使用，以防只有一台Server又發生<br>故障時，還有其它台Server可以執行。先執行到Select For update的會搶到執行權，<br>其它台Server進來會select到null直接跳掉。</p>
+<h3 id="Select-For-Update"><a href="#Select-For-Update" class="headerlink" title="Select For Update"></a>Select For Update</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">SELECT updatedate from systemsetting <span class="built_in">where</span> key = <span class="string">&#x27;function1&#x27;</span> FOR UPDATE;</span><br><span class="line"><span class="keyword">if</span> (updatedate != null) &#123;</span><br><span class="line">	//do one thing</span><br><span class="line">&#125;</span><br><span class="line">用以上設計，同時四台Server進來執行該SQL時，只會有一台Server會先拿到updatedate</span><br><span class="line">其它三台Server會拿到null，就只會有一台Server可以拿到執行權。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>SelectForUpdate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何中斷正在運行的quartz作業</title>
     <url>/posts/4cd6705c/</url>
     <content><![CDATA[<h3 id="如何中斷正在運行的quartz作業"><a href="#如何中斷正在運行的quartz作業" class="headerlink" title="如何中斷正在運行的quartz作業"></a>如何中斷正在運行的quartz作業</h3><span id="more"></span>
@@ -7553,6 +7570,23 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>每個概念 使用一種 字詞</title>
+    <url>/posts/7d338f14/</url>
+    <content><![CDATA[<h2 id="每個概念-使用一種-字詞"><a href="#每個概念-使用一種-字詞" class="headerlink" title="每個概念 使用一種 字詞"></a>每個概念 使用一種 字詞</h2><span id="more"></span>
+<p>每個概念 使用一種 字詞</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>1.替單一概念挑選一個字詞，並堅持持續地使用它。<br>ex:在命名不同類別的取得方法時，採用了fetch、retrieve和get…多種<br>不同的名稱，這就是一件困擾工程師的事。你常需要去記住，到底是哪一家<br>公司、哪一個團體、或是哪一個人寫了這個函示庫或類別。不然就必須花費<br>大量時間來查看標頭檔和之前的程式碼範例，才能使用到正確的方法。</p>
+<p>2.函式的命名必須要獨一無二且具備一致性，如此才不必進行額外的瀏覽，<br>就能使用到正確的方法。</p>
+<p>同樣地，在同一個程式庫裡，分別使用了controller、manager和driver，<br>一樣會讓人感到困惑。DeviceManager和ProtocolController的實質差別<br>是什麼?為什麼不都改用controller或manager呢?這兩個不都是driver的<br>意思嗎?使用這樣的命名方式會讓人認為這是有著不同型態和隸屬不同類別<br>的兩個物件。</p>
+<p>使用一致的詞彙，對往後那些必須使用你所撰寫程式碼的程式設計師來說，<br>是一種極大的恩惠。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手動清除Linux記憶體快取</title>
     <url>/posts/da38d0c2/</url>
     <content><![CDATA[<h3 id="手動清除Linux記憶體快取"><a href="#手動清除Linux記憶體快取" class="headerlink" title="手動清除Linux記憶體快取"></a>手動清除Linux記憶體快取</h3><span id="more"></span>
@@ -7566,19 +7600,6 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多台Server利用SelectForUpdate讓只有一台Server有執行權</title>
-    <url>/posts/a4c74dbc/</url>
-    <content><![CDATA[<h3 id="多台Server利用SelectForUpdate讓只有一台Server有執行權"><a href="#多台Server利用SelectForUpdate讓只有一台Server有執行權" class="headerlink" title="多台Server利用SelectForUpdate讓只有一台Server有執行權"></a>多台Server利用SelectForUpdate讓只有一台Server有執行權</h3><span id="more"></span>
-<p>這種設計是同時讓多台Server做同一項功能，但一次只有一台Server能搶到優先執行權。<br>除了搶到執行權的Server，其它台可以當作備援Server使用，以防只有一台Server又發生<br>故障時，還有其它台Server可以執行。先執行到Select For update的會搶到執行權，<br>其它台Server進來會select到null直接跳掉。</p>
-<h3 id="Select-For-Update"><a href="#Select-For-Update" class="headerlink" title="Select For Update"></a>Select For Update</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">SELECT updatedate from systemsetting <span class="built_in">where</span> key = <span class="string">&#x27;function1&#x27;</span> FOR UPDATE;</span><br><span class="line"><span class="keyword">if</span> (updatedate != null) &#123;</span><br><span class="line">	//do one thing</span><br><span class="line">&#125;</span><br><span class="line">用以上設計，同時四台Server進來執行該SQL時，只會有一台Server會先拿到updatedate</span><br><span class="line">其它三台Server會拿到null，就只會有一台Server可以拿到執行權。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>SelectForUpdate</tag>
       </tags>
   </entry>
   <entry>
@@ -7873,20 +7894,16 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>關於TelegramBot的token</title>
-    <url>/posts/6bb834f/</url>
-    <content><![CDATA[<h3 id="關於TelegramBot的token"><a href="#關於TelegramBot的token" class="headerlink" title="關於TelegramBot的token"></a>關於TelegramBot的token</h3><span id="more"></span>
-
-<h3 id="查詢自己所建立TelegramBot的token"><a href="#查詢自己所建立TelegramBot的token" class="headerlink" title="查詢自己所建立TelegramBot的token"></a>查詢自己所建立TelegramBot的token</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.先找到@BotFather</span><br><span class="line">2.在視窗內下/mybots指令</span><br><span class="line">3.Choose a bot from the list below:</span><br><span class="line">  這邊會顯示你自己建立過的bot</span><br><span class="line">4.點選欲想查詢的@Bot</span><br><span class="line">5.點API Token</span><br><span class="line">6.顯示Token</span><br></pre></td></tr></table></figure>
-
-<h3 id="利用token查詢chat-id"><a href="#利用token查詢chat-id" class="headerlink" title="利用token查詢chat_id"></a>利用token查詢chat_id</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在瀏覽器上key https://api.telegram.org/bot&#123;token&#125;/getUpdates</span><br></pre></td></tr></table></figure>
-
-<h3 id="TelegramBot訊息的限制"><a href="#TelegramBot訊息的限制" class="headerlink" title="TelegramBot訊息的限制"></a>TelegramBot訊息的限制</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">傳10則訊息，必須等40秒後才能再傳</span><br><span class="line">在倒數期間傳的訊息都會Miss掉</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Intro Producer Consumer Mode Advantage I</title>
+    <url>/posts/341d1e6f/</url>
+    <content><![CDATA[<h3 id="Intro-Producer-Consumer-Mode-Advantage"><a href="#Intro-Producer-Consumer-Mode-Advantage" class="headerlink" title="Intro Producer Consumer Mode Advantage"></a>Intro Producer Consumer Mode Advantage</h3><span id="more"></span>
+<p>這篇介紹Producer Consumer Mode Advantage。</p>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producer -&gt; Buffer -&gt; Consumer</span><br><span class="line"></span><br><span class="line">Producer Consumer模式在軟體專案開發很常運用在現實情境。</span><br><span class="line">為什麼不讓Consumer直接使用Producer的資源呢? 還要特別建立</span><br><span class="line">Buffer區!</span><br><span class="line"></span><br><span class="line">要介紹以下幾個優點:</span><br><span class="line">1.Decoupling(解耦) : 增加Buffer區是為了不讓Producer、Consumer</span><br><span class="line">互相依賴，若沒有Buffer區則Consumer的代碼修改，可能會影響到Producer。</span><br><span class="line">在兩者依賴於Buffer區，不互相依賴的話，相對耦合也降低。</span><br><span class="line"></span><br><span class="line">2.Concurrency(併發) : 若Producer直接呼叫Consumer的方法，由於call <span class="keyword">function</span>是</span><br><span class="line">Synchronize，在Consumer尚未<span class="built_in">return</span>之前，Producer只能一直等待。萬一Consumer</span><br><span class="line">處理很慢，Producer則會浪費時間去等待。</span><br><span class="line">增加Buffer區，可將Producer和Consumer視為獨立的併發主體，Producer把產生的data往</span><br><span class="line">Buffer區送，就可以繼續產生下一個data，而不用依賴Consumer的資料處理速度。</span><br><span class="line"></span><br><span class="line">3.Support busy time : 增加Buffer區其中一個好處是，若產生data的速度時快時慢，當</span><br><span class="line">data產生快時，Consumer會來不及處理，這些未處理的data將暫存在Buffer區。等Producer</span><br><span class="line">產生的速度慢下來時，Consumer會慢慢處理消化data。</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Telegram</category>
+        <category>DesignPattern</category>
       </categories>
       <tags>
-        <tag>token</tag>
+        <tag>DesignPattern</tag>
       </tags>
   </entry>
   <entry>
@@ -7993,21 +8010,20 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>關於ignite Server</title>
-    <url>/posts/5c91a741/</url>
-    <content><![CDATA[<h3 id="關於ignite-Server"><a href="#關於ignite-Server" class="headerlink" title="關於ignite Server"></a>關於ignite Server</h3><span id="more"></span>
-<p>安裝路徑:&#x2F;usr&#x2F;local&#x2F;apache-ignite-2.7.0-bin<br>log路徑:&#x2F;usr&#x2F;local&#x2F;apache-ignite-2.7.0-bin&#x2F;work&#x2F;log</p>
-<h3 id="執行與關閉指令"><a href="#執行與關閉指令" class="headerlink" title="執行與關閉指令"></a>執行與關閉指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">start:</span><br><span class="line">/usr/local/apache-ignite-2.7.0-bin/bin/startIgnite.sh</span><br><span class="line">shutdown:</span><br><span class="line">/usr/local/apache-ignite-2.7.0-bin/bin/shutdownIgnite.sh</span><br></pre></td></tr></table></figure>
+    <title>關於TelegramBot的token</title>
+    <url>/posts/6bb834f/</url>
+    <content><![CDATA[<h3 id="關於TelegramBot的token"><a href="#關於TelegramBot的token" class="headerlink" title="關於TelegramBot的token"></a>關於TelegramBot的token</h3><span id="more"></span>
 
-<h3 id="重啟順序"><a href="#重啟順序" class="headerlink" title="重啟順序"></a>重啟順序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1. All Tomcat server shutdown</span><br><span class="line">2. All Ignite server shutdown (到此步驟請檢查 java process 是否已全部關閉)</span><br><span class="line">3. All Ignite server startup</span><br><span class="line">4. All Tomcat server startup</span><br></pre></td></tr></table></figure>
+<h3 id="查詢自己所建立TelegramBot的token"><a href="#查詢自己所建立TelegramBot的token" class="headerlink" title="查詢自己所建立TelegramBot的token"></a>查詢自己所建立TelegramBot的token</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.先找到@BotFather</span><br><span class="line">2.在視窗內下/mybots指令</span><br><span class="line">3.Choose a bot from the list below:</span><br><span class="line">  這邊會顯示你自己建立過的bot</span><br><span class="line">4.點選欲想查詢的@Bot</span><br><span class="line">5.點API Token</span><br><span class="line">6.顯示Token</span><br></pre></td></tr></table></figure>
 
-<h3 id="Ignite-Visor"><a href="#Ignite-Visor" class="headerlink" title="Ignite Visor"></a>Ignite Visor</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Visor 為 Ignite 提供了腳本化的監控能力，它可以用於獲得與節點、緩存和任務有關的統計數據，</span><br><span class="line">顯示與拓撲有關的各種指標的一般細節，還有節點的配置屬性也可以在這裡看到，它還可以用於</span><br><span class="line">啟動和停止遠程節點。</span><br><span class="line">執行路徑: /usr/local/apache-ignite-2.7.0-bin/bin/ignitevisorcmd.sh</span><br><span class="line">選擇 ignite config 路徑:</span><br><span class="line">1. 輸入 open</span><br><span class="line">2. 選擇 config (這裡選擇 ignite startup 指定的 config)</span><br><span class="line"></span><br><span class="line">查看 cluster 狀態</span><br><span class="line">visor&gt; top</span><br><span class="line"></span><br><span class="line">查看 cache size / heap 使用率</span><br><span class="line">visor&gt; cache -a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
+<h3 id="利用token查詢chat-id"><a href="#利用token查詢chat-id" class="headerlink" title="利用token查詢chat_id"></a>利用token查詢chat_id</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在瀏覽器上key https://api.telegram.org/bot&#123;token&#125;/getUpdates</span><br></pre></td></tr></table></figure>
+
+<h3 id="TelegramBot訊息的限制"><a href="#TelegramBot訊息的限制" class="headerlink" title="TelegramBot訊息的限制"></a>TelegramBot訊息的限制</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">傳10則訊息，必須等40秒後才能再傳</span><br><span class="line">在倒數期間傳的訊息都會Miss掉</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>ignite</category>
+        <category>Telegram</category>
       </categories>
       <tags>
-        <tag>ignite</tag>
+        <tag>token</tag>
       </tags>
   </entry>
   <entry>
@@ -8051,20 +8067,21 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>Java使用Comparator做CollectionsSort</title>
-    <url>/posts/d43f962c/</url>
-    <content><![CDATA[<h3 id="Java使用Comparator做CollectionsSort"><a href="#Java使用Comparator做CollectionsSort" class="headerlink" title="Java使用Comparator做CollectionsSort"></a>Java使用Comparator做CollectionsSort</h3><span id="more"></span>
+    <title>關於ignite Server</title>
+    <url>/posts/5c91a741/</url>
+    <content><![CDATA[<h3 id="關於ignite-Server"><a href="#關於ignite-Server" class="headerlink" title="關於ignite Server"></a>關於ignite Server</h3><span id="more"></span>
+<p>安裝路徑:&#x2F;usr&#x2F;local&#x2F;apache-ignite-2.7.0-bin<br>log路徑:&#x2F;usr&#x2F;local&#x2F;apache-ignite-2.7.0-bin&#x2F;work&#x2F;log</p>
+<h3 id="執行與關閉指令"><a href="#執行與關閉指令" class="headerlink" title="執行與關閉指令"></a>執行與關閉指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">start:</span><br><span class="line">/usr/local/apache-ignite-2.7.0-bin/bin/startIgnite.sh</span><br><span class="line">shutdown:</span><br><span class="line">/usr/local/apache-ignite-2.7.0-bin/bin/shutdownIgnite.sh</span><br></pre></td></tr></table></figure>
 
-<p>當Server Loading較低時，可以考慮原本在SQL使用ORDER BY排序的作法，<br>改使用在該物件內@Override compare方法，並使用Collections.sort();<br>來做排序，降低資料庫Loading。</p>
-<h3 id="物件範例-對Website、UserId排序"><a href="#物件範例-對Website、UserId排序" class="headerlink" title="物件範例-對Website、UserId排序"></a>物件範例-對Website、UserId排序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class Example &#123;</span><br><span class="line">	</span><br><span class="line">	/* 避免 override compareTo 改用 comparator 比較有彈性  */</span><br><span class="line">	public final static Comparator&lt;Example&gt; websiteAndUserIdAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			int delta = Integer.compare(o1.getWebsite(), o2.getWebsite());</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (delta != 0) &#123;</span><br><span class="line">				<span class="built_in">return</span> delta;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> o1.getUserId().compareTo(o2.getUserId());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	public final static Comparator&lt;Example&gt; websiteAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			<span class="built_in">return</span> Integer.compare(o1.getWebsite(), o2.getWebsite());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	public final static Comparator&lt;Example&gt; userIdAscComparator = new Comparator&lt;Example&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public int compare(Example o1, Example o2) &#123;</span><br><span class="line">			<span class="built_in">return</span> o1.getUserId().compareTo(o2.getUserId());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	public int website;</span><br><span class="line"></span><br><span class="line">	public String userId;</span><br><span class="line"></span><br><span class="line">	public Example(int website, String userId) &#123;</span><br><span class="line">		super();</span><br><span class="line"></span><br><span class="line">		this.website = website;</span><br><span class="line">		this.userId = userId;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getWebsite</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> website;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getUserId</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> userId;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="重啟順序"><a href="#重啟順序" class="headerlink" title="重啟順序"></a>重啟順序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1. All Tomcat server shutdown</span><br><span class="line">2. All Ignite server shutdown (到此步驟請檢查 java process 是否已全部關閉)</span><br><span class="line">3. All Ignite server startup</span><br><span class="line">4. All Tomcat server startup</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用Collections-sort排序"><a href="#使用Collections-sort排序" class="headerlink" title="使用Collections.sort排序"></a>使用Collections.sort排序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">List&lt;Example&gt; lList = new ArrayList&lt;Example&gt;();</span><br><span class="line"></span><br><span class="line">lList.add(4, <span class="string">&quot;user0004&quot;</span>);       </span><br><span class="line">lList.add(1, <span class="string">&quot;user0001&quot;</span>);</span><br><span class="line">lList.add(7, <span class="string">&quot;user0007&quot;</span>);</span><br><span class="line">lList.add(2, <span class="string">&quot;user0002&quot;</span>);</span><br><span class="line">lList.add(9, <span class="string">&quot;user0009&quot;</span>);</span><br><span class="line">lList.add(1, <span class="string">&quot;user0001&quot;</span>);</span><br><span class="line">lList.add(5, <span class="string">&quot;user0005&quot;</span>);</span><br><span class="line"></span><br><span class="line">//對Website、UserId ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.websiteAndUserIdAscComparator);</span><br><span class="line">//對Website ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.websiteAscComparator);</span><br><span class="line">//對UserId ASC排序</span><br><span class="line">Collections.<span class="built_in">sort</span>(lList, Example.userIdAscComparator);</span><br></pre></td></tr></table></figure>
+<h3 id="Ignite-Visor"><a href="#Ignite-Visor" class="headerlink" title="Ignite Visor"></a>Ignite Visor</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Visor 為 Ignite 提供了腳本化的監控能力，它可以用於獲得與節點、緩存和任務有關的統計數據，</span><br><span class="line">顯示與拓撲有關的各種指標的一般細節，還有節點的配置屬性也可以在這裡看到，它還可以用於</span><br><span class="line">啟動和停止遠程節點。</span><br><span class="line">執行路徑: /usr/local/apache-ignite-2.7.0-bin/bin/ignitevisorcmd.sh</span><br><span class="line">選擇 ignite config 路徑:</span><br><span class="line">1. 輸入 open</span><br><span class="line">2. 選擇 config (這裡選擇 ignite startup 指定的 config)</span><br><span class="line"></span><br><span class="line">查看 cluster 狀態</span><br><span class="line">visor&gt; top</span><br><span class="line"></span><br><span class="line">查看 cache size / heap 使用率</span><br><span class="line">visor&gt; cache -a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>ignite</category>
       </categories>
       <tags>
-        <tag>Comparator</tag>
+        <tag>ignite</tag>
       </tags>
   </entry>
 </search>
