@@ -30,6 +30,19 @@
       </tags>
   </entry>
   <entry>
+    <title>About ElasticSearch Composite Aggregation AfterKey</title>
+    <url>/posts/9774d5f7/</url>
+    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
+<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
+<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>About Cache Control</title>
     <url>/posts/1bdfcea4/</url>
     <content><![CDATA[<h2 id="About-Cache-Control"><a href="#About-Cache-Control" class="headerlink" title="About Cache Control"></a>About Cache Control</h2><span id="more"></span>
@@ -45,19 +58,6 @@
       </categories>
       <tags>
         <tag>HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>About ElasticSearch Composite Aggregation AfterKey</title>
-    <url>/posts/9774d5f7/</url>
-    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
-<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
-<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ElasticSearch</category>
-      </categories>
-      <tags>
-        <tag>ElasticSearch</tag>
       </tags>
   </entry>
   <entry>
@@ -141,19 +141,6 @@
       </tags>
   </entry>
   <entry>
-    <title>About Redis Timeout Exception</title>
-    <url>/posts/16a902aa/</url>
-    <content><![CDATA[<h3 id="Intro-About-Redis-Timeout-Exception"><a href="#Intro-About-Redis-Timeout-Exception" class="headerlink" title="Intro About Redis Timeout Exception"></a>Intro About Redis Timeout Exception</h3><span id="more"></span>
-<p>這篇介紹About Redis Timeout Exception.</p>
-<h3 id="官方文件建議"><a href="#官方文件建議" class="headerlink" title="官方文件建議"></a>官方文件建議</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">What is the cause of RedisTimeoutException?</span><br><span class="line"></span><br><span class="line">There are four main reasons:</span><br><span class="line"></span><br><span class="line">1.All netty threads are busy, leading to delays <span class="keyword">in</span> both Redis response decoding and sending commands to Redis</span><br><span class="line">2.All connections are busy</span><br><span class="line">3.Redis server takes too long to respond the request.</span><br><span class="line">4.Sync methods invocation <span class="keyword">in</span> async/reactive/rx listeners.</span><br><span class="line"></span><br><span class="line">irst try to <span class="built_in">set</span> follow values <span class="keyword">for</span> nettyThreads setting: 32, 64, 128, 256 this </span><br><span class="line">allow Redisson to get free netty thread to decode response or send <span class="built_in">command</span>. </span><br><span class="line">Next, try to increase retryInterval and/or <span class="built_in">timeout</span> to a reasonable value so that</span><br><span class="line">a <span class="built_in">command</span> can still gracefully fail without having the end user <span class="built_in">wait</span> forever.</span><br><span class="line">At the last step, try to increase connection pool setting so that Redisson can</span><br><span class="line">stand a better chance <span class="keyword">in</span> getting a free connection.</span><br><span class="line"></span><br><span class="line">Complex commands such as keys, hmget and big loops <span class="keyword">in</span> Lua scripts are more likely</span><br><span class="line">to see it than other commands. It is important to understand an operation can</span><br><span class="line">still <span class="built_in">timeout</span> despite the absence of it from the Redis slowlog. Slowlogs only</span><br><span class="line">record the time a <span class="built_in">command</span> is been processed by the Redis event loop and not</span><br><span class="line">anything before or after. Network issue may also cause this exception when a</span><br><span class="line">response is still in-flight.</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Redisson</category>
-      </categories>
-      <tags>
-        <tag>Redisson</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>About Redisson Lock</title>
     <url>/posts/84f06740/</url>
     <content><![CDATA[<h3 id="About-Redisson-Lock"><a href="#About-Redisson-Lock" class="headerlink" title="About Redisson Lock"></a>About Redisson Lock</h3><span id="more"></span>
@@ -179,6 +166,19 @@
 <h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">RCountDownLatch latch = redisson.getCountDownLatch(<span class="string">&quot;anyCountDownLatch&quot;</span>);</span><br><span class="line">latch.trySetCount(1);</span><br><span class="line">latch.await();</span><br><span class="line"></span><br><span class="line">// 在其它Thread</span><br><span class="line">RCountDownLatch latch = redisson.getCountDownLatch(<span class="string">&quot;anyCountDownLatch&quot;</span>);</span><br><span class="line">latch.countDown();</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>Redisson</category>
+      </categories>
+      <tags>
+        <tag>Redisson</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About Redis Timeout Exception</title>
+    <url>/posts/16a902aa/</url>
+    <content><![CDATA[<h3 id="Intro-About-Redis-Timeout-Exception"><a href="#Intro-About-Redis-Timeout-Exception" class="headerlink" title="Intro About Redis Timeout Exception"></a>Intro About Redis Timeout Exception</h3><span id="more"></span>
+<p>這篇介紹About Redis Timeout Exception.</p>
+<h3 id="官方文件建議"><a href="#官方文件建議" class="headerlink" title="官方文件建議"></a>官方文件建議</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">What is the cause of RedisTimeoutException?</span><br><span class="line"></span><br><span class="line">There are four main reasons:</span><br><span class="line"></span><br><span class="line">1.All netty threads are busy, leading to delays <span class="keyword">in</span> both Redis response decoding and sending commands to Redis</span><br><span class="line">2.All connections are busy</span><br><span class="line">3.Redis server takes too long to respond the request.</span><br><span class="line">4.Sync methods invocation <span class="keyword">in</span> async/reactive/rx listeners.</span><br><span class="line"></span><br><span class="line">irst try to <span class="built_in">set</span> follow values <span class="keyword">for</span> nettyThreads setting: 32, 64, 128, 256 this </span><br><span class="line">allow Redisson to get free netty thread to decode response or send <span class="built_in">command</span>. </span><br><span class="line">Next, try to increase retryInterval and/or <span class="built_in">timeout</span> to a reasonable value so that</span><br><span class="line">a <span class="built_in">command</span> can still gracefully fail without having the end user <span class="built_in">wait</span> forever.</span><br><span class="line">At the last step, try to increase connection pool setting so that Redisson can</span><br><span class="line">stand a better chance <span class="keyword">in</span> getting a free connection.</span><br><span class="line"></span><br><span class="line">Complex commands such as keys, hmget and big loops <span class="keyword">in</span> Lua scripts are more likely</span><br><span class="line">to see it than other commands. It is important to understand an operation can</span><br><span class="line">still <span class="built_in">timeout</span> despite the absence of it from the Redis slowlog. Slowlogs only</span><br><span class="line">record the time a <span class="built_in">command</span> is been processed by the Redis event loop and not</span><br><span class="line">anything before or after. Network issue may also cause this exception when a</span><br><span class="line">response is still in-flight.</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Redisson</category>
       </categories>
@@ -392,23 +392,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java math BigDecimal toPlainString()</title>
-    <url>/posts/f0e81a4b/</url>
-    <content><![CDATA[<h3 id="Java-math-BigDecimal-toPlainString"><a href="#Java-math-BigDecimal-toPlainString" class="headerlink" title="Java.math.BigDecimal.toPlainString()"></a>Java.math.BigDecimal.toPlainString()</h3><span id="more"></span>
-<p>java.math.BigDecimal.toPlainString() 返回此BigDecimal的字符串表示形式不帶指數字段。<br>為具有正的精度值，中位數的小數點右邊的數字用於指示精度。</p>
-<h3 id="method-宣告"><a href="#method-宣告" class="headerlink" title="method 宣告"></a>method 宣告</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public String toPlainString()</span><br></pre></td></tr></table></figure>
-
-<h3 id="BigDecimal-toPlainString-Example"><a href="#BigDecimal-toPlainString-Example" class="headerlink" title="BigDecimal.toPlainString() Example"></a>BigDecimal.toPlainString() Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class BigDecimalDemo &#123;</span><br><span class="line"></span><br><span class="line">     public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        // create a BigDecimal object</span><br><span class="line">        BigDecimal <span class="built_in">bg</span>;</span><br><span class="line"></span><br><span class="line">        // create a String object</span><br><span class="line">        String s;</span><br><span class="line"></span><br><span class="line">		MathContext mc = new MathContext(3); // 3 precision</span><br><span class="line"></span><br><span class="line">        <span class="built_in">bg</span> = new BigDecimal(<span class="string">&quot;1234E+4&quot;</span>,mc);</span><br><span class="line"></span><br><span class="line">        // assign the plain string value of <span class="built_in">bg</span> to s</span><br><span class="line">        s = bg.toPlainString();</span><br><span class="line"></span><br><span class="line">		String str = <span class="string">&quot;Plain string value of &quot;</span> + <span class="built_in">bg</span> + <span class="string">&quot; is &quot;</span> + s;</span><br><span class="line"></span><br><span class="line">        // <span class="built_in">print</span> s value</span><br><span class="line">        System.out.println( str );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Plain string value of 1.23E+7 is 12300000</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>BigDecimal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Broken Authentication</title>
     <url>/posts/920425ad/</url>
     <content><![CDATA[<h3 id="Intro-Broken-Authentication"><a href="#Intro-Broken-Authentication" class="headerlink" title="Intro Broken Authentication"></a>Intro Broken Authentication</h3><span id="more"></span>
@@ -423,6 +406,23 @@
       </categories>
       <tags>
         <tag>Information Security</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java math BigDecimal toPlainString()</title>
+    <url>/posts/f0e81a4b/</url>
+    <content><![CDATA[<h3 id="Java-math-BigDecimal-toPlainString"><a href="#Java-math-BigDecimal-toPlainString" class="headerlink" title="Java.math.BigDecimal.toPlainString()"></a>Java.math.BigDecimal.toPlainString()</h3><span id="more"></span>
+<p>java.math.BigDecimal.toPlainString() 返回此BigDecimal的字符串表示形式不帶指數字段。<br>為具有正的精度值，中位數的小數點右邊的數字用於指示精度。</p>
+<h3 id="method-宣告"><a href="#method-宣告" class="headerlink" title="method 宣告"></a>method 宣告</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public String toPlainString()</span><br></pre></td></tr></table></figure>
+
+<h3 id="BigDecimal-toPlainString-Example"><a href="#BigDecimal-toPlainString-Example" class="headerlink" title="BigDecimal.toPlainString() Example"></a>BigDecimal.toPlainString() Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public class BigDecimalDemo &#123;</span><br><span class="line"></span><br><span class="line">     public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        // create a BigDecimal object</span><br><span class="line">        BigDecimal <span class="built_in">bg</span>;</span><br><span class="line"></span><br><span class="line">        // create a String object</span><br><span class="line">        String s;</span><br><span class="line"></span><br><span class="line">		MathContext mc = new MathContext(3); // 3 precision</span><br><span class="line"></span><br><span class="line">        <span class="built_in">bg</span> = new BigDecimal(<span class="string">&quot;1234E+4&quot;</span>,mc);</span><br><span class="line"></span><br><span class="line">        // assign the plain string value of <span class="built_in">bg</span> to s</span><br><span class="line">        s = bg.toPlainString();</span><br><span class="line"></span><br><span class="line">		String str = <span class="string">&quot;Plain string value of &quot;</span> + <span class="built_in">bg</span> + <span class="string">&quot; is &quot;</span> + s;</span><br><span class="line"></span><br><span class="line">        // <span class="built_in">print</span> s value</span><br><span class="line">        System.out.println( str );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Plain string value of 1.23E+7 is 12300000</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>BigDecimal</tag>
       </tags>
   </entry>
   <entry>
@@ -894,49 +894,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Cross-Site-Scripting(XSS) Solution</title>
-    <url>/posts/434233c/</url>
-    <content><![CDATA[<h3 id="Intro-Cross-Site-Scripting-XSS-Solution"><a href="#Intro-Cross-Site-Scripting-XSS-Solution" class="headerlink" title="Intro Cross-Site-Scripting(XSS) Solution"></a>Intro Cross-Site-Scripting(XSS) Solution</h3><span id="more"></span>
-<p>這篇介紹Cross-Site-Scripting(XSS)，它是一個資訊安全滲透測試的issue。</p>
-<h3 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">XSS是指hacker利用網頁程式的漏洞，將攻擊語法寫入資料庫或注入網頁參數，</span><br><span class="line">使瀏覽器載入該網頁時會一併含有攻擊語法的值帶入回應，導致下載惡意程式</span><br><span class="line">或傳輸使用者機密資訊等資安風險。</span><br></pre></td></tr></table></figure>
-
-<h3 id="攻擊手法"><a href="#攻擊手法" class="headerlink" title="攻擊手法"></a>攻擊手法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.竊取cookie</span><br><span class="line">2.植入Flash</span><br><span class="line">3.用iframe、frame、XMLHttpRequest等方式，以用戶的身分執行管理動作</span><br><span class="line">4.DDos</span><br></pre></td></tr></table></figure>
-
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">每個參數檢查非法字元:</span><br><span class="line"></span><br><span class="line">private static final Pattern[] xssPatterns = new Pattern[] &#123;</span><br><span class="line">	// Script fragments</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;script&amp;gt;(.*?)&amp;lt;/script&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;script&gt;(.*?)&lt;/script&gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// src=<span class="string">&#x27;...&#x27;</span></span><br><span class="line">	Pattern.compile(<span class="string">&quot;src[\r\n]*=[\r\n]*\\\&#x27;(.*?)\\\&#x27;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;src[\r\n]*=[\r\n]*\\\&quot;(.*?)\\\&quot;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// lonely script tags</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;/script&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;/script&gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;script(.*?)&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;script(.*?)&gt;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// <span class="built_in">eval</span>(...)</span><br><span class="line">	Pattern.compile(<span class="string">&quot;eval\\((.*?)\\)&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// expression(...)</span><br><span class="line">	Pattern.compile(<span class="string">&quot;expression\\((.*?)\\)&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// javascript:...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;javascript:&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// vbscript:...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;vbscript:&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// onload(...)=...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;onload(.*?)=&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static String stripXSS(String value) &#123;</span><br><span class="line">	<span class="keyword">if</span> (value != null) &#123;</span><br><span class="line"></span><br><span class="line">		value = value.replaceAll(<span class="string">&quot;\0&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Pattern scriptPattern : xssPatterns) &#123;</span><br><span class="line">			value = scriptPattern.matcher(value).replaceAll(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Information Security</category>
-      </categories>
-      <tags>
-        <tag>Information Security</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Curl Url Generate To File Example</title>
-    <url>/posts/d1a04a6a/</url>
-    <content><![CDATA[<h3 id="Curl-Url-Generate-To-File-Example"><a href="#Curl-Url-Generate-To-File-Example" class="headerlink" title="Curl Url Generate To File Example"></a>Curl Url Generate To File Example</h3><span id="more"></span>
-<p>這篇介紹透過Curl Url來產生檔案。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">-o filename        <span class="comment">#將curl返回的請求結果，寫入到filename檔案中</span></span><br><span class="line"></span><br><span class="line">$ curl http://127.0.0.1/query/getData -o Data.json</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>curl</category>
-      </categories>
-      <tags>
-        <tag>curl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Developing On AWS Memo III</title>
-    <url>/posts/a261fb6a/</url>
-    <content><![CDATA[<h3 id="Developing-On-AWS-Memo-III"><a href="#Developing-On-AWS-Memo-III" class="headerlink" title="Developing On AWS Memo III"></a>Developing On AWS Memo III</h3><span id="more"></span>
-<p>這篇紀錄Developing On AWS Memo III。</p>
-<h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Monolith 單體</span><br><span class="line"></span><br><span class="line">Side effect</span><br><span class="line"></span><br><span class="line">Microservice 顆粒度要切到多細？</span><br><span class="line"></span><br><span class="line">組織的架構決定系統的邊界</span><br><span class="line"></span><br><span class="line">Domain-driven design 每一個功能都需要從Domain切入</span><br><span class="line"></span><br><span class="line">Service &lt;—— API ——&gt; Service</span><br><span class="line"></span><br><span class="line">Startup初期 不適合使用DDD cause 沒有完整人員配置(很花時間) + Domain通常會快速變化</span><br><span class="line"></span><br><span class="line">Strangler 扼殺者</span><br><span class="line"></span><br><span class="line">Anti-corrpt layer 避免交易失敗 會導回原本的服務 不適合用在state <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Facade pattern</span><br><span class="line"></span><br><span class="line">Strangler design pattern -&gt; Refactor</span><br><span class="line"></span><br><span class="line">Step <span class="keyword">function</span> by AWS many <span class="built_in">functions</span></span><br><span class="line"></span><br><span class="line">Why need Amazon Cognito? Authentication + Authorization</span><br><span class="line"></span><br><span class="line">JWT - Json Web Token</span><br><span class="line"></span><br><span class="line">AK/SK - (Access Key ID/Secret Access Key)</span><br><span class="line"></span><br><span class="line">——————————</span><br><span class="line"></span><br><span class="line">User pool ID</span><br><span class="line"></span><br><span class="line">ap-northeast-1_XKt5DSA1h</span><br><span class="line"></span><br><span class="line">ARN</span><br><span class="line"></span><br><span class="line">arn:aws:cognito-idp:ap-northeast-1:408847233856:userpool/ap-northeast-1_XKt5DSA1h</span><br><span class="line"></span><br><span class="line">Client ID</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PollyNotesWeb</span><br><span class="line"></span><br><span class="line">7b8q9eokiutqaiopicagver0pg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;aud&quot;</span>: <span class="string">&quot;7b8q9eokiutqaiopicagver0pg&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;auth_time&quot;</span>: <span class="string">&quot;1664517043&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;cognito:username&quot;</span>: <span class="string">&quot;student&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;event_id&quot;</span>: <span class="string">&quot;777335cc-211e-4135-a0c7-52f30a2f726d&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;exp&quot;</span>: <span class="string">&quot;Fri Sep 30 06:50:43 UTC 2022&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;iat&quot;</span>: <span class="string">&quot;Fri Sep 30 05:50:43 UTC 2022&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;iss&quot;</span>: <span class="string">&quot;https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_XKt5DSA1h&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;jti&quot;</span>: <span class="string">&quot;7a6524c6-d31c-471b-a2cd-05a823eb8583&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;origin_jti&quot;</span>: <span class="string">&quot;da0835fd-4515-4fc4-953c-41b64c2a63d8&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;sub&quot;</span>: <span class="string">&quot;9cce2eae-0dcf-4299-bdf6-0765c6231938&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;token_use&quot;</span>: <span class="string">&quot;id&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">———————————</span><br><span class="line"></span><br><span class="line">DevOps - Development and operation culture</span><br><span class="line"></span><br><span class="line">standardize</span><br><span class="line"></span><br><span class="line">Infrastructure as code - IaC</span><br><span class="line"></span><br><span class="line">observability - logging metrics tracing</span><br><span class="line"></span><br><span class="line">EventBridge</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@annotation == @director</span><br><span class="line"></span><br><span class="line">避免Lambda looping是 不使用Lambda invoke 使用StepsFunction</span><br><span class="line"></span><br><span class="line">用retry取代loop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>AWS</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Create An AWS Account Step By Step</title>
     <url>/posts/4c3725cb/</url>
     <content><![CDATA[<h2 id="Create-An-AWS-Account-Step-By-Step"><a href="#Create-An-AWS-Account-Step-By-Step" class="headerlink" title="Create An AWS Account Step By Step"></a>Create An AWS Account Step By Step</h2><span id="more"></span>
@@ -999,6 +956,49 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>AWS</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cross-Site-Scripting(XSS) Solution</title>
+    <url>/posts/434233c/</url>
+    <content><![CDATA[<h3 id="Intro-Cross-Site-Scripting-XSS-Solution"><a href="#Intro-Cross-Site-Scripting-XSS-Solution" class="headerlink" title="Intro Cross-Site-Scripting(XSS) Solution"></a>Intro Cross-Site-Scripting(XSS) Solution</h3><span id="more"></span>
+<p>這篇介紹Cross-Site-Scripting(XSS)，它是一個資訊安全滲透測試的issue。</p>
+<h3 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">XSS是指hacker利用網頁程式的漏洞，將攻擊語法寫入資料庫或注入網頁參數，</span><br><span class="line">使瀏覽器載入該網頁時會一併含有攻擊語法的值帶入回應，導致下載惡意程式</span><br><span class="line">或傳輸使用者機密資訊等資安風險。</span><br></pre></td></tr></table></figure>
+
+<h3 id="攻擊手法"><a href="#攻擊手法" class="headerlink" title="攻擊手法"></a>攻擊手法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.竊取cookie</span><br><span class="line">2.植入Flash</span><br><span class="line">3.用iframe、frame、XMLHttpRequest等方式，以用戶的身分執行管理動作</span><br><span class="line">4.DDos</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">每個參數檢查非法字元:</span><br><span class="line"></span><br><span class="line">private static final Pattern[] xssPatterns = new Pattern[] &#123;</span><br><span class="line">	// Script fragments</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;script&amp;gt;(.*?)&amp;lt;/script&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;script&gt;(.*?)&lt;/script&gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// src=<span class="string">&#x27;...&#x27;</span></span><br><span class="line">	Pattern.compile(<span class="string">&quot;src[\r\n]*=[\r\n]*\\\&#x27;(.*?)\\\&#x27;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;src[\r\n]*=[\r\n]*\\\&quot;(.*?)\\\&quot;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// lonely script tags</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;/script&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;/script&gt;&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&amp;lt;script(.*?)&amp;gt;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	Pattern.compile(<span class="string">&quot;&lt;script(.*?)&gt;&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// <span class="built_in">eval</span>(...)</span><br><span class="line">	Pattern.compile(<span class="string">&quot;eval\\((.*?)\\)&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// expression(...)</span><br><span class="line">	Pattern.compile(<span class="string">&quot;expression\\((.*?)\\)&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),</span><br><span class="line">	// javascript:...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;javascript:&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// vbscript:...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;vbscript:&quot;</span>, Pattern.CASE_INSENSITIVE),</span><br><span class="line">	// onload(...)=...</span><br><span class="line">	Pattern.compile(<span class="string">&quot;onload(.*?)=&quot;</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static String stripXSS(String value) &#123;</span><br><span class="line">	<span class="keyword">if</span> (value != null) &#123;</span><br><span class="line"></span><br><span class="line">		value = value.replaceAll(<span class="string">&quot;\0&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Pattern scriptPattern : xssPatterns) &#123;</span><br><span class="line">			value = scriptPattern.matcher(value).replaceAll(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Information Security</category>
+      </categories>
+      <tags>
+        <tag>Information Security</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Curl Url Generate To File Example</title>
+    <url>/posts/d1a04a6a/</url>
+    <content><![CDATA[<h3 id="Curl-Url-Generate-To-File-Example"><a href="#Curl-Url-Generate-To-File-Example" class="headerlink" title="Curl Url Generate To File Example"></a>Curl Url Generate To File Example</h3><span id="more"></span>
+<p>這篇介紹透過Curl Url來產生檔案。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">-o filename        <span class="comment">#將curl返回的請求結果，寫入到filename檔案中</span></span><br><span class="line"></span><br><span class="line">$ curl http://127.0.0.1/query/getData -o Data.json</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>curl</category>
+      </categories>
+      <tags>
+        <tag>curl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Developing On AWS Memo III</title>
+    <url>/posts/a261fb6a/</url>
+    <content><![CDATA[<h3 id="Developing-On-AWS-Memo-III"><a href="#Developing-On-AWS-Memo-III" class="headerlink" title="Developing On AWS Memo III"></a>Developing On AWS Memo III</h3><span id="more"></span>
+<p>這篇紀錄Developing On AWS Memo III。</p>
+<h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Monolith 單體</span><br><span class="line"></span><br><span class="line">Side effect</span><br><span class="line"></span><br><span class="line">Microservice 顆粒度要切到多細？</span><br><span class="line"></span><br><span class="line">組織的架構決定系統的邊界</span><br><span class="line"></span><br><span class="line">Domain-driven design 每一個功能都需要從Domain切入</span><br><span class="line"></span><br><span class="line">Service &lt;—— API ——&gt; Service</span><br><span class="line"></span><br><span class="line">Startup初期 不適合使用DDD cause 沒有完整人員配置(很花時間) + Domain通常會快速變化</span><br><span class="line"></span><br><span class="line">Strangler 扼殺者</span><br><span class="line"></span><br><span class="line">Anti-corrpt layer 避免交易失敗 會導回原本的服務 不適合用在state <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Facade pattern</span><br><span class="line"></span><br><span class="line">Strangler design pattern -&gt; Refactor</span><br><span class="line"></span><br><span class="line">Step <span class="keyword">function</span> by AWS many <span class="built_in">functions</span></span><br><span class="line"></span><br><span class="line">Why need Amazon Cognito? Authentication + Authorization</span><br><span class="line"></span><br><span class="line">JWT - Json Web Token</span><br><span class="line"></span><br><span class="line">AK/SK - (Access Key ID/Secret Access Key)</span><br><span class="line"></span><br><span class="line">——————————</span><br><span class="line"></span><br><span class="line">User pool ID</span><br><span class="line"></span><br><span class="line">ap-northeast-1_XKt5DSA1h</span><br><span class="line"></span><br><span class="line">ARN</span><br><span class="line"></span><br><span class="line">arn:aws:cognito-idp:ap-northeast-1:408847233856:userpool/ap-northeast-1_XKt5DSA1h</span><br><span class="line"></span><br><span class="line">Client ID</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PollyNotesWeb</span><br><span class="line"></span><br><span class="line">7b8q9eokiutqaiopicagver0pg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;aud&quot;</span>: <span class="string">&quot;7b8q9eokiutqaiopicagver0pg&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;auth_time&quot;</span>: <span class="string">&quot;1664517043&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;cognito:username&quot;</span>: <span class="string">&quot;student&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;event_id&quot;</span>: <span class="string">&quot;777335cc-211e-4135-a0c7-52f30a2f726d&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;exp&quot;</span>: <span class="string">&quot;Fri Sep 30 06:50:43 UTC 2022&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;iat&quot;</span>: <span class="string">&quot;Fri Sep 30 05:50:43 UTC 2022&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;iss&quot;</span>: <span class="string">&quot;https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_XKt5DSA1h&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;jti&quot;</span>: <span class="string">&quot;7a6524c6-d31c-471b-a2cd-05a823eb8583&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;origin_jti&quot;</span>: <span class="string">&quot;da0835fd-4515-4fc4-953c-41b64c2a63d8&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;sub&quot;</span>: <span class="string">&quot;9cce2eae-0dcf-4299-bdf6-0765c6231938&quot;</span>,</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;token_use&quot;</span>: <span class="string">&quot;id&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">———————————</span><br><span class="line"></span><br><span class="line">DevOps - Development and operation culture</span><br><span class="line"></span><br><span class="line">standardize</span><br><span class="line"></span><br><span class="line">Infrastructure as code - IaC</span><br><span class="line"></span><br><span class="line">observability - logging metrics tracing</span><br><span class="line"></span><br><span class="line">EventBridge</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@annotation == @director</span><br><span class="line"></span><br><span class="line">避免Lambda looping是 不使用Lambda invoke 使用StepsFunction</span><br><span class="line"></span><br><span class="line">用retry取代loop</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>AWS</category>
       </categories>
@@ -1091,19 +1091,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ElasticSearch Basic Memo</title>
-    <url>/posts/6ce2e1a9/</url>
-    <content><![CDATA[<h3 id="ElasticSearch-Basic-Memo"><a href="#ElasticSearch-Basic-Memo" class="headerlink" title="ElasticSearch Basic Memo"></a>ElasticSearch Basic Memo</h3><span id="more"></span>
-<p>這篇紀錄ElasticSearch Basic Memo。</p>
-<h3 id="Memo"><a href="#Memo" class="headerlink" title="Memo"></a>Memo</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">elastic.co</span><br><span class="line"></span><br><span class="line">./bin/elasticsearch -E xpack.security.enabled=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">./bin/elasticsearch -d</span><br><span class="line"></span><br><span class="line">./bin/kibana &amp;</span><br><span class="line"></span><br><span class="line">DSL domain specific language</span><br><span class="line"></span><br><span class="line">query (沒有cache) versus filter (有cache)</span><br><span class="line"></span><br><span class="line">bool query support must(必須滿足) &amp; term filter(比對)</span><br><span class="line"></span><br><span class="line">query term === sql <span class="built_in">where</span>條件</span><br><span class="line"></span><br><span class="line">indexing =&gt; 將句子裡的單字拆解成各個token並轉小寫</span><br><span class="line"></span><br><span class="line">_type(舊版) -&gt; _doc(新版)</span><br><span class="line"></span><br><span class="line">8.0版 不支援 */_doc/_mapping</span><br><span class="line"></span><br><span class="line">elasticsearch 的 _mapping 不允許破壞性更新</span><br><span class="line"></span><br><span class="line">default </span><br><span class="line">1.<span class="built_in">type</span> 是給 text</span><br><span class="line">2.fields keyword <span class="built_in">type</span> : keyword</span><br><span class="line">因兩種indexing都做，所以佔用的disk部分會較多</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;fields&quot;</span>: &#123; <span class="string">&quot;original&quot;</span>: &#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;keyword&quot;</span>&#125; &#125; 允許擴充</span><br><span class="line"></span><br><span class="line">*設計mapping再做document indexing</span><br><span class="line"></span><br><span class="line">neal real-time 近乎即時 equal Non real-time</span><br><span class="line"></span><br><span class="line">Apache Lucene 做全文檢索的open <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line">Term 進行搜尋時的最小單位</span><br><span class="line"></span><br><span class="line">Master node可參與選舉 Voting node 只能參與投票</span><br><span class="line"></span><br><span class="line">一台機器有500 shard versus 五台機器各有100個shard</span><br><span class="line"></span><br><span class="line">一個shard大小不要超過50GB (非絕對) why?</span><br><span class="line">考慮Cluster規模 及 資料大小</span><br><span class="line"></span><br><span class="line">GET API is real-time，search is neal real-time</span><br><span class="line"></span><br><span class="line">mapping stored_fields</span><br><span class="line"></span><br><span class="line">Update不是真的更新 是將舊文件刪除 重新indexing (delete + add)</span><br><span class="line"></span><br><span class="line">_seq_no 是 該index中只要有異動給的流水號</span><br><span class="line"></span><br><span class="line">_primary_term : primary_shard 有改變就會+1</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;_source&quot;</span>:&#123;<span class="string">&quot;enabled&quot;</span>:<span class="literal">false</span>&#125; 不儲存在_source 但還是查的到_id</span><br><span class="line"></span><br><span class="line">Bulk API use NDJSON(newline-delimited JSON)</span><br><span class="line">一行一個JSON object</span><br><span class="line">先從1000~5000 documents/request 5MB~15MB開始測量</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;_shards&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;total&quot;</span>: 2,</span><br><span class="line">	<span class="string">&quot;successful&quot;</span>: 2,</span><br><span class="line">	<span class="string">&quot;skipped&quot;</span>: 0,</span><br><span class="line">	<span class="string">&quot;failed&quot;</span>: 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_search bool must + filter</span><br><span class="line"></span><br><span class="line">from + size 不能超過 index.max_result_window (10000筆)</span><br><span class="line"></span><br><span class="line">ElasticSearch Sort很耗記憶體</span><br><span class="line"></span><br><span class="line">不要讓使用者直接存取index 而是讓使用者存取<span class="built_in">alias</span></span><br><span class="line"></span><br><span class="line">Global Priority Queue 會拿回 (from + size) * Local Priority Queue數量</span><br><span class="line"></span><br><span class="line">Deep pagination</span><br><span class="line">1.Scroll API 建立snapshot</span><br><span class="line">2.Search after </span><br><span class="line"></span><br><span class="line"><span class="string">&quot;apple&quot;</span> <span class="string">&quot;apple a&quot;</span> <span class="string">&quot;apple b&quot;</span> 放在不同shard的score會相同</span><br><span class="line"></span><br><span class="line">Elasticsearch Persistence </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ElasticSearch Day2</span><br><span class="line"></span><br><span class="line">edge-ngram used by autocomplete &amp; auto-suggestion</span><br><span class="line"></span><br><span class="line">range query : 適用數值 &amp; 日期條件</span><br><span class="line"></span><br><span class="line">terms query 等於 RDB IN的語法</span><br><span class="line"></span><br><span class="line">fuzzy 查詢建議使用其它查詢來代替 因效能不佳!</span><br><span class="line"></span><br><span class="line">Nested Term Aggregation</span><br><span class="line"></span><br><span class="line">doc_values : <span class="literal">false</span> 節省硬碟空間</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ElasticSearch</category>
-      </categories>
-      <tags>
-        <tag>ElasticSearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Eclipse - Set LineBreak For Unix</title>
     <url>/posts/97263af2/</url>
     <content><![CDATA[<h3 id="Eclipse-Set-LineBreak-For-Unix"><a href="#Eclipse-Set-LineBreak-For-Unix" class="headerlink" title="Eclipse - Set LineBreak For Unix"></a>Eclipse - Set LineBreak For Unix</h3><span id="more"></span>
@@ -1118,6 +1105,19 @@
       </categories>
       <tags>
         <tag>LineBreak</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ElasticSearch Basic Memo</title>
+    <url>/posts/6ce2e1a9/</url>
+    <content><![CDATA[<h3 id="ElasticSearch-Basic-Memo"><a href="#ElasticSearch-Basic-Memo" class="headerlink" title="ElasticSearch Basic Memo"></a>ElasticSearch Basic Memo</h3><span id="more"></span>
+<p>這篇紀錄ElasticSearch Basic Memo。</p>
+<h3 id="Memo"><a href="#Memo" class="headerlink" title="Memo"></a>Memo</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">elastic.co</span><br><span class="line"></span><br><span class="line">./bin/elasticsearch -E xpack.security.enabled=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">./bin/elasticsearch -d</span><br><span class="line"></span><br><span class="line">./bin/kibana &amp;</span><br><span class="line"></span><br><span class="line">DSL domain specific language</span><br><span class="line"></span><br><span class="line">query (沒有cache) versus filter (有cache)</span><br><span class="line"></span><br><span class="line">bool query support must(必須滿足) &amp; term filter(比對)</span><br><span class="line"></span><br><span class="line">query term === sql <span class="built_in">where</span>條件</span><br><span class="line"></span><br><span class="line">indexing =&gt; 將句子裡的單字拆解成各個token並轉小寫</span><br><span class="line"></span><br><span class="line">_type(舊版) -&gt; _doc(新版)</span><br><span class="line"></span><br><span class="line">8.0版 不支援 */_doc/_mapping</span><br><span class="line"></span><br><span class="line">elasticsearch 的 _mapping 不允許破壞性更新</span><br><span class="line"></span><br><span class="line">default </span><br><span class="line">1.<span class="built_in">type</span> 是給 text</span><br><span class="line">2.fields keyword <span class="built_in">type</span> : keyword</span><br><span class="line">因兩種indexing都做，所以佔用的disk部分會較多</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;fields&quot;</span>: &#123; <span class="string">&quot;original&quot;</span>: &#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;keyword&quot;</span>&#125; &#125; 允許擴充</span><br><span class="line"></span><br><span class="line">*設計mapping再做document indexing</span><br><span class="line"></span><br><span class="line">neal real-time 近乎即時 equal Non real-time</span><br><span class="line"></span><br><span class="line">Apache Lucene 做全文檢索的open <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line">Term 進行搜尋時的最小單位</span><br><span class="line"></span><br><span class="line">Master node可參與選舉 Voting node 只能參與投票</span><br><span class="line"></span><br><span class="line">一台機器有500 shard versus 五台機器各有100個shard</span><br><span class="line"></span><br><span class="line">一個shard大小不要超過50GB (非絕對) why?</span><br><span class="line">考慮Cluster規模 及 資料大小</span><br><span class="line"></span><br><span class="line">GET API is real-time，search is neal real-time</span><br><span class="line"></span><br><span class="line">mapping stored_fields</span><br><span class="line"></span><br><span class="line">Update不是真的更新 是將舊文件刪除 重新indexing (delete + add)</span><br><span class="line"></span><br><span class="line">_seq_no 是 該index中只要有異動給的流水號</span><br><span class="line"></span><br><span class="line">_primary_term : primary_shard 有改變就會+1</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;_source&quot;</span>:&#123;<span class="string">&quot;enabled&quot;</span>:<span class="literal">false</span>&#125; 不儲存在_source 但還是查的到_id</span><br><span class="line"></span><br><span class="line">Bulk API use NDJSON(newline-delimited JSON)</span><br><span class="line">一行一個JSON object</span><br><span class="line">先從1000~5000 documents/request 5MB~15MB開始測量</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;_shards&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;total&quot;</span>: 2,</span><br><span class="line">	<span class="string">&quot;successful&quot;</span>: 2,</span><br><span class="line">	<span class="string">&quot;skipped&quot;</span>: 0,</span><br><span class="line">	<span class="string">&quot;failed&quot;</span>: 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_search bool must + filter</span><br><span class="line"></span><br><span class="line">from + size 不能超過 index.max_result_window (10000筆)</span><br><span class="line"></span><br><span class="line">ElasticSearch Sort很耗記憶體</span><br><span class="line"></span><br><span class="line">不要讓使用者直接存取index 而是讓使用者存取<span class="built_in">alias</span></span><br><span class="line"></span><br><span class="line">Global Priority Queue 會拿回 (from + size) * Local Priority Queue數量</span><br><span class="line"></span><br><span class="line">Deep pagination</span><br><span class="line">1.Scroll API 建立snapshot</span><br><span class="line">2.Search after </span><br><span class="line"></span><br><span class="line"><span class="string">&quot;apple&quot;</span> <span class="string">&quot;apple a&quot;</span> <span class="string">&quot;apple b&quot;</span> 放在不同shard的score會相同</span><br><span class="line"></span><br><span class="line">Elasticsearch Persistence </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ElasticSearch Day2</span><br><span class="line"></span><br><span class="line">edge-ngram used by autocomplete &amp; auto-suggestion</span><br><span class="line"></span><br><span class="line">range query : 適用數值 &amp; 日期條件</span><br><span class="line"></span><br><span class="line">terms query 等於 RDB IN的語法</span><br><span class="line"></span><br><span class="line">fuzzy 查詢建議使用其它查詢來代替 因效能不佳!</span><br><span class="line"></span><br><span class="line">Nested Term Aggregation</span><br><span class="line"></span><br><span class="line">doc_values : <span class="literal">false</span> 節省硬碟空間</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
       </tags>
   </entry>
   <entry>
@@ -1274,6 +1274,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Filebeat error loading config file: yaml: did not find expected key</title>
+    <url>/posts/25bf0346/</url>
+    <content><![CDATA[<h3 id="Intro-How-to-Solve-Filebeat-error-loading-config-file-yaml-did-not-find-expected-key"><a href="#Intro-How-to-Solve-Filebeat-error-loading-config-file-yaml-did-not-find-expected-key" class="headerlink" title="Intro How to Solve Filebeat error loading config file: yaml: did not find expected key"></a>Intro How to Solve Filebeat error loading config file: yaml: did not find expected key</h3><span id="more"></span>
+<p>這篇介紹How to Solve Filebeat error loading config file: yaml: did not find expected key。</p>
+<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">啟動filebeat時，process不會出現。用ps -ef |grep filebeat指令檢查</span><br><span class="line">去logs看發現有出現Filebeat error loading config file: yaml: did not find expected key相關error message</span><br><span class="line">造成process不會執行。</span><br></pre></td></tr></table></figure>
+
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">問題出在.yml設定檔可能有出現filebeat不認得的格式或字元</span><br><span class="line">logs通常會指出是哪一個.yml有問題</span><br><span class="line">這邊記錄碰到的問題是編輯yml檔案時，不小心多個一個特殊字元造成parse錯誤</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Filebeat</category>
+      </categories>
+      <tags>
+        <tag>Filebeat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Filebeat Pipeline</title>
     <url>/posts/bed5309/</url>
     <content><![CDATA[<h2 id="Filebeat-Pipeline"><a href="#Filebeat-Pipeline" class="headerlink" title="Filebeat Pipeline"></a>Filebeat Pipeline</h2><span id="more"></span>
@@ -1343,21 +1358,6 @@
       </categories>
       <tags>
         <tag>showInTaskBar</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Filebeat error loading config file: yaml: did not find expected key</title>
-    <url>/posts/25bf0346/</url>
-    <content><![CDATA[<h3 id="Intro-How-to-Solve-Filebeat-error-loading-config-file-yaml-did-not-find-expected-key"><a href="#Intro-How-to-Solve-Filebeat-error-loading-config-file-yaml-did-not-find-expected-key" class="headerlink" title="Intro How to Solve Filebeat error loading config file: yaml: did not find expected key"></a>Intro How to Solve Filebeat error loading config file: yaml: did not find expected key</h3><span id="more"></span>
-<p>這篇介紹How to Solve Filebeat error loading config file: yaml: did not find expected key。</p>
-<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">啟動filebeat時，process不會出現。用ps -ef |grep filebeat指令檢查</span><br><span class="line">去logs看發現有出現Filebeat error loading config file: yaml: did not find expected key相關error message</span><br><span class="line">造成process不會執行。</span><br></pre></td></tr></table></figure>
-
-<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">問題出在.yml設定檔可能有出現filebeat不認得的格式或字元</span><br><span class="line">logs通常會指出是哪一個.yml有問題</span><br><span class="line">這邊記錄碰到的問題是編輯yml檔案時，不小心多個一個特殊字元造成parse錯誤</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Filebeat</category>
-      </categories>
-      <tags>
-        <tag>Filebeat</tag>
       </tags>
   </entry>
   <entry>
@@ -1596,25 +1596,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Push GitHub To Update Categories And Tags Directory</title>
-    <url>/posts/76f21ac5/</url>
-    <content><![CDATA[<h3 id="Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory"><a href="#Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory" class="headerlink" title="Hexo Push GitHub To Update Categories And Tags Directory"></a>Hexo Push GitHub To Update Categories And Tags Directory</h3><span id="more"></span>
-<p>這篇介紹Hexo Push GitHub To Update Categories And Tags Directory。</p>
-<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在Hexo會有Categories和Tags分類</span><br><span class="line">有可能在編輯文章時，因大小寫關係而有兩種以上但相同分類的情況發生。</span><br><span class="line">ex: HTTP or Http</span><br><span class="line"></span><br><span class="line">https://&#123;url&#125;/categories/HTTP/</span><br><span class="line">https://&#123;url&#125;/categories/Http/</span><br><span class="line"></span><br><span class="line">上面會有一個連結會出現404錯誤，而Google search console搜尋index就會出錯。</span><br></pre></td></tr></table></figure>
-
-<h3 id="測試情境"><a href="#測試情境" class="headerlink" title="測試情境"></a>測試情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將Categories和Tags修正只剩一個正確名稱後</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br><span class="line"></span><br><span class="line">發現deploy後，GitHub上面的Categories和Tags Directory並不會更動。</span><br></pre></td></tr></table></figure>
-
-<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">找到本機 &#123;blog&#125;/.deploy_git</span><br><span class="line">開啟 Git Bash here</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">rm</span> -r --cached categories			//刪除remote categories Directory</span><br><span class="line">$ git commit -m <span class="string">&quot;delete categories&quot;</span>	 	//commit加上註解</span><br><span class="line">$ git <span class="built_in">rm</span> -r --cached tags				//刪除remote tags Directory</span><br><span class="line">$ git commit -m <span class="string">&quot;delete tags&quot;</span>	 		//commit加上註解</span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line">這樣GitHub上的categories和tags Directory就會消失</span><br><span class="line"></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br><span class="line"></span><br><span class="line">就會將新產生的Directory commit進GitHub repo.</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>Git</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Upgrade SEO</title>
     <url>/posts/4bef04a0/</url>
     <content><![CDATA[<h3 id="Hexo-Upgrade-SEO"><a href="#Hexo-Upgrade-SEO" class="headerlink" title="Hexo Upgrade SEO"></a>Hexo Upgrade SEO</h3><span id="more"></span>
@@ -1634,6 +1615,25 @@
         <category>Hexo</category>
       </categories>
       <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Push GitHub To Update Categories And Tags Directory</title>
+    <url>/posts/76f21ac5/</url>
+    <content><![CDATA[<h3 id="Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory"><a href="#Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory" class="headerlink" title="Hexo Push GitHub To Update Categories And Tags Directory"></a>Hexo Push GitHub To Update Categories And Tags Directory</h3><span id="more"></span>
+<p>這篇介紹Hexo Push GitHub To Update Categories And Tags Directory。</p>
+<h3 id="發生情境"><a href="#發生情境" class="headerlink" title="發生情境"></a>發生情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在Hexo會有Categories和Tags分類</span><br><span class="line">有可能在編輯文章時，因大小寫關係而有兩種以上但相同分類的情況發生。</span><br><span class="line">ex: HTTP or Http</span><br><span class="line"></span><br><span class="line">https://&#123;url&#125;/categories/HTTP/</span><br><span class="line">https://&#123;url&#125;/categories/Http/</span><br><span class="line"></span><br><span class="line">上面會有一個連結會出現404錯誤，而Google search console搜尋index就會出錯。</span><br></pre></td></tr></table></figure>
+
+<h3 id="測試情境"><a href="#測試情境" class="headerlink" title="測試情境"></a>測試情境</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將Categories和Tags修正只剩一個正確名稱後</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br><span class="line"></span><br><span class="line">發現deploy後，GitHub上面的Categories和Tags Directory並不會更動。</span><br></pre></td></tr></table></figure>
+
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">找到本機 &#123;blog&#125;/.deploy_git</span><br><span class="line">開啟 Git Bash here</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">rm</span> -r --cached categories			//刪除remote categories Directory</span><br><span class="line">$ git commit -m <span class="string">&quot;delete categories&quot;</span>	 	//commit加上註解</span><br><span class="line">$ git <span class="built_in">rm</span> -r --cached tags				//刪除remote tags Directory</span><br><span class="line">$ git commit -m <span class="string">&quot;delete tags&quot;</span>	 		//commit加上註解</span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line">這樣GitHub上的categories和tags Directory就會消失</span><br><span class="line"></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br><span class="line"></span><br><span class="line">就會將新產生的Directory commit進GitHub repo.</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Git</tag>
         <tag>Hexo</tag>
       </tags>
   </entry>
@@ -1731,6 +1731,20 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Change Git Directory For SourceTree</title>
+    <url>/posts/8f9e52f2/</url>
+    <content><![CDATA[<h3 id="How-To-Change-Git-Directory-For-SourceTree"><a href="#How-To-Change-Git-Directory-For-SourceTree" class="headerlink" title="How To Change Git Directory For SourceTree"></a>How To Change Git Directory For SourceTree</h3><span id="more"></span>
+<p>這篇介紹How To Change Git Directory For SourceTree。</p>
+<h3 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將該目錄下.git資料夾從舊的目錄複製到新的目錄</span><br><span class="line">使用SourceTree -&gt; Add -&gt; 新的目錄即可進行commit、pull、push</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SourceTree</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>SourceTree</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Change Jre To Zulu Jdk Path</title>
     <url>/posts/1abbf144/</url>
     <content><![CDATA[<h3 id="How-To-Change-Jre-To-Zulu-Jdk-Path"><a href="#How-To-Change-Jre-To-Zulu-Jdk-Path" class="headerlink" title="How To Change Jre To Zulu Jdk Path"></a>How To Change Jre To Zulu Jdk Path</h3><span id="more"></span>
@@ -1743,20 +1757,6 @@
         <tag>JDK</tag>
         <tag>Eclipse</tag>
         <tag>Jre</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Change Git Directory For SourceTree</title>
-    <url>/posts/8f9e52f2/</url>
-    <content><![CDATA[<h3 id="How-To-Change-Git-Directory-For-SourceTree"><a href="#How-To-Change-Git-Directory-For-SourceTree" class="headerlink" title="How To Change Git Directory For SourceTree"></a>How To Change Git Directory For SourceTree</h3><span id="more"></span>
-<p>這篇介紹How To Change Git Directory For SourceTree。</p>
-<h3 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">將該目錄下.git資料夾從舊的目錄複製到新的目錄</span><br><span class="line">使用SourceTree -&gt; Add -&gt; 新的目錄即可進行commit、pull、push</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SourceTree</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>SourceTree</tag>
       </tags>
   </entry>
   <entry>
@@ -1813,6 +1813,21 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Define Persistent Volume Claim</title>
+    <url>/posts/d23844dc/</url>
+    <content><![CDATA[<h2 id="How-To-Define-Persistent-Volume-Claim"><a href="#How-To-Define-Persistent-Volume-Claim" class="headerlink" title="How To Define Persistent Volume Claim"></a>How To Define Persistent Volume Claim</h2><span id="more"></span>
+<p>How To Define Persistent Volume Claim</p>
+<h2 id="Persistent-Volume-Claim"><a href="#Persistent-Volume-Claim" class="headerlink" title="Persistent Volume Claim"></a>Persistent Volume Claim</h2><p>用來定義storage<br>size大小以及Access mode存取權限</p>
+<p>Access mode存取權限如下<br>ReadWriteMany<br>ReadWriteOnce<br>ReadOnly</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">	name: pvc1</span><br><span class="line">spec:</span><br><span class="line">	accessModes:</span><br><span class="line">	  - ReadWriteOnce</span><br><span class="line">	volumeMode: Filesystem</span><br><span class="line">	resources:</span><br><span class="line">		requests:</span><br><span class="line">			storage: 2Gi</span><br><span class="line">	storageClassName: aa</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Create Private Registry On Docker</title>
     <url>/posts/45dd2d61/</url>
     <content><![CDATA[<h2 id="How-To-Create-Private-Registry-On-Docker"><a href="#How-To-Create-Private-Registry-On-Docker" class="headerlink" title="How To Create Private Registry On Docker"></a>How To Create Private Registry On Docker</h2><span id="more"></span>
@@ -1828,21 +1843,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>PrivateRegistry</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Define Persistent Volume Claim</title>
-    <url>/posts/d23844dc/</url>
-    <content><![CDATA[<h2 id="How-To-Define-Persistent-Volume-Claim"><a href="#How-To-Define-Persistent-Volume-Claim" class="headerlink" title="How To Define Persistent Volume Claim"></a>How To Define Persistent Volume Claim</h2><span id="more"></span>
-<p>How To Define Persistent Volume Claim</p>
-<h2 id="Persistent-Volume-Claim"><a href="#Persistent-Volume-Claim" class="headerlink" title="Persistent Volume Claim"></a>Persistent Volume Claim</h2><p>用來定義storage<br>size大小以及Access mode存取權限</p>
-<p>Access mode存取權限如下<br>ReadWriteMany<br>ReadWriteOnce<br>ReadOnly</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">	name: pvc1</span><br><span class="line">spec:</span><br><span class="line">	accessModes:</span><br><span class="line">	  - ReadWriteOnce</span><br><span class="line">	volumeMode: Filesystem</span><br><span class="line">	resources:</span><br><span class="line">		requests:</span><br><span class="line">			storage: 2Gi</span><br><span class="line">	storageClassName: aa</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>Kubernetes</tag>
       </tags>
   </entry>
   <entry>
@@ -2107,20 +2107,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Set Docker Do Not Auto Restart</title>
-    <url>/posts/ad896bfa/</url>
-    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
-<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
-<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>DockerCompose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Set Docker Bridge Mode</title>
     <url>/posts/f5360b04/</url>
     <content><![CDATA[<h3 id="How-To-Set-Docker-Bridge-Mode"><a href="#How-To-Set-Docker-Bridge-Mode" class="headerlink" title="How To Set Docker Bridge Mode"></a>How To Set Docker Bridge Mode</h3><span id="more"></span>
@@ -2134,6 +2120,20 @@
       <tags>
         <tag>Docker</tag>
         <tag>Network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Set Docker Do Not Auto Restart</title>
+    <url>/posts/ad896bfa/</url>
+    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
+<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
+<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>DockerCompose</tag>
       </tags>
   </entry>
   <entry>
@@ -4739,22 +4739,6 @@ REDIS - stores attributes into Redis only. Default mode.
       </tags>
   </entry>
   <entry>
-    <title>Intro Refactor Functions I</title>
-    <url>/posts/b5a9dd46/</url>
-    <content><![CDATA[<h2 id="Intro-Refactor-Functions-I"><a href="#Intro-Refactor-Functions-I" class="headerlink" title="Intro Refactor Functions I"></a>Intro Refactor Functions I</h2><span id="more"></span>
-<p>Intro Refactor Functions I</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>看到一個function，嘗試用三分鐘想理解程式碼的含意。<br>如果在三分鐘內無法理解時，代表這個function需要進<br>行重構。<br>1.提取Private method<br>2.重新命名有意義的名稱<br>3.code restructuring</p>
-<p>以下是進行照上面三步驟整理後的程式碼，效果是<br>三分鐘內可理解程式涵義。<br>example:</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static String renderPageWithSetupsAndTeardowns (PageData pageDate, boolean isSuite) throws Exception &#123;</span><br><span class="line">	boolean isTestPage = pageData.hasAttribute(<span class="string">&quot;Test&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (isTestPage) &#123;</span><br><span class="line">		WikiPage testPage = pageData.getWikiPage();</span><br><span class="line">		StringBuffer newPageContent = new StringBuffer();</span><br><span class="line">		includeSetupPages(testPage, newPageContent, isSuite);</span><br><span class="line">		newPageContent.append(pageData.getContent());</span><br><span class="line">		includeTeardownPages(testPage, newPageContent, isSuite);</span><br><span class="line">		pageData.setContent(newPageContent.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> pageData.getHtml();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-        <tag>Functions</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Intro Redisson Sharded Topic</title>
     <url>/posts/84c89632/</url>
     <content><![CDATA[<h3 id="Intro-Redisson-Sharded-Topic"><a href="#Intro-Redisson-Sharded-Topic" class="headerlink" title="Intro Redisson Sharded Topic"></a>Intro Redisson Sharded Topic</h3><span id="more"></span>
@@ -4768,6 +4752,22 @@ REDIS - stores attributes into Redis only. Default mode.
       <tags>
         <tag>Redisson</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro Refactor Functions I</title>
+    <url>/posts/b5a9dd46/</url>
+    <content><![CDATA[<h2 id="Intro-Refactor-Functions-I"><a href="#Intro-Refactor-Functions-I" class="headerlink" title="Intro Refactor Functions I"></a>Intro Refactor Functions I</h2><span id="more"></span>
+<p>Intro Refactor Functions I</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>看到一個function，嘗試用三分鐘想理解程式碼的含意。<br>如果在三分鐘內無法理解時，代表這個function需要進<br>行重構。<br>1.提取Private method<br>2.重新命名有意義的名稱<br>3.code restructuring</p>
+<p>以下是進行照上面三步驟整理後的程式碼，效果是<br>三分鐘內可理解程式涵義。<br>example:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static String renderPageWithSetupsAndTeardowns (PageData pageDate, boolean isSuite) throws Exception &#123;</span><br><span class="line">	boolean isTestPage = pageData.hasAttribute(<span class="string">&quot;Test&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (isTestPage) &#123;</span><br><span class="line">		WikiPage testPage = pageData.getWikiPage();</span><br><span class="line">		StringBuffer newPageContent = new StringBuffer();</span><br><span class="line">		includeSetupPages(testPage, newPageContent, isSuite);</span><br><span class="line">		newPageContent.append(pageData.getContent());</span><br><span class="line">		includeTeardownPages(testPage, newPageContent, isSuite);</span><br><span class="line">		pageData.setContent(newPageContent.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> pageData.getHtml();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+        <tag>Functions</tag>
       </tags>
   </entry>
   <entry>
@@ -5323,6 +5323,35 @@ REDIS - stores attributes into Redis only. Default mode.
       </tags>
   </entry>
   <entry>
+    <title>JavaScript-Intro Arrray.propotype methods</title>
+    <url>/posts/6f8b9258/</url>
+    <content><![CDATA[<h3 id="JavaScript-Intro-Arrray-propotype-methods"><a href="#JavaScript-Intro-Arrray-propotype-methods" class="headerlink" title="JavaScript-Intro Arrray.propotype methods"></a>JavaScript-Intro Arrray.propotype methods</h3><span id="more"></span>
+<p>這篇介紹JavaScript-Intro Arrray.propotype methods。</p>
+<h3 id="array-example"><a href="#array-example" class="headerlink" title="array example"></a>array example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">var people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;David&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;鍋燒意麵&#x27;</span>,</span><br><span class="line">    age: 18</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;Mary&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;炒麵&#x27;</span>,</span><br><span class="line">    age: 24</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;FeFe&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;蘿蔔泥&#x27;</span>,</span><br><span class="line">    age: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;Tona&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;蘿蔔泥&#x27;</span>,</span><br><span class="line">    age: 3</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">filter() 會回傳一個陣列，其條件是 <span class="built_in">return</span> 條件式為 <span class="literal">true</span> 的物件，很適合用在搜尋符合條件的資料</span><br><span class="line">--------</span><br><span class="line">var filterEmpty = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterEmpty);    // 沒有條件，會是一個空陣列</span><br><span class="line"></span><br><span class="line">var filterAgeThan5 = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;       // 取得大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterAgeThan5); // David, Mary 這兩個物件</span><br><span class="line"></span><br><span class="line">var filterDouble = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> index % 2 === 1;    // 取得陣列中雙數的物件</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterDouble);   // Mary, Tona 這兩個物件</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-find"><a href="#Array-prototype-find" class="headerlink" title="Array.prototype.find()"></a>Array.prototype.find()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find() 與 filter() 很像，但 find() 只會回傳一次值，且是第一次為 <span class="literal">true</span> 的值。</span><br><span class="line">--------</span><br><span class="line">var findEmpty = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(findEmpty);          // 沒有條件，會是 undefined</span><br><span class="line"></span><br><span class="line">var findAgeThan5 = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;           // 取得大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(findAgeThan5);       // 雖然答案有兩個，但只會回傳 David 這一個物件</span><br><span class="line"></span><br><span class="line">var findLike = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.like === <span class="string">&#x27;蘿蔔泥&#x27;</span>;  // 取得陣列 like === <span class="string">&#x27;蘿蔔泥&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(findLike); </span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach()"></a>Array.prototype.forEach()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">forEach 是這幾個陣列函式最單純的一個，不會額外回傳值，只單純執行每個陣列內的物件或值。</span><br><span class="line">--------</span><br><span class="line">var forEachIt = people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(item, index, array); // 物件, 索引, 全部陣列</span><br><span class="line">  <span class="built_in">return</span> item;                     // forEach 沒在 <span class="built_in">return</span> 的，所以這邊寫了也沒用</span><br><span class="line">&#125;);</span><br><span class="line">console.log(forEachIt);            // undefined</span><br><span class="line"></span><br><span class="line">people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  item.age = item.age + 1;         // forEach 就如同 <span class="keyword">for</span>，不過寫法更容易</span><br><span class="line">&#125;);</span><br><span class="line">console.log(people);  </span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map()"></a>Array.prototype.map()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</span><br><span class="line">如果不回傳則是 undefined，回傳數量等於原始陣列的長度 -&gt; 適合將原始的變數運算後重新組合一個新的陣列。</span><br><span class="line">--------</span><br><span class="line">var mapEmpty = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapEmpty);    // [undefined, undefined, undefined, undefined]</span><br><span class="line"></span><br><span class="line">var mapAgeThan5 = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;    // 比較大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapAgeThan5); // [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>]</span><br><span class="line"></span><br><span class="line">var mapAgeThan5_2 = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  // 錯誤示範</span><br><span class="line">  <span class="keyword">if</span> (item.age &gt; 5) &#123;</span><br><span class="line">    <span class="built_in">return</span> item;              // 回傳大於五歲的</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> <span class="literal">false</span>;               // 別以為空的或是 <span class="literal">false</span> 就不會回傳</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapAgeThan5_2);   // [&#123;name: <span class="string">&#x27;David&#x27;</span>...&#125;, &#123;name: <span class="string">&#x27;Mary&#x27;</span>...&#125;, <span class="literal">false</span>, <span class="literal">false</span>]</span><br><span class="line"></span><br><span class="line">var mapEat = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="keyword">if</span> (item.like !== <span class="string">&#x27;蘿蔔泥&#x27;</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;item.like&#125;</span> 好吃`;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;item.like&#125;</span> 不好吃`;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapEat);          // [<span class="string">&quot;鍋燒意麵 好吃&quot;</span>, <span class="string">&quot;炒麵 好吃&quot;</span>, <span class="string">&quot;蘿蔔泥 不好吃&quot;</span>, <span class="string">&quot;蘿蔔泥 不好吃&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-every"><a href="#Array-prototype-every" class="headerlink" title="Array.prototype.every()"></a>Array.prototype.every()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">every() 可以檢查所有的陣列是否符合條件，這僅會回傳一個值 <span class="literal">true</span> or <span class="literal">false</span>，可以用來檢查陣列中的內容是否符合特定條件。</span><br><span class="line">--------</span><br><span class="line">var ans = array.every(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(item, index, array); // 物件, 索引, 全部陣列</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 10 // 當全部 age 大於 10 才能回傳 <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans); // <span class="literal">false</span>: 只要有部分不符合，則為 <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">var ans2 = array.every(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">true</span>: 全部 age 都小於 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">some() 與 every()，都是回傳 <span class="literal">true</span> or <span class="literal">false</span>，差異僅在 every() 需完全符合，some() 僅需要部分符合。</span><br><span class="line">--------</span><br><span class="line">var ans = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 10 // 當全部 age 大於 10 才能回傳 <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans);  // <span class="literal">true</span>: 只要有部分符合，則為 <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">var ans2 = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">true</span>: 只要有部分符合，則為 <span class="literal">true</span>  </span><br><span class="line"></span><br><span class="line">var ans2 = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">false</span>: 全部都不符合則為 <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">與前一個回傳的值再次作運算，參數包含以下：</span><br><span class="line">accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</span><br><span class="line">currentValue: 當前變數</span><br><span class="line">currentIndex: 當前索引</span><br><span class="line">array: 全部陣列</span><br><span class="line">--------</span><br><span class="line">var reduceEmpty = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(reduceEmpty);                 // 沒有條件，會是 undefined</span><br><span class="line"></span><br><span class="line">var reducePlus = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">  // 分別為前一個回傳值, 目前值, 當前索引值</span><br><span class="line">  console.log(accumulator, currentValue, currentIndex);</span><br><span class="line">  <span class="built_in">return</span> accumulator + currentValue.age;  // 與前一個值相加</span><br><span class="line">&#125;, 0);                                    // 傳入初始化值為 0</span><br><span class="line">console.log(reducePlus);                  // 總和為 46</span><br><span class="line"></span><br><span class="line">var reducePlus = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">  console.log(<span class="string">&#x27;reduce&#x27;</span>, accumulator, currentValue, currentIndex)</span><br><span class="line">  <span class="built_in">return</span> Math.max( accumulator, currentValue.age ); // 與前一個值比較哪個大</span><br><span class="line">&#125;, 0);</span><br><span class="line">console.log(reducePlus);                  // 最大值為 24</span><br></pre></td></tr></table></figure>
+
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">var ans3 = people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(this) // 這邊的 this 就會使用後方傳入的</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;, people);         // 傳入的物件，替代 this，如果無則是 window</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript-Object.freeze() &amp; deepFreeze()</title>
     <url>/posts/c5feb9d2/</url>
     <content><![CDATA[<h2 id="JavaScript-Object-Freeze-deepFreeze"><a href="#JavaScript-Object-Freeze-deepFreeze" class="headerlink" title="JavaScript-Object.Freeze() &amp; deepFreeze()"></a>JavaScript-Object.Freeze() &amp; deepFreeze()</h2><span id="more"></span>
@@ -5473,35 +5502,6 @@ return &#123;
       </categories>
       <tags>
         <tag>for</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript-Intro Arrray.propotype methods</title>
-    <url>/posts/6f8b9258/</url>
-    <content><![CDATA[<h3 id="JavaScript-Intro-Arrray-propotype-methods"><a href="#JavaScript-Intro-Arrray-propotype-methods" class="headerlink" title="JavaScript-Intro Arrray.propotype methods"></a>JavaScript-Intro Arrray.propotype methods</h3><span id="more"></span>
-<p>這篇介紹JavaScript-Intro Arrray.propotype methods。</p>
-<h3 id="array-example"><a href="#array-example" class="headerlink" title="array example"></a>array example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">var people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;David&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;鍋燒意麵&#x27;</span>,</span><br><span class="line">    age: 18</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;Mary&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;炒麵&#x27;</span>,</span><br><span class="line">    age: 24</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;FeFe&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;蘿蔔泥&#x27;</span>,</span><br><span class="line">    age: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;Tona&#x27;</span>,</span><br><span class="line">    like: <span class="string">&#x27;蘿蔔泥&#x27;</span>,</span><br><span class="line">    age: 3</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">filter() 會回傳一個陣列，其條件是 <span class="built_in">return</span> 條件式為 <span class="literal">true</span> 的物件，很適合用在搜尋符合條件的資料</span><br><span class="line">--------</span><br><span class="line">var filterEmpty = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterEmpty);    // 沒有條件，會是一個空陣列</span><br><span class="line"></span><br><span class="line">var filterAgeThan5 = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;       // 取得大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterAgeThan5); // David, Mary 這兩個物件</span><br><span class="line"></span><br><span class="line">var filterDouble = people.filter(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> index % 2 === 1;    // 取得陣列中雙數的物件</span><br><span class="line">&#125;);</span><br><span class="line">console.log(filterDouble);   // Mary, Tona 這兩個物件</span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-find"><a href="#Array-prototype-find" class="headerlink" title="Array.prototype.find()"></a>Array.prototype.find()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find() 與 filter() 很像，但 find() 只會回傳一次值，且是第一次為 <span class="literal">true</span> 的值。</span><br><span class="line">--------</span><br><span class="line">var findEmpty = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(findEmpty);          // 沒有條件，會是 undefined</span><br><span class="line"></span><br><span class="line">var findAgeThan5 = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;           // 取得大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(findAgeThan5);       // 雖然答案有兩個，但只會回傳 David 這一個物件</span><br><span class="line"></span><br><span class="line">var findLike = people.find(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.like === <span class="string">&#x27;蘿蔔泥&#x27;</span>;  // 取得陣列 like === <span class="string">&#x27;蘿蔔泥&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(findLike); </span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach()"></a>Array.prototype.forEach()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">forEach 是這幾個陣列函式最單純的一個，不會額外回傳值，只單純執行每個陣列內的物件或值。</span><br><span class="line">--------</span><br><span class="line">var forEachIt = people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(item, index, array); // 物件, 索引, 全部陣列</span><br><span class="line">  <span class="built_in">return</span> item;                     // forEach 沒在 <span class="built_in">return</span> 的，所以這邊寫了也沒用</span><br><span class="line">&#125;);</span><br><span class="line">console.log(forEachIt);            // undefined</span><br><span class="line"></span><br><span class="line">people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  item.age = item.age + 1;         // forEach 就如同 <span class="keyword">for</span>，不過寫法更容易</span><br><span class="line">&#125;);</span><br><span class="line">console.log(people);  </span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map()"></a>Array.prototype.map()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</span><br><span class="line">如果不回傳則是 undefined，回傳數量等於原始陣列的長度 -&gt; 適合將原始的變數運算後重新組合一個新的陣列。</span><br><span class="line">--------</span><br><span class="line">var mapEmpty = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapEmpty);    // [undefined, undefined, undefined, undefined]</span><br><span class="line"></span><br><span class="line">var mapAgeThan5 = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 5;    // 比較大於五歲的</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapAgeThan5); // [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>]</span><br><span class="line"></span><br><span class="line">var mapAgeThan5_2 = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  // 錯誤示範</span><br><span class="line">  <span class="keyword">if</span> (item.age &gt; 5) &#123;</span><br><span class="line">    <span class="built_in">return</span> item;              // 回傳大於五歲的</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> <span class="literal">false</span>;               // 別以為空的或是 <span class="literal">false</span> 就不會回傳</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapAgeThan5_2);   // [&#123;name: <span class="string">&#x27;David&#x27;</span>...&#125;, &#123;name: <span class="string">&#x27;Mary&#x27;</span>...&#125;, <span class="literal">false</span>, <span class="literal">false</span>]</span><br><span class="line"></span><br><span class="line">var mapEat = people.map(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="keyword">if</span> (item.like !== <span class="string">&#x27;蘿蔔泥&#x27;</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;item.like&#125;</span> 好吃`;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;item.like&#125;</span> 不好吃`;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(mapEat);          // [<span class="string">&quot;鍋燒意麵 好吃&quot;</span>, <span class="string">&quot;炒麵 好吃&quot;</span>, <span class="string">&quot;蘿蔔泥 不好吃&quot;</span>, <span class="string">&quot;蘿蔔泥 不好吃&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-every"><a href="#Array-prototype-every" class="headerlink" title="Array.prototype.every()"></a>Array.prototype.every()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">every() 可以檢查所有的陣列是否符合條件，這僅會回傳一個值 <span class="literal">true</span> or <span class="literal">false</span>，可以用來檢查陣列中的內容是否符合特定條件。</span><br><span class="line">--------</span><br><span class="line">var ans = array.every(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(item, index, array); // 物件, 索引, 全部陣列</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 10 // 當全部 age 大於 10 才能回傳 <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans); // <span class="literal">false</span>: 只要有部分不符合，則為 <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">var ans2 = array.every(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">true</span>: 全部 age 都小於 25</span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">some() 與 every()，都是回傳 <span class="literal">true</span> or <span class="literal">false</span>，差異僅在 every() 需完全符合，some() 僅需要部分符合。</span><br><span class="line">--------</span><br><span class="line">var ans = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 10 // 當全部 age 大於 10 才能回傳 <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans);  // <span class="literal">true</span>: 只要有部分符合，則為 <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">var ans2 = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">true</span>: 只要有部分符合，則為 <span class="literal">true</span>  </span><br><span class="line"></span><br><span class="line">var ans2 = people.some(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  <span class="built_in">return</span> item.age &gt; 25</span><br><span class="line">&#125;);</span><br><span class="line">console.log(ans2); // <span class="literal">false</span>: 全部都不符合則為 <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">與前一個回傳的值再次作運算，參數包含以下：</span><br><span class="line">accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</span><br><span class="line">currentValue: 當前變數</span><br><span class="line">currentIndex: 當前索引</span><br><span class="line">array: 全部陣列</span><br><span class="line">--------</span><br><span class="line">var reduceEmpty = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(reduceEmpty);                 // 沒有條件，會是 undefined</span><br><span class="line"></span><br><span class="line">var reducePlus = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">  // 分別為前一個回傳值, 目前值, 當前索引值</span><br><span class="line">  console.log(accumulator, currentValue, currentIndex);</span><br><span class="line">  <span class="built_in">return</span> accumulator + currentValue.age;  // 與前一個值相加</span><br><span class="line">&#125;, 0);                                    // 傳入初始化值為 0</span><br><span class="line">console.log(reducePlus);                  // 總和為 46</span><br><span class="line"></span><br><span class="line">var reducePlus = people.reduce(<span class="keyword">function</span>(accumulator, currentValue, currentIndex, array)&#123;</span><br><span class="line">  console.log(<span class="string">&#x27;reduce&#x27;</span>, accumulator, currentValue, currentIndex)</span><br><span class="line">  <span class="built_in">return</span> Math.max( accumulator, currentValue.age ); // 與前一個值比較哪個大</span><br><span class="line">&#125;, 0);</span><br><span class="line">console.log(reducePlus);                  // 最大值為 24</span><br></pre></td></tr></table></figure>
-
-<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">var ans3 = people.forEach(<span class="keyword">function</span>(item, index, array)&#123;</span><br><span class="line">  console.log(this) // 這邊的 this 就會使用後方傳入的</span><br><span class="line">  <span class="built_in">return</span> item.age &lt; 25</span><br><span class="line">&#125;, people);         // 傳入的物件，替代 this，如果無則是 window</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -9137,22 +9137,6 @@ Console.Read();
       </tags>
   </entry>
   <entry>
-    <title>多餘的註解</title>
-    <url>/posts/32959aed/</url>
-    <content><![CDATA[<h2 id="多餘的註解"><a href="#多餘的註解" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><span id="more"></span>
-<p>多餘的註解</p>
-<h2 id="多餘的註解-1"><a href="#多餘的註解-1" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><p>&#x2F;&#x2F; Utility method that returns when this.closed is true. Throws<br>&#x2F;&#x2F; an exception<br>&#x2F;&#x2F; if the timeout is reached.<br>public synchronized void waitForClose(final long timeoutMillis)<br>throws Exception<br>{<br>    if(!closed)<br>    {<br>        wait(timeoutMillis);<br>        if(!closed)<br>            throw new Exception(“MockResponseSender could not be closed”);<br>    }<br>}</p>
-<p>上面是一個含有開頭註解的簡單函式，這完全是個多餘的註解，讀<br>這段註解可能比讀程式碼花上更多時間。</p>
-<p>這段註解很明顯它沒有提供比程式碼本身透露出更多訊息，它沒有<br>解釋這段程式碼，也沒有提供這段程式碼的意圖或理由，它甚至比<br>程式碼本身更難理解。事實上，這段註解比程式本身更不精確，誤導<br>讀者接受不準確的資訊，而非真正瞭解程式碼。</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何中斷正在運行的quartz作業</title>
     <url>/posts/4cd6705c/</url>
     <content><![CDATA[<h3 id="如何中斷正在運行的quartz作業"><a href="#如何中斷正在運行的quartz作業" class="headerlink" title="如何中斷正在運行的quartz作業"></a>如何中斷正在運行的quartz作業</h3><span id="more"></span>
@@ -9171,6 +9155,22 @@ Console.Read();
       </categories>
       <tags>
         <tag>quartz</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多餘的註解</title>
+    <url>/posts/32959aed/</url>
+    <content><![CDATA[<h2 id="多餘的註解"><a href="#多餘的註解" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><span id="more"></span>
+<p>多餘的註解</p>
+<h2 id="多餘的註解-1"><a href="#多餘的註解-1" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><p>&#x2F;&#x2F; Utility method that returns when this.closed is true. Throws<br>&#x2F;&#x2F; an exception<br>&#x2F;&#x2F; if the timeout is reached.<br>public synchronized void waitForClose(final long timeoutMillis)<br>throws Exception<br>{<br>    if(!closed)<br>    {<br>        wait(timeoutMillis);<br>        if(!closed)<br>            throw new Exception(“MockResponseSender could not be closed”);<br>    }<br>}</p>
+<p>上面是一個含有開頭註解的簡單函式，這完全是個多餘的註解，讀<br>這段註解可能比讀程式碼花上更多時間。</p>
+<p>這段註解很明顯它沒有提供比程式碼本身透露出更多訊息，它沒有<br>解釋這段程式碼，也沒有提供這段程式碼的意圖或理由，它甚至比<br>程式碼本身更難理解。事實上，這段註解比程式本身更不精確，誤導<br>讀者接受不準確的資訊，而非真正瞭解程式碼。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
       </tags>
   </entry>
   <entry>
@@ -9597,13 +9597,12 @@ public override void BuildLegRight()
       </tags>
   </entry>
   <entry>
-    <title>物件型態 的參數</title>
-    <url>/posts/76c33cf7/</url>
-    <content><![CDATA[<h2 id="關於-物件型態-的參數"><a href="#關於-物件型態-的參數" class="headerlink" title="關於 物件型態 的參數"></a>關於 物件型態 的參數</h2><span id="more"></span>
-<p>關於 物件型態 的參數</p>
-<h2 id="關於-物件型態-的參數-1"><a href="#關於-物件型態-的參數-1" class="headerlink" title="關於 物件型態 的參數"></a>關於 物件型態 的參數</h2><p>當一個函式看起來需要超過兩個或三個以上的參數時，<br>需要將當中的一些參數包裝在一個類別裡。</p>
-<p>example:<br>Circle makeCircle(double x, double y, double radius);<br>Circle makeCircle(Point center, double radius);</p>
-<p>利用建立物件的方式，減少函式參數的數量。當一堆變數一起被傳遞時，<br>像上例的變數x和變數y，它們是某個概念裡的相似部分，而這個概念<br>應該獲得一個屬於它的名稱。</p>
+    <title>添加 有意義的 上下文資訊</title>
+    <url>/posts/9114199b/</url>
+    <content><![CDATA[<h2 id="添加-有意義的-上下文資訊"><a href="#添加-有意義的-上下文資訊" class="headerlink" title="添加 有意義的 上下文資訊"></a>添加 有意義的 上下文資訊</h2><span id="more"></span>
+<p>添加 有意義的 上下文資訊</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>以下幾個欄位:firstName、lastName、street、houseNumber<br>、city、state及zipCode，放在一起看很清楚是地址資訊。</p>
+<p>但如果只單獨看到state，可能沒辦法知道是地址資訊。<br>因此可以用字首來增加上下文資訊。<br>ex:addrFirstName、addrLastName、addrState…等<br>更好的做法是產生一個名稱為Address的類別，將有關的<br>屬性和函式都放在該類別裡面，連編譯器都能理解。</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
@@ -9613,12 +9612,13 @@ public override void BuildLegRight()
       </tags>
   </entry>
   <entry>
-    <title>添加 有意義的 上下文資訊</title>
-    <url>/posts/9114199b/</url>
-    <content><![CDATA[<h2 id="添加-有意義的-上下文資訊"><a href="#添加-有意義的-上下文資訊" class="headerlink" title="添加 有意義的 上下文資訊"></a>添加 有意義的 上下文資訊</h2><span id="more"></span>
-<p>添加 有意義的 上下文資訊</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>以下幾個欄位:firstName、lastName、street、houseNumber<br>、city、state及zipCode，放在一起看很清楚是地址資訊。</p>
-<p>但如果只單獨看到state，可能沒辦法知道是地址資訊。<br>因此可以用字首來增加上下文資訊。<br>ex:addrFirstName、addrLastName、addrState…等<br>更好的做法是產生一個名稱為Address的類別，將有關的<br>屬性和函式都放在該類別裡面，連編譯器都能理解。</p>
+    <title>物件型態 的參數</title>
+    <url>/posts/76c33cf7/</url>
+    <content><![CDATA[<h2 id="關於-物件型態-的參數"><a href="#關於-物件型態-的參數" class="headerlink" title="關於 物件型態 的參數"></a>關於 物件型態 的參數</h2><span id="more"></span>
+<p>關於 物件型態 的參數</p>
+<h2 id="關於-物件型態-的參數-1"><a href="#關於-物件型態-的參數-1" class="headerlink" title="關於 物件型態 的參數"></a>關於 物件型態 的參數</h2><p>當一個函式看起來需要超過兩個或三個以上的參數時，<br>需要將當中的一些參數包裝在一個類別裡。</p>
+<p>example:<br>Circle makeCircle(double x, double y, double radius);<br>Circle makeCircle(Point center, double radius);</p>
+<p>利用建立物件的方式，減少函式參數的數量。當一堆變數一起被傳遞時，<br>像上例的變數x和變數y，它們是某個概念裡的相似部分，而這個概念<br>應該獲得一個屬於它的名稱。</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
@@ -11379,6 +11379,37 @@ public ConcreteSubject Subject
       </categories>
       <tags>
         <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雙重鎖定</title>
+    <url>/posts/670a19d3/</url>
+    <content><![CDATA[<h2 id="雙重鎖定"><a href="#雙重鎖定" class="headerlink" title="雙重鎖定"></a>雙重鎖定</h2><span id="more"></span>
+<p>雙重鎖定</p>
+<h2 id="雙重鎖定-1"><a href="#雙重鎖定-1" class="headerlink" title="雙重鎖定"></a>雙重鎖定</h2><p>下方程式碼若instance為null並且同時有兩個執行緒調用<br>GetInstance()方法時，它們將都可以透過第一重instance<br>&#x3D;&#x3D;null的判斷。然後由於lock機制，這兩個執行緒則只有<br>一個進入，另一個在外排隊等候，必須要其中一個進入並<br>出來後，另一個才能進入。</p>
+<p>class Singleton<br>{<br>    …<br>    …</p>
+<pre><code>public static Singleton GetInstance()
+&#123;
+    if (instance == null)
+    &#123;
+        lock(syncRoot)
+        &#123;
+            if (instance == null)
+            &#123;
+                instance = new Singleton();
+            &#125;
+        &#125;
+    &#125;
+    return instance;
+&#125;
+</code></pre>
+<p>}</p>
+]]></content>
+      <categories>
+        <category>ObjectOrientedProgramming</category>
+      </categories>
+      <tags>
+        <tag>ObjectOrientedProgramming</tag>
       </tags>
   </entry>
   <entry>
