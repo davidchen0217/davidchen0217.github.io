@@ -30,19 +30,6 @@
       </tags>
   </entry>
   <entry>
-    <title>About ElasticSearch Composite Aggregation AfterKey</title>
-    <url>/posts/9774d5f7/</url>
-    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
-<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
-<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ElasticSearch</category>
-      </categories>
-      <tags>
-        <tag>ElasticSearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>About Cache Control</title>
     <url>/posts/1bdfcea4/</url>
     <content><![CDATA[<h2 id="About-Cache-Control"><a href="#About-Cache-Control" class="headerlink" title="About Cache Control"></a>About Cache Control</h2><span id="more"></span>
@@ -58,6 +45,19 @@
       </categories>
       <tags>
         <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About ElasticSearch Composite Aggregation AfterKey</title>
+    <url>/posts/9774d5f7/</url>
+    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
+<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
+<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
       </tags>
   </entry>
   <entry>
@@ -141,6 +141,19 @@
       </tags>
   </entry>
   <entry>
+    <title>About Redis Timeout Exception</title>
+    <url>/posts/16a902aa/</url>
+    <content><![CDATA[<h3 id="Intro-About-Redis-Timeout-Exception"><a href="#Intro-About-Redis-Timeout-Exception" class="headerlink" title="Intro About Redis Timeout Exception"></a>Intro About Redis Timeout Exception</h3><span id="more"></span>
+<p>這篇介紹About Redis Timeout Exception.</p>
+<h3 id="官方文件建議"><a href="#官方文件建議" class="headerlink" title="官方文件建議"></a>官方文件建議</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">What is the cause of RedisTimeoutException?</span><br><span class="line"></span><br><span class="line">There are four main reasons:</span><br><span class="line"></span><br><span class="line">1.All netty threads are busy, leading to delays <span class="keyword">in</span> both Redis response decoding and sending commands to Redis</span><br><span class="line">2.All connections are busy</span><br><span class="line">3.Redis server takes too long to respond the request.</span><br><span class="line">4.Sync methods invocation <span class="keyword">in</span> async/reactive/rx listeners.</span><br><span class="line"></span><br><span class="line">irst try to <span class="built_in">set</span> follow values <span class="keyword">for</span> nettyThreads setting: 32, 64, 128, 256 this </span><br><span class="line">allow Redisson to get free netty thread to decode response or send <span class="built_in">command</span>. </span><br><span class="line">Next, try to increase retryInterval and/or <span class="built_in">timeout</span> to a reasonable value so that</span><br><span class="line">a <span class="built_in">command</span> can still gracefully fail without having the end user <span class="built_in">wait</span> forever.</span><br><span class="line">At the last step, try to increase connection pool setting so that Redisson can</span><br><span class="line">stand a better chance <span class="keyword">in</span> getting a free connection.</span><br><span class="line"></span><br><span class="line">Complex commands such as keys, hmget and big loops <span class="keyword">in</span> Lua scripts are more likely</span><br><span class="line">to see it than other commands. It is important to understand an operation can</span><br><span class="line">still <span class="built_in">timeout</span> despite the absence of it from the Redis slowlog. Slowlogs only</span><br><span class="line">record the time a <span class="built_in">command</span> is been processed by the Redis event loop and not</span><br><span class="line">anything before or after. Network issue may also cause this exception when a</span><br><span class="line">response is still in-flight.</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Redisson</category>
+      </categories>
+      <tags>
+        <tag>Redisson</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>About Redisson Lock</title>
     <url>/posts/84f06740/</url>
     <content><![CDATA[<h3 id="About-Redisson-Lock"><a href="#About-Redisson-Lock" class="headerlink" title="About Redisson Lock"></a>About Redisson Lock</h3><span id="more"></span>
@@ -166,19 +179,6 @@
 <h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">RCountDownLatch latch = redisson.getCountDownLatch(<span class="string">&quot;anyCountDownLatch&quot;</span>);</span><br><span class="line">latch.trySetCount(1);</span><br><span class="line">latch.await();</span><br><span class="line"></span><br><span class="line">// 在其它Thread</span><br><span class="line">RCountDownLatch latch = redisson.getCountDownLatch(<span class="string">&quot;anyCountDownLatch&quot;</span>);</span><br><span class="line">latch.countDown();</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Redisson</category>
-      </categories>
-      <tags>
-        <tag>Redisson</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>About Redis Timeout Exception</title>
-    <url>/posts/16a902aa/</url>
-    <content><![CDATA[<h3 id="Intro-About-Redis-Timeout-Exception"><a href="#Intro-About-Redis-Timeout-Exception" class="headerlink" title="Intro About Redis Timeout Exception"></a>Intro About Redis Timeout Exception</h3><span id="more"></span>
-<p>這篇介紹About Redis Timeout Exception.</p>
-<h3 id="官方文件建議"><a href="#官方文件建議" class="headerlink" title="官方文件建議"></a>官方文件建議</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">What is the cause of RedisTimeoutException?</span><br><span class="line"></span><br><span class="line">There are four main reasons:</span><br><span class="line"></span><br><span class="line">1.All netty threads are busy, leading to delays <span class="keyword">in</span> both Redis response decoding and sending commands to Redis</span><br><span class="line">2.All connections are busy</span><br><span class="line">3.Redis server takes too long to respond the request.</span><br><span class="line">4.Sync methods invocation <span class="keyword">in</span> async/reactive/rx listeners.</span><br><span class="line"></span><br><span class="line">irst try to <span class="built_in">set</span> follow values <span class="keyword">for</span> nettyThreads setting: 32, 64, 128, 256 this </span><br><span class="line">allow Redisson to get free netty thread to decode response or send <span class="built_in">command</span>. </span><br><span class="line">Next, try to increase retryInterval and/or <span class="built_in">timeout</span> to a reasonable value so that</span><br><span class="line">a <span class="built_in">command</span> can still gracefully fail without having the end user <span class="built_in">wait</span> forever.</span><br><span class="line">At the last step, try to increase connection pool setting so that Redisson can</span><br><span class="line">stand a better chance <span class="keyword">in</span> getting a free connection.</span><br><span class="line"></span><br><span class="line">Complex commands such as keys, hmget and big loops <span class="keyword">in</span> Lua scripts are more likely</span><br><span class="line">to see it than other commands. It is important to understand an operation can</span><br><span class="line">still <span class="built_in">timeout</span> despite the absence of it from the Redis slowlog. Slowlogs only</span><br><span class="line">record the time a <span class="built_in">command</span> is been processed by the Redis event loop and not</span><br><span class="line">anything before or after. Network issue may also cause this exception when a</span><br><span class="line">response is still in-flight.</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Redisson</category>
       </categories>
@@ -392,23 +392,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Broken Authentication</title>
-    <url>/posts/920425ad/</url>
-    <content><![CDATA[<h3 id="Intro-Broken-Authentication"><a href="#Intro-Broken-Authentication" class="headerlink" title="Intro Broken Authentication"></a>Intro Broken Authentication</h3><span id="more"></span>
-<p>這篇介紹Broken Authentication，它是一個資訊安全滲透測試的issue。</p>
-<h3 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">API未對用戶端傳送之HTTP Header進行過濾，導致hacker可藉由竄改HTTP Header</span><br><span class="line">(ex:於HTTP Header 加入 X-Forwarded-For變數)，可繞過後端IP偵測，存取管理</span><br><span class="line">登入頁面。甚至可以竄改 Header 插入特殊字元，對網站進行SQL Injection或</span><br><span class="line">Cross-Site Scripting攻擊。</span><br></pre></td></tr></table></figure>
-
-<h3 id="攻擊手法"><a href="#攻擊手法" class="headerlink" title="攻擊手法"></a>攻擊手法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在HTTP request新增 X-Forwarded-For:127.0.0.1 Header，即可繞過IP限制登入系統。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在檢查IP時，針對IPv4 Private IP Address限制存取。</span><br><span class="line"></span><br><span class="line">IPv4的私有IP定義在RFC 1918</span><br><span class="line"></span><br><span class="line">24位元區塊	10.0.0.0 – 10.255.255.255</span><br><span class="line">20位區塊	172.16.0.0 – 172.31.255.255</span><br><span class="line">16位元區塊	192.168.0.0 – 192.168.255.255</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Information Security</category>
-      </categories>
-      <tags>
-        <tag>Information Security</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java math BigDecimal toPlainString()</title>
     <url>/posts/f0e81a4b/</url>
     <content><![CDATA[<h3 id="Java-math-BigDecimal-toPlainString"><a href="#Java-math-BigDecimal-toPlainString" class="headerlink" title="Java.math.BigDecimal.toPlainString()"></a>Java.math.BigDecimal.toPlainString()</h3><span id="more"></span>
@@ -423,6 +406,23 @@
       </categories>
       <tags>
         <tag>BigDecimal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Broken Authentication</title>
+    <url>/posts/920425ad/</url>
+    <content><![CDATA[<h3 id="Intro-Broken-Authentication"><a href="#Intro-Broken-Authentication" class="headerlink" title="Intro Broken Authentication"></a>Intro Broken Authentication</h3><span id="more"></span>
+<p>這篇介紹Broken Authentication，它是一個資訊安全滲透測試的issue。</p>
+<h3 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">API未對用戶端傳送之HTTP Header進行過濾，導致hacker可藉由竄改HTTP Header</span><br><span class="line">(ex:於HTTP Header 加入 X-Forwarded-For變數)，可繞過後端IP偵測，存取管理</span><br><span class="line">登入頁面。甚至可以竄改 Header 插入特殊字元，對網站進行SQL Injection或</span><br><span class="line">Cross-Site Scripting攻擊。</span><br></pre></td></tr></table></figure>
+
+<h3 id="攻擊手法"><a href="#攻擊手法" class="headerlink" title="攻擊手法"></a>攻擊手法</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在HTTP request新增 X-Forwarded-For:127.0.0.1 Header，即可繞過IP限制登入系統。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在檢查IP時，針對IPv4 Private IP Address限制存取。</span><br><span class="line"></span><br><span class="line">IPv4的私有IP定義在RFC 1918</span><br><span class="line"></span><br><span class="line">24位元區塊	10.0.0.0 – 10.255.255.255</span><br><span class="line">20位區塊	172.16.0.0 – 172.31.255.255</span><br><span class="line">16位元區塊	192.168.0.0 – 192.168.255.255</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Information Security</category>
+      </categories>
+      <tags>
+        <tag>Information Security</tag>
       </tags>
   </entry>
   <entry>
@@ -1813,21 +1813,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Define Persistent Volume Claim</title>
-    <url>/posts/d23844dc/</url>
-    <content><![CDATA[<h2 id="How-To-Define-Persistent-Volume-Claim"><a href="#How-To-Define-Persistent-Volume-Claim" class="headerlink" title="How To Define Persistent Volume Claim"></a>How To Define Persistent Volume Claim</h2><span id="more"></span>
-<p>How To Define Persistent Volume Claim</p>
-<h2 id="Persistent-Volume-Claim"><a href="#Persistent-Volume-Claim" class="headerlink" title="Persistent Volume Claim"></a>Persistent Volume Claim</h2><p>用來定義storage<br>size大小以及Access mode存取權限</p>
-<p>Access mode存取權限如下<br>ReadWriteMany<br>ReadWriteOnce<br>ReadOnly</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">	name: pvc1</span><br><span class="line">spec:</span><br><span class="line">	accessModes:</span><br><span class="line">	  - ReadWriteOnce</span><br><span class="line">	volumeMode: Filesystem</span><br><span class="line">	resources:</span><br><span class="line">		requests:</span><br><span class="line">			storage: 2Gi</span><br><span class="line">	storageClassName: aa</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>Kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Create Private Registry On Docker</title>
     <url>/posts/45dd2d61/</url>
     <content><![CDATA[<h2 id="How-To-Create-Private-Registry-On-Docker"><a href="#How-To-Create-Private-Registry-On-Docker" class="headerlink" title="How To Create Private Registry On Docker"></a>How To Create Private Registry On Docker</h2><span id="more"></span>
@@ -1843,6 +1828,21 @@
       <tags>
         <tag>Docker</tag>
         <tag>PrivateRegistry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Define Persistent Volume Claim</title>
+    <url>/posts/d23844dc/</url>
+    <content><![CDATA[<h2 id="How-To-Define-Persistent-Volume-Claim"><a href="#How-To-Define-Persistent-Volume-Claim" class="headerlink" title="How To Define Persistent Volume Claim"></a>How To Define Persistent Volume Claim</h2><span id="more"></span>
+<p>How To Define Persistent Volume Claim</p>
+<h2 id="Persistent-Volume-Claim"><a href="#Persistent-Volume-Claim" class="headerlink" title="Persistent Volume Claim"></a>Persistent Volume Claim</h2><p>用來定義storage<br>size大小以及Access mode存取權限</p>
+<p>Access mode存取權限如下<br>ReadWriteMany<br>ReadWriteOnce<br>ReadOnly</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">	name: pvc1</span><br><span class="line">spec:</span><br><span class="line">	accessModes:</span><br><span class="line">	  - ReadWriteOnce</span><br><span class="line">	volumeMode: Filesystem</span><br><span class="line">	resources:</span><br><span class="line">		requests:</span><br><span class="line">			storage: 2Gi</span><br><span class="line">	storageClassName: aa</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
       </tags>
   </entry>
   <entry>
@@ -1948,6 +1948,21 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Install Nginx On Rocky8</title>
+    <url>/posts/63a80de6/</url>
+    <content><![CDATA[<h3 id="How-To-Install-Nginx-On-Rocky8"><a href="#How-To-Install-Nginx-On-Rocky8" class="headerlink" title="How To Install Nginx On Rocky8"></a>How To Install Nginx On Rocky8</h3><span id="more"></span>
+<p>這篇介紹How To Install Nginx On Rocky8。</p>
+<h3 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令"></a>安裝指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo dnf install nginx</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> nginx</span><br><span class="line">$ sudo systemctl start nginx</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Rocky8</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Install Gitlab Docker</title>
     <url>/posts/cd9b51d9/</url>
     <content><![CDATA[<h3 id="How-To-Install-Gitlab-Docker"><a href="#How-To-Install-Gitlab-Docker" class="headerlink" title="How To Install Gitlab Docker"></a>How To Install Gitlab Docker</h3><span id="more"></span>
@@ -1961,21 +1976,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Gitlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Install Nginx On Rocky8</title>
-    <url>/posts/63a80de6/</url>
-    <content><![CDATA[<h3 id="How-To-Install-Nginx-On-Rocky8"><a href="#How-To-Install-Nginx-On-Rocky8" class="headerlink" title="How To Install Nginx On Rocky8"></a>How To Install Nginx On Rocky8</h3><span id="more"></span>
-<p>這篇介紹How To Install Nginx On Rocky8。</p>
-<h3 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令"></a>安裝指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo dnf install nginx</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> nginx</span><br><span class="line">$ sudo systemctl start nginx</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Rocky8</tag>
-        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -2123,20 +2123,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Set Docker Do Not Auto Restart</title>
-    <url>/posts/ad896bfa/</url>
-    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
-<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
-<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>DockerCompose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Set Text File Encoding And New Text File Line Delimiter Cause Upgrade Eclipse</title>
     <url>/posts/44591a75/</url>
     <content><![CDATA[<h3 id="How-To-Set-Text-File-Encoding-And-New-Text-File-Line-Delimiter-Cause-Upgrade-Eclipse"><a href="#How-To-Set-Text-File-Encoding-And-New-Text-File-Line-Delimiter-Cause-Upgrade-Eclipse" class="headerlink" title="How To Set Text File Encoding And New Text File Line Delimiter Cause Upgrade Eclipse"></a>How To Set Text File Encoding And New Text File Line Delimiter Cause Upgrade Eclipse</h3><span id="more"></span>
@@ -2148,6 +2134,20 @@
       <tags>
         <tag>Eclipse</tag>
         <tag>Setting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Set Docker Do Not Auto Restart</title>
+    <url>/posts/ad896bfa/</url>
+    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
+<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
+<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>DockerCompose</tag>
       </tags>
   </entry>
   <entry>
@@ -2196,6 +2196,23 @@
       <tags>
         <tag>Linux</tag>
         <tag>Ping</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Solve CORS For Domains</title>
+    <url>/posts/e81a62cc/</url>
+    <content><![CDATA[<h2 id="How-To-Solve-CORS-For-Domains"><a href="#How-To-Solve-CORS-For-Domains" class="headerlink" title="How To Solve CORS For Domains"></a>How To Solve CORS For Domains</h2><span id="more"></span>
+<p>How To Solve CORS For Domains</p>
+<h2 id="How-To-Solve-CORS-For-Domains-1"><a href="#How-To-Solve-CORS-For-Domains-1" class="headerlink" title="How To Solve CORS For Domains"></a>How To Solve CORS For Domains</h2><p>因add_header在Nginx的設定不支持多行</p>
+<p>需要對多的不同domain進行設定Access-Control-Allow-Origin</p>
+<p>需參考一下作法</p>
+<p>set $access_control_allow_origin “<span class="exturl" data-url="aHR0cDovL3d3dy5nb29nbGUuY29tLw==">www.google.com<i class="fa fa-external-link-alt"></i></span>“;<br>if ($http_host ~ ^(..google.com)$ ) {<br>set $access_control_allow_origin $1;<br>}<br>if ($http_referer ~ ^(https://.*.google.com)/ ) {<br>set $access_control_allow_origin $1;<br>}<br>add_header Access-Control-Allow-Origin $access_control_allow_origin;</p>
+]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -6143,11 +6160,11 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Nginx Error Code 110 Operation timed out</title>
-    <url>/posts/f20d6743/</url>
-    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-110-Operation-timed-out"><a href="#Intro-Nginx-Error-Code-110-Operation-timed-out" class="headerlink" title="Intro Nginx Error Code 110 Operation timed out"></a>Intro Nginx Error Code 110 Operation timed out</h3><span id="more"></span>
-<p>這篇介紹Nginx Error Code 110 Operation timed out。</p>
-<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">出現upstream timed out (110: Operation timed out) <span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">代表到達<span class="built_in">timeout</span></span><br><span class="line"></span><br><span class="line">解決方法</span><br><span class="line">1.先調長<span class="built_in">timeout</span>再觀察是否還有其它錯誤</span><br><span class="line"></span><br><span class="line">proxy_read_timeout 120;   	===&gt; proxy_read_timeout 600;</span><br><span class="line">proxy_connect_timeout 120;	===&gt; proxy_connect_timeout 600;</span><br><span class="line">proxy_send_timeout 120;		===&gt; proxy_send_timeout 600;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Nginx Error Code 99 Address not available</title>
+    <url>/posts/b213a1ff/</url>
+    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-99-Address-not-available"><a href="#Intro-Nginx-Error-Code-99-Address-not-available" class="headerlink" title="Intro Nginx Error Code 99 Address not available"></a>Intro Nginx Error Code 99 Address not available</h3><span id="more"></span>
+<p>這篇介紹Nginx Error Code 99 Address not available。</p>
+<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">error <span class="built_in">log</span>出現connect() to IP:PORT failed (99: Address not available) </span><br><span class="line"><span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">檢查設定1:</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">   	proxy_http_version 1.1;</span><br><span class="line">   	proxy_set_header Connection <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">檢查設定2:</span><br><span class="line"></span><br><span class="line">upstream abc &#123;</span><br><span class="line">	server IP:PPORT;</span><br><span class="line">	keepalive 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -6156,11 +6173,11 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Nginx Error Code 99 Address not available</title>
-    <url>/posts/b213a1ff/</url>
-    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-99-Address-not-available"><a href="#Intro-Nginx-Error-Code-99-Address-not-available" class="headerlink" title="Intro Nginx Error Code 99 Address not available"></a>Intro Nginx Error Code 99 Address not available</h3><span id="more"></span>
-<p>這篇介紹Nginx Error Code 99 Address not available。</p>
-<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">error <span class="built_in">log</span>出現connect() to IP:PORT failed (99: Address not available) </span><br><span class="line"><span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">檢查設定1:</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">   	proxy_http_version 1.1;</span><br><span class="line">   	proxy_set_header Connection <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">檢查設定2:</span><br><span class="line"></span><br><span class="line">upstream abc &#123;</span><br><span class="line">	server IP:PPORT;</span><br><span class="line">	keepalive 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Nginx Error Code 110 Operation timed out</title>
+    <url>/posts/f20d6743/</url>
+    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-110-Operation-timed-out"><a href="#Intro-Nginx-Error-Code-110-Operation-timed-out" class="headerlink" title="Intro Nginx Error Code 110 Operation timed out"></a>Intro Nginx Error Code 110 Operation timed out</h3><span id="more"></span>
+<p>這篇介紹Nginx Error Code 110 Operation timed out。</p>
+<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">出現upstream timed out (110: Operation timed out) <span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">代表到達<span class="built_in">timeout</span></span><br><span class="line"></span><br><span class="line">解決方法</span><br><span class="line">1.先調長<span class="built_in">timeout</span>再觀察是否還有其它錯誤</span><br><span class="line"></span><br><span class="line">proxy_read_timeout 120;   	===&gt; proxy_read_timeout 600;</span><br><span class="line">proxy_connect_timeout 120;	===&gt; proxy_connect_timeout 600;</span><br><span class="line">proxy_send_timeout 120;		===&gt; proxy_send_timeout 600;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -9137,6 +9154,22 @@ Console.Read();
       </tags>
   </entry>
   <entry>
+    <title>多餘的註解</title>
+    <url>/posts/32959aed/</url>
+    <content><![CDATA[<h2 id="多餘的註解"><a href="#多餘的註解" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><span id="more"></span>
+<p>多餘的註解</p>
+<h2 id="多餘的註解-1"><a href="#多餘的註解-1" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><p>&#x2F;&#x2F; Utility method that returns when this.closed is true. Throws<br>&#x2F;&#x2F; an exception<br>&#x2F;&#x2F; if the timeout is reached.<br>public synchronized void waitForClose(final long timeoutMillis)<br>throws Exception<br>{<br>    if(!closed)<br>    {<br>        wait(timeoutMillis);<br>        if(!closed)<br>            throw new Exception(“MockResponseSender could not be closed”);<br>    }<br>}</p>
+<p>上面是一個含有開頭註解的簡單函式，這完全是個多餘的註解，讀<br>這段註解可能比讀程式碼花上更多時間。</p>
+<p>這段註解很明顯它沒有提供比程式碼本身透露出更多訊息，它沒有<br>解釋這段程式碼，也沒有提供這段程式碼的意圖或理由，它甚至比<br>程式碼本身更難理解。事實上，這段註解比程式本身更不精確，誤導<br>讀者接受不準確的資訊，而非真正瞭解程式碼。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何中斷正在運行的quartz作業</title>
     <url>/posts/4cd6705c/</url>
     <content><![CDATA[<h3 id="如何中斷正在運行的quartz作業"><a href="#如何中斷正在運行的quartz作業" class="headerlink" title="如何中斷正在運行的quartz作業"></a>如何中斷正在運行的quartz作業</h3><span id="more"></span>
@@ -9155,22 +9188,6 @@ Console.Read();
       </categories>
       <tags>
         <tag>quartz</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多餘的註解</title>
-    <url>/posts/32959aed/</url>
-    <content><![CDATA[<h2 id="多餘的註解"><a href="#多餘的註解" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><span id="more"></span>
-<p>多餘的註解</p>
-<h2 id="多餘的註解-1"><a href="#多餘的註解-1" class="headerlink" title="多餘的註解"></a>多餘的註解</h2><p>&#x2F;&#x2F; Utility method that returns when this.closed is true. Throws<br>&#x2F;&#x2F; an exception<br>&#x2F;&#x2F; if the timeout is reached.<br>public synchronized void waitForClose(final long timeoutMillis)<br>throws Exception<br>{<br>    if(!closed)<br>    {<br>        wait(timeoutMillis);<br>        if(!closed)<br>            throw new Exception(“MockResponseSender could not be closed”);<br>    }<br>}</p>
-<p>上面是一個含有開頭註解的簡單函式，這完全是個多餘的註解，讀<br>這段註解可能比讀程式碼花上更多時間。</p>
-<p>這段註解很明顯它沒有提供比程式碼本身透露出更多訊息，它沒有<br>解釋這段程式碼，也沒有提供這段程式碼的意圖或理由，它甚至比<br>程式碼本身更難理解。事實上，這段註解比程式本身更不精確，誤導<br>讀者接受不準確的資訊，而非真正瞭解程式碼。</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
       </tags>
   </entry>
   <entry>
