@@ -14,22 +14,6 @@
       </tags>
   </entry>
   <entry>
-    <title>About Blocks And Indenting</title>
-    <url>/posts/5e421880/</url>
-    <content><![CDATA[<h2 id="About-Blocks-and-Indenting"><a href="#About-Blocks-and-Indenting" class="headerlink" title="About Blocks and Indenting"></a>About Blocks and Indenting</h2><span id="more"></span>
-<p>About Blocks and Indenting</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>If、else、while及其它敘述都應該只有一行，那行程式通常是函式呼叫敘述。<br>不僅能維持private function的簡短，因在block裡被呼叫的函式，具備不<br>錯的函式名稱來描述意圖，能增添類似文件說明的價值。</p>
-<p>function不應該大到包含巢狀結構。因此，function裡的縮排程度不應該大<br>過一或兩層。當然，這會使得function更容易閱讀和理解。</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-        <tag>Functions</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>About Cache Control</title>
     <url>/posts/1bdfcea4/</url>
     <content><![CDATA[<h2 id="About-Cache-Control"><a href="#About-Cache-Control" class="headerlink" title="About Cache Control"></a>About Cache Control</h2><span id="more"></span>
@@ -48,16 +32,19 @@
       </tags>
   </entry>
   <entry>
-    <title>About ElasticSearch Composite Aggregation AfterKey</title>
-    <url>/posts/9774d5f7/</url>
-    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
-<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
-<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
+    <title>About Blocks And Indenting</title>
+    <url>/posts/5e421880/</url>
+    <content><![CDATA[<h2 id="About-Blocks-and-Indenting"><a href="#About-Blocks-and-Indenting" class="headerlink" title="About Blocks and Indenting"></a>About Blocks and Indenting</h2><span id="more"></span>
+<p>About Blocks and Indenting</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>If、else、while及其它敘述都應該只有一行，那行程式通常是函式呼叫敘述。<br>不僅能維持private function的簡短，因在block裡被呼叫的函式，具備不<br>錯的函式名稱來描述意圖，能增添類似文件說明的價值。</p>
+<p>function不應該大到包含巢狀結構。因此，function裡的縮排程度不應該大<br>過一或兩層。當然，這會使得function更容易閱讀和理解。</p>
+]]></content>
       <categories>
-        <category>ElasticSearch</category>
+        <category>CleanCode</category>
       </categories>
       <tags>
-        <tag>ElasticSearch</tag>
+        <tag>CleanCode</tag>
+        <tag>Functions</tag>
       </tags>
   </entry>
   <entry>
@@ -77,6 +64,19 @@
       </tags>
   </entry>
   <entry>
+    <title>About ElasticSearch Composite Aggregation AfterKey</title>
+    <url>/posts/9774d5f7/</url>
+    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
+<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
+<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>ElasticSearch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>About Github Run Failed Pages Build And Deployment</title>
     <url>/posts/705e511f/</url>
     <content><![CDATA[<h3 id="About-Github-Run-Failed-Pages-Build-And-Deployment"><a href="#About-Github-Run-Failed-Pages-Build-And-Deployment" class="headerlink" title="About Github Run Failed Pages Build And Deployment"></a>About Github Run Failed Pages Build And Deployment</h3><span id="more"></span>
@@ -87,21 +87,6 @@
       </categories>
       <tags>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>About Log4j2 Level</title>
-    <url>/posts/5013858/</url>
-    <content><![CDATA[<h3 id="關於Log4j2-Level"><a href="#關於Log4j2-Level" class="headerlink" title="關於Log4j2 Level"></a>關於Log4j2 Level</h3><span id="more"></span>
-<p>這篇介紹關於Log4j2 Level。</p>
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Log4j2 Logger Level Order:</span><br><span class="line"></span><br><span class="line">高---------------------------------------低</span><br><span class="line">FETAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE</span><br><span class="line"></span><br><span class="line">每個Level有對應的intLevel整數值，數值越小等級越高，數值越大等級越低。</span><br><span class="line"></span><br><span class="line">Level	intValue			用途</span><br><span class="line">OFF		0					不輸出任何日誌</span><br><span class="line">FETAL	100					造成應用程式停止的日誌</span><br><span class="line">ERROR	200					造成應用程式錯誤的日誌</span><br><span class="line">WARN	300					可能導致錯誤的日誌</span><br><span class="line">INFO	400					一般資訊的日誌</span><br><span class="line">DEBUG	500					除錯資訊的日誌</span><br><span class="line">TRACE	600					更細的除錯資訊，通常用來追蹤程式流程的日誌</span><br><span class="line">ALL		Integer.MAX_VALUE	輸出所有日誌</span><br><span class="line"></span><br><span class="line">Logger輸出的等級大於等於Logger設定的等級時才會輸出訊息。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Code:</span><br><span class="line"></span><br><span class="line">Level level = log.getLevel(); // INFO</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL name:&quot;</span> + level.name());</span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL intLevel:&quot;</span> + level.intLevel());</span><br><span class="line"></span><br><span class="line">log.fatal(<span class="string">&quot;FATAL&quot;</span>); // 印出</span><br><span class="line">log.error(<span class="string">&quot;ERROR&quot;</span>); // 印出</span><br><span class="line">log.warn(<span class="string">&quot;WARN&quot;</span>);   // 印出</span><br><span class="line">log.info(<span class="string">&quot;INFO&quot;</span>);   // 印出</span><br><span class="line">log.debug(<span class="string">&quot;DEBUG&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;TRACE&quot;</span>);</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">LEVEL name:INFO</span><br><span class="line">LEVEL intLevel:400</span><br><span class="line">FATAL</span><br><span class="line">ERROR</span><br><span class="line">WARN</span><br><span class="line">INFO</span><br><span class="line"></span><br><span class="line">memo:等級小於Info的DEBUG和TRACE不會印出</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Log4j2</category>
-      </categories>
-      <tags>
-        <tag>Log4j2</tag>
       </tags>
   </entry>
   <entry>
@@ -118,6 +103,21 @@
       <tags>
         <tag>Map</tag>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About Log4j2 Level</title>
+    <url>/posts/5013858/</url>
+    <content><![CDATA[<h3 id="關於Log4j2-Level"><a href="#關於Log4j2-Level" class="headerlink" title="關於Log4j2 Level"></a>關於Log4j2 Level</h3><span id="more"></span>
+<p>這篇介紹關於Log4j2 Level。</p>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Log4j2 Logger Level Order:</span><br><span class="line"></span><br><span class="line">高---------------------------------------低</span><br><span class="line">FETAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE</span><br><span class="line"></span><br><span class="line">每個Level有對應的intLevel整數值，數值越小等級越高，數值越大等級越低。</span><br><span class="line"></span><br><span class="line">Level	intValue			用途</span><br><span class="line">OFF		0					不輸出任何日誌</span><br><span class="line">FETAL	100					造成應用程式停止的日誌</span><br><span class="line">ERROR	200					造成應用程式錯誤的日誌</span><br><span class="line">WARN	300					可能導致錯誤的日誌</span><br><span class="line">INFO	400					一般資訊的日誌</span><br><span class="line">DEBUG	500					除錯資訊的日誌</span><br><span class="line">TRACE	600					更細的除錯資訊，通常用來追蹤程式流程的日誌</span><br><span class="line">ALL		Integer.MAX_VALUE	輸出所有日誌</span><br><span class="line"></span><br><span class="line">Logger輸出的等級大於等於Logger設定的等級時才會輸出訊息。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Code:</span><br><span class="line"></span><br><span class="line">Level level = log.getLevel(); // INFO</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL name:&quot;</span> + level.name());</span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL intLevel:&quot;</span> + level.intLevel());</span><br><span class="line"></span><br><span class="line">log.fatal(<span class="string">&quot;FATAL&quot;</span>); // 印出</span><br><span class="line">log.error(<span class="string">&quot;ERROR&quot;</span>); // 印出</span><br><span class="line">log.warn(<span class="string">&quot;WARN&quot;</span>);   // 印出</span><br><span class="line">log.info(<span class="string">&quot;INFO&quot;</span>);   // 印出</span><br><span class="line">log.debug(<span class="string">&quot;DEBUG&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;TRACE&quot;</span>);</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">LEVEL name:INFO</span><br><span class="line">LEVEL intLevel:400</span><br><span class="line">FATAL</span><br><span class="line">ERROR</span><br><span class="line">WARN</span><br><span class="line">INFO</span><br><span class="line"></span><br><span class="line">memo:等級小於Info的DEBUG和TRACE不會印出</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Log4j2</category>
+      </categories>
+      <tags>
+        <tag>Log4j2</tag>
       </tags>
   </entry>
   <entry>
@@ -316,6 +316,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Apache Kafka核心概念</title>
+    <url>/posts/f8bd17dc/</url>
+    <content><![CDATA[<h3 id="Apache-Kafka"><a href="#Apache-Kafka" class="headerlink" title="Apache Kafka"></a>Apache Kafka</h3><span id="more"></span>
+<p>Kafka是由Apache軟體基金會開發的一個開源流處理平台，由Scala和Java編寫。<br>該專案的目標是為處理即時資料提供一個統一、高吞吐、低延遲的平台。<br>Kafka 主要有以下幾個核心名詞:</p>
+<h3 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在 Kafka 中 topic 就像是 database 中的 table，為不同資料的類別名稱。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Partitions"><a href="#Partitions" class="headerlink" title="Partitions"></a>Partitions</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Topic 內切分為數個 Partitions，在 Kafka 中每個最小單位的訊息 (message) 或記錄 (record) </span><br><span class="line">以序列 append 的方式存放在在每個 Partition 中，Partition 可以分散式的存放在不同機器中，以防止單台機器故障。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Producers-and-Consumers"><a href="#Producers-and-Consumers" class="headerlink" title="Producers and Consumers"></a>Producers and Consumers</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producers 與 Consumers 分別對應 publish/subscribe 系統的概念，</span><br><span class="line">Producers 可以新增資料到 topic，Consumers 負責從資料讀取 topic。</span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/KafkaProducersConsumer.PNG" width="50%" />
+
+
+
+<h3 id="Brokers-and-Clusters"><a href="#Brokers-and-Clusters" class="headerlink" title="Brokers and Clusters"></a>Brokers and Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">一個單台 Kafka server 稱為 broker，每個 broker 接收來自 producers 的訊並寫入至磁碟中，同時回應來自 Consumers 的資料請求。</span><br><span class="line">多個 Brokers 連接在一起稱之為 Cluster，Cluster 中存在一個 controller （動態建立），負責分配 partitions 與監控 brokers 狀態。</span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/brokerAndCluster.png" width="50%" />
+
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Retention 是指 Kafka 可以設定的存放在磁碟中的一段時間，預設是 7 天或是資料量大於 1 GB 就會自動刪除一些資料。</span><br><span class="line">Kafka 可以針對不同 topic 設定不同 Retention。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Multiple-Clusters"><a href="#Multiple-Clusters" class="headerlink" title="Multiple Clusters"></a>Multiple Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Kafka 支援 Multiple Clusters，主要是為了可以提高可用性與安全性，</span><br><span class="line">如建立cluster 於不同的資料中心，並提供了稱之為 MirrorMaker 的工具讓你輕易在 clusters 之間複製資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ApacheKafka</category>
+      </categories>
+      <tags>
+        <tag>ApacheKafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ApacheKafka-Java</title>
     <url>/posts/712577f8/</url>
     <content><![CDATA[<h2 id="ApacheKafka-Java"><a href="#ApacheKafka-Java" class="headerlink" title="ApacheKafka-Java"></a>ApacheKafka-Java</h2><span id="more"></span>
@@ -343,33 +370,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Apache Kafka核心概念</title>
-    <url>/posts/f8bd17dc/</url>
-    <content><![CDATA[<h3 id="Apache-Kafka"><a href="#Apache-Kafka" class="headerlink" title="Apache Kafka"></a>Apache Kafka</h3><span id="more"></span>
-<p>Kafka是由Apache軟體基金會開發的一個開源流處理平台，由Scala和Java編寫。<br>該專案的目標是為處理即時資料提供一個統一、高吞吐、低延遲的平台。<br>Kafka 主要有以下幾個核心名詞:</p>
-<h3 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在 Kafka 中 topic 就像是 database 中的 table，為不同資料的類別名稱。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Partitions"><a href="#Partitions" class="headerlink" title="Partitions"></a>Partitions</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Topic 內切分為數個 Partitions，在 Kafka 中每個最小單位的訊息 (message) 或記錄 (record) </span><br><span class="line">以序列 append 的方式存放在在每個 Partition 中，Partition 可以分散式的存放在不同機器中，以防止單台機器故障。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Producers-and-Consumers"><a href="#Producers-and-Consumers" class="headerlink" title="Producers and Consumers"></a>Producers and Consumers</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producers 與 Consumers 分別對應 publish/subscribe 系統的概念，</span><br><span class="line">Producers 可以新增資料到 topic，Consumers 負責從資料讀取 topic。</span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/KafkaProducersConsumer.PNG" width="50%" />
-
-
-
-<h3 id="Brokers-and-Clusters"><a href="#Brokers-and-Clusters" class="headerlink" title="Brokers and Clusters"></a>Brokers and Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">一個單台 Kafka server 稱為 broker，每個 broker 接收來自 producers 的訊並寫入至磁碟中，同時回應來自 Consumers 的資料請求。</span><br><span class="line">多個 Brokers 連接在一起稱之為 Cluster，Cluster 中存在一個 controller （動態建立），負責分配 partitions 與監控 brokers 狀態。</span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/brokerAndCluster.png" width="50%" />
-
-<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Retention 是指 Kafka 可以設定的存放在磁碟中的一段時間，預設是 7 天或是資料量大於 1 GB 就會自動刪除一些資料。</span><br><span class="line">Kafka 可以針對不同 topic 設定不同 Retention。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Multiple-Clusters"><a href="#Multiple-Clusters" class="headerlink" title="Multiple Clusters"></a>Multiple Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Kafka 支援 Multiple Clusters，主要是為了可以提高可用性與安全性，</span><br><span class="line">如建立cluster 於不同的資料中心，並提供了稱之為 MirrorMaker 的工具讓你輕易在 clusters 之間複製資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ApacheKafka</category>
-      </categories>
-      <tags>
-        <tag>ApacheKafka</tag>
       </tags>
   </entry>
   <entry>
@@ -686,25 +686,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS7安裝Jdk和Tomcat</title>
-    <url>/posts/8974fa5e/</url>
-    <content><![CDATA[<h3 id="CentOS7安裝Jdk和Tomcat"><a href="#CentOS7安裝Jdk和Tomcat" class="headerlink" title="CentOS7安裝Jdk和Tomcat"></a>CentOS7安裝Jdk和Tomcat</h3><span id="more"></span>
-<p>Step1: 將jdk版本解壓縮至 &#x2F;usr&#x2F;local&#x2F;java 下<br>Step2: </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure>
-<p>Step3: 將apache-tomcat版本解壓縮至 &#x2F;usr&#x2F;local 下<br>Step4: </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure>
-<p>Step5: 改正確時區 timedatectl set-timezone Asia&#x2F;Taipei</p>
-]]></content>
-      <categories>
-        <category>CentOS7</category>
-      </categories>
-      <tags>
-        <tag>CentOS7</tag>
-        <tag>JDK</tag>
-        <tag>Tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS7安裝docker RabbitMQ</title>
     <url>/posts/27b5d2f3/</url>
     <content><![CDATA[<h3 id="CentOS7安裝docker-RabbitMQ"><a href="#CentOS7安裝docker-RabbitMQ" class="headerlink" title="CentOS7安裝docker RabbitMQ"></a>CentOS7安裝docker RabbitMQ</h3><span id="more"></span>
@@ -726,6 +707,46 @@
         <tag>CentOS7</tag>
         <tag>Docker</tag>
         <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS7安裝Jdk和Tomcat</title>
+    <url>/posts/8974fa5e/</url>
+    <content><![CDATA[<h3 id="CentOS7安裝Jdk和Tomcat"><a href="#CentOS7安裝Jdk和Tomcat" class="headerlink" title="CentOS7安裝Jdk和Tomcat"></a>CentOS7安裝Jdk和Tomcat</h3><span id="more"></span>
+<p>Step1: 將jdk版本解壓縮至 &#x2F;usr&#x2F;local&#x2F;java 下<br>Step2: </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure>
+<p>Step3: 將apache-tomcat版本解壓縮至 &#x2F;usr&#x2F;local 下<br>Step4: </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure>
+<p>Step5: 改正確時區 timedatectl set-timezone Asia&#x2F;Taipei</p>
+]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>JDK</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS How to Install htop To Monitor CPU Cores</title>
+    <url>/posts/72bb0ec0/</url>
+    <content><![CDATA[<h2 id="CentOS-How-to-Install-htop-To-Monitor-CPU-Cores"><a href="#CentOS-How-to-Install-htop-To-Monitor-CPU-Cores" class="headerlink" title="CentOS How to Install htop To Monitor CPU Cores"></a>CentOS How to Install htop To Monitor CPU Cores</h2><span id="more"></span>
+<p>這篇介紹CentOS How to Install htop To Monitor CPU Cores。</p>
+<h2 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令:"></a>安裝指令:</h2><p>若在 CentOS Linux 中，可用 yum 安裝 htop，首先啟用 EPEL 套件庫：<br>$ sudo yum install epel-release<br>$ sudo yum update</p>
+<p>再來安裝 htop 套件:<br>$ sudo yum install htop</p>
+<h2 id="執行指令"><a href="#執行指令" class="headerlink" title="執行指令:"></a>執行指令:</h2><p>$ htop</p>
+<h2 id="顯示畫面"><a href="#顯示畫面" class="headerlink" title="顯示畫面:"></a>顯示畫面:</h2><img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/htop.PNG" width="100%" />
+
+<p>CPU:14cores<br>RAM:28G</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+        <tag>CPU</tag>
       </tags>
   </entry>
   <entry>
@@ -751,27 +772,6 @@
       <tags>
         <tag>CentOS7</tag>
         <tag>NTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS How to Install htop To Monitor CPU Cores</title>
-    <url>/posts/72bb0ec0/</url>
-    <content><![CDATA[<h2 id="CentOS-How-to-Install-htop-To-Monitor-CPU-Cores"><a href="#CentOS-How-to-Install-htop-To-Monitor-CPU-Cores" class="headerlink" title="CentOS How to Install htop To Monitor CPU Cores"></a>CentOS How to Install htop To Monitor CPU Cores</h2><span id="more"></span>
-<p>這篇介紹CentOS How to Install htop To Monitor CPU Cores。</p>
-<h2 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令:"></a>安裝指令:</h2><p>若在 CentOS Linux 中，可用 yum 安裝 htop，首先啟用 EPEL 套件庫：<br>$ sudo yum install epel-release<br>$ sudo yum update</p>
-<p>再來安裝 htop 套件:<br>$ sudo yum install htop</p>
-<h2 id="執行指令"><a href="#執行指令" class="headerlink" title="執行指令:"></a>執行指令:</h2><p>$ htop</p>
-<h2 id="顯示畫面"><a href="#顯示畫面" class="headerlink" title="顯示畫面:"></a>顯示畫面:</h2><img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/htop.PNG" width="100%" />
-
-<p>CPU:14cores<br>RAM:28G</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-        <tag>CPU</tag>
       </tags>
   </entry>
   <entry>
@@ -1596,29 +1596,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Upgrade SEO</title>
-    <url>/posts/4bef04a0/</url>
-    <content><![CDATA[<h3 id="Hexo-Upgrade-SEO"><a href="#Hexo-Upgrade-SEO" class="headerlink" title="Hexo Upgrade SEO"></a>Hexo Upgrade SEO</h3><span id="more"></span>
-<p>這篇介紹How to upgrade Hexo SEO。</p>
-<h3 id="hexo-abbrlink"><a href="#hexo-abbrlink" class="headerlink" title="hexo-abbrlink"></a>hexo-abbrlink</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">功能:縮短文章路徑</span><br><span class="line"></span><br><span class="line">安裝lib:</span><br><span class="line">$ npm install hexo-abbrlink --save</span><br><span class="line"></span><br><span class="line">修改 /root/_config.yml</span><br><span class="line">url: <span class="comment">#網址url必須設定，產生sitemap.xml才會正確</span></span><br><span class="line">permalink: posts/:abbrlink/</span><br><span class="line"></span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32      <span class="comment">#support crc16(default) and crc32</span></span><br><span class="line">  rep: hex        <span class="comment">#support dec(default) and hex</span></span><br><span class="line"></span><br><span class="line">memo:最下方加入即可</span><br><span class="line"></span><br><span class="line">attention: .md內的 layout: 必須移除，在hexo g 才會針對每個.md產生 abbrlink:</span><br></pre></td></tr></table></figure>
-
-<h3 id="hexo-filter-nofollow"><a href="#hexo-filter-nofollow" class="headerlink" title="hexo-filter-nofollow"></a>hexo-filter-nofollow</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">功能:指示搜尋引擎不要抓取有設定nofollow的網站連結，避免分散網站權重。</span><br><span class="line"></span><br><span class="line">安裝lib:</span><br><span class="line">$ npm i hexo-filter-nofollow --save</span><br><span class="line"></span><br><span class="line">修改 /root/_config.yml</span><br><span class="line">nofollow:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  field: site</span><br><span class="line">  exclude:  <span class="comment"># 不加上 nofollow 的友情連結可以放在這邊。</span></span><br><span class="line">    - <span class="string">&#x27;https://aaa.blog&#x27;</span></span><br><span class="line">    - <span class="string">&#x27;https://bbb.com&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">新增 /root/source/robots.txt</span><br><span class="line"></span><br><span class="line">檔案內容:</span><br><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://你的網域/sitemap.xml</span><br><span class="line"></span><br><span class="line">說明:</span><br><span class="line">User-agent: * 允許所有的搜尋引擎</span><br><span class="line">Allow 允許被訪問</span><br><span class="line">Disallow 不允許被訪問</span><br></pre></td></tr></table></figure>
-
-<h3 id="keywords-description"><a href="#keywords-description" class="headerlink" title="keywords &amp; description"></a>keywords &amp; description</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在/root/scaffolds/post.md 加入</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br></pre></td></tr></table></figure>
-
-<h3 id="Google-Search-Console"><a href="#Google-Search-Console" class="headerlink" title="Google Search Console"></a>Google Search Console</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://search.google.com/search-console/about?hl=zh-tw</span><br><span class="line"></span><br><span class="line">點選立即開始</span><br><span class="line"></span><br><span class="line">網址前置字元 輸入 URL</span><br><span class="line">點選繼續</span><br><span class="line"></span><br><span class="line">這邊需經過驗證(方法有很多種</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">到 [Google Search Console後台 - Sitemap - 新增Sitemap] 填寫sitemap.xml</span><br><span class="line"></span><br><span class="line">有兩點需注意</span><br><span class="line">1.日期格式 &lt;lastmod&gt;2021-09-07&lt;/lastmod&gt; 才是正確的</span><br><span class="line">2.修改 /root/_config.yml</span><br><span class="line">url: <span class="comment">#網址url必須設定，產生sitemap.xml才會正確</span></span><br><span class="line"></span><br><span class="line">在google search site:&#123;url&#125; 確認是否能找到網站</span><br></pre></td></tr></table></figure>
-
-<h3 id="檢測網站工具"><a href="#檢測網站工具" class="headerlink" title="檢測網站工具"></a>檢測網站工具</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://developers.google.com/speed/pagespeed/insights</span><br><span class="line">https://web.dev/measure/</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Push GitHub To Update Categories And Tags Directory</title>
     <url>/posts/76f21ac5/</url>
     <content><![CDATA[<h3 id="Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory"><a href="#Hexo-Push-GitHub-To-Update-Categories-And-Tags-Directory" class="headerlink" title="Hexo Push GitHub To Update Categories And Tags Directory"></a>Hexo Push GitHub To Update Categories And Tags Directory</h3><span id="more"></span>
@@ -1649,6 +1626,29 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>Step4:修改\blog\themes\next_config.yml 配置文件，啟用tags</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Upgrade SEO</title>
+    <url>/posts/4bef04a0/</url>
+    <content><![CDATA[<h3 id="Hexo-Upgrade-SEO"><a href="#Hexo-Upgrade-SEO" class="headerlink" title="Hexo Upgrade SEO"></a>Hexo Upgrade SEO</h3><span id="more"></span>
+<p>這篇介紹How to upgrade Hexo SEO。</p>
+<h3 id="hexo-abbrlink"><a href="#hexo-abbrlink" class="headerlink" title="hexo-abbrlink"></a>hexo-abbrlink</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">功能:縮短文章路徑</span><br><span class="line"></span><br><span class="line">安裝lib:</span><br><span class="line">$ npm install hexo-abbrlink --save</span><br><span class="line"></span><br><span class="line">修改 /root/_config.yml</span><br><span class="line">url: <span class="comment">#網址url必須設定，產生sitemap.xml才會正確</span></span><br><span class="line">permalink: posts/:abbrlink/</span><br><span class="line"></span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32      <span class="comment">#support crc16(default) and crc32</span></span><br><span class="line">  rep: hex        <span class="comment">#support dec(default) and hex</span></span><br><span class="line"></span><br><span class="line">memo:最下方加入即可</span><br><span class="line"></span><br><span class="line">attention: .md內的 layout: 必須移除，在hexo g 才會針對每個.md產生 abbrlink:</span><br></pre></td></tr></table></figure>
+
+<h3 id="hexo-filter-nofollow"><a href="#hexo-filter-nofollow" class="headerlink" title="hexo-filter-nofollow"></a>hexo-filter-nofollow</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">功能:指示搜尋引擎不要抓取有設定nofollow的網站連結，避免分散網站權重。</span><br><span class="line"></span><br><span class="line">安裝lib:</span><br><span class="line">$ npm i hexo-filter-nofollow --save</span><br><span class="line"></span><br><span class="line">修改 /root/_config.yml</span><br><span class="line">nofollow:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  field: site</span><br><span class="line">  exclude:  <span class="comment"># 不加上 nofollow 的友情連結可以放在這邊。</span></span><br><span class="line">    - <span class="string">&#x27;https://aaa.blog&#x27;</span></span><br><span class="line">    - <span class="string">&#x27;https://bbb.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">新增 /root/source/robots.txt</span><br><span class="line"></span><br><span class="line">檔案內容:</span><br><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://你的網域/sitemap.xml</span><br><span class="line"></span><br><span class="line">說明:</span><br><span class="line">User-agent: * 允許所有的搜尋引擎</span><br><span class="line">Allow 允許被訪問</span><br><span class="line">Disallow 不允許被訪問</span><br></pre></td></tr></table></figure>
+
+<h3 id="keywords-description"><a href="#keywords-description" class="headerlink" title="keywords &amp; description"></a>keywords &amp; description</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在/root/scaffolds/post.md 加入</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br></pre></td></tr></table></figure>
+
+<h3 id="Google-Search-Console"><a href="#Google-Search-Console" class="headerlink" title="Google Search Console"></a>Google Search Console</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://search.google.com/search-console/about?hl=zh-tw</span><br><span class="line"></span><br><span class="line">點選立即開始</span><br><span class="line"></span><br><span class="line">網址前置字元 輸入 URL</span><br><span class="line">點選繼續</span><br><span class="line"></span><br><span class="line">這邊需經過驗證(方法有很多種</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">到 [Google Search Console後台 - Sitemap - 新增Sitemap] 填寫sitemap.xml</span><br><span class="line"></span><br><span class="line">有兩點需注意</span><br><span class="line">1.日期格式 &lt;lastmod&gt;2021-09-07&lt;/lastmod&gt; 才是正確的</span><br><span class="line">2.修改 /root/_config.yml</span><br><span class="line">url: <span class="comment">#網址url必須設定，產生sitemap.xml才會正確</span></span><br><span class="line"></span><br><span class="line">在google search site:&#123;url&#125; 確認是否能找到網站</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢測網站工具"><a href="#檢測網站工具" class="headerlink" title="檢測網站工具"></a>檢測網站工具</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://developers.google.com/speed/pagespeed/insights</span><br><span class="line">https://web.dev/measure/</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
@@ -1948,21 +1948,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How To Install Nginx On Rocky8</title>
-    <url>/posts/63a80de6/</url>
-    <content><![CDATA[<h3 id="How-To-Install-Nginx-On-Rocky8"><a href="#How-To-Install-Nginx-On-Rocky8" class="headerlink" title="How To Install Nginx On Rocky8"></a>How To Install Nginx On Rocky8</h3><span id="more"></span>
-<p>這篇介紹How To Install Nginx On Rocky8。</p>
-<h3 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令"></a>安裝指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo dnf install nginx</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> nginx</span><br><span class="line">$ sudo systemctl start nginx</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Rocky8</tag>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How To Install Gitlab Docker</title>
     <url>/posts/cd9b51d9/</url>
     <content><![CDATA[<h3 id="How-To-Install-Gitlab-Docker"><a href="#How-To-Install-Gitlab-Docker" class="headerlink" title="How To Install Gitlab Docker"></a>How To Install Gitlab Docker</h3><span id="more"></span>
@@ -1976,6 +1961,21 @@
       <tags>
         <tag>Docker</tag>
         <tag>Gitlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How To Install Nginx On Rocky8</title>
+    <url>/posts/63a80de6/</url>
+    <content><![CDATA[<h3 id="How-To-Install-Nginx-On-Rocky8"><a href="#How-To-Install-Nginx-On-Rocky8" class="headerlink" title="How To Install Nginx On Rocky8"></a>How To Install Nginx On Rocky8</h3><span id="more"></span>
+<p>這篇介紹How To Install Nginx On Rocky8。</p>
+<h3 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令"></a>安裝指令</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo dnf install nginx</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> nginx</span><br><span class="line">$ sudo systemctl start nginx</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Rocky8</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -2107,6 +2107,20 @@
       </tags>
   </entry>
   <entry>
+    <title>How To Set Docker Do Not Auto Restart</title>
+    <url>/posts/ad896bfa/</url>
+    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
+<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
+<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>DockerCompose</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How To Set Docker Bridge Mode</title>
     <url>/posts/f5360b04/</url>
     <content><![CDATA[<h3 id="How-To-Set-Docker-Bridge-Mode"><a href="#How-To-Set-Docker-Bridge-Mode" class="headerlink" title="How To Set Docker Bridge Mode"></a>How To Set Docker Bridge Mode</h3><span id="more"></span>
@@ -2134,20 +2148,6 @@
       <tags>
         <tag>Eclipse</tag>
         <tag>Setting</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How To Set Docker Do Not Auto Restart</title>
-    <url>/posts/ad896bfa/</url>
-    <content><![CDATA[<h3 id="Intro-How-To-Set-Docker-Do-Not-Auto-Restart"><a href="#Intro-How-To-Set-Docker-Do-Not-Auto-Restart" class="headerlink" title="Intro How To Set Docker Do Not Auto Restart"></a>Intro How To Set Docker Do Not Auto Restart</h3><span id="more"></span>
-<p>這篇介紹How To Set Docker Do Not Auto Restart。</p>
-<h3 id="在docker-compose-yml-設定"><a href="#在docker-compose-yml-設定" class="headerlink" title="在docker-compose.yml 設定"></a>在docker-compose.yml 設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">services:</span><br><span class="line">  &#123;instance&#125;:</span><br><span class="line">    extends:</span><br><span class="line">      file: services/xxx.yml</span><br><span class="line">      service: xxx</span><br><span class="line">    restart: <span class="string">&quot;no&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>DockerCompose</tag>
       </tags>
   </entry>
   <entry>
@@ -2205,7 +2205,7 @@
 <p>How To Solve CORS For Domains</p>
 <h2 id="How-To-Solve-CORS-For-Domains-1"><a href="#How-To-Solve-CORS-For-Domains-1" class="headerlink" title="How To Solve CORS For Domains"></a>How To Solve CORS For Domains</h2><p>因add_header在Nginx的設定不支持多行</p>
 <p>需要對多的不同domain進行設定Access-Control-Allow-Origin</p>
-<p>需參考一下作法</p>
+<p>需參考一下作法，就可以同時支援不同domain<br>如 aaa.google.com bbb.google.com…</p>
 <p>set $access_control_allow_origin “<span class="exturl" data-url="aHR0cDovL3d3dy5nb29nbGUuY29tLw==">www.google.com<i class="fa fa-external-link-alt"></i></span>“;<br>if ($http_host ~ ^(..google.com)$ ) {<br>set $access_control_allow_origin $1;<br>}<br>if ($http_referer ~ ^(https://.*.google.com)/ ) {<br>set $access_control_allow_origin $1;<br>}<br>add_header Access-Control-Allow-Origin $access_control_allow_origin;</p>
 ]]></content>
       <categories>
@@ -2629,8 +2629,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>Tomcat</tag>
         <tag>Docker</tag>
+        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -6160,11 +6160,11 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Nginx Error Code 99 Address not available</title>
-    <url>/posts/b213a1ff/</url>
-    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-99-Address-not-available"><a href="#Intro-Nginx-Error-Code-99-Address-not-available" class="headerlink" title="Intro Nginx Error Code 99 Address not available"></a>Intro Nginx Error Code 99 Address not available</h3><span id="more"></span>
-<p>這篇介紹Nginx Error Code 99 Address not available。</p>
-<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">error <span class="built_in">log</span>出現connect() to IP:PORT failed (99: Address not available) </span><br><span class="line"><span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">檢查設定1:</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">   	proxy_http_version 1.1;</span><br><span class="line">   	proxy_set_header Connection <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">檢查設定2:</span><br><span class="line"></span><br><span class="line">upstream abc &#123;</span><br><span class="line">	server IP:PPORT;</span><br><span class="line">	keepalive 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Nginx Error Code 110 Operation timed out</title>
+    <url>/posts/f20d6743/</url>
+    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-110-Operation-timed-out"><a href="#Intro-Nginx-Error-Code-110-Operation-timed-out" class="headerlink" title="Intro Nginx Error Code 110 Operation timed out"></a>Intro Nginx Error Code 110 Operation timed out</h3><span id="more"></span>
+<p>這篇介紹Nginx Error Code 110 Operation timed out。</p>
+<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">出現upstream timed out (110: Operation timed out) <span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">代表到達<span class="built_in">timeout</span></span><br><span class="line"></span><br><span class="line">解決方法</span><br><span class="line">1.先調長<span class="built_in">timeout</span>再觀察是否還有其它錯誤</span><br><span class="line"></span><br><span class="line">proxy_read_timeout 120;   	===&gt; proxy_read_timeout 600;</span><br><span class="line">proxy_connect_timeout 120;	===&gt; proxy_connect_timeout 600;</span><br><span class="line">proxy_send_timeout 120;		===&gt; proxy_send_timeout 600;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -6173,11 +6173,11 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Nginx Error Code 110 Operation timed out</title>
-    <url>/posts/f20d6743/</url>
-    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-110-Operation-timed-out"><a href="#Intro-Nginx-Error-Code-110-Operation-timed-out" class="headerlink" title="Intro Nginx Error Code 110 Operation timed out"></a>Intro Nginx Error Code 110 Operation timed out</h3><span id="more"></span>
-<p>這篇介紹Nginx Error Code 110 Operation timed out。</p>
-<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">出現upstream timed out (110: Operation timed out) <span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">代表到達<span class="built_in">timeout</span></span><br><span class="line"></span><br><span class="line">解決方法</span><br><span class="line">1.先調長<span class="built_in">timeout</span>再觀察是否還有其它錯誤</span><br><span class="line"></span><br><span class="line">proxy_read_timeout 120;   	===&gt; proxy_read_timeout 600;</span><br><span class="line">proxy_connect_timeout 120;	===&gt; proxy_connect_timeout 600;</span><br><span class="line">proxy_send_timeout 120;		===&gt; proxy_send_timeout 600;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Nginx Error Code 99 Address not available</title>
+    <url>/posts/b213a1ff/</url>
+    <content><![CDATA[<h3 id="Intro-Nginx-Error-Code-99-Address-not-available"><a href="#Intro-Nginx-Error-Code-99-Address-not-available" class="headerlink" title="Intro Nginx Error Code 99 Address not available"></a>Intro Nginx Error Code 99 Address not available</h3><span id="more"></span>
+<p>這篇介紹Nginx Error Code 99 Address not available。</p>
+<h3 id="Nginx-error-log"><a href="#Nginx-error-log" class="headerlink" title="Nginx error log"></a>Nginx error log</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">error <span class="built_in">log</span>出現connect() to IP:PORT failed (99: Address not available) </span><br><span class="line"><span class="keyword">while</span> connecting to upstream</span><br><span class="line"></span><br><span class="line">檢查設定1:</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">   	proxy_http_version 1.1;</span><br><span class="line">   	proxy_set_header Connection <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">檢查設定2:</span><br><span class="line"></span><br><span class="line">upstream abc &#123;</span><br><span class="line">	server IP:PPORT;</span><br><span class="line">	keepalive 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Nginx</category>
       </categories>
@@ -8363,32 +8363,6 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
-    <title>使用Optional取代null</title>
-    <url>/posts/d37739fb/</url>
-    <content><![CDATA[<h3 id="使用Optional取代null"><a href="#使用Optional取代null" class="headerlink" title="使用Optional取代null"></a>使用Optional取代null</h3><span id="more"></span>
-<p>JDK8新增了java.util.Optional類別，由於null的根本問題在於含糊而不明確，要避免使用null的方式，<br>就是確認過去使用null的時機與目的，並使用明確的語義。在過去使用null的情況中，開發者於方法中傳回null，<br>通常代表著客戶端必須檢查是否為null，並在null的情況下使用預設值，以便後續程式繼續執行。舉個例子來說：</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>在下方這段程式碼中，如果呼叫getNickName()時忘了檢查null，那麼就會直接顯示null，<br>在這個簡單的例子中並不會怎樣，只是顯示結果令人困惑罷了，但如果後續的執行流程牽涉到至關重要的結果，<br>程式繼續執行下去，錯誤可能到最後才會呈現發生。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        String nickName = getNickName(<span class="string">&quot;Duke&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (nickName == null) &#123;</span><br><span class="line">            nickName = <span class="string">&quot;Openhome Reader&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        out.println(nickName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">static String getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> nickNames.get(name); // key不存在時會傳回null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="To-revise-example-code-1"><a href="#To-revise-example-code-1" class="headerlink" title="To revise example code 1"></a>To revise example code 1</h3><p>可將getNickName修改使一定會傳回Optional<String>實例，但絕不要傳回null。<br>Optional的語義是它可能包含也可能不包括值，要建立Optional實例有幾個靜態方式，使用of()方法可以指定非null值建立Optional實例，<br>使用empty()方法可以建立不包裏值的Optional實例。<br>例如，可使用Optional來改寫上頭的getNickName()方法：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	String nickName = nickNames.get(name);</span><br><span class="line">	<span class="built_in">return</span> nickName == null ? Optional.empty() : Optional.of(nickName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="To-revise-example-code-2"><a href="#To-revise-example-code-2" class="headerlink" title="To revise example code 2"></a>To revise example code 2</h3><p>在Optional沒有包含值的情況下，就會直接拋出java.util.NoSuchElementException，<br>這實現了速錯（Fail fast）的概念，這讓開發者可以立即發現錯誤，並瞭解到必須使用程式碼作些檢查，<br>可能的方式之一像是：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">String nickName = <span class="string">&quot;DC&#x27;blog Reader&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(nickOptional.isPresent()) &#123;</span><br><span class="line">    nickName = nickOptional.get();</span><br><span class="line">&#125;</span><br><span class="line">out.println(nickName);</span><br></pre></td></tr></table></figure>
-
-<p>一個更好的方式可以使用orElse()方法，指定值不存在時的替代值：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">out.println(nickOptional.orElse(<span class="string">&quot;DC&#x27;blog Reader&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>過去許多程式庫中使用了不少null，這些程式庫無法說改就改，可使用Optional的ofNullable()來銜接程式庫中會傳回null的方法，<br>使用ofNullable()方法時，若指定了非null值就會呼叫of()方法，指定了null值就會呼叫empty()方法。<br>例如，先前的getNickName()方法可以更簡潔地修改為：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> Optional.ofNullable(nickNames.get(name));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Optional</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用VisualStudioCompiler C語言</title>
     <url>/posts/bb92d4e1/</url>
     <content><![CDATA[<h3 id="使用VisualStudioCompiler-C語言"><a href="#使用VisualStudioCompiler-C語言" class="headerlink" title="使用VisualStudioCompiler C語言"></a>使用VisualStudioCompiler C語言</h3><span id="more"></span>
@@ -8414,6 +8388,32 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Optional取代null</title>
+    <url>/posts/d37739fb/</url>
+    <content><![CDATA[<h3 id="使用Optional取代null"><a href="#使用Optional取代null" class="headerlink" title="使用Optional取代null"></a>使用Optional取代null</h3><span id="more"></span>
+<p>JDK8新增了java.util.Optional類別，由於null的根本問題在於含糊而不明確，要避免使用null的方式，<br>就是確認過去使用null的時機與目的，並使用明確的語義。在過去使用null的情況中，開發者於方法中傳回null，<br>通常代表著客戶端必須檢查是否為null，並在null的情況下使用預設值，以便後續程式繼續執行。舉個例子來說：</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>在下方這段程式碼中，如果呼叫getNickName()時忘了檢查null，那麼就會直接顯示null，<br>在這個簡單的例子中並不會怎樣，只是顯示結果令人困惑罷了，但如果後續的執行流程牽涉到至關重要的結果，<br>程式繼續執行下去，錯誤可能到最後才會呈現發生。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        String nickName = getNickName(<span class="string">&quot;Duke&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (nickName == null) &#123;</span><br><span class="line">            nickName = <span class="string">&quot;Openhome Reader&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        out.println(nickName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">static String getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> nickNames.get(name); // key不存在時會傳回null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="To-revise-example-code-1"><a href="#To-revise-example-code-1" class="headerlink" title="To revise example code 1"></a>To revise example code 1</h3><p>可將getNickName修改使一定會傳回Optional<String>實例，但絕不要傳回null。<br>Optional的語義是它可能包含也可能不包括值，要建立Optional實例有幾個靜態方式，使用of()方法可以指定非null值建立Optional實例，<br>使用empty()方法可以建立不包裏值的Optional實例。<br>例如，可使用Optional來改寫上頭的getNickName()方法：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	String nickName = nickNames.get(name);</span><br><span class="line">	<span class="built_in">return</span> nickName == null ? Optional.empty() : Optional.of(nickName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="To-revise-example-code-2"><a href="#To-revise-example-code-2" class="headerlink" title="To revise example code 2"></a>To revise example code 2</h3><p>在Optional沒有包含值的情況下，就會直接拋出java.util.NoSuchElementException，<br>這實現了速錯（Fail fast）的概念，這讓開發者可以立即發現錯誤，並瞭解到必須使用程式碼作些檢查，<br>可能的方式之一像是：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">String nickName = <span class="string">&quot;DC&#x27;blog Reader&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(nickOptional.isPresent()) &#123;</span><br><span class="line">    nickName = nickOptional.get();</span><br><span class="line">&#125;</span><br><span class="line">out.println(nickName);</span><br></pre></td></tr></table></figure>
+
+<p>一個更好的方式可以使用orElse()方法，指定值不存在時的替代值：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">out.println(nickOptional.orElse(<span class="string">&quot;DC&#x27;blog Reader&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>過去許多程式庫中使用了不少null，這些程式庫無法說改就改，可使用Optional的ofNullable()來銜接程式庫中會傳回null的方法，<br>使用ofNullable()方法時，若指定了非null值就會呼叫of()方法，指定了null值就會呼叫empty()方法。<br>例如，先前的getNickName()方法可以更簡潔地修改為：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> Optional.ofNullable(nickNames.get(name));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Optional</tag>
       </tags>
   </entry>
   <entry>
@@ -10719,29 +10719,6 @@ public ConcreteSubject Subject
       </tags>
   </entry>
   <entry>
-    <title>過多的資訊</title>
-    <url>/posts/23011165/</url>
-    <content><![CDATA[<h2 id="過多的資訊"><a href="#過多的資訊" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><span id="more"></span>
-<p>過多的資訊</p>
-<h2 id="過多的資訊-1"><a href="#過多的資訊-1" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><p>不要把一些有趣的歷史討論紀錄，或是一些不相關的細節描述，</p>
-<p>放進你的註解裡。下述註解是從測試函式是否正確編碼及解碼</p>
-<p>base64的模組中所擷取出來。正在閱讀程式的人，除了RFC測試</p>
-<p>文件編號以外，根本不需要理解註解裡難懂的訊息。</p>
-<p>&#x2F; *</p>
-<p>  RFC 2045 - Multipurpose Internet Mail Extensions (MIME)</p>
-<p>  Part One:…</p>
-<p>  …</p>
-<p>  …</p>
-<p>  *&#x2F;</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>錯誤處理 就是一件事</title>
     <url>/posts/bec2f00d/</url>
     <content><![CDATA[<h2 id="錯誤處理-就是一件事"><a href="#錯誤處理-就是一件事" class="headerlink" title="錯誤處理 就是一件事"></a>錯誤處理 就是一件事</h2><span id="more"></span>
@@ -10779,6 +10756,29 @@ public ConcreteSubject Subject
 <h2 id="開發函式-的-真實流程-1"><a href="#開發函式-的-真實流程-1" class="headerlink" title="開發函式 的 真實流程"></a>開發函式 的 真實流程</h2><p>一開始寫函式時，總是複雜又長。有很多縮排和巢狀迴圈，以及<br>很長的參數串列。有隨意的命名和重複的程式碼，有一整套的單<br>元測試、測試範圍涵蓋每一行粗糙的程式碼。</p>
 <p>於是開始琢磨和改善程式碼，將函式分開、重新命名，減少重複。<br>也會縮短方法並重新安排方法的順序。有時候會拆開整個類別，<br>並持續保持單元測試能夠通過。</p>
 <p>最後，當函式符合本章所提及的準則時，即可結束這個函式的<br>修改。但不會從一開始就這麼寫，也不太可能有人可以辦得到。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>過多的資訊</title>
+    <url>/posts/23011165/</url>
+    <content><![CDATA[<h2 id="過多的資訊"><a href="#過多的資訊" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><span id="more"></span>
+<p>過多的資訊</p>
+<h2 id="過多的資訊-1"><a href="#過多的資訊-1" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><p>不要把一些有趣的歷史討論紀錄，或是一些不相關的細節描述，</p>
+<p>放進你的註解裡。下述註解是從測試函式是否正確編碼及解碼</p>
+<p>base64的模組中所擷取出來。正在閱讀程式的人，除了RFC測試</p>
+<p>文件編號以外，根本不需要理解註解裡難懂的訊息。</p>
+<p>&#x2F; *</p>
+<p>  RFC 2045 - Multipurpose Internet Mail Extensions (MIME)</p>
+<p>  Part One:…</p>
+<p>  …</p>
+<p>  …</p>
+<p>  *&#x2F;</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
@@ -11430,23 +11430,6 @@ public ConcreteSubject Subject
       </tags>
   </entry>
   <entry>
-    <title>非公共 程式碼裡的 Javadoc</title>
-    <url>/posts/d71c2712/</url>
-    <content><![CDATA[<h2 id="非公共-程式碼裡的-Javadoc"><a href="#非公共-程式碼裡的-Javadoc" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><span id="more"></span>
-<p>非公共 程式碼裡的 Javadoc</p>
-<h2 id="非公共-程式碼裡的-Javadoc-1"><a href="#非公共-程式碼裡的-Javadoc-1" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><p>Javadoc對於公共API是有幫助的，但對於不想成為公共的程式碼，</p>
-<p>那就不是這麼回事了。替系統裡的類別和函式產生Javadoc頁面，</p>
-<p>並非在各種狀況下都適用，而且拘泥在Javadoc所要求的額外格式，</p>
-<p>通常只會產生一些無關又不想要的廢物，分散人們的注意力而已。</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>非區域性 的資訊</title>
     <url>/posts/e6e32842/</url>
     <content><![CDATA[<h2 id="非區域性-的資訊"><a href="#非區域性-的資訊" class="headerlink" title="非區域性 的資訊"></a>非區域性 的資訊</h2><span id="more"></span>
@@ -11462,6 +11445,23 @@ public ConcreteSubject Subject
 <li>Port on which fitnesse would run. Defaults to <b>8082</b>.</li>
 <li>@param fitnessePort<br>  *&#x2F;<br>public void setFitnessePort(int fitnessePort)<br>{<br>this.fitnessePort &#x3D; fitnessePort;<br>}</li>
 </ul>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>非公共 程式碼裡的 Javadoc</title>
+    <url>/posts/d71c2712/</url>
+    <content><![CDATA[<h2 id="非公共-程式碼裡的-Javadoc"><a href="#非公共-程式碼裡的-Javadoc" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><span id="more"></span>
+<p>非公共 程式碼裡的 Javadoc</p>
+<h2 id="非公共-程式碼裡的-Javadoc-1"><a href="#非公共-程式碼裡的-Javadoc-1" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><p>Javadoc對於公共API是有幫助的，但對於不想成為公共的程式碼，</p>
+<p>那就不是這麼回事了。替系統裡的類別和函式產生Javadoc頁面，</p>
+<p>並非在各種狀況下都適用，而且拘泥在Javadoc所要求的額外格式，</p>
+<p>通常只會產生一些無關又不想要的廢物，分散人們的注意力而已。</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
