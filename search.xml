@@ -14,6 +14,22 @@
       </tags>
   </entry>
   <entry>
+    <title>About Blocks And Indenting</title>
+    <url>/posts/5e421880/</url>
+    <content><![CDATA[<h2 id="About-Blocks-and-Indenting"><a href="#About-Blocks-and-Indenting" class="headerlink" title="About Blocks and Indenting"></a>About Blocks and Indenting</h2><span id="more"></span>
+<p>About Blocks and Indenting</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>If、else、while及其它敘述都應該只有一行，那行程式通常是函式呼叫敘述。<br>不僅能維持private function的簡短，因在block裡被呼叫的函式，具備不<br>錯的函式名稱來描述意圖，能增添類似文件說明的價值。</p>
+<p>function不應該大到包含巢狀結構。因此，function裡的縮排程度不應該大<br>過一或兩層。當然，這會使得function更容易閱讀和理解。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+        <tag>Functions</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>About Cache Control</title>
     <url>/posts/1bdfcea4/</url>
     <content><![CDATA[<h2 id="About-Cache-Control"><a href="#About-Cache-Control" class="headerlink" title="About Cache Control"></a>About Cache Control</h2><span id="more"></span>
@@ -32,19 +48,16 @@
       </tags>
   </entry>
   <entry>
-    <title>About Blocks And Indenting</title>
-    <url>/posts/5e421880/</url>
-    <content><![CDATA[<h2 id="About-Blocks-and-Indenting"><a href="#About-Blocks-and-Indenting" class="headerlink" title="About Blocks and Indenting"></a>About Blocks and Indenting</h2><span id="more"></span>
-<p>About Blocks and Indenting</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>If、else、while及其它敘述都應該只有一行，那行程式通常是函式呼叫敘述。<br>不僅能維持private function的簡短，因在block裡被呼叫的函式，具備不<br>錯的函式名稱來描述意圖，能增添類似文件說明的價值。</p>
-<p>function不應該大到包含巢狀結構。因此，function裡的縮排程度不應該大<br>過一或兩層。當然，這會使得function更容易閱讀和理解。</p>
-]]></content>
+    <title>About ElasticSearch Composite Aggregation AfterKey</title>
+    <url>/posts/9774d5f7/</url>
+    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
+<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
+<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>CleanCode</category>
+        <category>ElasticSearch</category>
       </categories>
       <tags>
-        <tag>CleanCode</tag>
-        <tag>Functions</tag>
+        <tag>ElasticSearch</tag>
       </tags>
   </entry>
   <entry>
@@ -64,19 +77,6 @@
       </tags>
   </entry>
   <entry>
-    <title>About ElasticSearch Composite Aggregation AfterKey</title>
-    <url>/posts/9774d5f7/</url>
-    <content><![CDATA[<h3 id="About-ElasticSearch-Composite-Aggregation-AfterKey"><a href="#About-ElasticSearch-Composite-Aggregation-AfterKey" class="headerlink" title="About ElasticSearch Composite Aggregation AfterKey"></a>About ElasticSearch Composite Aggregation AfterKey</h3><span id="more"></span>
-<p>這篇介紹About ElasticSearch Composite Aggregation AfterKey。</p>
-<h3 id="測試過程"><a href="#測試過程" class="headerlink" title="測試過程"></a>測試過程</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">當index資料是分散在多個shards時，用CompositeAggregation</span><br><span class="line">做group by + <span class="built_in">sum</span>的功能時，發現第一次撈回來的資料不是完整</span><br><span class="line">的資料。而用AfterKey繼續撈剩下的資料時，也會有排序在前面</span><br><span class="line">的資料(包含Top10內)。</span><br><span class="line"></span><br><span class="line">作法: 用AfterKey一直往下撈，將每次撈回來的Top10資料都放入</span><br><span class="line">同個collection。</span><br><span class="line">當AfterKey沒有值時，就不用繼續往下撈。最後針對collection</span><br><span class="line">做由大到小排序。再取出前十筆，即可拿到真正的Top10資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ElasticSearch</category>
-      </categories>
-      <tags>
-        <tag>ElasticSearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>About Github Run Failed Pages Build And Deployment</title>
     <url>/posts/705e511f/</url>
     <content><![CDATA[<h3 id="About-Github-Run-Failed-Pages-Build-And-Deployment"><a href="#About-Github-Run-Failed-Pages-Build-And-Deployment" class="headerlink" title="About Github Run Failed Pages Build And Deployment"></a>About Github Run Failed Pages Build And Deployment</h3><span id="more"></span>
@@ -87,6 +87,21 @@
       </categories>
       <tags>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About Log4j2 Level</title>
+    <url>/posts/5013858/</url>
+    <content><![CDATA[<h3 id="關於Log4j2-Level"><a href="#關於Log4j2-Level" class="headerlink" title="關於Log4j2 Level"></a>關於Log4j2 Level</h3><span id="more"></span>
+<p>這篇介紹關於Log4j2 Level。</p>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Log4j2 Logger Level Order:</span><br><span class="line"></span><br><span class="line">高---------------------------------------低</span><br><span class="line">FETAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE</span><br><span class="line"></span><br><span class="line">每個Level有對應的intLevel整數值，數值越小等級越高，數值越大等級越低。</span><br><span class="line"></span><br><span class="line">Level	intValue			用途</span><br><span class="line">OFF		0					不輸出任何日誌</span><br><span class="line">FETAL	100					造成應用程式停止的日誌</span><br><span class="line">ERROR	200					造成應用程式錯誤的日誌</span><br><span class="line">WARN	300					可能導致錯誤的日誌</span><br><span class="line">INFO	400					一般資訊的日誌</span><br><span class="line">DEBUG	500					除錯資訊的日誌</span><br><span class="line">TRACE	600					更細的除錯資訊，通常用來追蹤程式流程的日誌</span><br><span class="line">ALL		Integer.MAX_VALUE	輸出所有日誌</span><br><span class="line"></span><br><span class="line">Logger輸出的等級大於等於Logger設定的等級時才會輸出訊息。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Code:</span><br><span class="line"></span><br><span class="line">Level level = log.getLevel(); // INFO</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL name:&quot;</span> + level.name());</span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL intLevel:&quot;</span> + level.intLevel());</span><br><span class="line"></span><br><span class="line">log.fatal(<span class="string">&quot;FATAL&quot;</span>); // 印出</span><br><span class="line">log.error(<span class="string">&quot;ERROR&quot;</span>); // 印出</span><br><span class="line">log.warn(<span class="string">&quot;WARN&quot;</span>);   // 印出</span><br><span class="line">log.info(<span class="string">&quot;INFO&quot;</span>);   // 印出</span><br><span class="line">log.debug(<span class="string">&quot;DEBUG&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;TRACE&quot;</span>);</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">LEVEL name:INFO</span><br><span class="line">LEVEL intLevel:400</span><br><span class="line">FATAL</span><br><span class="line">ERROR</span><br><span class="line">WARN</span><br><span class="line">INFO</span><br><span class="line"></span><br><span class="line">memo:等級小於Info的DEBUG和TRACE不會印出</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Log4j2</category>
+      </categories>
+      <tags>
+        <tag>Log4j2</tag>
       </tags>
   </entry>
   <entry>
@@ -103,21 +118,6 @@
       <tags>
         <tag>Map</tag>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>About Log4j2 Level</title>
-    <url>/posts/5013858/</url>
-    <content><![CDATA[<h3 id="關於Log4j2-Level"><a href="#關於Log4j2-Level" class="headerlink" title="關於Log4j2 Level"></a>關於Log4j2 Level</h3><span id="more"></span>
-<p>這篇介紹關於Log4j2 Level。</p>
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Log4j2 Logger Level Order:</span><br><span class="line"></span><br><span class="line">高---------------------------------------低</span><br><span class="line">FETAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE</span><br><span class="line"></span><br><span class="line">每個Level有對應的intLevel整數值，數值越小等級越高，數值越大等級越低。</span><br><span class="line"></span><br><span class="line">Level	intValue			用途</span><br><span class="line">OFF		0					不輸出任何日誌</span><br><span class="line">FETAL	100					造成應用程式停止的日誌</span><br><span class="line">ERROR	200					造成應用程式錯誤的日誌</span><br><span class="line">WARN	300					可能導致錯誤的日誌</span><br><span class="line">INFO	400					一般資訊的日誌</span><br><span class="line">DEBUG	500					除錯資訊的日誌</span><br><span class="line">TRACE	600					更細的除錯資訊，通常用來追蹤程式流程的日誌</span><br><span class="line">ALL		Integer.MAX_VALUE	輸出所有日誌</span><br><span class="line"></span><br><span class="line">Logger輸出的等級大於等於Logger設定的等級時才會輸出訊息。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Code:</span><br><span class="line"></span><br><span class="line">Level level = log.getLevel(); // INFO</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL name:&quot;</span> + level.name());</span><br><span class="line">System.out.println(<span class="string">&quot;LEVEL intLevel:&quot;</span> + level.intLevel());</span><br><span class="line"></span><br><span class="line">log.fatal(<span class="string">&quot;FATAL&quot;</span>); // 印出</span><br><span class="line">log.error(<span class="string">&quot;ERROR&quot;</span>); // 印出</span><br><span class="line">log.warn(<span class="string">&quot;WARN&quot;</span>);   // 印出</span><br><span class="line">log.info(<span class="string">&quot;INFO&quot;</span>);   // 印出</span><br><span class="line">log.debug(<span class="string">&quot;DEBUG&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;TRACE&quot;</span>);</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">LEVEL name:INFO</span><br><span class="line">LEVEL intLevel:400</span><br><span class="line">FATAL</span><br><span class="line">ERROR</span><br><span class="line">WARN</span><br><span class="line">INFO</span><br><span class="line"></span><br><span class="line">memo:等級小於Info的DEBUG和TRACE不會印出</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Log4j2</category>
-      </categories>
-      <tags>
-        <tag>Log4j2</tag>
       </tags>
   </entry>
   <entry>
@@ -316,33 +316,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Apache Kafka核心概念</title>
-    <url>/posts/f8bd17dc/</url>
-    <content><![CDATA[<h3 id="Apache-Kafka"><a href="#Apache-Kafka" class="headerlink" title="Apache Kafka"></a>Apache Kafka</h3><span id="more"></span>
-<p>Kafka是由Apache軟體基金會開發的一個開源流處理平台，由Scala和Java編寫。<br>該專案的目標是為處理即時資料提供一個統一、高吞吐、低延遲的平台。<br>Kafka 主要有以下幾個核心名詞:</p>
-<h3 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在 Kafka 中 topic 就像是 database 中的 table，為不同資料的類別名稱。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Partitions"><a href="#Partitions" class="headerlink" title="Partitions"></a>Partitions</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Topic 內切分為數個 Partitions，在 Kafka 中每個最小單位的訊息 (message) 或記錄 (record) </span><br><span class="line">以序列 append 的方式存放在在每個 Partition 中，Partition 可以分散式的存放在不同機器中，以防止單台機器故障。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Producers-and-Consumers"><a href="#Producers-and-Consumers" class="headerlink" title="Producers and Consumers"></a>Producers and Consumers</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producers 與 Consumers 分別對應 publish/subscribe 系統的概念，</span><br><span class="line">Producers 可以新增資料到 topic，Consumers 負責從資料讀取 topic。</span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/KafkaProducersConsumer.PNG" width="50%" />
-
-
-
-<h3 id="Brokers-and-Clusters"><a href="#Brokers-and-Clusters" class="headerlink" title="Brokers and Clusters"></a>Brokers and Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">一個單台 Kafka server 稱為 broker，每個 broker 接收來自 producers 的訊並寫入至磁碟中，同時回應來自 Consumers 的資料請求。</span><br><span class="line">多個 Brokers 連接在一起稱之為 Cluster，Cluster 中存在一個 controller （動態建立），負責分配 partitions 與監控 brokers 狀態。</span><br></pre></td></tr></table></figure>
-<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/brokerAndCluster.png" width="50%" />
-
-<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Retention 是指 Kafka 可以設定的存放在磁碟中的一段時間，預設是 7 天或是資料量大於 1 GB 就會自動刪除一些資料。</span><br><span class="line">Kafka 可以針對不同 topic 設定不同 Retention。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Multiple-Clusters"><a href="#Multiple-Clusters" class="headerlink" title="Multiple Clusters"></a>Multiple Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Kafka 支援 Multiple Clusters，主要是為了可以提高可用性與安全性，</span><br><span class="line">如建立cluster 於不同的資料中心，並提供了稱之為 MirrorMaker 的工具讓你輕易在 clusters 之間複製資料。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>ApacheKafka</category>
-      </categories>
-      <tags>
-        <tag>ApacheKafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ApacheKafka-Java</title>
     <url>/posts/712577f8/</url>
     <content><![CDATA[<h2 id="ApacheKafka-Java"><a href="#ApacheKafka-Java" class="headerlink" title="ApacheKafka-Java"></a>ApacheKafka-Java</h2><span id="more"></span>
@@ -370,6 +343,33 @@
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apache Kafka核心概念</title>
+    <url>/posts/f8bd17dc/</url>
+    <content><![CDATA[<h3 id="Apache-Kafka"><a href="#Apache-Kafka" class="headerlink" title="Apache Kafka"></a>Apache Kafka</h3><span id="more"></span>
+<p>Kafka是由Apache軟體基金會開發的一個開源流處理平台，由Scala和Java編寫。<br>該專案的目標是為處理即時資料提供一個統一、高吞吐、低延遲的平台。<br>Kafka 主要有以下幾個核心名詞:</p>
+<h3 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">在 Kafka 中 topic 就像是 database 中的 table，為不同資料的類別名稱。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Partitions"><a href="#Partitions" class="headerlink" title="Partitions"></a>Partitions</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Topic 內切分為數個 Partitions，在 Kafka 中每個最小單位的訊息 (message) 或記錄 (record) </span><br><span class="line">以序列 append 的方式存放在在每個 Partition 中，Partition 可以分散式的存放在不同機器中，以防止單台機器故障。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Producers-and-Consumers"><a href="#Producers-and-Consumers" class="headerlink" title="Producers and Consumers"></a>Producers and Consumers</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Producers 與 Consumers 分別對應 publish/subscribe 系統的概念，</span><br><span class="line">Producers 可以新增資料到 topic，Consumers 負責從資料讀取 topic。</span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/KafkaProducersConsumer.PNG" width="50%" />
+
+
+
+<h3 id="Brokers-and-Clusters"><a href="#Brokers-and-Clusters" class="headerlink" title="Brokers and Clusters"></a>Brokers and Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">一個單台 Kafka server 稱為 broker，每個 broker 接收來自 producers 的訊並寫入至磁碟中，同時回應來自 Consumers 的資料請求。</span><br><span class="line">多個 Brokers 連接在一起稱之為 Cluster，Cluster 中存在一個 controller （動態建立），負責分配 partitions 與監控 brokers 狀態。</span><br></pre></td></tr></table></figure>
+<img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/brokerAndCluster.png" width="50%" />
+
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Retention 是指 Kafka 可以設定的存放在磁碟中的一段時間，預設是 7 天或是資料量大於 1 GB 就會自動刪除一些資料。</span><br><span class="line">Kafka 可以針對不同 topic 設定不同 Retention。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Multiple-Clusters"><a href="#Multiple-Clusters" class="headerlink" title="Multiple Clusters"></a>Multiple Clusters</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Kafka 支援 Multiple Clusters，主要是為了可以提高可用性與安全性，</span><br><span class="line">如建立cluster 於不同的資料中心，並提供了稱之為 MirrorMaker 的工具讓你輕易在 clusters 之間複製資料。</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>ApacheKafka</category>
+      </categories>
+      <tags>
+        <tag>ApacheKafka</tag>
       </tags>
   </entry>
   <entry>
@@ -686,6 +686,25 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS7安裝Jdk和Tomcat</title>
+    <url>/posts/8974fa5e/</url>
+    <content><![CDATA[<h3 id="CentOS7安裝Jdk和Tomcat"><a href="#CentOS7安裝Jdk和Tomcat" class="headerlink" title="CentOS7安裝Jdk和Tomcat"></a>CentOS7安裝Jdk和Tomcat</h3><span id="more"></span>
+<p>Step1: 將jdk版本解壓縮至 &#x2F;usr&#x2F;local&#x2F;java 下<br>Step2: </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure>
+<p>Step3: 將apache-tomcat版本解壓縮至 &#x2F;usr&#x2F;local 下<br>Step4: </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure>
+<p>Step5: 改正確時區 timedatectl set-timezone Asia&#x2F;Taipei</p>
+]]></content>
+      <categories>
+        <category>CentOS7</category>
+      </categories>
+      <tags>
+        <tag>CentOS7</tag>
+        <tag>JDK</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS7安裝docker RabbitMQ</title>
     <url>/posts/27b5d2f3/</url>
     <content><![CDATA[<h3 id="CentOS7安裝docker-RabbitMQ"><a href="#CentOS7安裝docker-RabbitMQ" class="headerlink" title="CentOS7安裝docker RabbitMQ"></a>CentOS7安裝docker RabbitMQ</h3><span id="more"></span>
@@ -707,46 +726,6 @@
         <tag>CentOS7</tag>
         <tag>Docker</tag>
         <tag>RabbitMQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS7安裝Jdk和Tomcat</title>
-    <url>/posts/8974fa5e/</url>
-    <content><![CDATA[<h3 id="CentOS7安裝Jdk和Tomcat"><a href="#CentOS7安裝Jdk和Tomcat" class="headerlink" title="CentOS7安裝Jdk和Tomcat"></a>CentOS7安裝Jdk和Tomcat</h3><span id="more"></span>
-<p>Step1: 將jdk版本解壓縮至 &#x2F;usr&#x2F;local&#x2F;java 下<br>Step2: </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s jdk1.8.0_181 latest</span><br></pre></td></tr></table></figure>
-<p>Step3: 將apache-tomcat版本解壓縮至 &#x2F;usr&#x2F;local 下<br>Step4: </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s apache-tomcat uat_tomcat</span><br></pre></td></tr></table></figure>
-<p>Step5: 改正確時區 timedatectl set-timezone Asia&#x2F;Taipei</p>
-]]></content>
-      <categories>
-        <category>CentOS7</category>
-      </categories>
-      <tags>
-        <tag>CentOS7</tag>
-        <tag>JDK</tag>
-        <tag>Tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS How to Install htop To Monitor CPU Cores</title>
-    <url>/posts/72bb0ec0/</url>
-    <content><![CDATA[<h2 id="CentOS-How-to-Install-htop-To-Monitor-CPU-Cores"><a href="#CentOS-How-to-Install-htop-To-Monitor-CPU-Cores" class="headerlink" title="CentOS How to Install htop To Monitor CPU Cores"></a>CentOS How to Install htop To Monitor CPU Cores</h2><span id="more"></span>
-<p>這篇介紹CentOS How to Install htop To Monitor CPU Cores。</p>
-<h2 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令:"></a>安裝指令:</h2><p>若在 CentOS Linux 中，可用 yum 安裝 htop，首先啟用 EPEL 套件庫：<br>$ sudo yum install epel-release<br>$ sudo yum update</p>
-<p>再來安裝 htop 套件:<br>$ sudo yum install htop</p>
-<h2 id="執行指令"><a href="#執行指令" class="headerlink" title="執行指令:"></a>執行指令:</h2><p>$ htop</p>
-<h2 id="顯示畫面"><a href="#顯示畫面" class="headerlink" title="顯示畫面:"></a>顯示畫面:</h2><img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/htop.PNG" width="100%" />
-
-<p>CPU:14cores<br>RAM:28G</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-        <tag>CPU</tag>
       </tags>
   </entry>
   <entry>
@@ -772,6 +751,27 @@
       <tags>
         <tag>CentOS7</tag>
         <tag>NTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS How to Install htop To Monitor CPU Cores</title>
+    <url>/posts/72bb0ec0/</url>
+    <content><![CDATA[<h2 id="CentOS-How-to-Install-htop-To-Monitor-CPU-Cores"><a href="#CentOS-How-to-Install-htop-To-Monitor-CPU-Cores" class="headerlink" title="CentOS How to Install htop To Monitor CPU Cores"></a>CentOS How to Install htop To Monitor CPU Cores</h2><span id="more"></span>
+<p>這篇介紹CentOS How to Install htop To Monitor CPU Cores。</p>
+<h2 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令:"></a>安裝指令:</h2><p>若在 CentOS Linux 中，可用 yum 安裝 htop，首先啟用 EPEL 套件庫：<br>$ sudo yum install epel-release<br>$ sudo yum update</p>
+<p>再來安裝 htop 套件:<br>$ sudo yum install htop</p>
+<h2 id="執行指令"><a href="#執行指令" class="headerlink" title="執行指令:"></a>執行指令:</h2><p>$ htop</p>
+<h2 id="顯示畫面"><a href="#顯示畫面" class="headerlink" title="顯示畫面:"></a>顯示畫面:</h2><img data-src="https://raw.githubusercontent.com/davidchen0217/davidchen0217.github.io/master/images/htop.PNG" width="100%" />
+
+<p>CPU:14cores<br>RAM:28G</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+        <tag>CPU</tag>
       </tags>
   </entry>
   <entry>
@@ -1615,25 +1615,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo啟用Tags功能</title>
-    <url>/posts/5dcb32bd/</url>
-    <content><![CDATA[<h3 id="Hexo啟用Tags功能"><a href="#Hexo啟用Tags功能" class="headerlink" title="Hexo啟用Tags功能"></a>Hexo啟用Tags功能</h3><span id="more"></span>
-<p>Step1:建立新page，命名為tags</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Step2:指令將會建立\blog\source\index.md</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Step3:若有啟用評論功能，欲關閉時</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>Step4:修改\blog\themes\next_config.yml 配置文件，啟用tags</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Upgrade SEO</title>
     <url>/posts/4bef04a0/</url>
     <content><![CDATA[<h3 id="Hexo-Upgrade-SEO"><a href="#Hexo-Upgrade-SEO" class="headerlink" title="Hexo Upgrade SEO"></a>Hexo Upgrade SEO</h3><span id="more"></span>
@@ -1649,6 +1630,25 @@
 <h3 id="Google-Search-Console"><a href="#Google-Search-Console" class="headerlink" title="Google Search Console"></a>Google Search Console</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://search.google.com/search-console/about?hl=zh-tw</span><br><span class="line"></span><br><span class="line">點選立即開始</span><br><span class="line"></span><br><span class="line">網址前置字元 輸入 URL</span><br><span class="line">點選繼續</span><br><span class="line"></span><br><span class="line">這邊需經過驗證(方法有很多種</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">到 [Google Search Console後台 - Sitemap - 新增Sitemap] 填寫sitemap.xml</span><br><span class="line"></span><br><span class="line">有兩點需注意</span><br><span class="line">1.日期格式 &lt;lastmod&gt;2021-09-07&lt;/lastmod&gt; 才是正確的</span><br><span class="line">2.修改 /root/_config.yml</span><br><span class="line">url: <span class="comment">#網址url必須設定，產生sitemap.xml才會正確</span></span><br><span class="line"></span><br><span class="line">在google search site:&#123;url&#125; 確認是否能找到網站</span><br></pre></td></tr></table></figure>
 
 <h3 id="檢測網站工具"><a href="#檢測網站工具" class="headerlink" title="檢測網站工具"></a>檢測網站工具</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">https://developers.google.com/speed/pagespeed/insights</span><br><span class="line">https://web.dev/measure/</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo啟用Tags功能</title>
+    <url>/posts/5dcb32bd/</url>
+    <content><![CDATA[<h3 id="Hexo啟用Tags功能"><a href="#Hexo啟用Tags功能" class="headerlink" title="Hexo啟用Tags功能"></a>Hexo啟用Tags功能</h3><span id="more"></span>
+<p>Step1:建立新page，命名為tags</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Step2:指令將會建立\blog\source\index.md</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Step3:若有啟用評論功能，欲關閉時</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2019-09-12 09:22:12</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>Step4:修改\blog\themes\next_config.yml 配置文件，啟用tags</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
@@ -2629,8 +2629,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
         <tag>Tomcat</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -4134,13 +4134,14 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Kubernetes DNS</title>
-    <url>/posts/77b5e11f/</url>
-    <content><![CDATA[<h2 id="Intro-Kubernetes-DNS"><a href="#Intro-Kubernetes-DNS" class="headerlink" title="Intro Kubernetes DNS"></a>Intro Kubernetes DNS</h2><span id="more"></span>
-<p>Intro Kubernetes DNS</p>
-<h2 id="Kubernetes-DNS"><a href="#Kubernetes-DNS" class="headerlink" title="Kubernetes DNS"></a>Kubernetes DNS</h2><p>DNS服務透過deployment執行<br>$ kubectl get deployments.apps –namespace&#x3D;kube-system coredns</p>
-<p>kubernetes services，為DNS服務提供負載均衡<br>$ kubectl get services –namespace&#x3D;kube-system kube-dns</p>
-<p>kubernetes容器中的&#x2F;etc&#x2F;resolv.conf 會寫入該筆紀錄<br>$ kubectl create deployment test1 –image&#x3D;nginx<br>$ kubectl get pods<br>$ kubectl exec test1…… -it bash<br>$ cat &#x2F;etc&#x2F;resolv.conf</p>
+    <title>Intro Kubernetes Deploy Strategy</title>
+    <url>/posts/7ddcd5be/</url>
+    <content><![CDATA[<h2 id="Intro-Kubernetes-Deploy-Strategy"><a href="#Intro-Kubernetes-Deploy-Strategy" class="headerlink" title="Intro Kubernetes Deploy Strategy"></a>Intro Kubernetes Deploy Strategy</h2><span id="more"></span>
+<p>Intro Kubernetes Deploy Strategy</p>
+<h2 id="Kubernetes-Deploy-Strategy"><a href="#Kubernetes-Deploy-Strategy" class="headerlink" title="Kubernetes Deploy Strategy"></a>Kubernetes Deploy Strategy</h2><p>Deploy Strategy有以下四種</p>
+<p>1.Recreate<br>傳統作法，類似還原再重新建立一次</p>
+<p>2.Rolling update<br>預設作法，best practice (花費時間最久) N+1<br>Rolling update (O) &#x3D;&gt; nginx:1.7.1 -&gt; nginx:1.9.1<br>Rolling update (X) &#x3D;&gt; Rollback(還原)</p>
+<p>3.Blue&#x2F;Green<br>4.Canary</p>
 ]]></content>
       <categories>
         <category>Kubernetes</category>
@@ -4150,14 +4151,13 @@ else
       </tags>
   </entry>
   <entry>
-    <title>Intro Kubernetes Deploy Strategy</title>
-    <url>/posts/7ddcd5be/</url>
-    <content><![CDATA[<h2 id="Intro-Kubernetes-Deploy-Strategy"><a href="#Intro-Kubernetes-Deploy-Strategy" class="headerlink" title="Intro Kubernetes Deploy Strategy"></a>Intro Kubernetes Deploy Strategy</h2><span id="more"></span>
-<p>Intro Kubernetes Deploy Strategy</p>
-<h2 id="Kubernetes-Deploy-Strategy"><a href="#Kubernetes-Deploy-Strategy" class="headerlink" title="Kubernetes Deploy Strategy"></a>Kubernetes Deploy Strategy</h2><p>Deploy Strategy有以下四種</p>
-<p>1.Recreate<br>傳統作法，類似還原再重新建立一次</p>
-<p>2.Rolling update<br>預設作法，best practice (花費時間最久) N+1<br>Rolling update (O) &#x3D;&gt; nginx:1.7.1 -&gt; nginx:1.9.1<br>Rolling update (X) &#x3D;&gt; Rollback(還原)</p>
-<p>3.Blue&#x2F;Green<br>4.Canary</p>
+    <title>Intro Kubernetes DNS</title>
+    <url>/posts/77b5e11f/</url>
+    <content><![CDATA[<h2 id="Intro-Kubernetes-DNS"><a href="#Intro-Kubernetes-DNS" class="headerlink" title="Intro Kubernetes DNS"></a>Intro Kubernetes DNS</h2><span id="more"></span>
+<p>Intro Kubernetes DNS</p>
+<h2 id="Kubernetes-DNS"><a href="#Kubernetes-DNS" class="headerlink" title="Kubernetes DNS"></a>Kubernetes DNS</h2><p>DNS服務透過deployment執行<br>$ kubectl get deployments.apps –namespace&#x3D;kube-system coredns</p>
+<p>kubernetes services，為DNS服務提供負載均衡<br>$ kubectl get services –namespace&#x3D;kube-system kube-dns</p>
+<p>kubernetes容器中的&#x2F;etc&#x2F;resolv.conf 會寫入該筆紀錄<br>$ kubectl create deployment test1 –image&#x3D;nginx<br>$ kubectl get pods<br>$ kubectl exec test1…… -it bash<br>$ cat &#x2F;etc&#x2F;resolv.conf</p>
 ]]></content>
       <categories>
         <category>Kubernetes</category>
@@ -5601,23 +5601,6 @@ return &#123;
       </tags>
   </entry>
   <entry>
-    <title>Java使用RestfulApi-GET</title>
-    <url>/posts/d27b077a/</url>
-    <content><![CDATA[<h3 id="Java使用RestfulApi-GET"><a href="#Java使用RestfulApi-GET" class="headerlink" title="Java使用RestfulApi-GET"></a>Java使用RestfulApi-GET</h3><span id="more"></span>
-<h3 id="pom-xml設定"><a href="#pom-xml設定" class="headerlink" title="pom.xml設定"></a>pom.xml設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;!-- apache http --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;httpclient&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;4.5.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="get-method"><a href="#get-method" class="headerlink" title="get method"></a>get method</h3><p>get方法，傳入uri、params、headers、retry、timeout參數。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static Optional&lt;String&gt; get(String uri, Map&lt;String, String&gt; params, List&lt;Header&gt; headers, int retry,</span><br><span class="line">	int <span class="built_in">timeout</span>) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (int i = retry; i &gt; 0; i--) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			HttpGetRequest request = ApacheHttpClientManager.getInstance().getHttpGetRequest(uri);</span><br><span class="line">			request.setParameters(params);</span><br><span class="line">			request.setHeaders(headers);</span><br><span class="line">			request.setTimeout(<span class="built_in">timeout</span>);</span><br><span class="line">			HTTPResponse httPResponse = ApacheHttpClientManager.getInstance().execute(request);</span><br><span class="line">			<span class="built_in">return</span> Optional.ofNullable(httPResponse.getContent());</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (1 == i) &#123;</span><br><span class="line">				LogUtils.error.error(e.getMessage());</span><br><span class="line">				throw e;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> Optional.empty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ApacheHttpClientManager"><a href="#ApacheHttpClientManager" class="headerlink" title="ApacheHttpClientManager"></a>ApacheHttpClientManager</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public HttpGetRequest getHttpGetRequest(String url) throws Exception &#123;</span><br><span class="line">	<span class="built_in">return</span> new HttpGetRequest(url);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public HTTPResponse execute(HttpGetRequest request) throws Exception &#123;</span><br><span class="line">	String url = request.getUrl();</span><br><span class="line">	<span class="keyword">if</span> (request.getQueryString() != null) &#123;</span><br><span class="line">		url = url + <span class="string">&quot;?&quot;</span> + request.getQueryString();</span><br><span class="line">	&#125;</span><br><span class="line">	Header[] headers = request.getHeaders();</span><br><span class="line">	String charset = request.getCharset();</span><br><span class="line">	<span class="keyword">if</span> (charset == null) &#123;</span><br><span class="line">		charset = DEFALUT_CHARSET;</span><br><span class="line">	&#125;</span><br><span class="line">	HttpClientContext proxyHttpContext = request.getHttpContext();</span><br><span class="line">	RequestConfig requestConfig = request.getRequestConfig();</span><br><span class="line"></span><br><span class="line">	HttpGet httpGet = new HttpGet(url);</span><br><span class="line">	httpGet.setHeader(<span class="string">&quot;Accept-Charset&quot;</span>, charset);</span><br><span class="line">	httpGet.setProtocolVersion(HttpVersion.HTTP_1_1);</span><br><span class="line">	<span class="keyword">if</span> (requestConfig != null) &#123;</span><br><span class="line">		httpGet.setConfig(requestConfig);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (headers != null) &#123;</span><br><span class="line">		httpGet.setHeaders(headers);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CloseableHttpResponse response = null;</span><br><span class="line">	String content = null;</span><br><span class="line">	CookieStore cookieStore = null;</span><br><span class="line">	int statusCode = 0;</span><br><span class="line">	Header[] responseHeaders;</span><br><span class="line">	try &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (proxyHttpContext != null) &#123;</span><br><span class="line">			response = httpClient.execute(httpGet, proxyHttpContext);</span><br><span class="line">			<span class="keyword">if</span> (request.receiveCookie()) &#123;</span><br><span class="line">				cookieStore = proxyHttpContext.getCookieStore();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (request.receiveCookie()) &#123;</span><br><span class="line">				HttpClientContext httpClientContext = HttpClientContext.create();</span><br><span class="line">				response = httpClient.execute(httpGet, httpClientContext);</span><br><span class="line">				cookieStore = httpClientContext.getCookieStore();</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				response = httpClient.execute(httpGet);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		responseHeaders = response.getAllHeaders();</span><br><span class="line">		statusCode = response.getStatusLine().getStatusCode();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (statusCode != 200 &amp;&amp; statusCode != 404) &#123;</span><br><span class="line">			log.info(<span class="string">&quot;HTTP Status-Code (&quot;</span> + statusCode + <span class="string">&quot;) Length w/o headers: [&quot;</span> + url.length() + <span class="string">&quot;] &quot;</span></span><br><span class="line">				+ url);</span><br><span class="line">		&#125;</span><br><span class="line">		HttpEntity entity = response.getEntity();</span><br><span class="line">		<span class="keyword">if</span> (entity != null) &#123;</span><br><span class="line">			content = getResponse(entity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; catch (HttpHostConnectException e) &#123;</span><br><span class="line">		log.error(e.getMessage(), e);</span><br><span class="line">		httpGet.abort();</span><br><span class="line">		HttpHost host = e.getHost();</span><br><span class="line">		PoolStats pstat = cm.getTotalStats();</span><br><span class="line">		PoolStats pst = cm.getStats(new HttpRoute(host));</span><br><span class="line">		log.info(</span><br><span class="line">			String.format(<span class="string">&quot;Total PoolStats: %s &amp; %s PoolStats: %s.&quot;</span>, pstat, host.toHostString(), pst));</span><br><span class="line">		throw e;</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">		log.error(e.getMessage(), e);</span><br><span class="line">		httpGet.abort();</span><br><span class="line">		throw e;</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		close(response);</span><br><span class="line">		<span class="keyword">if</span> (httpGet != null) &#123;</span><br><span class="line">			httpGet.releaseConnection();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (isTrace) &#123;</span><br><span class="line">		log.info(<span class="string">&quot;HttpGet content:&quot;</span> + content);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> new HTTPResponse(statusCode, content, responseHeaders,</span><br><span class="line">		(cookieStore == null ? null : cookieStore.getCookies()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>GET</tag>
-        <tag>RestfulApi</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java使用RestfulApi:POST</title>
     <url>/posts/53deaee0/</url>
     <content><![CDATA[<h3 id="Java使用RestfulApi-POST"><a href="#Java使用RestfulApi-POST" class="headerlink" title="Java使用RestfulApi-POST"></a>Java使用RestfulApi-POST</h3><span id="more"></span>
@@ -5636,6 +5619,23 @@ return &#123;
       </categories>
       <tags>
         <tag>POST</tag>
+        <tag>RestfulApi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java使用RestfulApi-GET</title>
+    <url>/posts/d27b077a/</url>
+    <content><![CDATA[<h3 id="Java使用RestfulApi-GET"><a href="#Java使用RestfulApi-GET" class="headerlink" title="Java使用RestfulApi-GET"></a>Java使用RestfulApi-GET</h3><span id="more"></span>
+<h3 id="pom-xml設定"><a href="#pom-xml設定" class="headerlink" title="pom.xml設定"></a>pom.xml設定</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&lt;!-- apache http --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;httpclient&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;4.5.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="get-method"><a href="#get-method" class="headerlink" title="get method"></a>get method</h3><p>get方法，傳入uri、params、headers、retry、timeout參數。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static Optional&lt;String&gt; get(String uri, Map&lt;String, String&gt; params, List&lt;Header&gt; headers, int retry,</span><br><span class="line">	int <span class="built_in">timeout</span>) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (int i = retry; i &gt; 0; i--) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			HttpGetRequest request = ApacheHttpClientManager.getInstance().getHttpGetRequest(uri);</span><br><span class="line">			request.setParameters(params);</span><br><span class="line">			request.setHeaders(headers);</span><br><span class="line">			request.setTimeout(<span class="built_in">timeout</span>);</span><br><span class="line">			HTTPResponse httPResponse = ApacheHttpClientManager.getInstance().execute(request);</span><br><span class="line">			<span class="built_in">return</span> Optional.ofNullable(httPResponse.getContent());</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (1 == i) &#123;</span><br><span class="line">				LogUtils.error.error(e.getMessage());</span><br><span class="line">				throw e;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> Optional.empty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ApacheHttpClientManager"><a href="#ApacheHttpClientManager" class="headerlink" title="ApacheHttpClientManager"></a>ApacheHttpClientManager</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public HttpGetRequest getHttpGetRequest(String url) throws Exception &#123;</span><br><span class="line">	<span class="built_in">return</span> new HttpGetRequest(url);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public HTTPResponse execute(HttpGetRequest request) throws Exception &#123;</span><br><span class="line">	String url = request.getUrl();</span><br><span class="line">	<span class="keyword">if</span> (request.getQueryString() != null) &#123;</span><br><span class="line">		url = url + <span class="string">&quot;?&quot;</span> + request.getQueryString();</span><br><span class="line">	&#125;</span><br><span class="line">	Header[] headers = request.getHeaders();</span><br><span class="line">	String charset = request.getCharset();</span><br><span class="line">	<span class="keyword">if</span> (charset == null) &#123;</span><br><span class="line">		charset = DEFALUT_CHARSET;</span><br><span class="line">	&#125;</span><br><span class="line">	HttpClientContext proxyHttpContext = request.getHttpContext();</span><br><span class="line">	RequestConfig requestConfig = request.getRequestConfig();</span><br><span class="line"></span><br><span class="line">	HttpGet httpGet = new HttpGet(url);</span><br><span class="line">	httpGet.setHeader(<span class="string">&quot;Accept-Charset&quot;</span>, charset);</span><br><span class="line">	httpGet.setProtocolVersion(HttpVersion.HTTP_1_1);</span><br><span class="line">	<span class="keyword">if</span> (requestConfig != null) &#123;</span><br><span class="line">		httpGet.setConfig(requestConfig);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (headers != null) &#123;</span><br><span class="line">		httpGet.setHeaders(headers);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CloseableHttpResponse response = null;</span><br><span class="line">	String content = null;</span><br><span class="line">	CookieStore cookieStore = null;</span><br><span class="line">	int statusCode = 0;</span><br><span class="line">	Header[] responseHeaders;</span><br><span class="line">	try &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (proxyHttpContext != null) &#123;</span><br><span class="line">			response = httpClient.execute(httpGet, proxyHttpContext);</span><br><span class="line">			<span class="keyword">if</span> (request.receiveCookie()) &#123;</span><br><span class="line">				cookieStore = proxyHttpContext.getCookieStore();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (request.receiveCookie()) &#123;</span><br><span class="line">				HttpClientContext httpClientContext = HttpClientContext.create();</span><br><span class="line">				response = httpClient.execute(httpGet, httpClientContext);</span><br><span class="line">				cookieStore = httpClientContext.getCookieStore();</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				response = httpClient.execute(httpGet);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		responseHeaders = response.getAllHeaders();</span><br><span class="line">		statusCode = response.getStatusLine().getStatusCode();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (statusCode != 200 &amp;&amp; statusCode != 404) &#123;</span><br><span class="line">			log.info(<span class="string">&quot;HTTP Status-Code (&quot;</span> + statusCode + <span class="string">&quot;) Length w/o headers: [&quot;</span> + url.length() + <span class="string">&quot;] &quot;</span></span><br><span class="line">				+ url);</span><br><span class="line">		&#125;</span><br><span class="line">		HttpEntity entity = response.getEntity();</span><br><span class="line">		<span class="keyword">if</span> (entity != null) &#123;</span><br><span class="line">			content = getResponse(entity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; catch (HttpHostConnectException e) &#123;</span><br><span class="line">		log.error(e.getMessage(), e);</span><br><span class="line">		httpGet.abort();</span><br><span class="line">		HttpHost host = e.getHost();</span><br><span class="line">		PoolStats pstat = cm.getTotalStats();</span><br><span class="line">		PoolStats pst = cm.getStats(new HttpRoute(host));</span><br><span class="line">		log.info(</span><br><span class="line">			String.format(<span class="string">&quot;Total PoolStats: %s &amp; %s PoolStats: %s.&quot;</span>, pstat, host.toHostString(), pst));</span><br><span class="line">		throw e;</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">		log.error(e.getMessage(), e);</span><br><span class="line">		httpGet.abort();</span><br><span class="line">		throw e;</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		close(response);</span><br><span class="line">		<span class="keyword">if</span> (httpGet != null) &#123;</span><br><span class="line">			httpGet.releaseConnection();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (isTrace) &#123;</span><br><span class="line">		log.info(<span class="string">&quot;HttpGet content:&quot;</span> + content);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> new HTTPResponse(statusCode, content, responseHeaders,</span><br><span class="line">		(cookieStore == null ? null : cookieStore.getCookies()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>GET</tag>
         <tag>RestfulApi</tag>
       </tags>
   </entry>
@@ -8363,6 +8363,32 @@ Java Dependency Viewer
       </tags>
   </entry>
   <entry>
+    <title>使用Optional取代null</title>
+    <url>/posts/d37739fb/</url>
+    <content><![CDATA[<h3 id="使用Optional取代null"><a href="#使用Optional取代null" class="headerlink" title="使用Optional取代null"></a>使用Optional取代null</h3><span id="more"></span>
+<p>JDK8新增了java.util.Optional類別，由於null的根本問題在於含糊而不明確，要避免使用null的方式，<br>就是確認過去使用null的時機與目的，並使用明確的語義。在過去使用null的情況中，開發者於方法中傳回null，<br>通常代表著客戶端必須檢查是否為null，並在null的情況下使用預設值，以便後續程式繼續執行。舉個例子來說：</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>在下方這段程式碼中，如果呼叫getNickName()時忘了檢查null，那麼就會直接顯示null，<br>在這個簡單的例子中並不會怎樣，只是顯示結果令人困惑罷了，但如果後續的執行流程牽涉到至關重要的結果，<br>程式繼續執行下去，錯誤可能到最後才會呈現發生。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        String nickName = getNickName(<span class="string">&quot;Duke&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (nickName == null) &#123;</span><br><span class="line">            nickName = <span class="string">&quot;Openhome Reader&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        out.println(nickName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">static String getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> nickNames.get(name); // key不存在時會傳回null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="To-revise-example-code-1"><a href="#To-revise-example-code-1" class="headerlink" title="To revise example code 1"></a>To revise example code 1</h3><p>可將getNickName修改使一定會傳回Optional<String>實例，但絕不要傳回null。<br>Optional的語義是它可能包含也可能不包括值，要建立Optional實例有幾個靜態方式，使用of()方法可以指定非null值建立Optional實例，<br>使用empty()方法可以建立不包裏值的Optional實例。<br>例如，可使用Optional來改寫上頭的getNickName()方法：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	String nickName = nickNames.get(name);</span><br><span class="line">	<span class="built_in">return</span> nickName == null ? Optional.empty() : Optional.of(nickName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="To-revise-example-code-2"><a href="#To-revise-example-code-2" class="headerlink" title="To revise example code 2"></a>To revise example code 2</h3><p>在Optional沒有包含值的情況下，就會直接拋出java.util.NoSuchElementException，<br>這實現了速錯（Fail fast）的概念，這讓開發者可以立即發現錯誤，並瞭解到必須使用程式碼作些檢查，<br>可能的方式之一像是：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">String nickName = <span class="string">&quot;DC&#x27;blog Reader&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(nickOptional.isPresent()) &#123;</span><br><span class="line">    nickName = nickOptional.get();</span><br><span class="line">&#125;</span><br><span class="line">out.println(nickName);</span><br></pre></td></tr></table></figure>
+
+<p>一個更好的方式可以使用orElse()方法，指定值不存在時的替代值：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">out.println(nickOptional.orElse(<span class="string">&quot;DC&#x27;blog Reader&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>過去許多程式庫中使用了不少null，這些程式庫無法說改就改，可使用Optional的ofNullable()來銜接程式庫中會傳回null的方法，<br>使用ofNullable()方法時，若指定了非null值就會呼叫of()方法，指定了null值就會呼叫empty()方法。<br>例如，先前的getNickName()方法可以更簡潔地修改為：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> Optional.ofNullable(nickNames.get(name));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Optional</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用VisualStudioCompiler C語言</title>
     <url>/posts/bb92d4e1/</url>
     <content><![CDATA[<h3 id="使用VisualStudioCompiler-C語言"><a href="#使用VisualStudioCompiler-C語言" class="headerlink" title="使用VisualStudioCompiler C語言"></a>使用VisualStudioCompiler C語言</h3><span id="more"></span>
@@ -8388,32 +8414,6 @@ Java Dependency Viewer
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Optional取代null</title>
-    <url>/posts/d37739fb/</url>
-    <content><![CDATA[<h3 id="使用Optional取代null"><a href="#使用Optional取代null" class="headerlink" title="使用Optional取代null"></a>使用Optional取代null</h3><span id="more"></span>
-<p>JDK8新增了java.util.Optional類別，由於null的根本問題在於含糊而不明確，要避免使用null的方式，<br>就是確認過去使用null的時機與目的，並使用明確的語義。在過去使用null的情況中，開發者於方法中傳回null，<br>通常代表著客戶端必須檢查是否為null，並在null的情況下使用預設值，以便後續程式繼續執行。舉個例子來說：</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>在下方這段程式碼中，如果呼叫getNickName()時忘了檢查null，那麼就會直接顯示null，<br>在這個簡單的例子中並不會怎樣，只是顯示結果令人困惑罷了，但如果後續的執行流程牽涉到至關重要的結果，<br>程式繼續執行下去，錯誤可能到最後才會呈現發生。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        String nickName = getNickName(<span class="string">&quot;Duke&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (nickName == null) &#123;</span><br><span class="line">            nickName = <span class="string">&quot;Openhome Reader&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        out.println(nickName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">static String getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> nickNames.get(name); // key不存在時會傳回null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="To-revise-example-code-1"><a href="#To-revise-example-code-1" class="headerlink" title="To revise example code 1"></a>To revise example code 1</h3><p>可將getNickName修改使一定會傳回Optional<String>實例，但絕不要傳回null。<br>Optional的語義是它可能包含也可能不包括值，要建立Optional實例有幾個靜態方式，使用of()方法可以指定非null值建立Optional實例，<br>使用empty()方法可以建立不包裏值的Optional實例。<br>例如，可使用Optional來改寫上頭的getNickName()方法：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	String nickName = nickNames.get(name);</span><br><span class="line">	<span class="built_in">return</span> nickName == null ? Optional.empty() : Optional.of(nickName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="To-revise-example-code-2"><a href="#To-revise-example-code-2" class="headerlink" title="To revise example code 2"></a>To revise example code 2</h3><p>在Optional沒有包含值的情況下，就會直接拋出java.util.NoSuchElementException，<br>這實現了速錯（Fail fast）的概念，這讓開發者可以立即發現錯誤，並瞭解到必須使用程式碼作些檢查，<br>可能的方式之一像是：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">String nickName = <span class="string">&quot;DC&#x27;blog Reader&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(nickOptional.isPresent()) &#123;</span><br><span class="line">    nickName = nickOptional.get();</span><br><span class="line">&#125;</span><br><span class="line">out.println(nickName);</span><br></pre></td></tr></table></figure>
-
-<p>一個更好的方式可以使用orElse()方法，指定值不存在時的替代值：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Optional&lt;String&gt; nickOptional = getNickName(<span class="string">&quot;David&quot;</span>);</span><br><span class="line">out.println(nickOptional.orElse(<span class="string">&quot;DC&#x27;blog Reader&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>過去許多程式庫中使用了不少null，這些程式庫無法說改就改，可使用Optional的ofNullable()來銜接程式庫中會傳回null的方法，<br>使用ofNullable()方法時，若指定了非null值就會呼叫of()方法，指定了null值就會呼叫empty()方法。<br>例如，先前的getNickName()方法可以更簡潔地修改為：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">static Optional&lt;String&gt; getNickName(String name) &#123;</span><br><span class="line">	Map&lt;String, String&gt; nickNames = new HashMap&lt;&gt;();</span><br><span class="line">	nickNames.put(<span class="string">&quot;Justin&quot;</span>, <span class="string">&quot;caterpillar&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Monica&quot;</span>, <span class="string">&quot;momor&quot;</span>);</span><br><span class="line">	nickNames.put(<span class="string">&quot;Irene&quot;</span>, <span class="string">&quot;hamimi&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> Optional.ofNullable(nickNames.get(name));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Optional</tag>
       </tags>
   </entry>
   <entry>
@@ -9547,6 +9547,22 @@ public override void BuildLegRight()
       </tags>
   </entry>
   <entry>
+    <title>概念相似性</title>
+    <url>/posts/15d69aae/</url>
+    <content><![CDATA[<h2 id="概念相似性"><a href="#概念相似性" class="headerlink" title="概念相似性"></a>概念相似性</h2><span id="more"></span>
+<p>概念相似性</p>
+<h2 id="概念相似性-1"><a href="#概念相似性-1" class="headerlink" title="概念相似性"></a>概念相似性</h2><p>程式裡的某些程式碼希望能和其它程式碼儘可能<br>相近，因為它們在概念上有相似的性質。當相似性<br>越高時，它們之間的垂直距離應該越短越好。</p>
+<p>相似性除了函式呼叫函式或函式使用一個變數，相似<br>性還有一連串的函式都執行類似的工作，那這些函式<br>彼此之間就具有相似性。</p>
+<p>當一個類別內的多個方法使用類似的命名規則，也執行<br>相同基本工作的變異版本。彼此呼叫的行為是次要的相似<br>性。就算它們沒有互相呼叫，應盡可能地擺放在一起。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>概念間 的垂直空白 區隔</title>
     <url>/posts/184b0dd2/</url>
     <content><![CDATA[<h2 id="概念間-的垂直空白-區隔"><a href="#概念間-的垂直空白-區隔" class="headerlink" title="概念間 的垂直空白 區隔"></a>概念間 的垂直空白 區隔</h2><span id="more"></span>
@@ -10377,27 +10393,6 @@ Console.Read();
       </tags>
   </entry>
   <entry>
-    <title>規定型註解</title>
-    <url>/posts/3979aa28/</url>
-    <content><![CDATA[<h2 id="規定型註解"><a href="#規定型註解" class="headerlink" title="規定型註解"></a>規定型註解</h2><span id="more"></span>
-<p>規定型註解</p>
-<h2 id="規定型註解-1"><a href="#規定型註解-1" class="headerlink" title="規定型註解"></a>規定型註解</h2><p>若有規則規定每個函式都必須有一個Javadoc，或<br>每個變數都應該要有註解來說明，像這樣的註解只<br>會讓程式碼更加凌亂。進而產生更多困惑和製造散亂<br>的程式結構。</p>
-<p>example:<br>&#x2F;**<br> *</p>
-<ul>
-<li>@param title The title of the CD</li>
-<li>@param author The author of the CD</li>
-<li>@param tracks The number of tracks on the CD</li>
-<li>@param durationInMinutes The duration of the CD in minutes<br> *&#x2F;<br>public void addCD(…) {<br> …<br>}</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>觀察者 模式</title>
     <url>/posts/aeda381b/</url>
     <content><![CDATA[<h2 id="觀察者-模式"><a href="#觀察者-模式" class="headerlink" title="觀察者 模式"></a>觀察者 模式</h2><span id="more"></span>
@@ -10463,6 +10458,27 @@ public ConcreteSubject Subject
       </categories>
       <tags>
         <tag>ObjectOrientedProgramming</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>規定型註解</title>
+    <url>/posts/3979aa28/</url>
+    <content><![CDATA[<h2 id="規定型註解"><a href="#規定型註解" class="headerlink" title="規定型註解"></a>規定型註解</h2><span id="more"></span>
+<p>規定型註解</p>
+<h2 id="規定型註解-1"><a href="#規定型註解-1" class="headerlink" title="規定型註解"></a>規定型註解</h2><p>若有規則規定每個函式都必須有一個Javadoc，或<br>每個變數都應該要有註解來說明，像這樣的註解只<br>會讓程式碼更加凌亂。進而產生更多困惑和製造散亂<br>的程式結構。</p>
+<p>example:<br>&#x2F;**<br> *</p>
+<ul>
+<li>@param title The title of the CD</li>
+<li>@param author The author of the CD</li>
+<li>@param tracks The number of tracks on the CD</li>
+<li>@param durationInMinutes The duration of the CD in minutes<br> *&#x2F;<br>public void addCD(…) {<br> …<br>}</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
       </tags>
   </entry>
   <entry>
@@ -10592,20 +10608,6 @@ public ConcreteSubject Subject
       </tags>
   </entry>
   <entry>
-    <title>踩坑日記-三元運算子</title>
-    <url>/posts/82b731f3/</url>
-    <content><![CDATA[<h3 id="踩坑日記-三元運算子"><a href="#踩坑日記-三元運算子" class="headerlink" title="踩坑日記-三元運算子"></a>踩坑日記-三元運算子</h3><span id="more"></span>
-<p>這篇紀錄運算子，在使用上可能會遇到的坑，避免再次踩坑。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">String message = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message</span><br><span class="line"></span><br><span class="line">Error exmaple:</span><br><span class="line">StringBuilder out = new StringBuilder(<span class="string">&quot;[Message]:&quot;</span> + message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message);</span><br><span class="line">System.out.println(out.toString());</span><br><span class="line">Output:123</span><br><span class="line"></span><br><span class="line">Correct exmaple:</span><br><span class="line">StringBuilder out = new StringBuilder(<span class="string">&quot;[Message]:&quot;</span> + (message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message));</span><br><span class="line">System.out.println(out.toString());</span><br><span class="line">Output:[Message]:123</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Ternary Operators</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Ternary Operators</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>輸出型 的參數</title>
     <url>/posts/e9678a20/</url>
     <content><![CDATA[<h2 id="輸出型-的參數"><a href="#輸出型-的參數" class="headerlink" title="輸出型 的參數"></a>輸出型 的參數</h2><span id="more"></span>
@@ -10636,6 +10638,20 @@ public ConcreteSubject Subject
       </categories>
       <tags>
         <tag>ObjectOrientedProgramming</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>踩坑日記-三元運算子</title>
+    <url>/posts/82b731f3/</url>
+    <content><![CDATA[<h3 id="踩坑日記-三元運算子"><a href="#踩坑日記-三元運算子" class="headerlink" title="踩坑日記-三元運算子"></a>踩坑日記-三元運算子</h3><span id="more"></span>
+<p>這篇紀錄運算子，在使用上可能會遇到的坑，避免再次踩坑。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">String message = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message</span><br><span class="line"></span><br><span class="line">Error exmaple:</span><br><span class="line">StringBuilder out = new StringBuilder(<span class="string">&quot;[Message]:&quot;</span> + message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message);</span><br><span class="line">System.out.println(out.toString());</span><br><span class="line">Output:123</span><br><span class="line"></span><br><span class="line">Correct exmaple:</span><br><span class="line">StringBuilder out = new StringBuilder(<span class="string">&quot;[Message]:&quot;</span> + (message == null ? <span class="string">&quot;&#123;&#125;&quot;</span> : message));</span><br><span class="line">System.out.println(out.toString());</span><br><span class="line">Output:[Message]:123</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Ternary Operators</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Ternary Operators</tag>
       </tags>
   </entry>
   <entry>
@@ -10719,6 +10735,29 @@ public ConcreteSubject Subject
       </tags>
   </entry>
   <entry>
+    <title>過多的資訊</title>
+    <url>/posts/23011165/</url>
+    <content><![CDATA[<h2 id="過多的資訊"><a href="#過多的資訊" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><span id="more"></span>
+<p>過多的資訊</p>
+<h2 id="過多的資訊-1"><a href="#過多的資訊-1" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><p>不要把一些有趣的歷史討論紀錄，或是一些不相關的細節描述，</p>
+<p>放進你的註解裡。下述註解是從測試函式是否正確編碼及解碼</p>
+<p>base64的模組中所擷取出來。正在閱讀程式的人，除了RFC測試</p>
+<p>文件編號以外，根本不需要理解註解裡難懂的訊息。</p>
+<p>&#x2F; *</p>
+<p>  RFC 2045 - Multipurpose Internet Mail Extensions (MIME)</p>
+<p>  Part One:…</p>
+<p>  …</p>
+<p>  …</p>
+<p>  *&#x2F;</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>錯誤處理 就是一件事</title>
     <url>/posts/bec2f00d/</url>
     <content><![CDATA[<h2 id="錯誤處理-就是一件事"><a href="#錯誤處理-就是一件事" class="headerlink" title="錯誤處理 就是一件事"></a>錯誤處理 就是一件事</h2><span id="more"></span>
@@ -10756,29 +10795,6 @@ public ConcreteSubject Subject
 <h2 id="開發函式-的-真實流程-1"><a href="#開發函式-的-真實流程-1" class="headerlink" title="開發函式 的 真實流程"></a>開發函式 的 真實流程</h2><p>一開始寫函式時，總是複雜又長。有很多縮排和巢狀迴圈，以及<br>很長的參數串列。有隨意的命名和重複的程式碼，有一整套的單<br>元測試、測試範圍涵蓋每一行粗糙的程式碼。</p>
 <p>於是開始琢磨和改善程式碼，將函式分開、重新命名，減少重複。<br>也會縮短方法並重新安排方法的順序。有時候會拆開整個類別，<br>並持續保持單元測試能夠通過。</p>
 <p>最後，當函式符合本章所提及的準則時，即可結束這個函式的<br>修改。但不會從一開始就這麼寫，也不太可能有人可以辦得到。</p>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>過多的資訊</title>
-    <url>/posts/23011165/</url>
-    <content><![CDATA[<h2 id="過多的資訊"><a href="#過多的資訊" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><span id="more"></span>
-<p>過多的資訊</p>
-<h2 id="過多的資訊-1"><a href="#過多的資訊-1" class="headerlink" title="過多的資訊"></a>過多的資訊</h2><p>不要把一些有趣的歷史討論紀錄，或是一些不相關的細節描述，</p>
-<p>放進你的註解裡。下述註解是從測試函式是否正確編碼及解碼</p>
-<p>base64的模組中所擷取出來。正在閱讀程式的人，除了RFC測試</p>
-<p>文件編號以外，根本不需要理解註解裡難懂的訊息。</p>
-<p>&#x2F; *</p>
-<p>  RFC 2045 - Multipurpose Internet Mail Extensions (MIME)</p>
-<p>  Part One:…</p>
-<p>  …</p>
-<p>  …</p>
-<p>  *&#x2F;</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
@@ -11430,6 +11446,23 @@ public ConcreteSubject Subject
       </tags>
   </entry>
   <entry>
+    <title>非公共 程式碼裡的 Javadoc</title>
+    <url>/posts/d71c2712/</url>
+    <content><![CDATA[<h2 id="非公共-程式碼裡的-Javadoc"><a href="#非公共-程式碼裡的-Javadoc" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><span id="more"></span>
+<p>非公共 程式碼裡的 Javadoc</p>
+<h2 id="非公共-程式碼裡的-Javadoc-1"><a href="#非公共-程式碼裡的-Javadoc-1" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><p>Javadoc對於公共API是有幫助的，但對於不想成為公共的程式碼，</p>
+<p>那就不是這麼回事了。替系統裡的類別和函式產生Javadoc頁面，</p>
+<p>並非在各種狀況下都適用，而且拘泥在Javadoc所要求的額外格式，</p>
+<p>通常只會產生一些無關又不想要的廢物，分散人們的注意力而已。</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>非區域性 的資訊</title>
     <url>/posts/e6e32842/</url>
     <content><![CDATA[<h2 id="非區域性-的資訊"><a href="#非區域性-的資訊" class="headerlink" title="非區域性 的資訊"></a>非區域性 的資訊</h2><span id="more"></span>
@@ -11445,23 +11478,6 @@ public ConcreteSubject Subject
 <li>Port on which fitnesse would run. Defaults to <b>8082</b>.</li>
 <li>@param fitnessePort<br>  *&#x2F;<br>public void setFitnessePort(int fitnessePort)<br>{<br>this.fitnessePort &#x3D; fitnessePort;<br>}</li>
 </ul>
-]]></content>
-      <categories>
-        <category>CleanCode</category>
-      </categories>
-      <tags>
-        <tag>CleanCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>非公共 程式碼裡的 Javadoc</title>
-    <url>/posts/d71c2712/</url>
-    <content><![CDATA[<h2 id="非公共-程式碼裡的-Javadoc"><a href="#非公共-程式碼裡的-Javadoc" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><span id="more"></span>
-<p>非公共 程式碼裡的 Javadoc</p>
-<h2 id="非公共-程式碼裡的-Javadoc-1"><a href="#非公共-程式碼裡的-Javadoc-1" class="headerlink" title="非公共 程式碼裡的 Javadoc"></a>非公共 程式碼裡的 Javadoc</h2><p>Javadoc對於公共API是有幫助的，但對於不想成為公共的程式碼，</p>
-<p>那就不是這麼回事了。替系統裡的類別和函式產生Javadoc頁面，</p>
-<p>並非在各種狀況下都適用，而且拘泥在Javadoc所要求的額外格式，</p>
-<p>通常只會產生一些無關又不想要的廢物，分散人們的注意力而已。</p>
 ]]></content>
       <categories>
         <category>CleanCode</category>
